@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Classify Text="普通页面">
+    <Node Name="Page_Page" File=".\TestVPro\Page_Page.page" />
+    <Node Name="Button_page" File=".\TestVPro\Button_page.page" />
+    <Node Name="Label_Page" File=".\TestVPro\Label_Page.page" />
+    <Node Name="icon_page" File=".\TestVPro\icon_page.page" />
+    <Node Name="Vurve_Page" File=".\TestVPro\Vurve_Page.page" />
+    <Node Name="Line_Page" File=".\TestVPro\Line_Page.page" />
+    <Node Name="Binary_Page" File=".\TestVPro\Binary_Page.page" />
+    <Node Name="Analog_Page" File=".\TestVPro\Analog_Page.page" />
+  </Classify>
+  <Classify Text="初始页面">
+    <Node Name="init_page" File=".\TestVPro\init_page.page" />
+    <Node Name="menu" File=".\TestVPro\menu.page" />
+    <Node Name="TTest" File=".\TestVPro\TTest.page" />
+  </Classify>
+</Root>

@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66E6C357-FFEF-4B6B-AA48-67326323714B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVCore</RootNamespace>
+    <AssemblyName>SVCore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>C:\Users\Administrator\Desktop\WindowsFormsApplication1\WindowsFormsApplication1\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SVAutoSave.cs" />
+    <Compile Include="SVBackGroundControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVBasePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVBinData.cs" />
+    <Compile Include="SVBitmap.cs" />
+    <Compile Include="SVBitmapArray.cs" />
+    <Compile Include="SVBitmapHead.cs" />
+    <Compile Include="SVBitmapManagerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVBitmapManagerWindow.Designer.cs">
+      <DependentUpon>SVBitmapManagerWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVBuildFile.cs" />
+    <Compile Include="SVCheckValidException.cs" />
+    <Compile Include="SVColorButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVConfig.cs" />
+    <Compile Include="SVCrc32.cs" />
+    <Compile Include="SVCreatePageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVCreatePageForm.Designer.cs">
+      <DependentUpon>SVCreatePageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVPanelNode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSqlDataBase.cs" />
+    <Compile Include="SVExportTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVExportTemplateForm.Designer.cs">
+      <DependentUpon>SVExportTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVFindTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVInterfaceApplication.cs" />
+    <Compile Include="SVlog.cs" />
+    <Compile Include="SVOutputTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVPageNode.cs" />
+    <Compile Include="SVPixmapElementManage.cs" />
+    <Compile Include="SVInterfaceBuild.cs" />
+    <Compile Include="SVInterfacePanel.cs" />
+    <Compile Include="SVNameToObject.cs" />
+    <Compile Include="SVPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVPixmapFile.cs" />
+    <Compile Include="SVPrinter.cs" />
+    <Compile Include="SVProData.cs" />
+    <Compile Include="SVProject.cs" />
+    <Compile Include="SVRedoUndo.cs" />
+    <Compile Include="SVSelectAlignProperty.cs" />
+    <Compile Include="SVSelectPanelObjs.cs" />
+    <Compile Include="SVSerialize.cs" />
+    <Compile Include="SVSettingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVSettingWindow.Designer.cs">
+      <DependentUpon>SVSettingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVTextBoxTraceListenter.cs" />
+    <Compile Include="SVTextTraceListenter.cs" />
+    <Compile Include="SVUniqueID.cs" />
+    <Compile Include="SVVersion.cs" />
+    <Compile Include="SVXml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SVBitmapManagerWindow.resx">
+      <DependentUpon>SVBitmapManagerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVCreatePageForm.resx">
+      <DependentUpon>SVCreatePageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVExportTemplateForm.resx">
+      <DependentUpon>SVExportTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVSettingWindow.resx">
+      <DependentUpon>SVSettingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

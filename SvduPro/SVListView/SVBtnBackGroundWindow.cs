@@ -1,0 +1,286 @@
+﻿using System.Windows.Forms;
+using SVCore;
+using System.IO;
+using System;
+
+namespace SVControl
+{
+    /// <summary>
+    /// 修改按钮背景的自定义窗口类
+    /// </summary>
+    public class SVBtnBackGroundWindow : Form
+    {
+        private SVCheckGroupBox colorGroupBox;
+        private Label label1;
+        private Button okBtn;
+        private Button cancelBtn;
+        private SVCheckGroupBox picGroupBox;
+        private SVColorButton colorBtnUp;
+        private SVColorButton colorBtnDown;
+        private Button picBtnUp;
+        private Button picBtnDown;
+        SVButton _button;
+    
+        /// <summary>
+        /// 自定义构造函数
+        /// </summary>
+        /// <param name="button">按钮对象</param>
+        public SVBtnBackGroundWindow(SVButton button)
+        {
+            InitializeComponent();
+            _button = button;
+
+            ///设置颜色checkbox
+            this.colorGroupBox.init();
+            this.colorGroupBox.setEnabledText("颜色");
+
+            ///设置图片checkbox
+            this.picGroupBox.init();
+            this.picGroupBox.setEnabledText("图片");
+
+            if (_button.Attrib.IsShowPic)
+            {
+                this.colorGroupBox.setChecked(false);
+                this.picGroupBox.setChecked(true);
+            }
+            else
+            {
+                this.colorGroupBox.setChecked(true);
+                this.picGroupBox.setChecked(false);
+            }
+
+            if (_button.Attrib.BtnDownPic.ImageFileName != null)
+            {
+                String file = Path.Combine(SVProData.IconPath, _button.Attrib.BtnDownPic.ImageFileName);
+                setButtonBackGd(picBtnDown, file);
+            }
+
+
+            if (_button.Attrib.BtnUpPic.ImageFileName != null)
+            {
+                String file = Path.Combine(SVProData.IconPath, _button.Attrib.BtnUpPic.ImageFileName);
+                setButtonBackGd(picBtnUp, file);
+            }
+
+            colorBtnDown.BackColor = _button.Attrib.BackColorgroundDown;
+            colorBtnUp.BackColor = _button.Attrib.BackColorground;
+
+            ///颜色发生改变
+            colorGroupBox.EnabledChanged += new System.EventHandler(colorGroupBox_EnabledChanged);
+            ///图片发生改变
+            picGroupBox.EnabledChanged += new System.EventHandler(picGroupBox_EnabledChanged);
+        }
+
+        void picGroupBox_EnabledChanged(object sender, System.EventArgs e)
+        {
+            colorGroupBox.setChecked(!picGroupBox.checkEnabled());
+        }
+
+        void colorGroupBox_EnabledChanged(object sender, System.EventArgs e)
+        {
+            picGroupBox.setChecked(!colorGroupBox.checkEnabled());
+        }
+
+        /// <summary>
+        /// 执行初始化
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.colorGroupBox = new SVCore.SVCheckGroupBox();
+            this.colorBtnUp = new SVCore.SVColorButton();
+            this.colorBtnDown = new SVCore.SVColorButton();
+            this.picGroupBox = new SVCore.SVCheckGroupBox();
+            this.picBtnUp = new System.Windows.Forms.Button();
+            this.picBtnDown = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.okBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.colorGroupBox.SuspendLayout();
+            this.picGroupBox.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // colorGroupBox
+            // 
+            this.colorGroupBox.Controls.Add(this.colorBtnUp);
+            this.colorGroupBox.Controls.Add(this.colorBtnDown);
+            this.colorGroupBox.Location = new System.Drawing.Point(12, 24);
+            this.colorGroupBox.Name = "colorGroupBox";
+            this.colorGroupBox.Size = new System.Drawing.Size(332, 51);
+            this.colorGroupBox.TabIndex = 0;
+            this.colorGroupBox.TabStop = false;
+            // 
+            // colorBtnUp
+            // 
+            this.colorBtnUp.Location = new System.Drawing.Point(220, 20);
+            this.colorBtnUp.Name = "colorBtnUp";
+            this.colorBtnUp.Size = new System.Drawing.Size(75, 23);
+            this.colorBtnUp.TabIndex = 1;
+            this.colorBtnUp.Text = "弹起";
+            this.colorBtnUp.UseVisualStyleBackColor = true;
+            // 
+            // colorBtnDown
+            // 
+            this.colorBtnDown.Location = new System.Drawing.Point(30, 19);
+            this.colorBtnDown.Name = "colorBtnDown";
+            this.colorBtnDown.Size = new System.Drawing.Size(75, 23);
+            this.colorBtnDown.TabIndex = 0;
+            this.colorBtnDown.Text = "按下";
+            this.colorBtnDown.UseVisualStyleBackColor = true;
+            // 
+            // picGroupBox
+            // 
+            this.picGroupBox.Controls.Add(this.picBtnUp);
+            this.picGroupBox.Controls.Add(this.picBtnDown);
+            this.picGroupBox.Location = new System.Drawing.Point(12, 97);
+            this.picGroupBox.Name = "picGroupBox";
+            this.picGroupBox.Size = new System.Drawing.Size(332, 114);
+            this.picGroupBox.TabIndex = 1;
+            this.picGroupBox.TabStop = false;
+            // 
+            // picBtnUp
+            // 
+            this.picBtnUp.Location = new System.Drawing.Point(220, 24);
+            this.picBtnUp.Name = "picBtnUp";
+            this.picBtnUp.Size = new System.Drawing.Size(75, 75);
+            this.picBtnUp.TabIndex = 1;
+            this.picBtnUp.Text = "弹起";
+            this.picBtnUp.UseVisualStyleBackColor = true;
+            this.picBtnUp.Click += new System.EventHandler(this.picBtnUp_Click);
+            // 
+            // picBtnDown
+            // 
+            this.picBtnDown.Location = new System.Drawing.Point(30, 24);
+            this.picBtnDown.Name = "picBtnDown";
+            this.picBtnDown.Size = new System.Drawing.Size(75, 75);
+            this.picBtnDown.TabIndex = 0;
+            this.picBtnDown.Text = "按下";
+            this.picBtnDown.UseVisualStyleBackColor = true;
+            this.picBtnDown.Click += new System.EventHandler(this.picBtnDown_Click);
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(12, 228);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(332, 2);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
+            // okBtn
+            // 
+            this.okBtn.Location = new System.Drawing.Point(187, 244);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(75, 23);
+            this.okBtn.TabIndex = 3;
+            this.okBtn.Text = "确定";
+            this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Location = new System.Drawing.Point(269, 244);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.TabIndex = 4;
+            this.cancelBtn.Text = "取消";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // SVBtnBackGroundWindow
+            // 
+            this.ClientSize = new System.Drawing.Size(369, 288);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.okBtn);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.picGroupBox);
+            this.Controls.Add(this.colorGroupBox);
+            this.MaximizeBox = false;
+            this.Name = "SVBtnBackGroundWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "按钮背景选择窗口";
+            this.colorGroupBox.ResumeLayout(false);
+            this.picGroupBox.ResumeLayout(false);
+            this.ResumeLayout(false);
+        }
+
+        /// <summary>
+        /// 单击确定窗口对应的事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void okBtn_Click(object sender, System.EventArgs e)
+        {
+            if (colorGroupBox.checkEnabled())
+            {
+                _button.Attrib.BackColorgroundDown = colorBtnDown.BackColor;
+                _button.Attrib.BackColorground = colorBtnUp.BackColor;
+                _button.Attrib.IsShowPic = false;
+            }
+            else
+            {
+                _button.Attrib.IsShowPic = true;
+            }
+
+            _button.refreshPropertyToPanel();
+            this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+        }
+
+        /// <summary>
+        /// 单击取消窗口对应的事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cancelBtn_Click(object sender, System.EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+        }
+
+        /// <summary>
+        /// 图片按钮按下事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void picBtnDown_Click(object sender, System.EventArgs e)
+        {
+            SVBitmapManagerWindow window = new SVBitmapManagerWindow();
+            if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            {
+                String file = Path.Combine(SVProData.IconPath, window.SvBitMap.ImageFileName);
+                setButtonBackGd(picBtnDown, file);
+                _button.Attrib.BtnDownPic = window.SvBitMap;               
+            }
+        }
+
+        /// <summary>
+        /// 图片按钮弹起事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void picBtnUp_Click(object sender, System.EventArgs e)
+        {
+            SVBitmapManagerWindow window = new SVBitmapManagerWindow();
+            if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            {
+                String file = Path.Combine(SVProData.IconPath, window.SvBitMap.ImageFileName);
+                setButtonBackGd(picBtnUp, file);
+                _button.Attrib.BtnUpPic = window.SvBitMap;
+            }
+        }
+
+        /// <summary>
+        /// 从当前图元文件获取背景图片数据设置按钮背景
+        /// </summary>
+        /// <param name="button">要设置的按钮对象</param>
+        /// <param name="file">当前图片文件</param>
+        private void setButtonBackGd(Button button, String file)
+        {
+            if (!File.Exists(file))
+                return;
+
+            SVPixmapFile pixmapFile = new SVPixmapFile();
+            pixmapFile.readPixmapFile(file);
+            button.BackgroundImageLayout = ImageLayout.Zoom;
+            button.BackgroundImage = pixmapFile.getBitmapFromData();
+        }
+    }
+}

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Classify Text="初始页面">
+    <Node Name="Main" File=".\TestVPro\Main.page" />
+  </Classify>
+  <Classify Text="普通页面">
+    <Node Name="aa" File=".\TestVPro\aa.page" />
+  </Classify>
+</Root>

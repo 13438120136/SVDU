@@ -1,0 +1,684 @@
+[2016-09-22 05:56:23 504] [警告]: 打开数据库连接失败
+[2016-09-22 05:56:23 516] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 05:56:23 830] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 05:56:44 663] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 05:57:28 251] [警告]: 打开数据库连接失败
+[2016-09-22 05:57:28 263] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 05:57:28 379] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 05:57:47 142] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:03:38 549] [警告]: 打开数据库连接失败
+[2016-09-22 06:03:38 564] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:03:38 669] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:03:48 926] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:13:29 821] [警告]: 打开数据库连接失败
+[2016-09-22 06:13:29 833] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:13:29 955] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:13:40 191] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:14:42 888] [警告]: 打开数据库连接失败
+[2016-09-22 06:14:42 903] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:14:43 008] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:14:58 476] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:20:59 543] [警告]: 打开数据库连接失败
+[2016-09-22 06:20:59 557] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:20:59 668] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:21:18 755] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:22:11 063] [警告]: 打开数据库连接失败
+[2016-09-22 06:22:11 071] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:22:11 207] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:22:30 240] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:30:49 954] [警告]: 打开数据库连接失败
+[2016-09-22 06:30:49 961] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:30:50 089] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:31:42 441] [警告]: 打开数据库连接失败
+[2016-09-22 06:31:42 449] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:31:42 565] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:31:53 558] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:33:52 680] [警告]: 打开数据库连接失败
+[2016-09-22 06:33:52 690] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:33:52 809] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:34:14 664] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:35:00 675] [警告]: 打开数据库连接失败
+[2016-09-22 06:35:00 688] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:35:00 807] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:37:06 381] [警告]: 打开数据库连接失败
+[2016-09-22 06:37:06 390] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:37:06 509] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:38:58 940] [警告]: 打开数据库连接失败
+[2016-09-22 06:38:58 950] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:38:59 071] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:39:25 541] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:41:04 754] [警告]: 打开数据库连接失败
+[2016-09-22 06:41:04 762] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:41:04 869] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:41:40 183] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:44:41 604] [警告]: 打开数据库连接失败
+[2016-09-22 06:44:41 618] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:44:41 752] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:45:00 071] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:51:46 860] [警告]: 打开数据库连接失败
+[2016-09-22 06:51:46 870] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:51:46 989] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:52:28 933] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:58:33 533] [警告]: 打开数据库连接失败
+[2016-09-22 06:58:33 673] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:58:33 782] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 06:59:56 044] [警告]: 打开数据库连接失败
+[2016-09-22 06:59:56 060] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 06:59:56 153] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:00:24 674] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:04:57 471] [警告]: 打开数据库连接失败
+[2016-09-22 07:04:57 502] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:04:57 642] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:05:56 105] [警告]: 打开数据库连接失败
+[2016-09-22 07:05:56 105] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:05:56 308] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:06:53 210] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:12:03 353] [警告]: 打开数据库连接失败
+[2016-09-22 07:12:03 353] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:12:03 587] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:14:09 404] [警告]: 打开数据库连接失败
+[2016-09-22 07:14:09 419] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:14:09 638] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:14:16 381] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:17:14 989] [警告]: 打开数据库连接失败
+[2016-09-22 07:17:14 989] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:17:15 223] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:18:50 867] [警告]: 打开数据库连接失败
+[2016-09-22 07:18:50 961] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:18:51 210] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:18:58 331] [异常]: 异常类型:System.ArgumentOutOfRangeException 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+	   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   在 System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   在 SVControl.SVBitmapArrayWindow..ctor(SVBitmapArray array, Int32 count) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVBitmapArrayWindow.cs:行号 54
+   在 SVControl.SVGifWindow.bgBtn_Click(Object sender, EventArgs e) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifWindow.cs:行号 261
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.RunDialog(Form form)
+   在 System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   在 System.Windows.Forms.PropertyGridInternal.PropertyGridView.ShowDialog(Form dialog)
+   在 SVControl.SVGifDataTypeEditor.EditValue(ITypeDescriptorContext context, IServiceProvider provider, Object value) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifDataTypeEditor.cs:行号 41
+[2016-09-22 07:19:02 169] [异常]: 异常类型:System.ArgumentOutOfRangeException 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+	   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   在 System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   在 SVControl.SVBitmapArrayWindow..ctor(SVBitmapArray array, Int32 count) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVBitmapArrayWindow.cs:行号 54
+   在 SVControl.SVGifWindow.bgBtn_Click(Object sender, EventArgs e) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifWindow.cs:行号 261
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.RunDialog(Form form)
+   在 System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   在 System.Windows.Forms.PropertyGridInternal.PropertyGridView.ShowDialog(Form dialog)
+   在 SVControl.SVGifDataTypeEditor.EditValue(ITypeDescriptorContext context, IServiceProvider provider, Object value) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifDataTypeEditor.cs:行号 41
+[2016-09-22 07:19:06 118] [异常]: 异常类型:System.ArgumentOutOfRangeException 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+	   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   在 System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   在 SVControl.SVBitmapArrayWindow..ctor(SVBitmapArray array, Int32 count) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVBitmapArrayWindow.cs:行号 54
+   在 SVControl.SVGifWindow.bgBtn_Click(Object sender, EventArgs e) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifWindow.cs:行号 261
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.RunDialog(Form form)
+   在 System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   在 System.Windows.Forms.PropertyGridInternal.PropertyGridView.ShowDialog(Form dialog)
+   在 SVControl.SVGifDataTypeEditor.EditValue(ITypeDescriptorContext context, IServiceProvider provider, Object value) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifDataTypeEditor.cs:行号 41
+[2016-09-22 07:19:19 142] [警告]: 打开数据库连接失败
+[2016-09-22 07:19:19 142] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:21:45 120] [警告]: 打开数据库连接失败
+[2016-09-22 07:21:45 151] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:21:45 370] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:22:11 177] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:25:02 745] [警告]: 打开数据库连接失败
+[2016-09-22 07:25:02 752] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:25:02 966] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:25:35 519] [异常]: 异常类型:System.ArgumentOutOfRangeException 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+	   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   在 System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   在 SVControl.SVBitmapArrayWindow..ctor(SVBitmapArray array, Int32 count) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVBitmapArrayWindow.cs:行号 54
+   在 SVControl.SVGifWindow.bgBtn_Click(Object sender, EventArgs e) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifWindow.cs:行号 261
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.RunDialog(Form form)
+   在 System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   在 System.Windows.Forms.PropertyGridInternal.PropertyGridView.ShowDialog(Form dialog)
+   在 SVControl.SVGifDataTypeEditor.EditValue(ITypeDescriptorContext context, IServiceProvider provider, Object value) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifDataTypeEditor.cs:行号 41
+[2016-09-22 07:26:18 516] [警告]: 打开数据库连接失败
+[2016-09-22 07:26:18 524] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:26:18 649] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:26:29 819] [异常]: 异常类型:System.ArgumentOutOfRangeException 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+	   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   在 System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   在 SVControl.SVBitmapArrayWindow..ctor(SVBitmapArray array, Int32 count) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVBitmapArrayWindow.cs:行号 54
+   在 SVControl.SVGifWindow.bgBtn_Click(Object sender, EventArgs e) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifWindow.cs:行号 261
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.RunDialog(Form form)
+   在 System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   在 System.Windows.Forms.PropertyGridInternal.PropertyGridView.ShowDialog(Form dialog)
+   在 SVControl.SVGifDataTypeEditor.EditValue(ITypeDescriptorContext context, IServiceProvider provider, Object value) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifDataTypeEditor.cs:行号 41
+[2016-09-22 07:26:36 073] [异常]: 异常类型:System.ArgumentOutOfRangeException 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+	   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   在 System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   在 SVControl.SVBitmapArrayWindow..ctor(SVBitmapArray array, Int32 count) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVBitmapArrayWindow.cs:行号 54
+   在 SVControl.SVGifWindow.bgBtn_Click(Object sender, EventArgs e) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifWindow.cs:行号 261
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.RunDialog(Form form)
+   在 System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   在 System.Windows.Forms.PropertyGridInternal.PropertyGridView.ShowDialog(Form dialog)
+   在 SVControl.SVGifDataTypeEditor.EditValue(ITypeDescriptorContext context, IServiceProvider provider, Object value) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifDataTypeEditor.cs:行号 41
+[2016-09-22 07:28:12 914] [警告]: 打开数据库连接失败
+[2016-09-22 07:28:12 934] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:28:13 058] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:28:26 366] [异常]: 异常类型:System.ArgumentOutOfRangeException 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+	   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   在 System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   在 SVControl.SVBitmapArrayWindow..ctor(SVBitmapArray array, Int32 count) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVBitmapArrayWindow.cs:行号 55
+   在 SVControl.SVGifWindow.bgBtn_Click(Object sender, EventArgs e) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifWindow.cs:行号 261
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   在 System.Windows.Forms.Button.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.RunDialog(Form form)
+   在 System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   在 System.Windows.Forms.PropertyGridInternal.PropertyGridView.ShowDialog(Form dialog)
+   在 SVControl.SVGifDataTypeEditor.EditValue(ITypeDescriptorContext context, IServiceProvider provider, Object value) 位置 F:\SVDU - 新版本\SvduPro\SVListView\SVGifDataTypeEditor.cs:行号 41
+[2016-09-22 07:28:50 946] [警告]: 打开数据库连接失败
+[2016-09-22 07:28:50 956] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:28:51 066] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:29:15 457] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:31:23 376] [警告]: 打开数据库连接失败
+[2016-09-22 07:31:23 382] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:31:23 503] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:31:31 160] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:33:37 286] [警告]: 打开数据库连接失败
+[2016-09-22 07:33:37 303] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 07:33:37 426] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 07:34:16 003] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 08:00:36 540] [警告]: 打开数据库连接失败
+[2016-09-22 08:00:36 554] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 08:00:36 703] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 08:00:39 353] [信息]: 
+-------- 已启动编译检查-------------
+[2016-09-22 08:03:02 780] [警告]: 打开数据库连接失败
+[2016-09-22 08:03:02 795] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 08:03:02 905] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 08:03:17 520] [信息]: 
+-------- 已启动编译检查-------------
+[2016-09-22 08:03:17 564] [信息]: 页面趋_图中的动态图ID为:14, 没有设置变量
+[2016-09-22 08:06:52 417] [警告]: 打开数据库连接失败
+[2016-09-22 08:06:52 427] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 08:06:52 548] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 08:08:02 299] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 22:47:28 807] [警告]: 打开数据库连接失败
+[2016-09-22 22:47:28 817] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 22:47:29 077] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 22:52:49 242] [信息]: 关闭工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 22:52:57 043] [警告]: 打开数据库连接失败
+[2016-09-22 22:52:57 053] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 22:52:57 185] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 23:07:51 991] [警告]: 打开数据库连接失败
+[2016-09-22 23:07:52 001] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 23:07:52 166] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 23:34:01 280] [警告]: 打开数据库连接失败
+[2016-09-22 23:34:01 306] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 23:34:01 427] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 23:34:05 653] [信息]: 页面 趋_图 中的动态图ID为:14, 没有设置变量!
+[2016-09-22 23:36:34 496] [警告]: 打开数据库连接失败
+[2016-09-22 23:36:34 510] [异常]: 异常类型:MySql.Data.MySqlClient.MySqlException Unable to connect to any of the specified MySQL hosts.
+	   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 SVCore.SVSqlDataBase.connect(String ip, String database, String user, String passwd, String charset) 位置 F:\SVDU - 新版本\SvduPro\SVCore\SVSqlDataBase.cs:行号 40
+[2016-09-22 23:36:34 643] [信息]: 打开工程: [F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\TestVPro.svduproj]
+[2016-09-22 23:36:36 299] [信息]: 在指定目录生成文件:
+	 文件路径: F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\Download\TestVPro.

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="gb2312" standalone="yes"?>
+<Page ID="87" Title="Page Title">
+  <Width>800</Width>
+  <Height>480</Height>
+  <Color>-16777216</Color>
+  <Backcolor>-2894893</Backcolor>
+  <Align>居中对齐</Align>
+  <SVButton id="88" x="118" y="91" width="312" height="96" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="宋体" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="12" ButtonTypeText="init_page" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+</Page>

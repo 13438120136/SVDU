@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8A615A4A-1DC7-41C7-A30C-41AF62A31A8D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVControl</RootNamespace>
+    <AssemblyName>SVControl</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\SvduPro\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SVAnalog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVAnalogProperties.cs" />
+    <Compile Include="SVBinary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVBinaryProperties.cs" />
+    <Compile Include="SVBitmapArrayTypeEditor.cs" />
+    <Compile Include="SVBitmapArrayWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVBitmapArrayWindow.Designer.cs">
+      <DependentUpon>SVBitmapArrayWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVBitmapTypeEditor.cs" />
+    <Compile Include="SVBtnBackGroundTypeEditor.cs" />
+    <Compile Include="SVBtnBackGroundWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVBtnTextWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVBtnTextWindow.Designer.cs">
+      <DependentUpon>SVBtnTextWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVBtnTypeConverter.cs" />
+    <Compile Include="SVButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVButtonProperties.cs" />
+    <Compile Include="SVButtonTextUIEditor.cs" />
+    <Compile Include="SVControlWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVCurve.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVCurveProperties.cs" />
+    <Compile Include="SVCurveVarTypeEditor.cs" />
+    <Compile Include="SVCurveVarWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVCurveVarWindow.Designer.cs">
+      <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVGif.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVGifDataTypeEditor.cs" />
+    <Compile Include="SVGifProperties.cs" />
+    <Compile Include="SVGifWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVGlobalData.cs" />
+    <Compile Include="SVHeartbeat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVHeartbeatProperties.cs" />
+    <Compile Include="SVIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVIconProperties.cs" />
+    <Compile Include="SVLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVLabelProperties.cs" />
+    <Compile Include="SVLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVLineProperties.cs" />
+    <Compile Include="SVLineTypeConverter.cs" />
+    <Compile Include="SVListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SVBinaryTypeConverter.cs" />
+    <Compile Include="SVBitmapWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVBitmapWindow.Designer.cs">
+      <DependentUpon>SVBitmapWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVBtnTypeEditor.cs" />
+    <Compile Include="SVBtnTypeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVBtnTypeWindow.Designer.cs">
+      <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVFontTypeConverter.cs" />
+    <Compile Include="SVPageProperties.cs" />
+    <Compile Include="SVPageSelectWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVPageSelectWindow.Designer.cs">
+      <DependentUpon>SVPageSelectWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVPageWidget.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVLabelTextUIEditor.cs" />
+    <Compile Include="SVTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVVarTypeConverter.cs" />
+    <Compile Include="SVVarWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVVarWindow.Designer.cs">
+      <DependentUpon>SVVarWindow.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SVCore\SVCore.csproj">
+      <Project>{66E6C357-FFEF-4B6B-AA48-67326323714B}</Project>
+      <Name>SVCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBitmapArrayWindow.resx">
+      <DependentUpon>SVBitmapArrayWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBtnBackGroundWindow.resx">
+      <DependentUpon>SVBtnBackGroundWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBtnTextWindow.resx">
+      <DependentUpon>SVBtnTextWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVCurveVarWindow.resx">
+      <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBitmapWindow.resx">
+      <DependentUpon>SVBitmapWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBtnTypeWindow.resx">
+      <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVGifWindow.resx">
+      <DependentUpon>SVGifWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVPageSelectWindow.resx">
+      <DependentUpon>SVPageSelectWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVVarWindow.resx">
+      <DependentUpon>SVVarWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trendchart.png" />
+    <None Include="Resources\Button.png" />
+    <None Include="Resources\Text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\analog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\binary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gif.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

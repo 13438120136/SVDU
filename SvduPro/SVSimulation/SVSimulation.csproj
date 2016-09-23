@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F4B5DECE-6AB2-4D93-8012-4F46B3950EB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVSimulation</RootNamespace>
+    <AssemblyName>SVSimulation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SVSAnalog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSBinary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSCurve.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSGif.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSHeartBeat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSimulationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVSimulationWindow.Designer.cs">
+      <DependentUpon>SVSimulationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVSLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SVCore\SVCore.csproj">
+      <Project>{66E6C357-FFEF-4B6B-AA48-67326323714B}</Project>
+      <Name>SVCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVListView\SVControl.csproj">
+      <Project>{8A615A4A-1DC7-41C7-A30C-41AF62A31A8D}</Project>
+      <Name>SVControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SVSimulationWindow.resx">
+      <DependentUpon>SVSimulationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

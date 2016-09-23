@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{59DDC8B2-9399-42BB-91BF-653818485503}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SvduPro</RootNamespace>
+    <AssemblyName>SvduPro</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>C:\Users\Administrator\Desktop\DockPanel_2.4_Bin\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SVAboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVAboutWindow.Designer.cs">
+      <DependentUpon>SVAboutWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVCheckBeforeBuild.cs" />
+    <Compile Include="SVDockMainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVDockMainWindow.Designer.cs">
+      <DependentUpon>SVDockMainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVFindWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVFindWindow.Designer.cs">
+      <DependentUpon>SVFindWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVObjTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVTemplateWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVTemplateWindow.Designer.cs">
+      <DependentUpon>SVTemplateWindow.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVAboutWindow.resx">
+      <DependentUpon>SVAboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVDockMainWindow.resx">
+      <DependentUpon>SVDockMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVTemplateWindow.resx">
+      <DependentUpon>SVTemplateWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SVCore\SVCore.csproj">
+      <Project>{66E6C357-FFEF-4B6B-AA48-67326323714B}</Project>
+      <Name>SVCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVListView\SVControl.csproj">
+      <Project>{8A615A4A-1DC7-41C7-A30C-41AF62A31A8D}</Project>
+      <Name>SVControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVSimulation\SVSimulation.csproj">
+      <Project>{F4B5DECE-6AB2-4D93-8012-4F46B3950EB4}</Project>
+      <Name>SVSimulation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textHcenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textjustify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textleft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textcenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textHEqual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textVEqual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\build_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simlation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button.png" />
+    <None Include="Resources\importPage.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\about.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

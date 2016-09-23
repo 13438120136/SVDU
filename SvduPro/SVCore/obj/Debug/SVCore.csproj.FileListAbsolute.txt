@@ -1,0 +1,11 @@
+F:\SVDU - 新版本\SvduPro\SVCore\bin\Debug\SVCore.dll
+F:\SVDU - 新版本\SvduPro\SVCore\bin\Debug\SVCore.pdb
+F:\SVDU - 新版本\SvduPro\SVCore\bin\Debug\MySql.Data.dll
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.SVBitmapManagerWindow.resources
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.SVCreatePageForm.resources
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.SVExportTemplateForm.resources
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.SVSettingWindow.resources
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.csproj.GenerateResource.Cache
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.dll
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.pdb
+F:\SVDU - 新版本\SvduPro\SVCore\obj\Debug\SVCore.csprojResolveAssemblyReference.cache

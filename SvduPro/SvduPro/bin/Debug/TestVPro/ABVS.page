@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="gb2312" standalone="yes"?>
+<Page ID="3">
+  <Width>800</Width>
+  <Height>480</Height>
+  <Backcolor>-2894893</Backcolor>
+  <MainPage>False</MainPage>
+  <SVCurve ID="6" X="156" Y="38" Width="578" Height="384" FrontColor="-1" BackgdColor="-9868951" Interval="60" Font="宋体" FontSize="16" Max="200" Min="0" />
+</Page>

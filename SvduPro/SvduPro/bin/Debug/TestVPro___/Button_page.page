@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="gb2312" standalone="yes"?>
+<Page ID="4" Title="Page Title">
+  <Width>800</Width>
+  <Height>480</Height>
+  <Color>-16777216</Color>
+  <Backcolor>-2894893</Backcolor>
+  <Align>居中对齐</Align>
+  <SVButton id="82" x="561" y="218" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="NextPage" font="宋体" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="37" ButtonTypeText="icon_page" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="20" x="293" y="158" width="167" height="201" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Confirm" font="宋体" fontSize="16" Confirm="True" ButtonType="5" ButtonTypeID="4" ButtonTypeText="Button_page" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="5" x="561" y="338" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Back" font="宋体" fontSize="16" Confirm="False" ButtonType="3" ButtonTypeID="19" ButtonTypeText="menu" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="81" x="561" y="98" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="PrevPage" font="宋体" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="43" ButtonTypeText="Vurve_Page" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="3" x="57" y="39" width="167" height="87" color="-16777216" backcolor="-16711681" backgdcolor="-32768" text="Button" font="宋体" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="4" ButtonTypeText="Button_page" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="50" x="59" y="153" width="167" height="87" color="-65536" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="宋体" fontSize="24" Confirm="False" ButtonType="0" ButtonTypeID="4" ButtonTypeText="Button_page" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="21" x="296" y="39" width="162" height="87" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="" font="宋体" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="4" ButtonTypeText="Button_page" ButtonTypeVar="" IsShowPicture="True" BtnDownPicFile="F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\Icon\131141892549260453" BtnDownPicShowName="ttt" BtnUpPicFile="F:\SVDU - 新版本\SvduPro\SvduPro\bin\Debug\TestVPro\Icon\131143501389160466" BtnUpPicShowName="vvv" />
+  <SVButton id="6" x="60" y="271" width="167" height="87" color="-16776961" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="宋体" fontSize="32" Confirm="False" ButtonType="0" ButtonTypeID="4" ButtonTypeText="Button_page" ButtonTypeVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+</Page>

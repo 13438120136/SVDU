@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Classify Text="页面分类">
+    <Node Name="趋_图" File=".\TestVPro\ABVS.page" />
+    <Node Name="变量" File=".\TestVPro\vbbbb.page" />
+    <Node Name="启动页面" File=".\TestVPro\yyyyy.page" />
+  </Classify>
+</Root>
