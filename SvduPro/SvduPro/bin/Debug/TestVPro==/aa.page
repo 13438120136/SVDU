@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="gb2312" standalone="yes"?>
-<Page ID="13">
-  <Width>800</Width>
-  <Height>480</Height>
-  <Backcolor>-2894893</Backcolor>
-  <SVLabel ID="14" X="112" Y="230" Width="120" Height="80" Color="-16777216" Backcolor="-1" TextAlign="水平和垂直居中" Text="Text" Font="宋体" FontSize="16" Transparent="False" />
-  <SVButton id="15" x="470" y="99" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="宋体" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="0" ButtonTypeText="" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
-  <SVButton id="16" x="148" y="104" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="宋体" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="0" ButtonTypeText="" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
-</Page>
