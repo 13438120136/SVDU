@@ -11,3 +11,16 @@ F:\SVDU - 新版本\SvduPro\SVSimulation\obj\Debug\SVSimulation.pdb
 F:\SVDU - 新版本\SvduPro\SVSimulation\bin\Debug\MySql.Data.dll
 F:\SVDU - 新版本\SvduPro\SVSimulation\bin\Debug\SVControl.dll
 F:\SVDU - 新版本\SvduPro\SVSimulation\bin\Debug\SVControl.pdb
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\SVSimulation.dll
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\SVSimulation.pdb
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\SVControl.dll
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\SVCore.dll
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\MySql.Data.dll
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\SVCore.pdb
+F:\git_svdu\SVDU\SvduPro\SVSimulation\bin\Debug\SVControl.pdb
+F:\git_svdu\SVDU\SvduPro\SVSimulation\obj\Debug\SVSimulation.csprojResolveAssemblyReference.cache
+F:\git_svdu\SVDU\SvduPro\SVSimulation\obj\Debug\SVSimulation.SVSimulationWindow.resources
+F:\git_svdu\SVDU\SvduPro\SVSimulation\obj\Debug\SVSimulation.csproj.GenerateResource.Cache
+F:\git_svdu\SVDU\SvduPro\SVSimulation\obj\Debug\SVSimulation.dll
+F:\git_svdu\SVDU\SvduPro\SVSimulation\obj\Debug\SVSimulation.pdb

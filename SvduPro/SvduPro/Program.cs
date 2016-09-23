@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
+using SVCore;
+using System.Threading;
+using System.Globalization;
 
 namespace SvduPro
 {
@@ -13,6 +14,12 @@ namespace SvduPro
         [STAThread]
         static void Main(String[] args)
         {
+            ///加载软件配置信息
+            SVConfig currInstance = SVConfig.instance();
+            currInstance.loadConfig();
+            ///设置语言
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(currInstance.Language);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SVDockMainWindow(args));

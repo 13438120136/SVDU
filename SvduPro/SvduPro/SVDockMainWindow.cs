@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -271,9 +272,6 @@ namespace SvduPro
             //this._dockPanel.Size = new Size(579, 338);
             //this._dockPanel.TabIndex = 6;
             this.Controls.Add(_dockPanel);
-
-            ///加载软件配置
-            SVConfig.instance().loadConfig();
         }
 
 
@@ -709,10 +707,6 @@ namespace SvduPro
         /// </summary>
         void initMenuItem()
         {
-            this.createMenuItem.Click += new EventHandler((sender, e) =>
-            {
-            });
-
             //用户单击退出按钮
             this.exitMenuItem.Click += new EventHandler((sender, e) =>
             {
@@ -1390,6 +1384,36 @@ namespace SvduPro
         {
             SVTemplateWindow win = new SVTemplateWindow();
             win.ShowDialog();
+        }
+
+        private void 中文ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SVConfig currInstance = SVConfig.instance();
+            currInstance.Language = "zh";
+            currInstance.saveConfig();
+
+            DialogResult result = MessageBox.Show("语言已经设置成功，需要重启才能生效", "提示",
+                MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                Application.ExitThread();
+                Process.Start(Application.ExecutablePath);
+            }
+        }
+
+        private void 英文ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SVConfig currInstance = SVConfig.instance();
+            currInstance.Language = "en";
+            currInstance.saveConfig();
+
+            DialogResult result = MessageBox.Show("语言已经设置成功，需要重启才能生效", "提示",
+                MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                Application.ExitThread();
+                Process.Start(Application.ExecutablePath);
+            }
         }
     }
 }

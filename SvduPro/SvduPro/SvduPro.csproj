@@ -100,7 +100,13 @@
     <EmbeddedResource Include="SVAboutWindow.resx">
       <DependentUpon>SVAboutWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVDockMainWindow.en.resx">
+      <DependentUpon>SVDockMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVDockMainWindow.resx">
+      <DependentUpon>SVDockMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVDockMainWindow.zh.resx">
       <DependentUpon>SVDockMainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVTemplateWindow.resx">

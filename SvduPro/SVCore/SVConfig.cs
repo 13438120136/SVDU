@@ -66,6 +66,28 @@ namespace SVCore
             }
         }
 
+        /// <summary>
+        /// 当前软件设置的语言
+        /// </summary>
+        String _language = "zh";
+
+        /// <summary>
+        /// 当前软件的语言,分为中文和英文两种
+        /// 
+        /// 中文语言，值为:"zh"
+        /// 英文语言, 值为:"en"
+        /// 
+        /// 默认语言为中文。
+        /// </summary>
+        public String Language
+        {
+            get { return _language; }
+            set { _language = value; }
+        }
+
+        /// <summary>
+        /// 加载软件配置信息
+        /// </summary>
         public void loadConfig()
         {
             FileStream fs = new FileStream("data.ini", FileMode.OpenOrCreate);
@@ -87,11 +109,15 @@ namespace SVCore
             _rectFileItems = binFormat.Deserialize(stream) as List<String>;
             _rectCount = (Int32)binFormat.Deserialize(stream);
             _saveInterval = (Int32)binFormat.Deserialize(stream);
+            _language = (String)binFormat.Deserialize(stream);
 
             br.Close();
             fs.Close();
         }
 
+        /// <summary>
+        /// 保存软件配置信息
+        /// </summary>
         public void saveConfig()
         {
             FileStream fs = new FileStream("data.ini", FileMode.OpenOrCreate);
@@ -102,6 +128,7 @@ namespace SVCore
             binFormat.Serialize(stream, _rectFileItems);
             binFormat.Serialize(stream, _rectCount);
             binFormat.Serialize(stream, _saveInterval);
+            binFormat.Serialize(stream, _language);
 
             //些数据
             br.Write(stream.ToArray());
