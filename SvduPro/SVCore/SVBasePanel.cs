@@ -46,6 +46,10 @@ namespace SVCore
             }
             set
             {
+                ///如果被锁定就不会被选中
+                if (IsSimulation)
+                    return;
+
                 if (value)
                 {
                     SVSelectPanelObjs.addControlItem(this);
@@ -73,6 +77,17 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 是否为仿真模式
+        /// 
+        /// 默认为正常运行模式
+        /// </summary>
+        public Boolean IsSimulation
+        {
+            get { return _isSimulation; }
+            set { _isSimulation = value; }
+        }
+
+        /// <summary>
         /// 默认不被选中
         /// </summary>
         Boolean _selected = false;
@@ -80,6 +95,10 @@ namespace SVCore
         /// 默认不锁定
         /// </summary>
         Boolean _isMoved = true;
+        /// <summary>
+        /// 默认为不是仿真模式
+        /// </summary>
+        Boolean _isSimulation = false;
 
         /// <summary>
         /// 左上角

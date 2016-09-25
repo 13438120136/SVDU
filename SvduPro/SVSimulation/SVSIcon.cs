@@ -11,6 +11,7 @@ namespace SVSimulation
         /// </summary>
         public SVSIcon()
         {
+            this.IsSimulation = true;
             this.IsMoved = false;
         }
 

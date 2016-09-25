@@ -13,6 +13,7 @@ namespace SVSimulation
         /// </summary>
         public SVSLabel()
         {
+            this.IsSimulation = true;
             this.IsMoved = false;
         }
 

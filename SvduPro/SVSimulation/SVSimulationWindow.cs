@@ -19,7 +19,6 @@ namespace SVSimulation
         public SVSimulationWindow()
         {
             InitializeComponent();
-            this.Size = new Size(800, 480);
 
             _timer.Interval = 200;
             _timer.Start();
@@ -61,11 +60,26 @@ namespace SVSimulation
             }
         }
 
+        /// <summary>
+        /// 解析数据将布局当前所有控件
+        /// </summary>
+        /// <param name="bin">二进制数据</param>
+        /// <param name="isFirst">是否为其实页面 true表示起始页面</param>
         void fromPageBin(PageBin bin, Boolean isFirst)
         {
             SVSPage page = new SVSPage();
             page.fromBin(bin);
-            page.Size = new Size(this.Width, this.Height);
+
+            ///设置窗口起始位置和宽高尺寸
+            this.Size = new Size(page.Attrib.Width + 200, page.Attrib.Height);
+            page.Size = this.Size;
+            ///设置控件显示尺寸
+            mainPanel.Location = new Point(0, 0);
+            mainPanel.Size = new Size(page.Attrib.Width, page.Attrib.Height);
+            ///设置数据显示
+            dataPanel.Location = new Point(mainPanel.Location.X + mainPanel.Width, mainPanel.Location.Y);
+            dataPanel.Size = new Size(200, mainPanel.Height);
+
             page.Paint += new PaintEventHandler((sender, e) =>
             {
                 for (int i = 0; i < bin.lineNum; i++)
@@ -107,6 +121,12 @@ namespace SVSimulation
                 SVSAnalog analog = new SVSAnalog(_timer);
                 analog.fromBin(bin.m_analog[i]);
                 page.Controls.Add(analog);
+
+                analog.MouseDown += new MouseEventHandler((sender, e) =>
+                {
+                    this.dataPanel.Controls.Clear();
+                    this.dataPanel.Controls.Add(analog.DataControl);
+                });
             }
 
             for (int i = 0; i < bin.binaryNum; i++)
@@ -114,6 +134,12 @@ namespace SVSimulation
                 SVSBinary binary = new SVSBinary(_timer);
                 binary.fromBin(bin.m_binary[i]);
                 page.Controls.Add(binary);
+
+                binary.MouseDown += new MouseEventHandler((sender, e) =>
+                {
+                    this.dataPanel.Controls.Clear();
+                    this.dataPanel.Controls.Add(binary.DataControl);
+                });
             }
 
             //for (int i = 0; i < bin.trendChartNum; i++)
@@ -150,12 +176,18 @@ namespace SVSimulation
                 SVSHeartBeat heart = new SVSHeartBeat(_timer);
                 heart.fromBin(bin.m_tick[i], picBuffer);
                 page.Controls.Add(heart);
+
+                heart.MouseDown += new MouseEventHandler((sender, e) => 
+                {
+                    this.dataPanel.Controls.Clear();
+                    this.dataPanel.Controls.Add(heart.DataControl);
+                });
             }
 
             if (isFirst)
             {
-                this.Controls.Clear();
-                this.Controls.Add(page);
+                this.mainPanel.Controls.Clear();
+                this.mainPanel.Controls.Add(page);
             }
         }
     }

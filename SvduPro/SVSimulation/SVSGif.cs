@@ -8,6 +8,7 @@ namespace SVSimulation
     {
         public SVSGif()
         {
+            this.IsSimulation = true;
             this.IsMoved = false;
             this.BackColor = Color.White; 
         }

@@ -4,7 +4,8 @@
   <Height>480</Height>
   <Backcolor>-2894893</Backcolor>
   <MainPage>True</MainPage>
-  <SVButton id="12" x="71" y="48" width="192" height="104" color="-16777024" backcolor="-16744256" backgdcolor="-32768" text="Button" font="宋体" fontSize="32" Confirm="False" ButtonType="0" ButtonTypeID="3" ButtonTypeText="趋_图" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="False" BtnDownPicFile="$}8BCZ1TOPG7GXX9C7ZM21O" BtnDownPicShowName="$}8BCZ1TOPG7GXX9C7ZM21O" BtnUpPicFile="$M1(YELUS0%{1S@_9(DM1CD" BtnUpPicShowName="$M1(YELUS0%{1S@_9(DM1CD" />
+  <SVAnalog ID="15" X="104" Y="248" Width="120" Height="40" NormalColor="-14774017" OverMaxColor="-16744448" OverMinColor="-16744448" NormalBackcolor="-16711936" OverMaxBgColor="-65536" OverMinBgColor="-16777024" ExceptionColor="-14774017" ExceptionBgColor="-6987" DecNumber="1" IsExponent="False" Font="宋体" FontSize="16" Max="100" Min="0" />
+  <SVButton id="12" x="71" y="48" width="192" height="104" color="-16777024" backcolor="-16744256" backgdcolor="-32768" text="Button" font="宋体" fontSize="32" Confirm="False" ButtonType="0" ButtonTypeID="3" ButtonTypeText="趋_图" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="True" BtnDownPicFile="$}8BCZ1TOPG7GXX9C7ZM21O" BtnDownPicShowName="$}8BCZ1TOPG7GXX9C7ZM21O" BtnUpPicFile="$M1(YELUS0%{1S@_9(DM1CD" BtnUpPicShowName="$M1(YELUS0%{1S@_9(DM1CD" />
   <SVHeartbeat id="10" x="300" y="246" width="150" height="150">
     <PIC Name="tick_0006_图层 1" File="tick_0006_图层 1" />
     <PIC Name="tick_0005_图层 2" File="tick_0005_图层 2" />
@@ -14,10 +15,9 @@
     <PIC Name="tick_0001_图层 6" File="tick_0001_图层 6" />
     <PIC Name="tick_0000_图层 7" File="tick_0000_图层 7" />
   </SVHeartbeat>
-  <SVLabel ID="8" X="305" Y="71" Width="165" Height="80" Color="-16711936" Backcolor="-32768" TextAlign="水平和垂直居中" Text="Text" Font="宋体" FontSize="32" Transparent="False" />
   <SVIcon ID="9" X="500" Y="23" Width="256" Height="376" ImageFile="%UR6ZC4$9N`UXM1}FNU{NME" ImageShowName="%UR6ZC4$9N`UXM1}FNU{NME" />
-  <SVBinary ID="16" X="118" Y="355" Width="100" Height="50" TrueColor="-16776961" TrueBgColor="-6987" FalseColor="-65536" FalseBgColor="-16711936" Font="宋体" FontSize="16" Type="开 or 关" ExceptionColor="-16776961" ExceptionBgColor="-6987" />
-  <SVAnalog ID="15" X="104" Y="248" Width="120" Height="40" NormalColor="-14774017" OverMaxColor="-16744448" OverMinColor="-16744448" NormalBackcolor="-6987" OverMaxBgColor="-65536" OverMinBgColor="-65536" ExceptionColor="-14774017" ExceptionBgColor="-6987" DecNumber="1" IsExponent="False" Font="宋体" FontSize="16" Max="100" Min="0" />
-  <SVLine id="11" x="34" y="322" width="3" length="180" color="-29696" type="True" />
+  <SVLabel ID="8" X="305" Y="71" Width="165" Height="80" Color="-16711936" Backcolor="-32768" TextAlign="水平和垂直居中" Text="Text" Font="宋体" FontSize="32" Transparent="False" />
   <SVLine id="13" x="71" y="235" width="3" length="180" color="-16777216" type="False" />
+  <SVLine id="11" x="34" y="322" width="3" length="180" color="-29696" type="True" />
+  <SVBinary ID="16" X="118" Y="355" Width="100" Height="50" TrueColor="-16776961" TrueBgColor="-6987" FalseColor="-65536" FalseBgColor="-16711936" Font="宋体" FontSize="16" Type="开 or 关" ExceptionColor="-16776961" ExceptionBgColor="-6987" />
 </Page>

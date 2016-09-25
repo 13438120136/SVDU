@@ -13,6 +13,7 @@ namespace SVSimulation
 
         public SVSButton()
         {
+            this.IsSimulation = true;
             ///按钮不能移动
             this.IsMoved = false;
         }

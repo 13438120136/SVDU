@@ -9,7 +9,16 @@ namespace SVSimulation
 {
     public class SVSHeartBeat : SVHeartbeat
     {
+        SVSHeartBeatControl _dataControl = new SVSHeartBeatControl();
         Timer _timer;
+
+        /// <summary>
+        /// 获取当前数据控制组件
+        /// </summary>
+        public Control DataControl
+        {
+            get { return _dataControl; }
+        }
 
         /// <summary>
         /// 仿真心跳控件
@@ -19,6 +28,7 @@ namespace SVSimulation
         public SVSHeartBeat(Timer timer)
         {
             _timer = timer;
+            this.IsSimulation = true;
             this.IsMoved = false;
         }
 
@@ -45,13 +55,28 @@ namespace SVSimulation
                 bitmapList.Add(bitmap);
             }
 
+            ///根据用户输入来显示对应图片
+            _dataControl.Num.Minimum = 1;
+            _dataControl.Num.Maximum = count;
+            _dataControl.Num.Increment = 1;
+            _dataControl.Num.ValueChanged += new EventHandler((sender, e) => 
+            {
+                Int32 nIndex = (Int32)_dataControl.Num.Value - 1;
+                this.BackgroundImage = bitmapList[nIndex];
+            });
+
             ///按照定时器的时间循环播放图片
             Int32 index = 0;
             _timer.Tick += new EventHandler((sender, e)=>
-            {   
+            {
+                if (!_dataControl.AutoPlay.Checked)
+                    return;
+
                 this.BackgroundImage = bitmapList[index];
 
                 index++;
+                _dataControl.Num.Value = index;
+
                 if (index == count)
                     index = 0;
             });

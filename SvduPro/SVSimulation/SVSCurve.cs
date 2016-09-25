@@ -9,6 +9,7 @@ namespace SVSimulation
     {
         public SVSCurve()
         {
+            this.IsSimulation = true;
             this.IsMoved = false;
         }
 

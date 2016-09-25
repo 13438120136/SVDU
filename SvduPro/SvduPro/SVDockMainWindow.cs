@@ -521,11 +521,11 @@ namespace SvduPro
 
             widget.MouseSelectEvent += new MouseEventHandler((sder, ev) =>
             {
-                if (SVSelectPanelObjs._VK_Ctrl == true)
-                    return;
+                //if (SVSelectPanelObjs._VK_Ctrl == true)
+                //    return;
 
-                this._propertyGrid.SelectedObject = sder;
-                this._objTreeView.setPageWidget(widget);
+                //this._propertyGrid.SelectedObject = sder;
+                //this._objTreeView.setPageWidget(widget);
             });
 
             widget.MouseDown += new MouseEventHandler((sender, e) =>

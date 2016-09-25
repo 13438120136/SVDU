@@ -2,10 +2,11 @@
 using System.Windows.Forms;
 using System.Drawing;
 using SVCore;
+using SVControl;
 
 namespace SVSimulation
 {
-    public class SVSPage : Panel
+    public class SVSPage : SVPageWidget
     {
         public UInt16 ID { get; set; }
 

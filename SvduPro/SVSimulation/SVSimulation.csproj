@@ -46,8 +46,20 @@
     <Compile Include="SVSAnalog.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SVSAnalogControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVSAnalogControl.Designer.cs">
+      <DependentUpon>SVSAnalogControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SVSBinary.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSBitnaryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVSBitnaryControl.Designer.cs">
+      <DependentUpon>SVSBitnaryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="SVSButton.cs">
       <SubType>Component</SubType>
@@ -60,6 +72,12 @@
     </Compile>
     <Compile Include="SVSHeartBeat.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVSHeartBeatControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVSHeartBeatControl.Designer.cs">
+      <DependentUpon>SVSHeartBeatControl.cs</DependentUpon>
     </Compile>
     <Compile Include="SVSIcon.cs">
       <SubType>Component</SubType>
@@ -91,6 +109,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SVSAnalogControl.resx">
+      <DependentUpon>SVSAnalogControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVSBitnaryControl.resx">
+      <DependentUpon>SVSBitnaryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVSHeartBeatControl.resx">
+      <DependentUpon>SVSHeartBeatControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVSimulationWindow.resx">
       <DependentUpon>SVSimulationWindow.cs</DependentUpon>
     </EmbeddedResource>
