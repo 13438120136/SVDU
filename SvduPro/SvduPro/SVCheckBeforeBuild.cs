@@ -65,6 +65,9 @@ namespace SvduPro
                 foreach (var contrl in widget.Controls)
                 {
                     SVPanel panel = contrl as SVPanel;
+                    if (panel == null)
+                        continue;
+
                     if (dict.ContainsKey(panel.Id))
                     {
                         String msg = String.Format("{0}和页面[{1}]中的控件 ID重复, ID为{2}", dict[panel.Id], pageText, panel.Id);
@@ -96,6 +99,9 @@ namespace SvduPro
                 foreach (var contrl in widget.Controls)
                 {
                     SVPanel panel = contrl as SVPanel;
+                    if (panel == null)
+                        continue;
+
                     panel.checkValid();
                 }
             }
@@ -120,6 +126,9 @@ namespace SvduPro
 
                     SVPanel svCtrl = ctrl as SVPanel;
                     SVPanel svChild = child as SVPanel;
+
+                    if (svCtrl == null || svChild == null)
+                        continue;
 
                     int left1 = ctrl.Location.X;
                     int right1 = ctrl.Location.X + ctrl.Width;
@@ -148,6 +157,8 @@ namespace SvduPro
             foreach (Control ctrl in widget.Controls)
             {
                 SVPanel svCtrl = ctrl as SVPanel;
+                if (svCtrl == null)
+                    continue;
 
                 if (!widget.ClientRectangle.Contains(svCtrl.Bounds))
                 {
