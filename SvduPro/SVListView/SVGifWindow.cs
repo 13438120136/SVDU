@@ -207,7 +207,11 @@ namespace SVControl
                 return;
             }
 
-            varListView.Items.Add("1234");
+            SVVarWindow varWindow = new SVVarWindow();
+            if (varWindow.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            {
+                varListView.Items.Add(varWindow.varText());
+            }
 
             bgBtn.Enabled = (varListView.Items.Count != 0);
         }

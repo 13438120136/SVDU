@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace SVControl
 {
@@ -23,6 +24,7 @@ namespace SVControl
             strArray.Add("真:假");
             strArray.Add("正确:错误");
             strArray.Add("开:关");
+            strArray.Add("自定义");
             return new StandardValuesCollection(strArray.ToArray());
         }
 
@@ -39,6 +41,9 @@ namespace SVControl
             String str = value as String;
             if (str == null)
                 return base.ConvertFrom(context, culture, value);
+
+            if (str == "自定义")
+                return str;
 
             String[] split = new String[] { ":" };
             String[] arg = str.Split(split, StringSplitOptions.RemoveEmptyEntries);

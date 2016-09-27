@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Design;
+using System.Text;
 using SVCore;
 
 namespace SVControl
@@ -21,10 +21,12 @@ namespace SVControl
 
         Color _exceptionColor;   //出现异常的字体颜色
         Color _exceptionBgColor; //出现异常的背景颜色
+        String _customTrueText;  //自定义值为真
+        String _customFlaseText; //自定义值为假
 
         Rectangle _rect;    //尺寸
         String _var;        //关联的变量
-        String _type;       //显示的格式
+        Byte _type;       //显示的格式
         String _controlType;   //控件类型
         Boolean _isLock;
 
@@ -45,7 +47,7 @@ namespace SVControl
             _falseBgColor = Color.Red;
             _exceptionColor = _trueColor;
             _exceptionBgColor = _trueBgColor;
-            _type = "打开 or 关闭";
+            //_type = "打开 or 关闭";
             _controlType = "开关量";
             _isLock = false;
 
@@ -61,6 +63,20 @@ namespace SVControl
             _showConfig.Add("真 or 假", 4);
             _showConfig.Add("正确 or 错误", 5);
             _showConfig.Add("开 or 关", 6);
+        }
+
+        [Browsable(false)]
+        public String CustomTrueText
+        {
+            get { return _customTrueText; }
+            set { _customTrueText = value; }
+        }
+
+        [Browsable(false)]
+        public String CustomFlaseText
+        {
+            get { return _customFlaseText; }
+            set { _customFlaseText = value; }
         }
 
         [CategoryAttribute("属性")]
@@ -125,20 +141,47 @@ namespace SVControl
         [CategoryAttribute("数据")]
         [DescriptionAttribute("关联的开关量变量")]
         [DisplayName("变量")]
+        [EditorAttribute(typeof(SVBinaryVarTypeEditor), typeof(UITypeEditor))]
         public String Var
         {
             get { return _var; }
-            set { _var = value; }
+            set 
+            {
+                if (_var == value)
+                    return;
+
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+                String before = _var;
+                undoItem.ReDo = () =>
+                {
+                    _var = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _var = before;
+                };
+
+                _var = value; 
+            }
         }
 
         [CategoryAttribute("数据")]
         [DescriptionAttribute("当前开关量的具体含义")]
-        [TypeConverter(typeof(SVBinaryTypeConverter))]
+        //[TypeConverter(typeof(SVBinaryTypeConverter))]
+        [EditorAttribute(typeof(SVBinaryTypeTypeEditor), typeof(UITypeEditor))]
         [DisplayName("类型")]
-        public String Type
+        //[Browsable(false)]
+        public Byte Type
         {
             set
             {
+                ///限制范围
+                if (!(value >= 0 && value <= 7)) 
+                    return;
+
                 if (_type == value)
                     return;
 
@@ -146,7 +189,7 @@ namespace SVControl
 
                 if (UpdateControl != null)
                     UpdateControl(undoItem);
-                String before = _type;
+                Byte before = _type;
                 undoItem.ReDo = () =>
                 {
                     _type = value;
@@ -420,6 +463,12 @@ namespace SVControl
             }
         }
 
+        void copyDestByteArray(byte[] src, byte[] dest)
+        {
+            int minLen = src.Length > dest.Length ? dest.Length : src.Length;
+            Array.Copy(src, dest, minLen);
+        }
+
         public void make(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             UInt32 pageCount = pageArrayBin.pageCount;
@@ -443,8 +492,14 @@ namespace SVControl
             binaryBin.vinfoInvalid = (UInt32)ExceptionColor.ToArgb();
             binaryBin.vinfoInvalidBg = (UInt32)ExceptionBgColor.ToArgb();
 
+            binaryBin.trueText = new Byte[SVLimit.TEXT_MAX_LEN];
+            copyDestByteArray(Encoding.Unicode.GetBytes(CustomTrueText), binaryBin.trueText);
+
+            binaryBin.falseText = new Byte[SVLimit.TEXT_MAX_LEN];
+            copyDestByteArray(Encoding.Unicode.GetBytes(CustomFlaseText), binaryBin.falseText);
+
             binaryBin.font = _fontConfig[_font];
-            binaryBin.type = _showConfig[Type];
+            binaryBin.type = _type;
 
             pageArrayBin.pageArray[pageCount].m_binary[binaryCount] = binaryBin;
         }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using System.Xml;
-using SVCore;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+using SVCore;
 
 namespace SVControl
 {
@@ -80,7 +80,9 @@ namespace SVControl
             return result;
         }
 
-
+        /// <summary>
+        /// 重载父类,用来更新控件外观显示
+        /// </summary>
         public override void refreshPropertyToPanel()
         {
             this.Id = _attrib.ID;
@@ -108,6 +110,8 @@ namespace SVControl
             int y = int.Parse(analog.GetAttribute("Y"));
             int width = int.Parse(analog.GetAttribute("Width"));
             int height = int.Parse(analog.GetAttribute("Height"));
+            _attrib.Var = analog.GetAttribute("Variable");
+
             _attrib.Rect = new Rectangle(x, y, width, height);
             _attrib.NormalColor = Color.FromArgb(int.Parse(analog.GetAttribute("NormalColor")));
             _attrib.OverMaxColor = Color.FromArgb(int.Parse(analog.GetAttribute("OverMaxColor")));
@@ -136,6 +140,8 @@ namespace SVControl
             analog.SetAttribute("Y", _attrib.Rect.Y.ToString());
             analog.SetAttribute("Width", _attrib.Rect.Width.ToString());
             analog.SetAttribute("Height", _attrib.Rect.Height.ToString());
+            analog.SetAttribute("Variable", _attrib.Var);
+
             analog.SetAttribute("NormalColor", _attrib.NormalColor.ToArgb().ToString());
             analog.SetAttribute("OverMaxColor", _attrib.OverMaxColor.ToArgb().ToString());
             analog.SetAttribute("OverMinColor", _attrib.OverMinColor.ToArgb().ToString());

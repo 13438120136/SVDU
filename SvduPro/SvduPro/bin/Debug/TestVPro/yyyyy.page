@@ -4,6 +4,10 @@
   <Height>480</Height>
   <Backcolor>-2894893</Backcolor>
   <MainPage>True</MainPage>
+  <SVBinary ID="16" X="118" Y="355" Width="100" Height="50" Variable="var" CustomTrueText="1" CustomFalseText="2" TrueColor="-16776961" TrueBgColor="-6987" FalseColor="-65536" FalseBgColor="-16711936" Font="ËÎÌå" FontSize="16" Type="0" ExceptionColor="-16776961" ExceptionBgColor="-6987" />
+  <SVButton id="12" x="71" y="48" width="192" height="104" color="-16777024" backcolor="-16744256" backgdcolor="-32768" text="Button" font="ËÎÌå" fontSize="32" Confirm="False" ButtonType="0" ButtonTypeID="3" ButtonTypeText="Ç÷_Í¼" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="True" BtnDownPicFile="$}8BCZ1TOPG7GXX9C7ZM21O" BtnDownPicShowName="$}8BCZ1TOPG7GXX9C7ZM21O" BtnUpPicFile="$M1(YELUS0%{1S@_9(DM1CD" BtnUpPicShowName="$M1(YELUS0%{1S@_9(DM1CD" />
+  <SVAnalog ID="15" X="104" Y="248" Width="120" Height="40" Variable="" NormalColor="-14774017" OverMaxColor="-16744448" OverMinColor="-16744448" NormalBackcolor="-16711936" OverMaxBgColor="-65536" OverMinBgColor="-16777024" ExceptionColor="-14774017" ExceptionBgColor="-6987" DecNumber="1" IsExponent="False" Font="ËÎÌå" FontSize="16" Max="100" Min="0" />
+  <SVLabel ID="8" X="305" Y="71" Width="165" Height="80" Color="-16711936" Backcolor="-32768" TextAlign="Ë®Æ½ºÍ´¹Ö±¾ÓÖÐ" Text="Text" Font="ËÎÌå" FontSize="32" Transparent="False" />
   <SVHeartbeat id="10" x="309" y="191" width="150" height="150">
     <PIC Name="tick_0006_Í¼²ã 1" File="tick_0006_Í¼²ã 1" />
     <PIC Name="tick_0005_Í¼²ã 2" File="tick_0005_Í¼²ã 2" />
@@ -13,10 +17,6 @@
     <PIC Name="tick_0001_Í¼²ã 6" File="tick_0001_Í¼²ã 6" />
     <PIC Name="tick_0000_Í¼²ã 7" File="tick_0000_Í¼²ã 7" />
   </SVHeartbeat>
-  <SVLabel ID="8" X="305" Y="71" Width="165" Height="80" Color="-16711936" Backcolor="-32768" TextAlign="Ë®Æ½ºÍ´¹Ö±¾ÓÖÐ" Text="Text" Font="ËÎÌå" FontSize="32" Transparent="False" />
-  <SVButton id="12" x="71" y="48" width="192" height="104" color="-16777024" backcolor="-16744256" backgdcolor="-32768" text="Button" font="ËÎÌå" fontSize="32" Confirm="False" ButtonType="0" ButtonTypeID="3" ButtonTypeText="Ç÷_Í¼" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="True" BtnDownPicFile="$}8BCZ1TOPG7GXX9C7ZM21O" BtnDownPicShowName="$}8BCZ1TOPG7GXX9C7ZM21O" BtnUpPicFile="$M1(YELUS0%{1S@_9(DM1CD" BtnUpPicShowName="$M1(YELUS0%{1S@_9(DM1CD" />
-  <SVAnalog ID="15" X="104" Y="248" Width="120" Height="40" NormalColor="-14774017" OverMaxColor="-16744448" OverMinColor="-16744448" NormalBackcolor="-16711936" OverMaxBgColor="-65536" OverMinBgColor="-16777024" ExceptionColor="-14774017" ExceptionBgColor="-6987" DecNumber="1" IsExponent="False" Font="ËÎÌå" FontSize="16" Max="100" Min="0" />
-  <SVBinary ID="16" X="118" Y="355" Width="100" Height="50" TrueColor="-16776961" TrueBgColor="-6987" FalseColor="-65536" FalseBgColor="-16711936" Font="ËÎÌå" FontSize="16" Type="¿ª or ¹Ø" ExceptionColor="-16776961" ExceptionBgColor="-6987" />
   <SVIcon ID="9" X="500" Y="23" Width="256" Height="376" ImageFile="%UR6ZC4$9N`UXM1}FNU{NME" ImageShowName="%UR6ZC4$9N`UXM1}FNU{NME" />
   <SVLine id="13" x="71" y="235" width="3" length="180" color="-16777216" type="False" />
   <SVLine id="11" x="34" y="322" width="3" length="180" color="-29696" type="True" />

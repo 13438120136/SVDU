@@ -55,10 +55,19 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SVAnalogProperties.cs" />
+    <Compile Include="SVAnalogVarTypeEditor.cs" />
     <Compile Include="SVBinary.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SVBinaryProperties.cs" />
+    <Compile Include="SVBinaryTypeTypeEditor.cs" />
+    <Compile Include="SVBinaryTypeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVBinaryTypeWindow.Designer.cs">
+      <DependentUpon>SVBinaryTypeWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SVBinaryVarTypeEditor.cs" />
     <Compile Include="SVBitmapArrayTypeEditor.cs" />
     <Compile Include="SVBitmapArrayWindow.cs">
       <SubType>Form</SubType>
@@ -174,6 +183,9 @@
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBinaryTypeWindow.resx">
+      <DependentUpon>SVBinaryTypeWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVBitmapArrayWindow.resx">
       <DependentUpon>SVBitmapArrayWindow.cs</DependentUpon>

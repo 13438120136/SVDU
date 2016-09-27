@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Drawing;
 using SVCore;
+using System.Drawing.Design;
 
 namespace SVControl
 {
@@ -125,8 +126,10 @@ namespace SVControl
             }
         }
 
-        [CategoryAttribute("数据"), DescriptionAttribute("设置当前模拟量关联的变量")]
+        [CategoryAttribute("数据")]
+        [DescriptionAttribute("设置当前模拟量关联的变量")]
         [DisplayName("变量")]
+        [EditorAttribute(typeof(SVAnalogVarTypeEditor), typeof(UITypeEditor))]
         public String Var
         {
             set

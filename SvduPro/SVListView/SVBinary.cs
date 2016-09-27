@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Xml;
-using SVCore;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+using SVCore;
 
 namespace SVControl
 {
@@ -37,11 +37,17 @@ namespace SVControl
             });
         }
 
+        /// <summary>
+        /// 创建ID
+        /// </summary>
         public override void createID()
         {
             _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
         }
 
+        /// <summary>
+        /// 回收ID号
+        /// </summary>
         public override void delID()
         {
             SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
@@ -92,15 +98,16 @@ namespace SVControl
             this.BackColor = _attrib.TrueBgColor;
             this.IsMoved = !_attrib.Lock;
 
-            Dictionary<String, String> config = new Dictionary<String, String>()
+            Dictionary<Byte, String> config = new Dictionary<Byte, String>()
             {
-                {"打开 or 关闭", "打开"},
-                {"运行 or 停止", "运行"},
-                {"1 or 0", "1"},
-                {"是 or 否", "是"},
-                {"真 or 假", "真"},
-                {"正确 or 错误", "正确"},
-                {"开 or 关", "开"}
+                {0, "打开|关闭"},
+                {1, "运行|停止"},
+                {2, "1|0"},
+                {3, "是|否"},
+                {4, "真|假"},
+                {5, "正确|错误"},
+                {6, "开|关"},
+                {7, "自定义"}
             };
             this.Text = config[_attrib.Type];
         }
@@ -114,11 +121,19 @@ namespace SVControl
             else
                 _attrib.ID = UInt16.Parse(binary.GetAttribute("ID"));
 
+            ///读取尺寸
             int x = int.Parse(binary.GetAttribute("X"));
             int y = int.Parse(binary.GetAttribute("Y"));
             int width = int.Parse(binary.GetAttribute("Width"));
             int height = int.Parse(binary.GetAttribute("Height"));
             _attrib.Rect = new Rectangle(x, y, width, height);
+
+            ///读取变量
+            _attrib.Var = binary.GetAttribute("Variable");
+            ///读取自定义名称
+            _attrib.CustomTrueText = binary.GetAttribute("CustomTrueText");
+            _attrib.CustomFlaseText = binary.GetAttribute("CustomFalseText");
+            
             _attrib.TrueColor = Color.FromArgb(int.Parse(binary.GetAttribute("TrueColor")));
             _attrib.TrueBgColor = Color.FromArgb(int.Parse(binary.GetAttribute("TrueBgColor")));
             _attrib.FalseColor = Color.FromArgb(int.Parse(binary.GetAttribute("FalseColor")));
@@ -128,25 +143,34 @@ namespace SVControl
             String fontFamily = binary.GetAttribute("Font");
             Single fontSize = Single.Parse(binary.GetAttribute("FontSize"));
             _attrib.Font = new Font(fontFamily, fontSize);
-            _attrib.Type = binary.GetAttribute("Type");
+            //_attrib.Type = Byte.Parse(binary.GetAttribute("Type"));
         }
 
         override public void saveXML(SVXml xml)
         {
             XmlElement binary = xml.createNode(this.GetType().Name);
 
+            ///写入尺寸
             binary.SetAttribute("ID", _attrib.ID.ToString());
             binary.SetAttribute("X", _attrib.Rect.X.ToString());
             binary.SetAttribute("Y", _attrib.Rect.Y.ToString());
             binary.SetAttribute("Width", _attrib.Rect.Width.ToString());
             binary.SetAttribute("Height", _attrib.Rect.Height.ToString());
+
+            ///写入变量
+            binary.SetAttribute("Variable", _attrib.Var);
+
+            ///写入自定义名称
+            binary.SetAttribute("CustomTrueText", _attrib.CustomTrueText);
+            binary.SetAttribute("CustomFalseText", _attrib.CustomFlaseText);
+
             binary.SetAttribute("TrueColor", _attrib.TrueColor.ToArgb().ToString());
             binary.SetAttribute("TrueBgColor", _attrib.TrueBgColor.ToArgb().ToString());
             binary.SetAttribute("FalseColor", _attrib.FalseColor.ToArgb().ToString());
             binary.SetAttribute("FalseBgColor", _attrib.FalseBgColor.ToArgb().ToString());
             binary.SetAttribute("Font", _attrib.Font.Name.ToString());
             binary.SetAttribute("FontSize", _attrib.Font.Size.ToString());
-            binary.SetAttribute("Type", _attrib.Type);
+            binary.SetAttribute("Type", _attrib.Type.ToString());
             binary.SetAttribute("ExceptionColor", _attrib.ExceptionColor.ToArgb().ToString());
             binary.SetAttribute("ExceptionBgColor", _attrib.ExceptionBgColor.ToArgb().ToString());
         }

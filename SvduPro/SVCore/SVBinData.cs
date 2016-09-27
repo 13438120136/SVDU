@@ -298,8 +298,6 @@ namespace SVCore
         public UInt32 pageCount;         /*有效页面数量*/
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]
         public UInt32[] rsv;
-        //public UInt32 recvBufferSize;  //接收缓冲区大小
-        //public UInt32 sendBufferSize;  //发送缓冲区大小
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.MAX_PAGE_NUMBER)]
         public PageBin[] pageArray;
