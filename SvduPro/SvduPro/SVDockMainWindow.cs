@@ -9,6 +9,8 @@ using SVControl;
 using SVCore;
 using SVSimulation;
 using WeifenLuo.WinFormsUI.Docking;
+using System.ComponentModel;
+using System.Resources;
 
 namespace SvduPro
 {
@@ -19,6 +21,11 @@ namespace SvduPro
     /// </summary>
     public partial class SVDockMainWindow : Form, SVInterfaceApplication
     {
+        /// <summary>
+        /// 资源类，用来国际化内部字符串
+        /// </summary>
+        ResourceManager _resources = new ResourceManager(typeof(Resource));
+
         private SVControlWindow _projectWindow;
         private SVControlWindow _ctlListViewWindow;
         private SVControlWindow _propertyWindow;
@@ -205,35 +212,35 @@ namespace SvduPro
         /// </summary>
         void initControlObject()
         {
-            this.toolStripContainer1.ContentPanel.Controls.Add(_dockPanel);          
+            this.toolStripContainer1.ContentPanel.Controls.Add(_dockPanel);
 
             _stationTreeView = new SVTreeView();
             _projectWindow = new SVControlWindow(_stationTreeView);
-            _projectWindow.Text = "工程窗口";         
+            _projectWindow.Text = _resources.GetString("工程窗口");         
             _projectWindow.Show(_dockPanel, DockState.DockLeft);
             _projectWindow.Activate();
 
             _controlListView = new SVControl.SVListView();
             _ctlListViewWindow = new SVControlWindow(_controlListView);
-            _ctlListViewWindow.Text = "控件窗口";
+            _ctlListViewWindow.Text = _resources.GetString("控件窗口");
             _ctlListViewWindow.Show(_dockPanel, DockState.DockLeft);
 
             _propertyGrid = new PropertyGrid();
             _propertyGrid.Font = new Font(_propertyGrid.Font.Name, _propertyGrid.Font.Size + 2);
             _propertyGrid.Size = new System.Drawing.Size(180, 180);
             _propertyWindow = new SVControlWindow(_propertyGrid);
-            _propertyWindow.Text = "属性窗口";
+            _propertyWindow.Text = _resources.GetString("属性窗口");
             _propertyWindow.Show(_dockPanel, DockState.DockRight);
 
             _objTreeView = new SVObjTreeView();
             _objectWindow = new SVControlWindow(_objTreeView);
-            _objectWindow.Text = "对象窗口";
+            _objectWindow.Text = _resources.GetString("对象窗口");
             _objectWindow.Show(_dockPanel, DockState.DockRight);
             _propertyWindow.Activate();
 
             _outPutText = SVOutputTextBox.instance();
             _outPutWindow = new SVControlWindow(_outPutText);
-            _outPutWindow.Text = "输出窗口";
+            _outPutWindow.Text = _resources.GetString("输出窗口");
             _outPutWindow.Show(_dockPanel, DockState.DockBottom);
 
             _findText = new SVFindTextBox();
@@ -241,7 +248,7 @@ namespace SvduPro
             _findText.ReadOnly = true;
             _findText.BackColor = Color.White;
             _findWindow = new SVControlWindow(_findText);
-            _findWindow.Text = "查找窗口";
+            _findWindow.Text = _resources.GetString("查找窗口");
             _findWindow.Show(_dockPanel, DockState.DockBottom);
             _outPutWindow.Activate();
 
@@ -536,26 +543,26 @@ namespace SvduPro
             });
 
             ContextMenuStrip menu = new ContextMenuStrip();
-            ToolStripItem startItem = menu.Items.Add("设为启动页面");
+            ToolStripItem startItem = menu.Items.Add(_resources.GetString("设为启动页面"));
             startItem.Click += new EventHandler((sender, e) =>
             {
                 pageNode.setMainNode();
                 widget.IsMainPage = true;
             });
 
-            ToolStripItem openItem = menu.Items.Add("打开");
+            ToolStripItem openItem = menu.Items.Add(_resources.GetString("打开"));
             openItem.Click += new EventHandler((sender, e) =>
             {
                 openPage(widget);
             });
 
-            ToolStripItem closeItem = menu.Items.Add("关闭");
+            ToolStripItem closeItem = menu.Items.Add(_resources.GetString("关闭"));
             closeItem.Click += new EventHandler((sender, e) =>
             {
                 closePage(widget);
             });
 
-            ToolStripItem removeItem = menu.Items.Add("移除");
+            ToolStripItem removeItem = menu.Items.Add(_resources.GetString("移除"));
             removeItem.Click += new EventHandler((sender, e) =>
             {
                 removePage(pageNode);
@@ -563,28 +570,28 @@ namespace SvduPro
 
             menu.Items.Add(new ToolStripSeparator());
 
-            ToolStripItem renameItem = menu.Items.Add("重命名");
+            ToolStripItem renameItem = menu.Items.Add(_resources.GetString("重命名"));
             renameItem.Click += new EventHandler((sender, e) =>
             {
                 _stationTreeView.renameTreeNode(pageNode);
             });
 
             menu.Items.Add(new ToolStripSeparator());
-            ToolStripItem checkItem = menu.Items.Add("页面检查");
+            ToolStripItem checkItem = menu.Items.Add(_resources.GetString("页面检查"));
             checkItem.Click += new EventHandler((sender, e) =>
             {
                 checkPageValid();
             });
 
             menu.Items.Add(new ToolStripSeparator());
-            ToolStripItem templateItem = menu.Items.Add("保存为模板");
+            ToolStripItem templateItem = menu.Items.Add(_resources.GetString("保存为模板"));
             templateItem.Click += new EventHandler((sender, e) =>
             {
                 exportToTemplate(widget);
             });
 
             menu.Items.Add(new ToolStripSeparator());
-            ToolStripItem printItem = menu.Items.Add("打印");
+            ToolStripItem printItem = menu.Items.Add(_resources.GetString("打印"));
             printItem.Click += new EventHandler((sender, e) =>
             {
                 Bitmap ctlbitmap = new Bitmap(widget.Width, widget.Height);
@@ -596,7 +603,7 @@ namespace SvduPro
             });
 
             menu.Items.Add(new ToolStripSeparator());
-            ToolStripItem delItem = menu.Items.Add("删除");
+            ToolStripItem delItem = menu.Items.Add(_resources.GetString("删除"));
             delItem.Click += new EventHandler((sender, e) =>
             {
                 delPage(pageNode);
@@ -618,7 +625,7 @@ namespace SvduPro
         {
             ///////////////////////////工程节点//////////////////////////////
             ContextMenuStrip proMenu = new ContextMenuStrip();
-            ToolStripItem newClassItem = proMenu.Items.Add("新建页面分类");
+            ToolStripItem newClassItem = proMenu.Items.Add(_resources.GetString("新建页面分类"));
             newClassItem.Click += new EventHandler((sender, e)=>
             {
                 createPageClass("页面分类");
@@ -657,13 +664,13 @@ namespace SvduPro
             ContextMenuStrip menu = new ContextMenuStrip();
             pageTreeNode.ContextMenuStrip = menu;
 
-            ToolStripItem newPageItem = menu.Items.Add("新建页面");
+            ToolStripItem newPageItem = menu.Items.Add(_resources.GetString("新建页面"));
             newPageItem.Click += new EventHandler((sender, e) =>
             {
                 createPage(pageTreeNode);
             });
 
-            ToolStripItem importItem = menu.Items.Add("导入页面");
+            ToolStripItem importItem = menu.Items.Add(_resources.GetString("导入页面"));
             importItem.Click += new EventHandler((sender, e) =>
             {
                 importPage(pageTreeNode);
@@ -672,7 +679,7 @@ namespace SvduPro
             ///加入分隔符
             menu.Items.Add(new ToolStripSeparator());
 
-            ToolStripItem renameItem = menu.Items.Add("重命名");
+            ToolStripItem renameItem = menu.Items.Add(_resources.GetString("重命名"));
             renameItem.Click += new EventHandler((sender, e) =>
             {
                 _stationTreeView.renameTreeNode(pageTreeNode);
@@ -759,7 +766,7 @@ namespace SvduPro
                 return;
 
             String msg = String.Format("确定删除 {0} 页面？", widget.PageName);
-            var result = MessageBox.Show(msg, "提示", MessageBoxButtons.YesNo,
+            var result = MessageBox.Show(msg, _resources.GetString("提示"), MessageBoxButtons.YesNo,
                              MessageBoxIcon.Warning);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
@@ -1392,7 +1399,7 @@ namespace SvduPro
             currInstance.Language = "zh";
             currInstance.saveConfig();
 
-            DialogResult result = MessageBox.Show("语言已经设置成功，需要重启才能生效", "提示",
+            DialogResult result = MessageBox.Show(_resources.GetString("重启提示"), _resources.GetString("提示"),
                 MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
@@ -1407,7 +1414,7 @@ namespace SvduPro
             currInstance.Language = "en";
             currInstance.saveConfig();
 
-            DialogResult result = MessageBox.Show("语言已经设置成功，需要重启才能生效", "提示",
+            DialogResult result = MessageBox.Show(_resources.GetString("重启提示"), _resources.GetString("提示"),
                 MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {

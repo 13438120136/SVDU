@@ -93,6 +93,16 @@
     <Compile Include="SVTemplateWindow.Designer.cs">
       <DependentUpon>SVTemplateWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resource.en.Designer.cs">
+      <DependentUpon>Resource.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resource.zh.Designer.cs">
+      <DependentUpon>Resource.zh.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
@@ -123,6 +133,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SVTemplateWindow.resx">
       <DependentUpon>SVTemplateWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.zh.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.zh.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

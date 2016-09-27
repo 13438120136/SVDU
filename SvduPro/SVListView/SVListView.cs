@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Resources;
 
 namespace SVControl
 {
@@ -35,17 +36,18 @@ namespace SVControl
         //初始化要创建控件的对应关系
         void initControl()
         {
+            ResourceManager r = new ResourceManager(typeof(Resource));
             ///显示项
-            ListViewItem buttonItem = this.Items.Add("按钮");
-            ListViewItem textItem = this.Items.Add("文本");
-            ListViewItem iconItem = this.Items.Add("图标");
-            ListViewItem gifItem = this.Items.Add("动态图");
-            ListViewItem vLineItem = this.Items.Add("水平线条");
-            ListViewItem hLineItem = this.Items.Add("垂直线条");
-            ListViewItem curvesItem = this.Items.Add("曲线图");
-            ListViewItem analogItem = this.Items.Add("模拟量");
-            ListViewItem binaryItem = this.Items.Add("开关量");
-            ListViewItem heartBeatItem = this.Items.Add("心跳控件");
+            ListViewItem buttonItem = this.Items.Add(r.GetString("按钮"));
+            ListViewItem textItem = this.Items.Add(r.GetString("文本"));
+            ListViewItem iconItem = this.Items.Add(r.GetString("图标"));
+            ListViewItem gifItem = this.Items.Add(r.GetString("动态图"));
+            ListViewItem vLineItem = this.Items.Add(r.GetString("水平线条"));
+            ListViewItem hLineItem = this.Items.Add(r.GetString("垂直线条"));
+            ListViewItem curvesItem = this.Items.Add(r.GetString("曲线图"));
+            ListViewItem analogItem = this.Items.Add(r.GetString("模拟量"));
+            ListViewItem binaryItem = this.Items.Add(r.GetString("开关量"));
+            ListViewItem heartBeatItem = this.Items.Add(r.GetString("心跳控件"));
 
             ///设置图片
             this.View = System.Windows.Forms.View.LargeIcon;
