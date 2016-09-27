@@ -97,6 +97,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVAboutWindow.en.resx">
+      <DependentUpon>SVAboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVAboutWindow.resx">
       <DependentUpon>SVAboutWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +111,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SVDockMainWindow.zh.resx">
       <DependentUpon>SVDockMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVFindWindow.en.resx">
+      <DependentUpon>SVFindWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVFindWindow.resx">
+      <DependentUpon>SVFindWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVTemplateWindow.en.resx">
+      <DependentUpon>SVTemplateWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVTemplateWindow.resx">
       <DependentUpon>SVTemplateWindow.cs</DependentUpon>

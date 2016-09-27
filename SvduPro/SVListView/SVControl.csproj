@@ -184,17 +184,35 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVBinaryTypeWindow.en.resx">
+      <DependentUpon>SVBinaryTypeWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVBinaryTypeWindow.resx">
       <DependentUpon>SVBinaryTypeWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVBitmapArrayWindow.en.resx">
+      <DependentUpon>SVBitmapArrayWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVBitmapArrayWindow.resx">
       <DependentUpon>SVBitmapArrayWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBitmapWindow.en.resx">
+      <DependentUpon>SVBitmapWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBtnBackGroundWindow.en.resx">
+      <DependentUpon>SVBtnBackGroundWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVBtnBackGroundWindow.resx">
       <DependentUpon>SVBtnBackGroundWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVBtnTextWindow.resx">
       <DependentUpon>SVBtnTextWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVBtnTypeWindow.en.resx">
+      <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVCurveVarWindow.en.resx">
+      <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVCurveVarWindow.resx">
       <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
@@ -205,11 +223,20 @@
     <EmbeddedResource Include="SVBtnTypeWindow.resx">
       <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVGifWindow.en.resx">
+      <DependentUpon>SVGifWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVGifWindow.resx">
       <DependentUpon>SVGifWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVPageSelectWindow.en.resx">
+      <DependentUpon>SVPageSelectWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVPageSelectWindow.resx">
       <DependentUpon>SVPageSelectWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVVarWindow.en.resx">
+      <DependentUpon>SVVarWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVVarWindow.resx">
       <DependentUpon>SVVarWindow.cs</DependentUpon>

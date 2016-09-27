@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVVarWindow));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,128 +45,91 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // colorGroupBox
+            // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.dataGridView);
-            this.groupBox1.Location = new System.Drawing.Point(34, 98);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(445, 197);
-            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "变量列表";
             // 
             // dataGridView
             // 
+            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(3, 17);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
-            this.dataGridView.Size = new System.Drawing.Size(439, 177);
-            this.dataGridView.TabIndex = 0;
             // 
             // label2
             // 
+            resources.ApplyResources(this.label2, "label2");
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(37, 311);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(440, 2);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
             // 
             // okBtn
             // 
-            this.okBtn.Location = new System.Drawing.Point(305, 330);
+            resources.ApplyResources(this.okBtn, "okBtn");
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 4;
-            this.okBtn.Text = "确定";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cacenlBtn
             // 
-            this.cacenlBtn.Location = new System.Drawing.Point(387, 330);
+            resources.ApplyResources(this.cacenlBtn, "cacenlBtn");
             this.cacenlBtn.Name = "cacenlBtn";
-            this.cacenlBtn.Size = new System.Drawing.Size(75, 23);
-            this.cacenlBtn.TabIndex = 5;
-            this.cacenlBtn.Text = "取消";
             this.cacenlBtn.UseVisualStyleBackColor = true;
             this.cacenlBtn.Click += new System.EventHandler(this.cacenlBtn_Click);
             // 
-            // picGroupBox
+            // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.labelVar);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.refreshBtn);
             this.groupBox2.Controls.Add(this.textBox);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(37, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(440, 80);
-            this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "变量过滤";
             // 
             // labelVar
             // 
-            this.labelVar.AutoSize = true;
-            this.labelVar.Location = new System.Drawing.Point(89, 58);
+            resources.ApplyResources(this.labelVar, "labelVar");
             this.labelVar.Name = "labelVar";
-            this.labelVar.Size = new System.Drawing.Size(0, 12);
-            this.labelVar.TabIndex = 13;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 58);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "当前变量";
             // 
             // refreshBtn
             // 
-            this.refreshBtn.Location = new System.Drawing.Point(291, 26);
+            resources.ApplyResources(this.refreshBtn, "refreshBtn");
             this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(75, 23);
-            this.refreshBtn.TabIndex = 11;
-            this.refreshBtn.Text = "刷新";
             this.refreshBtn.UseVisualStyleBackColor = true;
             // 
             // textBox
             // 
-            this.textBox.Location = new System.Drawing.Point(77, 27);
+            resources.ApplyResources(this.textBox, "textBox");
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(198, 21);
-            this.textBox.TabIndex = 10;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 31);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "过滤条件";
             // 
             // SVVarWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 370);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cacenlBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Name = "SVVarWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "变量管理窗口";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);

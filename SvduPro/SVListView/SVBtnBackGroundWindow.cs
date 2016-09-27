@@ -86,6 +86,7 @@ namespace SVControl
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVBtnBackGroundWindow));
             this.colorGroupBox = new SVCore.SVCheckGroupBox();
             this.colorBtnUp = new SVCore.SVColorButton();
             this.colorBtnDown = new SVCore.SVColorButton();
@@ -101,94 +102,69 @@ namespace SVControl
             // 
             // colorGroupBox
             // 
+            resources.ApplyResources(this.colorGroupBox, "colorGroupBox");
             this.colorGroupBox.Controls.Add(this.colorBtnUp);
             this.colorGroupBox.Controls.Add(this.colorBtnDown);
-            this.colorGroupBox.Location = new System.Drawing.Point(12, 24);
             this.colorGroupBox.Name = "colorGroupBox";
-            this.colorGroupBox.Size = new System.Drawing.Size(332, 51);
-            this.colorGroupBox.TabIndex = 0;
             this.colorGroupBox.TabStop = false;
             // 
             // colorBtnUp
             // 
-            this.colorBtnUp.Location = new System.Drawing.Point(220, 20);
+            resources.ApplyResources(this.colorBtnUp, "colorBtnUp");
             this.colorBtnUp.Name = "colorBtnUp";
-            this.colorBtnUp.Size = new System.Drawing.Size(75, 23);
-            this.colorBtnUp.TabIndex = 1;
-            this.colorBtnUp.Text = "弹起";
             this.colorBtnUp.UseVisualStyleBackColor = true;
             // 
             // colorBtnDown
             // 
-            this.colorBtnDown.Location = new System.Drawing.Point(30, 19);
+            resources.ApplyResources(this.colorBtnDown, "colorBtnDown");
             this.colorBtnDown.Name = "colorBtnDown";
-            this.colorBtnDown.Size = new System.Drawing.Size(75, 23);
-            this.colorBtnDown.TabIndex = 0;
-            this.colorBtnDown.Text = "按下";
             this.colorBtnDown.UseVisualStyleBackColor = true;
             // 
             // picGroupBox
             // 
+            resources.ApplyResources(this.picGroupBox, "picGroupBox");
             this.picGroupBox.Controls.Add(this.picBtnUp);
             this.picGroupBox.Controls.Add(this.picBtnDown);
-            this.picGroupBox.Location = new System.Drawing.Point(12, 97);
             this.picGroupBox.Name = "picGroupBox";
-            this.picGroupBox.Size = new System.Drawing.Size(332, 114);
-            this.picGroupBox.TabIndex = 1;
             this.picGroupBox.TabStop = false;
             // 
             // picBtnUp
             // 
-            this.picBtnUp.Location = new System.Drawing.Point(220, 24);
+            resources.ApplyResources(this.picBtnUp, "picBtnUp");
             this.picBtnUp.Name = "picBtnUp";
-            this.picBtnUp.Size = new System.Drawing.Size(75, 75);
-            this.picBtnUp.TabIndex = 1;
-            this.picBtnUp.Text = "弹起";
             this.picBtnUp.UseVisualStyleBackColor = true;
             this.picBtnUp.Click += new System.EventHandler(this.picBtnUp_Click);
             // 
             // picBtnDown
             // 
-            this.picBtnDown.Location = new System.Drawing.Point(30, 24);
+            resources.ApplyResources(this.picBtnDown, "picBtnDown");
             this.picBtnDown.Name = "picBtnDown";
-            this.picBtnDown.Size = new System.Drawing.Size(75, 75);
-            this.picBtnDown.TabIndex = 0;
-            this.picBtnDown.Text = "按下";
             this.picBtnDown.UseVisualStyleBackColor = true;
             this.picBtnDown.Click += new System.EventHandler(this.picBtnDown_Click);
             // 
             // label1
             // 
+            resources.ApplyResources(this.label1, "label1");
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(12, 228);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 2);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
             // 
             // okBtn
             // 
-            this.okBtn.Location = new System.Drawing.Point(187, 244);
+            resources.ApplyResources(this.okBtn, "okBtn");
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 3;
-            this.okBtn.Text = "确定";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(269, 244);
+            resources.ApplyResources(this.cancelBtn, "cancelBtn");
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 4;
-            this.cancelBtn.Text = "取消";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // SVBtnBackGroundWindow
             // 
-            this.ClientSize = new System.Drawing.Size(369, 288);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.label1);
@@ -196,11 +172,10 @@ namespace SVControl
             this.Controls.Add(this.colorGroupBox);
             this.MaximizeBox = false;
             this.Name = "SVBtnBackGroundWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "按钮背景选择窗口";
             this.colorGroupBox.ResumeLayout(false);
             this.picGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         /// <summary>

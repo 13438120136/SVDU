@@ -118,6 +118,9 @@
     <EmbeddedResource Include="SVSHeartBeatControl.resx">
       <DependentUpon>SVSHeartBeatControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVSimulationWindow.en.resx">
+      <DependentUpon>SVSimulationWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVSimulationWindow.resx">
       <DependentUpon>SVSimulationWindow.cs</DependentUpon>
     </EmbeddedResource>

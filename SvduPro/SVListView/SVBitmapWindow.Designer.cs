@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVBitmapWindow));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.importPicBtn = new System.Windows.Forms.Button();
@@ -40,72 +41,51 @@
             // 
             // textBox1
             // 
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(264, 31);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(95, 87);
-            this.textBox1.TabIndex = 2;
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(264, 124);
+            resources.ApplyResources(this.pictureBox, "pictureBox");
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(95, 87);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
             // importPicBtn
             // 
-            this.importPicBtn.Location = new System.Drawing.Point(115, 244);
+            resources.ApplyResources(this.importPicBtn, "importPicBtn");
             this.importPicBtn.Name = "importPicBtn";
-            this.importPicBtn.Size = new System.Drawing.Size(75, 23);
-            this.importPicBtn.TabIndex = 4;
-            this.importPicBtn.Text = "导入图片";
             this.importPicBtn.UseVisualStyleBackColor = true;
             // 
             // listView
             // 
-            this.listView.Location = new System.Drawing.Point(135, 24);
+            resources.ApplyResources(this.listView, "listView");
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(108, 187);
-            this.listView.TabIndex = 5;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.List;
             // 
             // classTreeView
             // 
-            this.classTreeView.Location = new System.Drawing.Point(25, 24);
+            resources.ApplyResources(this.classTreeView, "classTreeView");
             this.classTreeView.Name = "classTreeView";
-            this.classTreeView.Size = new System.Drawing.Size(104, 187);
-            this.classTreeView.TabIndex = 6;
             // 
             // newClassBtn
             // 
-            this.newClassBtn.Location = new System.Drawing.Point(34, 244);
+            resources.ApplyResources(this.newClassBtn, "newClassBtn");
             this.newClassBtn.Name = "newClassBtn";
-            this.newClassBtn.Size = new System.Drawing.Size(75, 23);
-            this.newClassBtn.TabIndex = 7;
-            this.newClassBtn.Text = "新建分类";
             this.newClassBtn.UseVisualStyleBackColor = true;
             this.newClassBtn.Click += new System.EventHandler(this.newClassBtn_Click);
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(196, 244);
+            resources.ApplyResources(this.textBoxName, "textBoxName");
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(84, 21);
-            this.textBoxName.TabIndex = 8;
             // 
             // SVBitmapWindow
             // 
-            //this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 303);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.newClassBtn);
             this.Controls.Add(this.classTreeView);
@@ -113,7 +93,6 @@
             this.Controls.Add(this.importPicBtn);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.textBox1);
-            //this.MaximizeBox = false;
             this.Name = "SVBitmapWindow";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);

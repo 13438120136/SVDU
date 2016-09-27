@@ -60,10 +60,11 @@ namespace SVControl
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVGifWindow));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.varListView = new System.Windows.Forms.ListView();
-            this.addVarBtn = new System.Windows.Forms.Button();
             this.delVarBtn = new System.Windows.Forms.Button();
+            this.addVarBtn = new System.Windows.Forms.Button();
+            this.varListView = new System.Windows.Forms.ListView();
             this.errBtn = new System.Windows.Forms.Button();
             this.bgBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -76,108 +77,79 @@ namespace SVControl
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.delVarBtn);
             this.groupBox1.Controls.Add(this.addVarBtn);
             this.groupBox1.Controls.Add(this.varListView);
-            this.groupBox1.Location = new System.Drawing.Point(27, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(188, 194);
-            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "变量";
-            // 
-            // varListView
-            // 
-            this.varListView.Location = new System.Drawing.Point(16, 20);
-            this.varListView.Name = "varListView";
-            this.varListView.Size = new System.Drawing.Size(154, 129);
-            this.varListView.TabIndex = 0;
-            this.varListView.UseCompatibleStateImageBehavior = false;
-            this.varListView.View = System.Windows.Forms.View.List;
-            // 
-            // addVarBtn
-            // 
-            this.addVarBtn.Location = new System.Drawing.Point(16, 161);
-            this.addVarBtn.Name = "addVarBtn";
-            this.addVarBtn.Size = new System.Drawing.Size(75, 23);
-            this.addVarBtn.TabIndex = 1;
-            this.addVarBtn.Text = "添加";
-            this.addVarBtn.UseVisualStyleBackColor = true;
-            this.addVarBtn.Click += new System.EventHandler(this.addVarBtn_Click);
             // 
             // delVarBtn
             // 
-            this.delVarBtn.Location = new System.Drawing.Point(98, 161);
+            resources.ApplyResources(this.delVarBtn, "delVarBtn");
             this.delVarBtn.Name = "delVarBtn";
-            this.delVarBtn.Size = new System.Drawing.Size(75, 23);
-            this.delVarBtn.TabIndex = 2;
-            this.delVarBtn.Text = "删除";
             this.delVarBtn.UseVisualStyleBackColor = true;
             this.delVarBtn.Click += new System.EventHandler(this.delVarBtn_Click);
             // 
+            // addVarBtn
+            // 
+            resources.ApplyResources(this.addVarBtn, "addVarBtn");
+            this.addVarBtn.Name = "addVarBtn";
+            this.addVarBtn.UseVisualStyleBackColor = true;
+            this.addVarBtn.Click += new System.EventHandler(this.addVarBtn_Click);
+            // 
+            // varListView
+            // 
+            resources.ApplyResources(this.varListView, "varListView");
+            this.varListView.Name = "varListView";
+            this.varListView.UseCompatibleStateImageBehavior = false;
+            this.varListView.View = System.Windows.Forms.View.List;
+            // 
             // errBtn
             // 
-            this.errBtn.Location = new System.Drawing.Point(29, 33);
+            resources.ApplyResources(this.errBtn, "errBtn");
             this.errBtn.Name = "errBtn";
-            this.errBtn.Size = new System.Drawing.Size(100, 100);
-            this.errBtn.TabIndex = 1;
-            this.errBtn.Text = "出错背景图片";
             this.errBtn.UseVisualStyleBackColor = true;
             this.errBtn.Click += new System.EventHandler(this.errBtn_Click);
             // 
             // bgBtn
             // 
-            this.bgBtn.Location = new System.Drawing.Point(29, 147);
+            resources.ApplyResources(this.bgBtn, "bgBtn");
             this.bgBtn.Name = "bgBtn";
-            this.bgBtn.Size = new System.Drawing.Size(100, 23);
-            this.bgBtn.TabIndex = 2;
-            this.bgBtn.Text = "背景图片";
             this.bgBtn.UseVisualStyleBackColor = true;
             this.bgBtn.Click += new System.EventHandler(this.bgBtn_Click);
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.errBtn);
             this.groupBox2.Controls.Add(this.bgBtn);
-            this.groupBox2.Location = new System.Drawing.Point(233, 31);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(157, 194);
-            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "背景图片";
             // 
             // label1
             // 
+            resources.ApplyResources(this.label1, "label1");
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(27, 237);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 2);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
             // 
             // okBtn
             // 
-            this.okBtn.Location = new System.Drawing.Point(229, 258);
+            resources.ApplyResources(this.okBtn, "okBtn");
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 5;
-            this.okBtn.Text = "确定";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(310, 258);
+            resources.ApplyResources(this.cancelBtn, "cancelBtn");
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 6;
-            this.cancelBtn.Text = "取消";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // SVGifWindow
             // 
-            this.ClientSize = new System.Drawing.Size(417, 292);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.label1);
@@ -186,8 +158,6 @@ namespace SVControl
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "SVGifWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "动态图变量设置窗口";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);

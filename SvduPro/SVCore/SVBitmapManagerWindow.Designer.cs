@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVBitmapManagerWindow));
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -54,158 +55,118 @@
             // 
             // listView
             // 
+            resources.ApplyResources(this.listView, "listView");
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView.LargeImageList = this.imageList;
-            this.listView.Location = new System.Drawing.Point(6, 52);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(357, 419);
             this.listView.SmallImageList = this.imageList;
-            this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "图元项";
-            this.columnHeader1.Width = 160;
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // imageList
             // 
             this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList.ImageSize = new System.Drawing.Size(32, 32);
+            resources.ApplyResources(this.imageList, "imageList");
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.treeView);
-            this.groupBox1.Location = new System.Drawing.Point(29, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(191, 477);
-            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "分类";
             // 
             // treeView
             // 
-            this.treeView.Location = new System.Drawing.Point(6, 19);
+            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(179, 451);
-            this.treeView.TabIndex = 0;
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.showRadio);
             this.groupBox2.Controls.Add(this.listRadio);
             this.groupBox2.Controls.Add(this.listView);
-            this.groupBox2.Location = new System.Drawing.Point(226, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(369, 478);
-            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "视图";
             // 
             // showRadio
             // 
-            this.showRadio.AutoSize = true;
-            this.showRadio.Location = new System.Drawing.Point(262, 24);
+            resources.ApplyResources(this.showRadio, "showRadio");
             this.showRadio.Name = "showRadio";
-            this.showRadio.Size = new System.Drawing.Size(59, 16);
-            this.showRadio.TabIndex = 2;
-            this.showRadio.Text = "缩略图";
             this.showRadio.UseVisualStyleBackColor = true;
             // 
             // listRadio
             // 
-            this.listRadio.AutoSize = true;
+            resources.ApplyResources(this.listRadio, "listRadio");
             this.listRadio.Checked = true;
-            this.listRadio.Location = new System.Drawing.Point(160, 24);
             this.listRadio.Name = "listRadio";
-            this.listRadio.Size = new System.Drawing.Size(47, 16);
-            this.listRadio.TabIndex = 1;
             this.listRadio.TabStop = true;
-            this.listRadio.Text = "列表";
             this.listRadio.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(194, 207);
-            this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // textBox1
             // 
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.Location = new System.Drawing.Point(6, 20);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(194, 218);
-            this.textBox1.TabIndex = 4;
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Location = new System.Drawing.Point(601, 15);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(204, 245);
-            this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "属性";
             // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(200, 200);
+            resources.ApplyResources(this.imageList1, "imageList1");
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.pictureBox1);
-            this.groupBox4.Location = new System.Drawing.Point(601, 259);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(204, 234);
-            this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "预览显示";
             // 
             // label1
             // 
+            resources.ApplyResources(this.label1, "label1");
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(29, 500);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(776, 2);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
             // 
             // okBtn
             // 
-            this.okBtn.Location = new System.Drawing.Point(632, 514);
+            resources.ApplyResources(this.okBtn, "okBtn");
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 8;
-            this.okBtn.Text = "确定";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(713, 514);
+            resources.ApplyResources(this.cancelBtn, "cancelBtn");
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 9;
-            this.cancelBtn.Text = "取消";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // SVBitmapManagerWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 549);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.label1);
@@ -215,8 +176,6 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SVBitmapManagerWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "图标管理窗口";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

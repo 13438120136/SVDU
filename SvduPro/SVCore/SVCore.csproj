@@ -128,14 +128,26 @@
     <Compile Include="SVXml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SVBitmapManagerWindow.en.resx">
+      <DependentUpon>SVBitmapManagerWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVBitmapManagerWindow.resx">
       <DependentUpon>SVBitmapManagerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVCreatePageForm.en.resx">
+      <DependentUpon>SVCreatePageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVCreatePageForm.resx">
       <DependentUpon>SVCreatePageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SVExportTemplateForm.en.resx">
+      <DependentUpon>SVExportTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SVExportTemplateForm.resx">
       <DependentUpon>SVExportTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVSettingWindow.en.resx">
+      <DependentUpon>SVSettingWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVSettingWindow.resx">
       <DependentUpon>SVSettingWindow.cs</DependentUpon>
