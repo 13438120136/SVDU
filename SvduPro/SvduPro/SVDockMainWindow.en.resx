@@ -118,6 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="最近打开ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="openProMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="openProMenuItem.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="设置ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set Up</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="exitMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="exitMenuItem.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 21</value>
   </data>
@@ -232,11 +259,17 @@
   <data name="hEqualMenuItem.Text" xml:space="preserve">
     <value>Equally spaced horizontal</value>
   </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 6</value>
+  </data>
   <data name="findMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 22</value>
   </data>
   <data name="findMenuItem.Text" xml:space="preserve">
     <value>Find</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 6</value>
   </data>
   <data name="copyMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 22</value>
@@ -256,6 +289,9 @@
   <data name="pasteMenuItem.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 6</value>
+  </data>
   <data name="撤销ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 22</value>
   </data>
@@ -267,6 +303,9 @@
   </data>
   <data name="恢复ToolStripMenuItem.Text" xml:space="preserve">
     <value>Redo</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 6</value>
   </data>
   <data name="selectAllMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 22</value>
@@ -292,11 +331,17 @@
   <data name="图元管理ToolStripMenuItem.Text" xml:space="preserve">
     <value>Icon Manager</value>
   </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 6</value>
+  </data>
   <data name="仿真ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
   </data>
   <data name="仿真ToolStripMenuItem.Text" xml:space="preserve">
     <value>Simulation</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 6</value>
   </data>
   <data name="变量名管理ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
@@ -376,8 +421,14 @@
   <data name="主题帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>Help documentation</value>
   </data>
+  <data name="中文ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
   <data name="中文ToolStripMenuItem.Text" xml:space="preserve">
     <value>Chinese</value>
+  </data>
+  <data name="英文ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
   </data>
   <data name="英文ToolStripMenuItem.Text" xml:space="preserve">
     <value>English</value>
@@ -389,7 +440,7 @@
     <value>Change Language</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
+    <value>191, 6</value>
   </data>
   <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 22</value>
@@ -402,15 +453,6 @@
   </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>Help</value>
-  </data>
-  <data name="openProMenuItem.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set Up</value>
-  </data>
-  <data name="exitMenuItem.Text" xml:space="preserve">
-    <value>Exit</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using SVControl;
 using SVCore;
 using SVSimulation;
 using WeifenLuo.WinFormsUI.Docking;
-using System.ComponentModel;
-using System.Resources;
 
 namespace SvduPro
 {
@@ -124,8 +123,75 @@ namespace SvduPro
             initFindWindowEvent();
             ///初始化
             init();
-            
+
+            ///参数
+            commandLine(args);
+            //Environment.Exit(0);
             //openProject(".", "TestVPro");
+        }
+
+        /// <summary>
+        /// 处理命令行参数命令
+        /// 
+        /// 1、不带任何参数，执行打开软件
+        /// 2、-p file, 打开指定的工程文件
+        /// 3、-c file, 编译指定的工程文件
+        /// </summary>
+        /// <param name="args">输入参数</param>
+        void commandLine(String[] args)
+        {
+            if (args.Length == 0)
+                return;
+
+            ///打开软件的同时，打开工程
+            if (args[0] == "-p")
+            {
+                if (String.IsNullOrWhiteSpace(args[1]))
+                {
+                    commandHelp();
+                    return;
+                }
+
+                String path = Path.GetDirectoryName(args[1]);
+                String proPath = Directory.GetParent(path).FullName;
+                String proName = Path.GetFileNameWithoutExtension(args[1]);
+                openProject(proPath, proName);
+            }
+
+
+            ///打开软件的同时，编译工程
+            if (args[0] == "-c")
+            {
+                if (String.IsNullOrWhiteSpace(args[1]))
+                {
+                    commandHelp();
+                    return;
+                }
+
+                String path = Path.GetDirectoryName(args[1]);
+                String proPath = Directory.GetParent(path).FullName;
+                String proName = Path.GetFileNameWithoutExtension(args[1]);
+                openProject(proPath, proName);
+
+                try
+                {
+                    SVCheckBeforeBuild check = new SVCheckBeforeBuild();
+                    check.checkAll();
+                    buildDownLoadFiles();
+                }
+                catch (SVCheckValidException ex)
+                {
+                    SVLog.WinLog.Info(ex.Message);
+                    _outPutWindow.Activate();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 打印命令提示
+        /// </summary>
+        void commandHelp()
+        {
         }
 
         /// <summary>
@@ -1319,9 +1385,11 @@ namespace SvduPro
         private void findMenuItem_Click(object sender, EventArgs e)
         {
             SVFindWindow win = new SVFindWindow();
-            win.ShowDialog();
-            //激活查找窗口
-            _findWindow.Activate();
+            if (win.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            {
+                //激活查找窗口
+                _findWindow.Activate();
+            }
         }
 
         /// <summary>
@@ -1393,6 +1461,11 @@ namespace SvduPro
             win.ShowDialog();
         }
 
+        /// <summary>
+        /// 执行中文环境语言切换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 中文ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVConfig currInstance = SVConfig.instance();
@@ -1404,10 +1477,15 @@ namespace SvduPro
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Application.ExitThread();
-                Process.Start(Application.ExecutablePath);
+                Process.Start(Application.ExecutablePath, "-p " + SVProData.FullProPath);
             }
         }
 
+        /// <summary>
+        /// 执行英文环境语言切换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 英文ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVConfig currInstance = SVConfig.instance();
@@ -1419,8 +1497,19 @@ namespace SvduPro
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Application.ExitThread();
-                Process.Start(Application.ExecutablePath);
+                Process.Start(Application.ExecutablePath, "-p " + SVProData.FullProPath);
             }
+        }
+
+        /// <summary>
+        /// 打开关于对话框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SVAboutWindow win = new SVAboutWindow();
+            win.ShowDialog();
         }
     }
 }

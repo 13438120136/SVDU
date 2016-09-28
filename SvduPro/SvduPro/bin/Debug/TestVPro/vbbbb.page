@@ -4,4 +4,7 @@
   <Height>480</Height>
   <Backcolor>-2894893</Backcolor>
   <MainPage>False</MainPage>
+  <SVButton id="18" x="125" y="106" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="ËÎÌו" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="0" ButtonTypeText="" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="12" x="345" y="106" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="ËÎÌו" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="0" ButtonTypeText="" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
+  <SVButton id="17" x="566" y="106" width="180" height="100" color="-16777216" backcolor="-1250068" backgdcolor="-1250068" text="Button" font="ËÎÌו" fontSize="16" Confirm="False" ButtonType="0" ButtonTypeID="0" ButtonTypeText="" ButtonTypeVar="" Enabled="False" EnabledVar="" IsShowPicture="False" BtnDownPicFile="" BtnDownPicShowName="" BtnUpPicFile="" BtnUpPicShowName="" />
 </Page>

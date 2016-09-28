@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using SVCore;
+using System.IO;
 
 namespace SVControl
 {
@@ -239,24 +240,32 @@ namespace SVControl
             gifBin.rect.eX = (UInt16)(Rect.Width + gifBin.rect.sX);
             gifBin.rect.eY = (UInt16)(Rect.Height + gifBin.rect.sY);
 
-            //图标位置
-            //gifBin.imageOffset = (UInt32)serialize.ToArray().Length;
-            //if (Pic.isValidShow())
-            //{
-            //    SVPixmapFile pageFile = new SVPixmapFile();
-            //    pageFile.readPixmapFile(Pic.ImageFilePath);
-            //    Bitmap bitmap = pageFile.get8Bitmap(Rect.Width, Rect.Height);
-            //    SVBitmapHead head = new SVBitmapHead(bitmap);
-            //    byte[] data = head.data();
-            //    serialize.Write(data, 0, (Int32)data.Length);
-            //}
+            ///图片数组地址
+            gifBin.imageOffset = new UInt32[8];
 
+            ///保存所有图片数据
+            List<SVBitmap> list = _pic.imageArray();
+            for (int i = 0; i < list.Count; i++)
+            {
+                String fileName = Path.Combine(SVProData.IconPath, list[i].ImageFileName);
+                gifBin.imageOffset[i] = (UInt32)serialize.ToArray().Length;
+
+                SVPixmapFile file = new SVPixmapFile();
+                file.readPixmapFile(fileName);
+                Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
+                SVBitmapHead head = new SVBitmapHead(bitmap);
+                byte[] data = head.data();
+                serialize.pack(data);
+            }
+
+            ///写入当前错误图片数据
             gifBin.iamgeOffsetErr = (UInt32)serialize.ToArray().Length;
             if (PicError.isValidShow())
             {
-                SVPixmapFile file = new SVPixmapFile();
-                file.readPixmapFile(PicError.ImageFileName);
-                Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
+                SVPixmapFile pixmapFile = new SVPixmapFile();
+                String file = Path.Combine(SVProData.IconPath, PicError.ImageFileName);
+                pixmapFile.readPixmapFile(file);
+                Bitmap bitmap = pixmapFile.get8Bitmap(Rect.Width, Rect.Height);
                 SVBitmapHead head = new SVBitmapHead(bitmap);
                 byte[] data = head.data();
                 serialize.Write(data, 0, (Int32)data.Length);

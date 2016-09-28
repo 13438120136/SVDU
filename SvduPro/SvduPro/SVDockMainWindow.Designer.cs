@@ -312,7 +312,7 @@
             this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton13.Image = global::SvduPro.Resource.textTop;
             this.toolStripButton13.Name = "toolStripButton13";
-            this.toolStripButton13.LocationChanged += new System.EventHandler(this.topAlignMenuItem_Click);
+            this.toolStripButton13.Click += new System.EventHandler(this.topAlignMenuItem_Click);
             // 
             // toolStripButton14
             // 
@@ -804,6 +804,7 @@
             resources.ApplyResources(this.关于ToolStripMenuItem, "关于ToolStripMenuItem");
             this.关于ToolStripMenuItem.Image = global::SvduPro.Resource.about;
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
