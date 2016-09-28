@@ -146,27 +146,27 @@ namespace SvduPro
             ///打开软件的同时，打开工程
             if (args[0] == "-p")
             {
-                if (String.IsNullOrWhiteSpace(args[1]))
-                {
-                    commandHelp();
+                if (args.Length < 2)
                     return;
-                }
+
+                if (String.IsNullOrWhiteSpace(args[1]))
+                    return;
 
                 String path = Path.GetDirectoryName(args[1]);
                 String proPath = Directory.GetParent(path).FullName;
                 String proName = Path.GetFileNameWithoutExtension(args[1]);
                 openProject(proPath, proName);
+                return;
             }
-
 
             ///打开软件的同时，编译工程
             if (args[0] == "-c")
             {
-                if (String.IsNullOrWhiteSpace(args[1]))
-                {
-                    commandHelp();
+                if (args.Length < 2)
                     return;
-                }
+
+                if (String.IsNullOrWhiteSpace(args[1]))
+                    return;
 
                 String path = Path.GetDirectoryName(args[1]);
                 String proPath = Directory.GetParent(path).FullName;
@@ -178,6 +178,7 @@ namespace SvduPro
                     SVCheckBeforeBuild check = new SVCheckBeforeBuild();
                     check.checkAll();
                     buildDownLoadFiles();
+                    return;
                 }
                 catch (SVCheckValidException ex)
                 {
@@ -185,13 +186,6 @@ namespace SvduPro
                     _outPutWindow.Activate();
                 }
             }
-        }
-
-        /// <summary>
-        /// 打印命令提示
-        /// </summary>
-        void commandHelp()
-        {
         }
 
         /// <summary>
@@ -1510,6 +1504,23 @@ namespace SvduPro
         {
             SVAboutWindow win = new SVAboutWindow();
             win.ShowDialog();
+        }
+
+        /// <summary>
+        /// 打开帮助文档
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 主题帮助ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String helpFile = @"Help.chm";
+            if (!File.Exists(helpFile))
+            {
+                MessageBox.Show("帮助文档丢失，无法打开！");
+                return ;
+            }
+
+            Help.ShowHelp(this, helpFile);
         }
     }
 }
