@@ -1080,18 +1080,43 @@ namespace SvduPro
 
         private void importMenuItem_Click(object sender, EventArgs e)
         {
+            TreeNode node = _stationTreeView.SelectedNode;
+            if (node == null)
+                return;
+
+            ///如果不是分类节点，就返回
+            if (node.Level != 1)
+                return;
+
+            importPage(node);
         }
 
         private void removeMenuItem_Click(object sender, EventArgs e)
         {
+            SVPageNode node = _stationTreeView.SelectedNode as SVPageNode;
+            if (node == null)
+                return;
+
+            ///执行移除
+            removePage(node);
         }
 
         private void delMenuItem_Click(object sender, EventArgs e)
         {
+            SVPageNode node = _stationTreeView.SelectedNode as SVPageNode;
+            if (node == null)
+                return;
+
+            delPage(node);
         }
 
         private void closeMenuItem_Click(object sender, EventArgs e)
         {
+            SVPageNode node = _stationTreeView.SelectedNode as SVPageNode;
+            if (node == null)
+                return;
+
+            closePage((SVPageWidget)node.Addtionobj);
         }
 
         private void 页面检查ToolStripMenuItem_Click(object sender, EventArgs e)
