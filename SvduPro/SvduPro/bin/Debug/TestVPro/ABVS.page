@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="gb2312" standalone="yes"?>
-<Page ID="3">
+<Page ID="1">
   <Width>800</Width>
   <Height>480</Height>
   <Backcolor>-2894893</Backcolor>
   <MainPage>False</MainPage>
-  <SVGif ID="14" X="69" Y="114" Width="194" Height="164" ErrorFile="$G8G8QX7SP[J@)IZU73}9SL" ErrorShowName="$G8G8QX7SP[J@)IZU73}9SL">
+  <SVCurve ID="2" X="442" Y="121" Width="323" Height="221" FrontColor="-1" BackgdColor="-9868951" Interval="60" Font="宋体" FontSize="16" Max="200" Min="0" />
+  <SVGif ID="3" X="69" Y="114" Width="194" Height="164" ErrorFile="$G8G8QX7SP[J@)IZU73}9SL" ErrorShowName="$G8G8QX7SP[J@)IZU73}9SL">
     <VarName VName="var" />
     <VarName VName="var1" />
     <VarName VName="vvar009" />
     <PIC Name="%2]%ER_H)FD4A8YW2J1BWO5" File="%2]%ER_H)FD4A8YW2J1BWO5" />
     <PIC Name="${HE6`B163$F%74[PB{K`D4" File="${HE6`B163$F%74[PB{K`D4" />
   </SVGif>
-  <SVCurve ID="6" X="442" Y="121" Width="323" Height="221" FrontColor="-1" BackgdColor="-9868951" Interval="60" Font="宋体" FontSize="16" Max="200" Min="0" />
 </Page>
