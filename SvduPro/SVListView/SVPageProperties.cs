@@ -16,7 +16,7 @@ namespace SVControl
     {
         #region 页面属性变量
         int _width = 800;
-        int _height = 480;
+        int _height = 600;
         Color _backGroundColor = Color.LightGray;
         Boolean _isAlignment = false;
         UInt16 _id;
