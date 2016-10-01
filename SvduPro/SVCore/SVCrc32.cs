@@ -74,12 +74,21 @@ namespace SVCore
 
         UInt32 calCrc32Append(UInt32 init, byte[] s, UInt32 len)
         {
-            UInt32 i = 0;
+            UInt32 POLYNOMIAL = 0xF4ACFB13;
+            UInt32 uLoop;
             UInt32 crc = init;
 
-            for (i = 0; i < len; i++)
+            Int32 index = 0;
+            while ((len--) != 0)
             {
-                crc = crc32Table[(crc ^ s[i]) & 0xff] ^ (crc >> 8);
+                crc ^= (UInt32)(s[index++]) << 24;
+                for (uLoop = 0; uLoop < 8; ++uLoop)
+                {
+                    if ((crc & 0x80000000) != 0)
+                        crc = (crc << 1) ^ POLYNOMIAL;
+                    else
+                        crc <<= 1;
+                }
             }
             return crc;
         }
@@ -87,7 +96,7 @@ namespace SVCore
         public UInt32 calculateCrc32(byte[] buffer, UInt32 len)
         {
             UInt32 crc = 0;
-            crc = calCrc32Append(0, buffer, len);
+            crc = calCrc32Append(0xffffffff, buffer, len);
             return crc;
         }
     }

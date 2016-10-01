@@ -47,17 +47,17 @@ namespace SVCore
                 }
             });
             
-            this.textBox.KeyPress += new KeyPressEventHandler((sender, e)=>
-            {
-                if (e.KeyChar == '\b')
-                    return;
+            //this.textBox.KeyPress += new KeyPressEventHandler((sender, e)=>
+            //{
+            //    if (e.KeyChar == '\b')
+            //        return;
 
-                String str = this.textBox.Text + e.KeyChar;
-                if (!Regex.IsMatch(str, "^[_a-zA-Z][_a-zA-Z0-9]*$"))
-                    e.Handled = true;
-                else
-                    e.Handled = false;
-            });
+            //    String str = this.textBox.Text + e.KeyChar;
+            //    if (!Regex.IsMatch(str, "^[_a-zA-Z][_a-zA-Z0-9]*$"))
+            //        e.Handled = true;
+            //    else
+            //        e.Handled = false;
+            //});
 
             this.okBtn.Click += new EventHandler((sender, e) =>
             {

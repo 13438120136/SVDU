@@ -478,31 +478,31 @@
     <value>39, 14</value>
   </metadata>
   <data name="最近打开ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="最近打开ToolStripMenuItem.Text" xml:space="preserve">
     <value>最近打开</value>
   </data>
   <data name="openProMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="openProMenuItem.Text" xml:space="preserve">
     <value>打开</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>设置</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="exitMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="exitMenuItem.Text" xml:space="preserve">
     <value>退出</value>
@@ -520,7 +520,7 @@
     <value>Ctrl+O</value>
   </data>
   <data name="newPageMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="newPageMenuItem.Text" xml:space="preserve">
     <value>新建</value>
@@ -532,49 +532,49 @@
     <value>Ctrl+S</value>
   </data>
   <data name="saveMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="saveMenuItem.Text" xml:space="preserve">
     <value>保存</value>
   </data>
   <data name="saveAllMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="saveAllMenuItem.Text" xml:space="preserve">
     <value>保存全部</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>144, 6</value>
   </data>
   <data name="importMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="importMenuItem.Text" xml:space="preserve">
     <value>导入</value>
   </data>
   <data name="removeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="removeMenuItem.Text" xml:space="preserve">
     <value>移除</value>
   </data>
   <data name="delMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="delMenuItem.Text" xml:space="preserve">
     <value>删除</value>
   </data>
   <data name="closeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="closeMenuItem.Text" xml:space="preserve">
     <value>关闭</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>144, 6</value>
   </data>
   <data name="页面检查ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="页面检查ToolStripMenuItem.Text" xml:space="preserve">
     <value>页面检查</value>
@@ -586,67 +586,67 @@
     <value>页面编辑</value>
   </data>
   <data name="leftAlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="leftAlignMenuItem.Text" xml:space="preserve">
     <value>左对齐</value>
   </data>
   <data name="rightAlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="rightAlignMenuItem.Text" xml:space="preserve">
     <value>右对齐</value>
   </data>
   <data name="topAlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="topAlignMenuItem.Text" xml:space="preserve">
     <value>上对齐</value>
   </data>
   <data name="bottomAlignMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="bottomAlignMenuItem.Text" xml:space="preserve">
     <value>下对齐</value>
   </data>
   <data name="vCenterMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="vCenterMenuItem.Text" xml:space="preserve">
     <value>垂直居中</value>
   </data>
   <data name="hCenterMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="hCenterMenuItem.Text" xml:space="preserve">
     <value>水平居中</value>
   </data>
   <data name="vEqualMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="vEqualMenuItem.Text" xml:space="preserve">
     <value>垂直等间距</value>
   </data>
   <data name="hEqualMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="hEqualMenuItem.Text" xml:space="preserve">
     <value>水平等间距</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>142, 6</value>
   </data>
   <data name="findMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+F</value>
   </data>
   <data name="findMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="findMenuItem.Text" xml:space="preserve">
     <value>查找</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>142, 6</value>
   </data>
   <data name="copyMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
     <value>Ctrl+C</value>
@@ -655,7 +655,7 @@
     <value>Ctrl+C</value>
   </data>
   <data name="copyMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="copyMenuItem.Text" xml:space="preserve">
     <value>复制</value>
@@ -667,7 +667,7 @@
     <value>Ctrl+X</value>
   </data>
   <data name="cutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="cutMenuItem.Text" xml:space="preserve">
     <value>剪切</value>
@@ -679,13 +679,13 @@
     <value>Ctrl+V</value>
   </data>
   <data name="pasteMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="pasteMenuItem.Text" xml:space="preserve">
     <value>粘贴</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>142, 6</value>
   </data>
   <data name="撤销ToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
     <value>Ctrl+Z</value>
@@ -694,7 +694,7 @@
     <value>Ctrl+Z</value>
   </data>
   <data name="撤销ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="撤销ToolStripMenuItem.Text" xml:space="preserve">
     <value>撤销</value>
@@ -706,13 +706,13 @@
     <value>Ctrl+Y</value>
   </data>
   <data name="恢复ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="恢复ToolStripMenuItem.Text" xml:space="preserve">
     <value>恢复</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>142, 6</value>
   </data>
   <data name="selectAllMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
     <value>Ctrl+A</value>
@@ -721,7 +721,7 @@
     <value>Ctrl+A</value>
   </data>
   <data name="selectAllMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="selectAllMenuItem.Text" xml:space="preserve">
     <value>全选</value>
@@ -733,40 +733,40 @@
     <value>编辑</value>
   </data>
   <data name="模板管理ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="模板管理ToolStripMenuItem.Text" xml:space="preserve">
     <value>模板管理</value>
   </data>
   <data name="图元管理ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="图元管理ToolStripMenuItem.Text" xml:space="preserve">
     <value>图元管理</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="仿真ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+R</value>
   </data>
   <data name="仿真ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="仿真ToolStripMenuItem.Text" xml:space="preserve">
     <value>仿真</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="变量名管理ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="变量名管理ToolStripMenuItem.Text" xml:space="preserve">
     <value>变量名管理</value>
   </data>
   <data name="模板管理ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="模板管理ToolStripMenuItem1.Text" xml:space="preserve">
     <value>保存为模板</value>
@@ -775,13 +775,13 @@
     <value>Ctrl+B</value>
   </data>
   <data name="编译ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="编译ToolStripMenuItem.Text" xml:space="preserve">
     <value>编译</value>
   </data>
   <data name="打印ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="打印ToolStripMenuItem.Text" xml:space="preserve">
     <value>打印</value>

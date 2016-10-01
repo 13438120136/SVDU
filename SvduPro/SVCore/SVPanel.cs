@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace SVCore
 {
+    /// <summary>
+    /// 自定义panel抽象类
+    /// </summary>
     [Serializable]
     abstract public class SVPanel : SVBasePanel, SVInterfacePanel, ICustomTypeDescriptor
     {
@@ -13,7 +16,10 @@ namespace SVCore
         private Point _minSize = new Point();
         private UInt16 _parentID;
         private UInt16 _id;        
-
+        
+        /// <summary>
+        /// 获取撤销和恢复对象
+        /// </summary>
         public SVRedoUndo RedoUndo { private set; get; }
 
         /// <summary>
@@ -27,17 +33,26 @@ namespace SVCore
             set { _bTransparent = value; }
         }
 
+        /// <summary>
+        /// 设置和获取当前控件的ID号
+        /// </summary>
         public UInt16 Id
         {
             get { return _id; }
             set { _id = value; }
         }
 
+        /// <summary>
+        /// 获取当前控件的父ID号，这里通常为页面ID号
+        /// </summary>
         public UInt16 ParentID 
         {
             get { return _parentID; }
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public SVPanel()
         {
             _id = 0;
@@ -45,9 +60,9 @@ namespace SVCore
 
             ///默认不透明
             this.BTransparent = false;
-            ///文本显示在控件正中间
+            ///文本居中对齐显示
             this.TextAlign = ContentAlignment.MiddleCenter;
-
+            ///将属性应用到外观显示
             refreshPropertyToPanel();
 
             ///控件坐标或者尺寸发生改变,更新
@@ -68,17 +83,30 @@ namespace SVCore
             return (ParentID != 0);
         }
 
+        /// <summary>
+        /// 设置页面的撤销和恢复操作
+        /// </summary>
+        /// <param name="value"></param>
         public void setRedoUndoObject(SVRedoUndo value)
         {
             RedoUndo = value;
             initalizeRedoUndo();
         }
 
+        /// <summary>
+        /// 设置父ID
+        /// </summary>
+        /// <param name="value">父ID号</param>
         public void setParentID(UInt16 value)
         {
             _parentID = value;
         }
 
+        /// <summary>
+        /// 设置控件最小尺寸范围
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void setMinSize(int x, int y)
         {
             _minSize = new Point(x, y);

@@ -280,11 +280,17 @@ namespace SVCore
                 if (e.Button != MouseButtons.Left)
                     return;
 
+                Int32 cX = e.X - pos.X;
+                Int32 cY = e.Y - pos.Y;
+
                 Int32 disX = e.X - pos.X + this.Location.X;
                 Int32 disY = e.Y - pos.Y + this.Location.Y;
                 this.Location = new Point(disX, disY);
 
-                this.Selected = false;
+                ///移动选中的所有控件
+                SVSelectPanelObjs.moveSelectControls(this, cX, cY);
+
+                this.clearFocus();
             });
 
             this.MouseUp += new MouseEventHandler((sender, e)=>
@@ -330,7 +336,28 @@ namespace SVCore
         /// <param name="e"></param>
         void SVBasePanel_MouseDown(object sender, MouseEventArgs e)
         {
-            Selected = true;
+            ///如果选中多个控件或者按下Ctrl按键，就直接选中
+            if ((SVSelectPanelObjs.selectCount() >= 2)
+                || (SVSelectPanelObjs._VK_Ctrl == true))
+            {
+                Selected = true;
+            }
+            else
+            {
+                ///让兄弟控件不被选中
+                if (this.Parent != null)
+                {
+                    foreach (var item in Parent.Controls)
+                    {
+                        SVBasePanel panel = item as SVBasePanel;
+                        if (panel != null)
+                            panel.Selected = false;
+                    }
+                }
+
+                ///选中当前控件
+                Selected = true;
+            }
         }
 
         /// <summary>
@@ -435,7 +462,7 @@ namespace SVCore
         /// <summary>
         /// 清除当前控件的选中状态
         /// </summary>
-        void clearFocus()
+        public void clearFocus()
         {
             if (this.Parent == null)
                 return;

@@ -203,6 +203,16 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 移除分类页面
+        /// </summary>
+        /// <param name="className">页面名称</param>
+        public void removeClassName(String className)
+        {
+            if (_pageDic.ContainsKey(className))
+                _pageDic.Remove(className);
+        }
+
+        /// <summary>
         /// 添加页面节点
         /// 
         /// className - 页面分类

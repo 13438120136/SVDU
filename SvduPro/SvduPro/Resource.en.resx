@@ -283,4 +283,7 @@
   <data name="页面检查" xml:space="preserve">
     <value>Page check</value>
   </data>
+  <data name="删除分类" xml:space="preserve">
+    <value>Delete Classfy</value>
+  </data>
 </root>

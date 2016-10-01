@@ -136,12 +136,27 @@ namespace SvduPro
         /// 1、不带任何参数，执行打开软件
         /// 2、-p file, 打开指定的工程文件
         /// 3、-c file, 编译指定的工程文件
+        /// 4、-n proName, 在当前目录创建工程，如果已经创建就打开
         /// </summary>
         /// <param name="args">输入参数</param>
         void commandLine(String[] args)
         {
             if (args.Length == 0)
                 return;
+
+            ///创建工程
+            if (args[0] == "-n")
+            {
+                if (args.Length < 2)
+                    return;
+
+                if (String.IsNullOrWhiteSpace(args[1]))
+                    return;
+
+                String proName = args[1];
+                openProject(".", proName);
+                return;
+            }
 
             ///打开软件的同时，打开工程
             if (args[0] == "-p")
@@ -275,15 +290,6 @@ namespace SvduPro
             this.toolStripContainer1.ContentPanel.Controls.Add(_dockPanel);
 
             _stationTreeView = new SVTreeView();
-            _projectWindow = new SVControlWindow(_stationTreeView);
-            _projectWindow.Text = _resources.GetString("工程窗口");         
-            _projectWindow.Show(_dockPanel, DockState.DockLeft);
-            _projectWindow.Activate();
-
-            _controlListView = new SVControl.SVListView();
-            _ctlListViewWindow = new SVControlWindow(_controlListView);
-            _ctlListViewWindow.Text = _resources.GetString("控件窗口");
-            _ctlListViewWindow.Show(_dockPanel, DockState.DockLeft);
 
             _propertyGrid = new PropertyGrid();
             _propertyGrid.Font = new Font(_propertyGrid.Font.Name, _propertyGrid.Font.Size + 2);
@@ -297,6 +303,18 @@ namespace SvduPro
             _objectWindow.Text = _resources.GetString("对象窗口");
             _objectWindow.Show(_dockPanel, DockState.DockRight);
             _propertyWindow.Activate();
+
+            _projectWindow = new SVControlWindow(_stationTreeView);
+            _projectWindow.Text = _resources.GetString("工程窗口");
+            _projectWindow.Show(_dockPanel, DockState.DockLeft);
+            _projectWindow.Activate();
+
+            _controlListView = new SVControl.SVListView();
+            _ctlListViewWindow = new SVControlWindow(_controlListView);
+            _ctlListViewWindow.Text = _resources.GetString("控件窗口");
+            _ctlListViewWindow.Show(_dockPanel, DockState.DockLeft);
+            //工程窗口优先显示
+            _projectWindow.Show();
 
             _outPutText = SVOutputTextBox.instance();
             _outPutWindow = new SVControlWindow(_outPutText);
@@ -312,8 +330,8 @@ namespace SvduPro
             _findWindow.Show(_dockPanel, DockState.DockBottom);
             _outPutWindow.Activate();
 
-            //工程窗口优先显示
-            _projectWindow.Show();
+            _dockPanel.UpdateDockWindowZOrder(DockStyle.Left, true);
+            _dockPanel.UpdateDockWindowZOrder(DockStyle.Right, true);
         }
 
         /// <summary>
@@ -324,7 +342,7 @@ namespace SvduPro
             _dockPanel = new DockPanel();
             _dockPanel.ActiveAutoHideContent = null;
             _dockPanel.Dock = DockStyle.Fill;
-            _dockPanel.DockBackColor = SystemColors.AppWorkspace;
+            _dockPanel.DockBackColor = SystemColors.ActiveBorder;
             _dockPanel.DockBottomPortion = 150.0;
             _dockPanel.DockLeftPortion = 300.0;
             _dockPanel.DockRightPortion = 300.0;
@@ -745,6 +763,31 @@ namespace SvduPro
                 _stationTreeView.renameTreeNode(pageTreeNode);
             });
 
+            ///加入分隔符
+            menu.Items.Add(new ToolStripSeparator());
+            ToolStripItem delItem = menu.Items.Add(_resources.GetString("删除分类"));
+            delItem.Click += new EventHandler((sender, e) =>
+            {
+                DialogResult result = MessageBox.Show("确定删除分类?", "提示", MessageBoxButtons.YesNo);
+                if (result == System.Windows.Forms.DialogResult.No)
+                    return;
+
+                ///遍历移除所有的页面中的控件元素
+                foreach (var item in pageTreeNode.Nodes)
+                {
+                    SVPageNode node = item as SVPageNode;
+                    if (node == null)
+                        continue;
+
+                    removePage(node);
+                }
+
+                ///移除树节点
+                _stationTreeView.Nodes.Remove(pageTreeNode);
+                ///移除配置信息
+                _svProject.removeClassName(pageTreeNode.Text);
+            });
+
             return pageTreeNode;
         }
 
@@ -1050,7 +1093,7 @@ namespace SvduPro
         private void 仿真ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVSimulationWindow win = new SVSimulationWindow();
-            String file = Path.Combine(SVProData.DownLoadFile, SVProData.ProName);
+            String file = Path.Combine(SVProData.DownLoadFile, @"svducfg.bin");
             win.load(file);
             win.Show();
         }
@@ -1391,6 +1434,10 @@ namespace SvduPro
 
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var xx = (_dockPanel.DockWindows)[0];
+            DockPane vvv =  xx.NestedPanes[0];
+            
+            return;
             SVSettingWindow setWin = new SVSettingWindow();
             setWin.ShowDialog();
         }
@@ -1416,7 +1463,10 @@ namespace SvduPro
         /// </summary>
         private void buildDownLoadFiles()
         {
-            String file = Path.Combine(SVProData.DownLoadFile, SVProData.ProName);
+            ///这里是固定下装文件的名称
+            String downLoadName = @"svducfg.bin";
+
+            String file = Path.Combine(SVProData.DownLoadFile, downLoadName);
 
             //启动页面
             SVPageWidget fristWidget = SVPageWidget.MainPageWidget;

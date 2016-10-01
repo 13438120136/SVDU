@@ -283,4 +283,7 @@
   <data name="页面检查" xml:space="preserve">
     <value>页面检查</value>
   </data>
+  <data name="删除分类" xml:space="preserve">
+    <value>删除分类</value>
+  </data>
 </root>
