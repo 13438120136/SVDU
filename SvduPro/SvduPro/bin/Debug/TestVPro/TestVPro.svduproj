@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Root>
-  <Classify Text="页面分类">
-    <Node Name="ABVS" File=".\TestVPro\ABVS.page" />
-    <Node Name="vbbbb" File=".\TestVPro\vbbbb.page" />
-    <Node Name="yyyyy" File=".\TestVPro\yyyyy.page" />
-  </Classify>
-</Root>
