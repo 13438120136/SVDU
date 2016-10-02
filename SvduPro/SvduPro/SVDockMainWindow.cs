@@ -10,6 +10,7 @@ using SVControl;
 using SVCore;
 using SVSimulation;
 using WeifenLuo.WinFormsUI.Docking;
+using System.Windows;
 
 namespace SvduPro
 {
@@ -126,7 +127,13 @@ namespace SvduPro
 
             ///参数
             commandLine(args);
-            //Environment.Exit(0);
+            //Environment.Exit(0);            
+            
+            ///获取屏幕分辨率
+            Rectangle ScreenArea = Screen.GetWorkingArea(this);
+            this.Location = ScreenArea.Location;
+            this.Width = ScreenArea.Width;
+            this.Height = ScreenArea.Height;
         }
 
         /// <summary>
