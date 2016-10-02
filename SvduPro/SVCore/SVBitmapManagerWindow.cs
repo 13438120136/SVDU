@@ -4,11 +4,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace SVCore
 {
     public partial class SVBitmapManagerWindow : Form
     {
+        ResourceManager res = new ResourceManager(typeof(Resource));
         SVPixmapElementManage _pixmapManage = new SVPixmapElementManage();
 
         SVBitmap _svBitMap = new SVBitmap();
@@ -139,13 +141,13 @@ namespace SVCore
         {
             ContextMenu menu = new ContextMenu();
 
-            MenuItem newItem = menu.MenuItems.Add("添加图元项");
+            MenuItem newItem = menu.MenuItems.Add(res.GetString("添加图元"));
             newItem.Click += new EventHandler(newItem_Click);
 
-            MenuItem delItem = menu.MenuItems.Add("删除图元");
+            MenuItem delItem = menu.MenuItems.Add(res.GetString("删除图元"));
             delItem.Click += new EventHandler(delItem_Click);
 
-            MenuItem renameItem = menu.MenuItems.Add("重命名");
+            MenuItem renameItem = menu.MenuItems.Add(res.GetString("重命名"));
             renameItem.Click += new EventHandler(renameItem_Click);
 
             listView.ContextMenu = menu;
@@ -258,13 +260,14 @@ namespace SVCore
         void initClassfyContextMenu()
         {
             ContextMenuStrip menu = new ContextMenuStrip();
-            var newClassItem = menu.Items.Add("新建分类");
+
+            var newClassItem = menu.Items.Add(res.GetString("新建分类"));
             newClassItem.Click += new EventHandler(newClassItem_Click);
 
-            var renameClassItem = menu.Items.Add("重命名");
+            var renameClassItem = menu.Items.Add(res.GetString("重命名"));
             renameClassItem.Click += new EventHandler(renameClassItem_Click);
 
-            var removeClassItem = menu.Items.Add("移除分类");
+            var removeClassItem = menu.Items.Add(res.GetString("移除分类"));
             removeClassItem.Click += new EventHandler(removeClassItem_Click);
 
             treeView.ContextMenuStrip = menu;

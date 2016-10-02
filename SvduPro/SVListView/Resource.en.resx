@@ -178,4 +178,19 @@
   <data name="水平线条" xml:space="preserve">
     <value>Horizontal line</value>
   </data>
+  <data name="变量" xml:space="preserve">
+    <value>Variable</value>
+  </data>
+  <data name="地址" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="提示" xml:space="preserve">
+    <value>notice</value>
+  </data>
+  <data name="请先选中分类节点" xml:space="preserve">
+    <value>Please select the category node</value>
+  </data>
+  <data name="输入名称" xml:space="preserve">
+    <value>Input Name</value>
+  </data>
 </root>

@@ -290,5 +290,68 @@ namespace SvduPro {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   查找类似 取消 的本地化字符串。
+        /// </summary>
+        internal static string 取消 {
+            get {
+                return ResourceManager.GetString("取消", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 帮助文档丢失，不能正确打开! 的本地化字符串。
+        /// </summary>
+        internal static string 帮助提示 {
+            get {
+                return ResourceManager.GetString("帮助提示", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 提示 的本地化字符串。
+        /// </summary>
+        internal static string 提示 {
+            get {
+                return ResourceManager.GetString("提示", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 模板保存成功 的本地化字符串。
+        /// </summary>
+        internal static string 模板保存成功 {
+            get {
+                return ResourceManager.GetString("模板保存成功", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定 的本地化字符串。
+        /// </summary>
+        internal static string 确定 {
+            get {
+                return ResourceManager.GetString("确定", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定删除分类？  的本地化字符串。
+        /// </summary>
+        internal static string 确定删除分类 {
+            get {
+                return ResourceManager.GetString("确定删除分类", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定删除页面 的本地化字符串。
+        /// </summary>
+        internal static string 确定删除页面 {
+            get {
+                return ResourceManager.GetString("确定删除页面", resourceCulture);
+            }
+        }
     }
 }

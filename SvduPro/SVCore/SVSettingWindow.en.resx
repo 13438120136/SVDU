@@ -122,7 +122,7 @@
     <value>281, 12</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Set Time intval for save project，单位：Minute</value>
+    <value>Set Time intval for save project，unit：Minute</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Setting</value>

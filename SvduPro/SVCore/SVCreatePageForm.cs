@@ -64,7 +64,9 @@ namespace SVCore
                 PageName = this.textBox.Text;
                 if (PageName == String.Empty)
                 {
-                    MessageBox.Show("页面名称为空");
+                    SVMessageBox msgBox = new SVMessageBox();
+                    msgBox.content(" ", Resource.页面名称为空);
+                    msgBox.Show();
                     return;
                 }
                 
@@ -75,7 +77,9 @@ namespace SVCore
 
                 if (IsTempate && TemplateName == null)
                 {
-                    MessageBox.Show("没有选择要新建的模板");
+                    SVMessageBox msgBox = new SVMessageBox();
+                    msgBox.content(" ", Resource.需要选择模板);
+                    msgBox.Show();
                     return;
                 }
 

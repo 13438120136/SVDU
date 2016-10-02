@@ -151,19 +151,27 @@ namespace SVControl
             TreeNode currNode = this.classTreeView.SelectedNode;
             if (currNode == null)
             {
-                MessageBox.Show("请先选中分类节点!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content(Resource.提示, Resource.请先选中分类节点);
+                msgBox.Show();
+
                 return;
             }
 
             if (currNode.Level != 1)
             {
-                MessageBox.Show("请先选中分类节点!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content(Resource.提示, Resource.请先选中分类节点);
+                msgBox.Show();
                 return;
             }
 
             if (this.textBoxName.Text == String.Empty)
             {
-                MessageBox.Show("输入名称!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content(Resource.提示, Resource.输入名称);
+                msgBox.Show();
+
                 return;
             }
 

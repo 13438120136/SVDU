@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Data;
+using System.Resources;
+using System.Windows.Forms;
 using SVCore;
 
 namespace SVControl
@@ -14,8 +15,10 @@ namespace SVControl
 
         public SVVarWindow()
         {
-            _dataTable.Columns.Add("变量", Type.GetType("System.String"));
-            _dataTable.Columns.Add("地址", Type.GetType("System.Int32"));
+            ResourceManager res = new ResourceManager(typeof(Resource));
+
+            _dataTable.Columns.Add(res.GetString("变量"), Type.GetType("System.String"));
+            _dataTable.Columns.Add(res.GetString("地址"), Type.GetType("System.Int32"));
 
             InitializeComponent();
             loadDataFromDB();

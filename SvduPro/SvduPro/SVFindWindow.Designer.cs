@@ -49,9 +49,9 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.wholeCheckBox);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -69,31 +69,32 @@
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.comboBox);
             this.groupBox2.Controls.Add(this.textBox);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
             // comboBox
             // 
+            resources.ApplyResources(this.comboBox, "comboBox");
             this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
             resources.GetString("comboBox.Items"),
             resources.GetString("comboBox.Items1")});
-            resources.ApplyResources(this.comboBox, "comboBox");
             this.comboBox.Name = "comboBox";
             // 
             // label1
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.label1, "label1");
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Name = "label1";
             // 
             // okBtn
             // 
             resources.ApplyResources(this.okBtn, "okBtn");
+            this.okBtn.ImageKey = global::SvduPro.Resource.确定;
             this.okBtn.Name = "okBtn";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
@@ -101,6 +102,7 @@
             // cancelBtn
             // 
             resources.ApplyResources(this.cancelBtn, "cancelBtn");
+            this.cancelBtn.ImageKey = global::SvduPro.Resource.取消;
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);

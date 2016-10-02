@@ -286,4 +286,22 @@
   <data name="删除分类" xml:space="preserve">
     <value>Delete Classfy</value>
   </data>
+  <data name="取消" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="帮助提示" xml:space="preserve">
+    <value>Help the document is lost, can not be opened!</value>
+  </data>
+  <data name="确定" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="确定删除分类" xml:space="preserve">
+    <value>Identify delete categories?</value>
+  </data>
+  <data name="确定删除页面" xml:space="preserve">
+    <value>Delete page</value>
+  </data>
+  <data name="模板保存成功" xml:space="preserve">
+    <value>Template saved successfully</value>
+  </data>
 </root>

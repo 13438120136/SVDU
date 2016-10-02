@@ -127,7 +127,6 @@ namespace SvduPro
             ///参数
             commandLine(args);
             //Environment.Exit(0);
-            //openProject(".", "TestVPro");
         }
 
         /// <summary>
@@ -768,7 +767,9 @@ namespace SvduPro
             ToolStripItem delItem = menu.Items.Add(_resources.GetString("删除分类"));
             delItem.Click += new EventHandler((sender, e) =>
             {
-                DialogResult result = MessageBox.Show("确定删除分类?", "提示", MessageBoxButtons.YesNo);
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content(Resource.提示, Resource.确定删除分类);
+                DialogResult result = msgBox.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.No)
                     return;
 
@@ -868,9 +869,10 @@ namespace SvduPro
             if (widget == null)
                 return;
 
-            String msg = String.Format("确定删除 {0} 页面？", widget.PageName);
-            var result = MessageBox.Show(msg, _resources.GetString("提示"), MessageBoxButtons.YesNo,
-                             MessageBoxIcon.Warning);
+            SVMessageBox msgBox = new SVMessageBox();
+            msgBox.content(Resource.提示, Resource.确定删除页面 + String.Format(" {0}?", widget.PageName));
+
+            var result = msgBox.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 if (File.Exists(widget.pageFileName))
@@ -1428,16 +1430,15 @@ namespace SvduPro
 
                 //记录日志
                 SVLog.WinLog.Info(String.Format("模板{0}保存成功", form.TemplateFile));
-                MessageBox.Show("模板保存成功");
+
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content(Resource.提示, Resource.模板保存成功);
+                msgBox.Show();
             }
         }
 
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var xx = (_dockPanel.DockWindows)[0];
-            DockPane vvv =  xx.NestedPanes[0];
-            
-            return;
             SVSettingWindow setWin = new SVSettingWindow();
             setWin.ShowDialog();
         }
@@ -1541,8 +1542,9 @@ namespace SvduPro
             currInstance.Language = "zh";
             currInstance.saveConfig();
 
-            DialogResult result = MessageBox.Show(_resources.GetString("重启提示"), _resources.GetString("提示"),
-                MessageBoxButtons.YesNo);
+            SVMessageBox msgBox = new SVMessageBox();
+            msgBox.content(_resources.GetString("提示"), _resources.GetString("重启提示"));
+            DialogResult result = msgBox.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Application.ExitThread();
@@ -1561,8 +1563,9 @@ namespace SvduPro
             currInstance.Language = "en";
             currInstance.saveConfig();
 
-            DialogResult result = MessageBox.Show(_resources.GetString("重启提示"), _resources.GetString("提示"),
-                MessageBoxButtons.YesNo);
+            SVMessageBox msgBox = new SVMessageBox();
+            msgBox.content(_resources.GetString("提示"), _resources.GetString("重启提示"));
+            DialogResult result = msgBox.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Application.ExitThread();
@@ -1591,7 +1594,9 @@ namespace SvduPro
             String helpFile = @"Help.chm";
             if (!File.Exists(helpFile))
             {
-                MessageBox.Show("帮助文档丢失，无法打开！");
+                SVMessageBox messageBox = new SVMessageBox();
+                messageBox.content(Resource.提示, Resource.帮助提示);
+                messageBox.Show();
                 return ;
             }
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SVControl {
+namespace SVCore {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SVControl {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SVControl.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SVCore.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,73 +60,21 @@ namespace SVControl {
             }
         }
         
-        internal static System.Drawing.Bitmap analog {
+        /// <summary>
+        ///   查找类似 删除图元 的本地化字符串。
+        /// </summary>
+        internal static string 删除图元 {
             get {
-                object obj = ResourceManager.GetObject("analog", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("删除图元", resourceCulture);
             }
         }
         
-        internal static System.Drawing.Bitmap binary {
+        /// <summary>
+        ///   查找类似 取消 的本地化字符串。
+        /// </summary>
+        internal static string 取消 {
             get {
-                object obj = ResourceManager.GetObject("binary", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap button {
-            get {
-                object obj = ResourceManager.GetObject("button", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap gif {
-            get {
-                object obj = ResourceManager.GetObject("gif", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap ico {
-            get {
-                object obj = ResourceManager.GetObject("ico", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap line {
-            get {
-                object obj = ResourceManager.GetObject("line", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap page {
-            get {
-                object obj = ResourceManager.GetObject("page", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Icon project {
-            get {
-                object obj = ResourceManager.GetObject("project", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Text {
-            get {
-                object obj = ResourceManager.GetObject("Text", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Trendchart {
-            get {
-                object obj = ResourceManager.GetObject("Trendchart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("取消", resourceCulture);
             }
         }
         
@@ -140,20 +88,83 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   查找类似 请先选中分类节点 的本地化字符串。
+        ///   查找类似 新建分类 的本地化字符串。
         /// </summary>
-        internal static string 请先选中分类节点 {
+        internal static string 新建分类 {
             get {
-                return ResourceManager.GetString("请先选中分类节点", resourceCulture);
+                return ResourceManager.GetString("新建分类", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 输入名称 的本地化字符串。
+        ///   查找类似 模板名称不能为空! 的本地化字符串。
         /// </summary>
-        internal static string 输入名称 {
+        internal static string 模板名称不能为空 {
             get {
-                return ResourceManager.GetString("输入名称", resourceCulture);
+                return ResourceManager.GetString("模板名称不能为空", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 模板已经存在 的本地化字符串。
+        /// </summary>
+        internal static string 模板已经存在 {
+            get {
+                return ResourceManager.GetString("模板已经存在", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 添加图元 的本地化字符串。
+        /// </summary>
+        internal static string 添加图元 {
+            get {
+                return ResourceManager.GetString("添加图元", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定 的本地化字符串。
+        /// </summary>
+        internal static string 确定 {
+            get {
+                return ResourceManager.GetString("确定", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 移除分类 的本地化字符串。
+        /// </summary>
+        internal static string 移除分类 {
+            get {
+                return ResourceManager.GetString("移除分类", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 重命名 的本地化字符串。
+        /// </summary>
+        internal static string 重命名 {
+            get {
+                return ResourceManager.GetString("重命名", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 需要选择模板 的本地化字符串。
+        /// </summary>
+        internal static string 需要选择模板 {
+            get {
+                return ResourceManager.GetString("需要选择模板", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 页面名称为空 的本地化字符串。
+        /// </summary>
+        internal static string 页面名称为空 {
+            get {
+                return ResourceManager.GetString("页面名称为空", resourceCulture);
             }
         }
     }

@@ -117,38 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
+  <data name="删除图元" xml:space="preserve">
+    <value>Remove elements</value>
   </data>
-  <data name="checkBox2.Text" xml:space="preserve">
-    <value>Case sensitive</value>
-  </data>
-  <data name="wholeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
-  </data>
-  <data name="wholeCheckBox.Text" xml:space="preserve">
-    <value>Match whole word</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Option</value>
-  </data>
-  <data name="comboBox.Items" xml:space="preserve">
-    <value>Control ID</value>
-  </data>
-  <data name="comboBox.Items1" xml:space="preserve">
-    <value>Variable</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Context</value>
-  </data>
-  <data name="okBtn.Text" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="cancelBtn.Text" xml:space="preserve">
+  <data name="取消" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Find Dialog</value>
+  <data name="提示" xml:space="preserve">
+    <value>Prompt</value>
+  </data>
+  <data name="新建分类" xml:space="preserve">
+    <value>New Category</value>
+  </data>
+  <data name="模板名称不能为空" xml:space="preserve">
+    <value>Template name cannot be empty!</value>
+  </data>
+  <data name="模板已经存在" xml:space="preserve">
+    <value>Template already exists</value>
+  </data>
+  <data name="添加图元" xml:space="preserve">
+    <value>Adding elements</value>
+  </data>
+  <data name="确定" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="移除分类" xml:space="preserve">
+    <value>Remove Categories</value>
+  </data>
+  <data name="重命名" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="需要选择模板" xml:space="preserve">
+    <value>Need to select templates</value>
+  </data>
+  <data name="页面名称为空" xml:space="preserve">
+    <value>Page name is empty</value>
   </data>
 </root>

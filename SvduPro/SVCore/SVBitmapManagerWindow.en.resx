@@ -117,14 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Classfy</value>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Element items</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>View</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Classify</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="showRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 16</value>
+  </data>
+  <data name="showRadio.Text" xml:space="preserve">
+    <value>Thumbnails</value>
   </data>
   <data name="listRadio.Text" xml:space="preserve">
     <value>List</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>View</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Property</value>

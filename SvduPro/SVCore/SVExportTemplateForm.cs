@@ -31,14 +31,20 @@ namespace SVCore
             {
                 if (String.IsNullOrEmpty(textBox.Text))
                 {
-                    MessageBox.Show("模板名称不能为空!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SVMessageBox msgBox = new SVMessageBox();
+                    msgBox.content(Resource.提示, Resource.模板名称不能为空);
+                    msgBox.Show();
+
                     return;
                 }
 
                 String file = Path.Combine(SVProData.TemplatePath, textBox.Text);
                 if (File.Exists(file))
                 {
-                    MessageBox.Show("模板已经存在!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SVMessageBox msgBox = new SVMessageBox();
+                    msgBox.content(Resource.提示, Resource.模板已经存在);
+                    msgBox.Show();
+
                     return;
                 }
 

@@ -117,38 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
+  <data name="删除图元" xml:space="preserve">
+    <value>删除图元</value>
   </data>
-  <data name="checkBox2.Text" xml:space="preserve">
-    <value>Case sensitive</value>
+  <data name="取消" xml:space="preserve">
+    <value>取消</value>
   </data>
-  <data name="wholeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
+  <data name="提示" xml:space="preserve">
+    <value>提示</value>
   </data>
-  <data name="wholeCheckBox.Text" xml:space="preserve">
-    <value>Match whole word</value>
+  <data name="新建分类" xml:space="preserve">
+    <value>新建分类</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Option</value>
+  <data name="模板名称不能为空" xml:space="preserve">
+    <value>模板名称不能为空!</value>
   </data>
-  <data name="comboBox.Items" xml:space="preserve">
-    <value>Control ID</value>
+  <data name="模板已经存在" xml:space="preserve">
+    <value>模板已经存在</value>
   </data>
-  <data name="comboBox.Items1" xml:space="preserve">
-    <value>Variable</value>
+  <data name="添加图元" xml:space="preserve">
+    <value>添加图元</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Context</value>
+  <data name="确定" xml:space="preserve">
+    <value>确定</value>
   </data>
-  <data name="okBtn.Text" xml:space="preserve">
-    <value>Ok</value>
+  <data name="移除分类" xml:space="preserve">
+    <value>移除分类</value>
   </data>
-  <data name="cancelBtn.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="重命名" xml:space="preserve">
+    <value>重命名</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Find Dialog</value>
+  <data name="需要选择模板" xml:space="preserve">
+    <value>需要选择模板</value>
+  </data>
+  <data name="页面名称为空" xml:space="preserve">
+    <value>页面名称为空</value>
   </data>
 </root>

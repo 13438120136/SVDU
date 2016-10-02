@@ -148,4 +148,13 @@
   <data name="project" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\project.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="提示" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="请先选中分类节点" xml:space="preserve">
+    <value>请先选中分类节点</value>
+  </data>
+  <data name="输入名称" xml:space="preserve">
+    <value>输入名称</value>
+  </data>
 </root>
