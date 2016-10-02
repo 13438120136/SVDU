@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace SVCore
 {
@@ -90,7 +91,8 @@ namespace SVCore
         /// </summary>
         public void loadConfig()
         {
-            FileStream fs = new FileStream("data.ini", FileMode.OpenOrCreate);
+            String file = Path.Combine(Application.StartupPath, "data.ini");
+            FileStream fs = new FileStream(file, FileMode.OpenOrCreate);
             BinaryReader br = new BinaryReader(fs);
 
             //读数据
@@ -120,7 +122,8 @@ namespace SVCore
         /// </summary>
         public void saveConfig()
         {
-            FileStream fs = new FileStream("data.ini", FileMode.OpenOrCreate);
+            String file = Path.Combine(Application.StartupPath, "data.ini");
+            FileStream fs = new FileStream(file, FileMode.OpenOrCreate);
             BinaryWriter br = new BinaryWriter(fs);
 
             MemoryStream stream = new MemoryStream();
