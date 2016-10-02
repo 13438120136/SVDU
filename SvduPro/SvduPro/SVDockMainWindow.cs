@@ -10,7 +10,6 @@ using SVControl;
 using SVCore;
 using SVSimulation;
 using WeifenLuo.WinFormsUI.Docking;
-using System.Windows;
 
 namespace SvduPro
 {
@@ -356,6 +355,7 @@ namespace SvduPro
             _dockPanel.DocumentStyle = DocumentStyle.DockingWindow;
             _dockPanel.Parent = this;
 
+            _dockPanel.ActiveDocumentChanged += new EventHandler(_dockPanel_ActiveDocumentChanged);
             //_dockPanel.DockAreas = (DockAreas.Document | DockAreas.Float | DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom);
             //this._dockPanel.Location = new Point(0, 49);
             //this._dockPanel.Name = "dockPanel";
@@ -363,6 +363,16 @@ namespace SvduPro
             //this._dockPanel.Size = new Size(579, 338);
             //this._dockPanel.TabIndex = 6;
             this.Controls.Add(_dockPanel);
+        }
+
+        /// <summary>
+        /// 只要进行切换就去掉选中状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void _dockPanel_ActiveDocumentChanged(object sender, EventArgs e)
+        {
+            SVSelectPanelObjs.clearSelectControls();
         }
 
 

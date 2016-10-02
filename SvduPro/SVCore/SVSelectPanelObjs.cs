@@ -21,6 +21,23 @@ namespace SVCore
         static public SelectControlEvents CopyEvents { get; set; }
 
         /// <summary>
+        /// 将所有选中的控件进行反选
+        /// </summary>
+        static public void clearSelectControls()
+        {
+            foreach (var item in set)
+            {
+                SVPanel panel = item as SVPanel;
+                if (panel == null)
+                    continue;
+
+                panel.Selected = false;
+            }
+
+            set.Clear();
+        }
+
+        /// <summary>
         /// 移动与当前控件都被选中的兄弟控件
         /// </summary>
         /// <param name="control">当前选中控件</param>
@@ -33,7 +50,12 @@ namespace SVCore
                 if (control.Equals(item))
                     continue;
 
+                SVPanel panel = item as SVPanel;
+                if (panel == null)
+                    continue;
+
                 item.Location = new Point(item.Location.X + x, item.Location.Y + y);
+                panel.setStartPos(item.Location);
             }
         }
 
