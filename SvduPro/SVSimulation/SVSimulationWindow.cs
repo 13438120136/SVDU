@@ -30,13 +30,6 @@ namespace SVSimulation
         /// <param name="file">工程生成的下装文件</param>
         public void load(String file)
         {
-            ///检查文件是否存在，确保仿真读取的文件正确
-            if (!File.Exists(file))
-            {
-                MessageBox.Show(String.Format("{0}文件不存在或者目录不正确!", file), "提示");
-                return;
-            }
-
             //从下装文件中读取实际数据
             SVBuildFile buildFile = new SVBuildFile(file);
             ///执行具体的读取过程

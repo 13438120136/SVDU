@@ -967,8 +967,9 @@ namespace SvduPro
                 ///遍历页面节点
                 foreach (var item in pageValue)
                 {
+                    String tmpPageFile = Path.Combine(Directory.GetCurrentDirectory(), item.Value);
                     ///检查页面文件是否存在，如果不存在就提示
-                    if (!File.Exists(item.Value))
+                    if (!File.Exists(tmpPageFile))
                     {
                         String str = String.Format("{0}", item.Value) + Resource.页面不存在;
                         SVLog.WinLog.Warning(str);
@@ -1123,8 +1124,15 @@ namespace SvduPro
 
         private void 仿真ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ///检查文件是否存在，确保仿真读取的文件正确
+            String file = Path.Combine(SVProData.DownLoadFile, @"svducfg.bin");            
+            if (!File.Exists(file))
+            {
+                MessageBox.Show(String.Format("{0}文件不存在或者目录不正确!", file), "提示");
+                return;
+            }
+
             SVSimulationWindow win = new SVSimulationWindow();
-            String file = Path.Combine(SVProData.DownLoadFile, @"svducfg.bin");
             win.load(file);
             win.Show();
         }
@@ -1378,12 +1386,13 @@ namespace SvduPro
                     return;
                 }
 
+                ///页面分类
+                _svProject.addPageNode(node.Text, form.PageName);
+
                 //如果为模板
                 if (form.IsTempate)
                 {
-                    String timeString = DateTime.Now.ToFileTime().ToString();
-
-                    String destFile = Path.Combine(SVProData.ProPath, form.PageName + timeString + ".page");
+                    String destFile = _svProject.name2Path(form.PageName);
                     String srcFile = Path.Combine(form.TemplatePath, form.TemplateName);
 
                     //从模板中将文件拷贝到当前目录
@@ -1399,9 +1408,6 @@ namespace SvduPro
                     widget = new SVPageWidget(form.PageName, pageFile);
                     widget.createID();
                 }
-
-                ///页面分类
-                _svProject.addPageNode(node.Text, form.PageName);
 
                 ///新建页面
                 SVPageNode pageNode = newPageFromWidget(widget);

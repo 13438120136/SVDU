@@ -106,6 +106,10 @@ namespace SVCore
             String vLogPath = Path.Combine(vPath, "Log");
             Directory.CreateDirectory(vLogPath);
 
+            ///创建下装目录
+            String vDownLoadPath = Path.Combine(vPath, "DownLoad");
+            Directory.CreateDirectory(vDownLoadPath);
+
             //写工程xml文件
             linqSaveFile(fileName);
 
