@@ -961,9 +961,21 @@ namespace SvduPro
             {
                 ///分类节点
                 TreeNode treeNode = createPageClass(classItem.Key);
+                ///拷贝一份页面值对象,目的是删除配置信息不发生异常
+                var pageValue = new Dictionary<String, String>(classItem.Value);
+
                 ///遍历页面节点
-                foreach (var item in classItem.Value)
+                foreach (var item in pageValue)
                 {
+                    ///检查页面文件是否存在，如果不存在就提示
+                    if (!File.Exists(item.Value))
+                    {
+                        String str = String.Format("{0}", item.Value) + Resource.页面不存在;
+                        SVLog.WinLog.Warning(str);
+                        classItem.Value.Remove(item.Key);
+                        continue;
+                    }
+
                     SVPageWidget widget = new SVPageWidget(item.Key, item.Value);
                     widget.ClassText = treeNode.Text;
                     widget.loadSelf();
@@ -1354,17 +1366,25 @@ namespace SvduPro
             {
                 SVPageWidget widget = null;
 
+                ///页面存在就退出
+                if (_svProject.isExist(form.PageName))
+                {
+                    msg = String.Format("需要创建的页面 {0} 已经存在!", form.PageName);
+                    SVLog.WinLog.Info(msg);
+
+                    SVMessageBox msgBox = new SVMessageBox();
+                    msgBox.content(" ", Resource.页面已经存在);
+                    msgBox.Show();
+                    return;
+                }
+
                 //如果为模板
                 if (form.IsTempate)
                 {
-                    String destFile = Path.Combine(SVProData.ProPath, form.PageName + ".page");
+                    String timeString = DateTime.Now.ToFileTime().ToString();
+
+                    String destFile = Path.Combine(SVProData.ProPath, form.PageName + timeString + ".page");
                     String srcFile = Path.Combine(form.TemplatePath, form.TemplateName);
-                    if (File.Exists(destFile))
-                    {
-                        msg = String.Format("创建的页面文件 {0} 已经存在!", destFile);
-                        SVLog.WinLog.Info(msg);
-                        return;
-                    }
 
                     //从模板中将文件拷贝到当前目录
                     File.Copy(srcFile, destFile, true);

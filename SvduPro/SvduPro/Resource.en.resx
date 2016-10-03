@@ -304,4 +304,10 @@
   <data name="模板保存成功" xml:space="preserve">
     <value>Template saved successfully</value>
   </data>
+  <data name="页面不存在" xml:space="preserve">
+    <value>Page is lost, open failed!</value>
+  </data>
+  <data name="页面已经存在" xml:space="preserve">
+    <value>Page already exists</value>
+  </data>
 </root>

@@ -353,5 +353,23 @@ namespace SvduPro {
                 return ResourceManager.GetString("确定删除页面", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 页面丢失，打开失败！ 的本地化字符串。
+        /// </summary>
+        internal static string 页面不存在 {
+            get {
+                return ResourceManager.GetString("页面不存在", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 页面已经存在 的本地化字符串。
+        /// </summary>
+        internal static string 页面已经存在 {
+            get {
+                return ResourceManager.GetString("页面已经存在", resourceCulture);
+            }
+        }
     }
 }

@@ -195,10 +195,16 @@ namespace SVCore
         /// <returns>页面相对路径</returns>
         public String name2Path(String name)
         {
+            ///如果存在就直接返回
+            foreach (var parent in _pageDic)
+                if (parent.Value.ContainsKey(name))
+                    return parent.Value[name];
+
             //得到页面保存文件的实际路径
             String tmpPath = Path.Combine(".", SVProData.ProName);
-            String file = Path.Combine(tmpPath, name + ".page");
-
+            ///获取当前时间，为了避免页面文件重复
+            String timeString = DateTime.Now.ToFileTime().ToString();
+            String file = Path.Combine(tmpPath, name + timeString + ".page");
             return file;
         }
 

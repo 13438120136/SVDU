@@ -238,4 +238,10 @@
   <data name="模板保存成功" xml:space="preserve">
     <value>模板保存成功</value>
   </data>
+  <data name="页面不存在" xml:space="preserve">
+    <value>页面丢失，打开失败！</value>
+  </data>
+  <data name="页面已经存在" xml:space="preserve">
+    <value>页面已经存在</value>
+  </data>
 </root>
