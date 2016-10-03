@@ -37,6 +37,14 @@ namespace SVControl
             ///让子窗口相对于父窗口居中显示
             int x = (this.Width - _control.Width) / 2;
             int y = (this.Height - _control.Height) / 2;
+
+            ///保证坐标不能出现负数
+            if (x < 0)
+                x = 0;
+
+            if (y < 0)
+                y = 0;
+
             _control.Location = new System.Drawing.Point(x, y);
         }
 

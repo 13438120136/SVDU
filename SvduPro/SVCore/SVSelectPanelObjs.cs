@@ -372,7 +372,7 @@ namespace SVCore
             ctlList.AddRange(set);
             ctlList.Sort((a, b) =>
             {
-                return a.Location.Y < b.Location.Y ? 0 : 1;
+                return a.Location.Y < b.Location.Y ? 1 : 0;
             });
 
             List<int> sortList = new List<int>();
@@ -415,7 +415,7 @@ namespace SVCore
             ctlList.AddRange(set);
             ctlList.Sort((a, b) =>
             {
-                return a.Location.X < b.Location.X ? 0 : 1;
+                return a.Location.X < b.Location.X ? 1 : 0;
             });
 
             List<int> sortList = new List<int>();
