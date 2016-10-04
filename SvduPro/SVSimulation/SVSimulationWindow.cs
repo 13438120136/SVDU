@@ -96,19 +96,20 @@ namespace SVSimulation
                 button.fromBin(bin.m_btn[i], picBuffer);
                 page.Controls.Add(button);
 
-                //ButtonBin bbb = bin.m_btn[i];
-                //button.Click += new EventHandler((sender, e) =>
-                //{
-                //    UInt16 id = (UInt16)(bbb.param.pageId);
-                //    if (pageDict.ContainsKey(id))
-                //    {
-                //        SVSPage vPage = pageDict[id];
-                //        this.Controls.Clear();
-                //        this.Controls.Add(vPage);
-                //    }
-                //});
+                ButtonBin bbb = bin.m_btn[i];
+                button.Click += new EventHandler((sender, e) =>
+                {
+                    UInt16 id = (UInt16)(bbb.param.pageId);
+                    if (pageDict.ContainsKey(id))
+                    {
+                        SVSPage vPage = pageDict[id];
+                        this.mainPanel.Controls.Clear();
+                        this.mainPanel.Controls.Add(vPage);
+                    }
+                });
             }
 
+            ///添加所有的模拟量控件
             for (int i = 0; i < bin.analog_num; i++)
             {
                 SVSAnalog analog = new SVSAnalog(_timer);
@@ -122,6 +123,7 @@ namespace SVSimulation
                 });
             }
 
+            ///添加所有开关量控件
             for (int i = 0; i < bin.binaryNum; i++)
             {
                 SVSBinary binary = new SVSBinary(_timer);

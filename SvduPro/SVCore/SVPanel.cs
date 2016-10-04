@@ -181,22 +181,34 @@ namespace SVCore
             {
                 case ContentAlignment.TopLeft:
                     {
-                        graphics.DrawString(this.Text, this.Font, fontBrush, new Point(2, 2));
+                        StringFormat strFormat = new StringFormat();
+                        strFormat.Alignment = StringAlignment.Far;
+                        strFormat.LineAlignment = StringAlignment.Near;
+                        graphics.DrawString(this.Text, this.Font, fontBrush, this.ClientRectangle, strFormat);
                         break;
                     }
                 case ContentAlignment.TopRight:
                     {
-                        graphics.DrawString(this.Text, this.Font, fontBrush, new Point(Width - (Int32)sizeF.Width - 2, 2));
+                        StringFormat strFormat = new StringFormat();
+                        strFormat.Alignment = StringAlignment.Near;
+                        strFormat.LineAlignment = StringAlignment.Near;
+                        graphics.DrawString(this.Text, this.Font, fontBrush, this.ClientRectangle, strFormat);
                         break;
                     }
                 case ContentAlignment.TopCenter:
                     {
-                        graphics.DrawString(this.Text, this.Font, fontBrush, new Point(Width / 2 - (Int32)sizeF.Width / 2, 2));
+                        StringFormat strFormat = new StringFormat();
+                        strFormat.Alignment = StringAlignment.Center;
+                        strFormat.LineAlignment = StringAlignment.Near;
+                        graphics.DrawString(this.Text, this.Font, fontBrush, this.ClientRectangle, strFormat);
                         break;
                     }
                 case ContentAlignment.MiddleCenter:
                     {
-                        graphics.DrawString(this.Text, this.Font, fontBrush, new Point(Width / 2 - (Int32)sizeF.Width / 2, Height / 2 - (Int32)sizeF.Height / 2));
+                        StringFormat strFormat = new StringFormat();
+                        strFormat.Alignment = StringAlignment.Center;
+                        strFormat.LineAlignment = StringAlignment.Center;
+                        graphics.DrawString(this.Text, this.Font, fontBrush, this.ClientRectangle, strFormat);
                         break;
                     }
                 default:
