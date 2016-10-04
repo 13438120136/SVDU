@@ -40,14 +40,14 @@
             this.label.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label.Location = new System.Drawing.Point(0, 0);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(400, 69);
+            this.label.Size = new System.Drawing.Size(362, 69);
             this.label.TabIndex = 0;
             this.label.Text = "content";
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // yesBtn
             // 
-            this.yesBtn.Location = new System.Drawing.Point(214, 86);
+            this.yesBtn.Location = new System.Drawing.Point(178, 86);
             this.yesBtn.Name = "yesBtn";
             this.yesBtn.Size = new System.Drawing.Size(75, 23);
             this.yesBtn.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // noBtn
             // 
-            this.noBtn.Location = new System.Drawing.Point(296, 86);
+            this.noBtn.Location = new System.Drawing.Point(268, 86);
             this.noBtn.Name = "noBtn";
             this.noBtn.Size = new System.Drawing.Size(75, 23);
             this.noBtn.TabIndex = 2;
@@ -69,12 +69,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 125);
+            this.ClientSize = new System.Drawing.Size(362, 125);
             this.Controls.Add(this.noBtn);
             this.Controls.Add(this.yesBtn);
             this.Controls.Add(this.label);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SVMessageBox";

@@ -316,4 +316,10 @@
   <data name="添加模板" xml:space="preserve">
     <value>Add Template</value>
   </data>
+  <data name="请选择页面" xml:space="preserve">
+    <value>Please select a page</value>
+  </data>
+  <data name="模板已经存在" xml:space="preserve">
+    <value>Template already exists</value>
+  </data>
 </root>

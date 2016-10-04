@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using SVCore;
+using SVControl;
 
 namespace SvduPro
 {
@@ -42,6 +43,7 @@ namespace SvduPro
             ///将文件句柄释放，不然会被占用。无法改名。
             this.pictureBox.Image.Dispose();
             this.pictureBox.Image = null;
+            GC.Collect();
 
             ListViewItem item = listView.SelectedItems[0];
             String picFile = Path.Combine(SVProData.TemplatePath, item.Text + ".jpg");
@@ -81,6 +83,7 @@ namespace SvduPro
             ContextMenu menu = new ContextMenu();
 
             var addItem = menu.MenuItems.Add(Resource.添加模板);
+            addItem.Click += new EventHandler(addItem_Click);
 
             if (listView.SelectedItems.Count > 0)
             {
@@ -93,6 +96,27 @@ namespace SvduPro
             }
 
             menu.Show(listView, new Point(e.X, e.Y));
+        }
+
+        /// <summary>
+        /// 添加模板
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void addItem_Click(object sender, EventArgs e)
+        {
+            SVDockMainWindow app = SVApplication.Instance as SVDockMainWindow;
+            SVTreeView treeView = app.TreeProject as SVTreeView;
+
+            SVAddTemplateWindow win = new SVAddTemplateWindow(treeView);
+            if (win.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            {
+                var item = this.listView.Items.Add(treeView.SelectedNode.Text);
+                item.ImageIndex = 0;
+            }
+
+            ///将树形窗口恢复
+            app.showProjectWindow();
         }
 
         /// <summary>
@@ -117,6 +141,7 @@ namespace SvduPro
             ///将文件句柄释放，不然会被占用。无法删除文件。
             this.pictureBox.Image.Dispose();
             this.pictureBox.Image = null;
+            GC.Collect();
 
             ///获取文件路径
             ListViewItem item = listView.SelectedItems[0];

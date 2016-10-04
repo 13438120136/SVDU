@@ -63,6 +63,12 @@
     <Compile Include="SVAboutWindow.Designer.cs">
       <DependentUpon>SVAboutWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="SVAddTemplateWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVAddTemplateWindow.Designer.cs">
+      <DependentUpon>SVAddTemplateWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="SVCheckBeforeBuild.cs" />
     <Compile Include="SVDockMainWindow.cs">
       <SubType>Form</SubType>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SVAboutWindow.resx">
       <DependentUpon>SVAboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVAddTemplateWindow.resx">
+      <DependentUpon>SVAddTemplateWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVDockMainWindow.en.resx">
       <DependentUpon>SVDockMainWindow.cs</DependentUpon>

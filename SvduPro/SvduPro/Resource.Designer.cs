@@ -337,6 +337,15 @@ namespace SvduPro {
         }
         
         /// <summary>
+        ///   查找类似 模板已经存在 的本地化字符串。
+        /// </summary>
+        internal static string 模板已经存在 {
+            get {
+                return ResourceManager.GetString("模板已经存在", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 添加模板 的本地化字符串。
         /// </summary>
         internal static string 添加模板 {
@@ -369,6 +378,15 @@ namespace SvduPro {
         internal static string 确定删除页面 {
             get {
                 return ResourceManager.GetString("确定删除页面", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请选择页面 的本地化字符串。
+        /// </summary>
+        internal static string 请选择页面 {
+            get {
+                return ResourceManager.GetString("请选择页面", resourceCulture);
             }
         }
         

@@ -309,10 +309,7 @@ namespace SvduPro
             _objectWindow.Show(_dockPanel, DockState.DockRight);
             _propertyWindow.Activate();
 
-            _projectWindow = new SVControlWindow(_stationTreeView);
-            _projectWindow.Text = _resources.GetString("工程窗口");
-            _projectWindow.Show(_dockPanel, DockState.DockLeft);
-            _projectWindow.Activate();
+            showProjectWindow();
 
             _controlListView = new SVControl.SVListView();
             _ctlListViewWindow = new SVControlWindow(_controlListView);
@@ -337,6 +334,25 @@ namespace SvduPro
 
             _dockPanel.UpdateDockWindowZOrder(DockStyle.Left, true);
             _dockPanel.UpdateDockWindowZOrder(DockStyle.Right, true);
+        }
+
+        /// <summary>
+        /// 显示工程窗口
+        /// </summary>
+        public void showProjectWindow()
+        {
+            if (_projectWindow == null)
+            {
+                _projectWindow = new SVControlWindow(_stationTreeView);
+                _projectWindow.Text = _resources.GetString("工程窗口");
+                _projectWindow.Show(_dockPanel, DockState.DockLeft);
+                _projectWindow.Activate();
+            }
+            else
+            {
+                _stationTreeView.ExpandAll();
+                _projectWindow.setControl(_stationTreeView);
+            }
         }
 
         /// <summary>

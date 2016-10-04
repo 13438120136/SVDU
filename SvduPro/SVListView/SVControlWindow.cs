@@ -14,11 +14,28 @@ namespace SVControl
     {
         Control _control = null;
 
+        /// <summary>
+        /// 根据控件初始化窗口
+        /// </summary>
+        /// <param name="control"></param>
         public SVControlWindow(Control control)
         {
             //DockAreas = (DockAreas.Document | DockAreas.Float | DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom);
             //ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
             //HideOnClose = false;
+            control.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Controls.Add(control);
+
+            this._control = control;
+            this.AutoScroll = true;
+        }
+
+        /// <summary>
+        /// 设置当前控件
+        /// </summary>
+        /// <param name="control"></param>
+        public void setControl(Control control)
+        {
             control.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Controls.Add(control);
 
