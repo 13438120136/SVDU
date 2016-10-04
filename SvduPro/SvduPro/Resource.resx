@@ -244,4 +244,13 @@
   <data name="页面已经存在" xml:space="preserve">
     <value>页面已经存在</value>
   </data>
+  <data name="删除模板" xml:space="preserve">
+    <value>删除模板</value>
+  </data>
+  <data name="添加模板" xml:space="preserve">
+    <value>添加模板</value>
+  </data>
+  <data name="重命名" xml:space="preserve">
+    <value>重命名</value>
+  </data>
 </root>

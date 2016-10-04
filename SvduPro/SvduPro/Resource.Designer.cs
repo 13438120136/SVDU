@@ -292,6 +292,15 @@ namespace SvduPro {
         }
         
         /// <summary>
+        ///   查找类似 删除模板 的本地化字符串。
+        /// </summary>
+        internal static string 删除模板 {
+            get {
+                return ResourceManager.GetString("删除模板", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
         internal static string 取消 {
@@ -328,6 +337,15 @@ namespace SvduPro {
         }
         
         /// <summary>
+        ///   查找类似 添加模板 的本地化字符串。
+        /// </summary>
+        internal static string 添加模板 {
+            get {
+                return ResourceManager.GetString("添加模板", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 确定 的本地化字符串。
         /// </summary>
         internal static string 确定 {
@@ -351,6 +369,15 @@ namespace SvduPro {
         internal static string 确定删除页面 {
             get {
                 return ResourceManager.GetString("确定删除页面", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 重命名 的本地化字符串。
+        /// </summary>
+        internal static string 重命名 {
+            get {
+                return ResourceManager.GetString("重命名", resourceCulture);
             }
         }
         

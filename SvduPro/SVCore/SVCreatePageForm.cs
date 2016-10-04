@@ -32,7 +32,7 @@ namespace SVCore
             this.Shown += new EventHandler((sender, e) =>
             {
                 ImageList imgList = new ImageList();
-                //imgList.Images.Add(Resource.home);
+                imgList.Images.Add(Resource.page);
                 listView.SmallImageList = imgList;    
 
                 DirectoryInfo TheFolder = new DirectoryInfo(TemplatePath);

@@ -60,6 +60,13 @@ namespace SVCore {
             }
         }
         
+        internal static System.Drawing.Bitmap page {
+            get {
+                object obj = ResourceManager.GetObject("page", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   查找类似 删除图元 的本地化字符串。
         /// </summary>

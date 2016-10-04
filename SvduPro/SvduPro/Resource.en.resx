@@ -310,4 +310,10 @@
   <data name="页面已经存在" xml:space="preserve">
     <value>Page already exists</value>
   </data>
+  <data name="删除模板" xml:space="preserve">
+    <value>Del Template</value>
+  </data>
+  <data name="添加模板" xml:space="preserve">
+    <value>Add Template</value>
+  </data>
 </root>
