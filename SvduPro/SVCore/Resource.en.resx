@@ -120,6 +120,9 @@
   <data name="删除图元" xml:space="preserve">
     <value>Remove elements</value>
   </data>
+  <data name="删除图元分类" xml:space="preserve">
+    <value>Classification list is empty, can be executed to delete</value>
+  </data>
   <data name="取消" xml:space="preserve">
     <value>Cancel</value>
   </data>

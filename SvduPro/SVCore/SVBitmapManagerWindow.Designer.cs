@@ -59,7 +59,6 @@
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView.LargeImageList = this.imageList;
-            this.listView.MultiSelect = false;
             this.listView.Name = "listView";
             this.listView.SmallImageList = this.imageList;
             this.listView.UseCompatibleStateImageBehavior = false;

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Windows.Forms;
 using System.Resources;
+using System.Windows.Forms;
 
 namespace SVCore
 {
     public partial class SVBitmapManagerWindow : Form
     {
         ResourceManager res = new ResourceManager(typeof(Resource));
+        //图片资源管理类
         SVPixmapElementManage _pixmapManage = new SVPixmapElementManage();
 
         SVBitmap _svBitMap = new SVBitmap();
@@ -102,6 +103,9 @@ namespace SVCore
         /// </summary>
         private void selectNodeShowInfo()
         {
+            if (listView.SelectedItems.Count == 0)
+                return;
+
             ListViewItem item = listView.SelectedItems[0];
             String timeFile = _pixmapManage.getFilePathFromName(item.Text);
             String file = Path.Combine(SVProData.IconPath, timeFile);
@@ -172,14 +176,28 @@ namespace SVCore
         {
             foreach (ListViewItem item in listView.SelectedItems)
             {
+                ///删除对应的文件
+                String timeFile = _pixmapManage.getFilePathFromName(item.Text);
+                String file = Path.Combine(SVProData.IconPath, timeFile);
+                File.Delete(file);
+
+                ///删除列表
                 listView.Items.Remove(item);
+                ///删除管理数据
                 _pixmapManage.removeItem(treeView.SelectedNode.Text, item.Text);
+                ///保存文件数据
                 saveIconInfo();
             }
         }
 
+        /// <summary>
+        /// 添加图元项,支持批量导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void newItem_Click(object sender, EventArgs e)
         {
+            ///如果没有选中分类几点，不做任何操作
             if (treeView.SelectedNode == null)
                 return;
 
@@ -192,8 +210,12 @@ namespace SVCore
             openFileDialog.Filter = "(JPG)|*.jpg|(BMP)|*.bmp|(PNG)|*.png";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                Int32 index = 1;
                 foreach (var itemName in openFileDialog.FileNames)
-                    convertBitmap(itemName, timeString);
+                {
+                    convertBitmap(itemName, timeString + index.ToString());
+                    index++;
+                }
             }
         }
 
@@ -203,7 +225,14 @@ namespace SVCore
             Bitmap bitmap = new Bitmap(fileName);
             String outName = Path.GetFileNameWithoutExtension(fileName);
             Bitmap bitmapResult = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), PixelFormat.Format8bppIndexed);
-            String outFileName = Path.Combine(SVProData.IconPath, outName);
+            String outFileName = Path.Combine(SVProData.IconPath, outFile);
+
+            ///如果已经存在，不执行该文件的导入
+            if (_pixmapManage.isItemExist(outName))
+            {
+                SVLog.WinLog.Warning(String.Format("图元名称{0} 已经存在, 导入失败!", outName));
+                return;
+            }
 
             MemoryStream outStream = new MemoryStream();
             bitmapResult.Save(outStream, ImageFormat.Bmp);
@@ -234,7 +263,7 @@ namespace SVCore
             ListViewItem viewItem = listView.Items.Add(outName);
             viewItem.ImageKey = outName;
 
-            _pixmapManage.insertItemByClass(treeView.SelectedNode.Text, outName, outName);
+            _pixmapManage.insertItemByClass(treeView.SelectedNode.Text, outName, outFile);
             saveIconInfo();
         }
 
@@ -273,17 +302,37 @@ namespace SVCore
             treeView.ContextMenuStrip = menu;
         }
 
+        /// <summary>
+        /// 执行具体的移除分类操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void removeClassItem_Click(object sender, EventArgs e)
         {
-            treeView.Nodes.Remove(treeView.SelectedNode);
+            ///如果当前没有选中分类节点，不做任何操作
+            if (treeView.SelectedNode == null)
+                return;
+
+            ///如果当前分类不为空，不做任何操作
+            if (!_pixmapManage.isEmptyClassfy(treeView.SelectedNode.Text))
+            {
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content(Resource.提示, Resource.删除图元分类);
+                msgBox.ShowDialog();
+                return;
+            }
+
             _pixmapManage.removeClass(treeView.SelectedNode.Text);
+            treeView.Nodes.Remove(treeView.SelectedNode);
             saveIconInfo();
         }
 
         void renameClassItem_Click(object sender, EventArgs e)
         {
-            treeView.LabelEdit = true;
+            if (treeView.SelectedNode == null)
+                return;
 
+            treeView.LabelEdit = true;
             var node = treeView.SelectedNode;
             node.BeginEdit();
         }

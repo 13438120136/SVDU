@@ -70,6 +70,15 @@ namespace SVCore {
         }
         
         /// <summary>
+        ///   查找类似 分类列表为空，才能执行删除 的本地化字符串。
+        /// </summary>
+        internal static string 删除图元分类 {
+            get {
+                return ResourceManager.GetString("删除图元分类", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
         internal static string 取消 {

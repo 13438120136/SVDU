@@ -24,6 +24,23 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 判断当前分类节点包含的列表是否为空,
+        /// 为空返回True,否则返回False
+        /// </summary>
+        /// <param name="name">当前分类名称</param>
+        /// <returns></returns>
+        public Boolean isEmptyClassfy(String name)
+        {
+            if (_eleDict.ContainsKey(name))
+            {
+                var list = _eleDict[name];
+                return (list.Count == 0);
+            }
+            else
+                return true;
+        }
+
+        /// <summary>
         /// 获取当前分类名称极其对应的所有列表元素
         /// </summary>
         /// <returns></returns>
