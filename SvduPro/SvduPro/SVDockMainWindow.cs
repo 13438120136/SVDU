@@ -1172,10 +1172,30 @@ namespace SvduPro
             closeProject();
         }
 
+        /// <summary>
+        /// 新建页面执行事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newPageMenuItem_Click(object sender, EventArgs e)
         {
+            ///如果没有选中树节点，就不进行任何操作
+            TreeNode node = _stationTreeView.SelectedNode;
+            if (node == null)
+                return;
+
+            ///如果不是分类节点，就返回
+            if (node.Level != 1)
+                return;
+
+            createPage(node);
         }
 
+        /// <summary>
+        /// 导入页面执行事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void importMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode node = _stationTreeView.SelectedNode;
