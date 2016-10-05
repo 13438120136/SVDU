@@ -337,8 +337,7 @@ namespace SVCore
         void SVBasePanel_MouseDown(object sender, MouseEventArgs e)
         {
             ///如果选中多个控件或者按下Ctrl按键，就直接选中
-            if ((SVSelectPanelObjs.selectCount() >= 2)
-                || (SVSelectPanelObjs._VK_Ctrl == true))
+            if (SVSelectPanelObjs._VK_Ctrl == true)
             {
                 Selected = true;
             }
