@@ -106,9 +106,9 @@ namespace SVSimulation
             }
 
             Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>();
+            FontConfig.Add(8, new Font("宋体", 8));
+            FontConfig.Add(12, new Font("宋体", 12));
             FontConfig.Add(16, new Font("宋体", 16));
-            FontConfig.Add(24, new Font("宋体", 24));
-            FontConfig.Add(32, new Font("宋体", 32));
             this.Font = FontConfig[bin.font];
         }
 

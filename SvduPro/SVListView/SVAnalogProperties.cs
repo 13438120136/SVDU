@@ -43,7 +43,7 @@ namespace SVControl
 
         public SVAnalogProperties()
         {
-            _font = new Font("宋体", 16);
+            _font = new Font("宋体", 8);
             _rect = new Rectangle(0, 0, 120, 40);
             _normalColor = Color.DodgerBlue;
             _overMaxClr = Color.Green;
@@ -60,9 +60,9 @@ namespace SVControl
             _controlType = "模拟量";
 
             //字体的映射关系
+            _fontConfig.Add(new Font("宋体", 8), 8);
+            _fontConfig.Add(new Font("宋体", 12), 12);
             _fontConfig.Add(new Font("宋体", 16), 16);
-            _fontConfig.Add(new Font("宋体", 24), 24);
-            _fontConfig.Add(new Font("宋体", 32), 32);
 
             _isLock = false;
         }

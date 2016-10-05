@@ -63,8 +63,10 @@ namespace SVSimulation
             SVSPage page = new SVSPage();
             page.fromBin(bin);
 
+            ///标题栏高度
+            Int32 titleHeight = this.Height - this.ClientRectangle.Height;
             ///设置窗口起始位置和宽高尺寸
-            this.Size = new Size(page.Attrib.Width + 200, page.Attrib.Height);
+            this.Size = new Size(page.Attrib.Width + 200, page.Attrib.Height + titleHeight);
             page.Size = this.Size;
             ///设置控件显示尺寸
             mainPanel.Location = new Point(0, 0);

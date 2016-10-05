@@ -15,7 +15,9 @@ namespace SVControl
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(new string[] { "宋体:16", "宋体:24", "宋体:32" });
+            return new StandardValuesCollection(new string[] { 
+                "宋体:8", "宋体:12", "宋体:16"
+            });
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)

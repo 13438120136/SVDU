@@ -52,9 +52,9 @@ namespace SVControl
             _isLock = false;
 
             //字体的映射关系
+            _fontConfig.Add(new Font("宋体", 8), 8);
+            _fontConfig.Add(new Font("宋体", 12), 12);
             _fontConfig.Add(new Font("宋体", 16), 16);
-            _fontConfig.Add(new Font("宋体", 24), 24);
-            _fontConfig.Add(new Font("宋体", 32), 32);
             //显示格式的映射关系
             _showConfig.Add("打开 or 关闭", 0);
             _showConfig.Add("运行 or 停止", 1);

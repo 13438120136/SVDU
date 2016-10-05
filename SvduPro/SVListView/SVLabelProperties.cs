@@ -30,7 +30,7 @@ namespace SVControl
 
         public SVLabelProperties()
         {
-            _font = new Font("宋体", 16);
+            _font = new Font("宋体", 8);
             _rect = new Rectangle(0, 0, 120, 80);
             _text = "Text";
             _bgcolor = Color.White;
@@ -41,9 +41,9 @@ namespace SVControl
             _isLock = false;
 
             //字体的映射关系
+            _fontConfig.Add(new Font("宋体", 8), 8);
+            _fontConfig.Add(new Font("宋体", 12), 12);
             _fontConfig.Add(new Font("宋体", 16), 16);
-            _fontConfig.Add(new Font("宋体", 24), 24);
-            _fontConfig.Add(new Font("宋体", 32), 32);
             //对齐方式的映射关系
             _alignConfig.Add("左对齐", 0);
             _alignConfig.Add("右对齐", 1);

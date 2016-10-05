@@ -5,17 +5,17 @@ namespace SVCore
 {
     static public class SVLimit
     {
-        public const Int32 MAX_PAGE_NUMBER = 100;
+        public const Int32 MAX_PAGE_NUMBER = 500;
         public const Int32 PAGE_TITILE_MAXLEN = 128 * 2;
-        public const Int32 PAGE_BTN_MAXNUM = 20;
-        public const Int32 PAGE_AREA_MAXNUM = 16;
-        public const Int32 PAGE_ICON_MAXNUM = 8;
-        public const Int32 PAGE_LINE_MAXNUM = 16;
-        public const Int32 PAGE_GIF_MAXNUM = 4;
-        public const Int32 PAGE_BOOL_MAXNUM = 16;
-        public const Int32 PAGE_ANA_MAXNUM = 16;
-        public const Int32 PAGE_TCHART_MAXNUM = 4;
-        public const Int32 PAGE_TICKGIF_MAXNUM = 1;
+        public const Int32 PAGE_BTN_MAXNUM = 200;
+        public const Int32 PAGE_AREA_MAXNUM = 160;
+        public const Int32 PAGE_ICON_MAXNUM = 80;
+        public const Int32 PAGE_LINE_MAXNUM = 160;
+        public const Int32 PAGE_GIF_MAXNUM = 40;
+        public const Int32 PAGE_BOOL_MAXNUM = 160;
+        public const Int32 PAGE_ANA_MAXNUM = 160;
+        public const Int32 PAGE_TCHART_MAXNUM = 40;
+        public const Int32 PAGE_TICKGIF_MAXNUM = 10;
 
         public const Int32 TEXT_MAX_LEN = 64 * 2;
         public const Int32 AREA_MAX_LEN = 64 * 2;

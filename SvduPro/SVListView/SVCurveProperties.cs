@@ -63,7 +63,7 @@ namespace SVControl
 
         public SVCurveProperties()
         {
-            _font = new Font("宋体", 16);
+            _font = new Font("宋体", 8);
             _rect = new Rectangle(0, 0, 150, 150);
             _bgcolor = Color.DimGray;
             _fgcolor = Color.White;
@@ -74,9 +74,9 @@ namespace SVControl
             _isLock = false;
 
             //字体的映射关系
+            _fontConfig.Add(new Font("宋体", 8), 8);
+            _fontConfig.Add(new Font("宋体", 12), 12);
             _fontConfig.Add(new Font("宋体", 16), 16);
-            _fontConfig.Add(new Font("宋体", 24), 24);
-            _fontConfig.Add(new Font("宋体", 32), 32);
         }
 
         [CategoryAttribute("属性")]

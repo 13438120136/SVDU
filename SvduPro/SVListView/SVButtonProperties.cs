@@ -74,7 +74,7 @@ namespace SVControl
 
         public SVButtonProperties()
         {
-            _font = new Font("宋体", 16);
+            _font = new Font("宋体", 8);
             _rect = new Rectangle(0, 0, 180, 100);
             _text = "Button";
             _bgcolor = Color.FromArgb(236, 236, 236);
@@ -84,9 +84,9 @@ namespace SVControl
             _controlType = "按钮";
 
             //字体的映射关系
+            _fontConfig.Add(new Font("宋体", 8), 8);
+            _fontConfig.Add(new Font("宋体", 12), 12);
             _fontConfig.Add(new Font("宋体", 16), 16);
-            _fontConfig.Add(new Font("宋体", 24), 24);
-            _fontConfig.Add(new Font("宋体", 32), 32);
             //
             _btnConfig.Add("页面跳转", 4);
             _btnConfig.Add("开", 5);
