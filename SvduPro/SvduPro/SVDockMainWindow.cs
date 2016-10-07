@@ -269,13 +269,12 @@ namespace SvduPro
         /// <param name="backPageWidget">页面窗口对象</param>
         void addPageToWorkSpace(SVPageWidget widget)
         {
-            foreach (SVControlWindow item in _dockPanel.Documents)
+            SVControlWindow win = widget.Parent as SVControlWindow;
+            if (win != null)
             {
-                if (item.Controls.Contains(widget))
-                {
-                    item.Activate();
-                    return;
-                }
+                ///如果已经打开就执行激活
+                win.Activate();
+                return;
             }
 
             widget.Parent = this;
@@ -388,6 +387,10 @@ namespace SvduPro
         /// <param name="e"></param>
         void _dockPanel_ActiveDocumentChanged(object sender, EventArgs e)
         {
+            SVControlWindow win = currentControlWindow();
+            if (win == null)
+                return;
+
             SVSelectPanelObjs.clearSelectControls();
         }
 
@@ -441,23 +444,13 @@ namespace SvduPro
         /// 获取当前激活的页面窗口对象
         /// </summary>
         /// <returns>获取当前激活的页面窗口对象</returns>
-        SVPageWidget currentPageWidget()
+        SVControlWindow currentControlWindow()
         {
-            SVControlWindow controlWindow = _dockPanel.ActiveDocument as SVControlWindow;
+            SVControlWindow controlWindow = _dockPanel.ActiveContent as SVControlWindow;
             if (controlWindow == null)
                 return null;
 
-            SVPageWidget widget = null;
-            foreach (Control child in controlWindow.Controls)
-            {
-                widget = child as SVPageWidget;
-                if (widget == null)
-                    return null;
-
-                break;
-            }
-
-            return widget;
+            return controlWindow;
         }
 
         /// <summary>
@@ -485,7 +478,11 @@ namespace SvduPro
             {
                 sortControlList(c);
 
-                SVPageWidget widget = currentPageWidget();
+                var window = currentControlWindow();
+                if (window == null)
+                    return;
+
+                SVPageWidget widget = window.CoreControl as SVPageWidget;
                 if (widget == null)
                     return;
 
@@ -543,7 +540,11 @@ namespace SvduPro
             if (vList.Count == 0)
                 return;
 
-            SVPageWidget widget = currentPageWidget();
+            var window = currentControlWindow();
+            if (window == null)
+                return;
+
+            SVPageWidget widget = window.CoreControl as SVPageWidget;
             if (widget == null)
                 return;
 
@@ -955,13 +956,9 @@ namespace SvduPro
             this._objTreeView.clearAllNodes();
 
             //关闭工作区
-            SVPageWidget page = currentPageWidget();
-            if (page != null)
-            {
-                SVControlWindow win = page.Parent as SVControlWindow;
-                if (win != null)
-                    win.Close();
-            }
+            SVControlWindow win = currentControlWindow();
+            if (win != null)
+                win.Close();
         }
 
         /// <summary>
@@ -1300,29 +1297,38 @@ namespace SvduPro
         private void 撤销ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //执行撤销
-            SVPageWidget widget = currentPageWidget();
-            if (widget != null)
-                widget.RedoUndo.Undo();            
+            SVControlWindow win = currentControlWindow();
+            if (win != null)
+                win.undoMethod();       
         }
 
         private void 恢复ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //执行恢复
-            SVPageWidget widget = currentPageWidget();
-            if (widget != null)
-                widget.RedoUndo.Redo();      
+            SVControlWindow win = currentControlWindow();
+            if (win != null)
+                win.redoMethod();
         }
 
+        /// <summary>
+        /// 执行当前页面的全选
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void selectAllMenuItem_Click(object sender, EventArgs e)
         {
-            SVPageWidget widget = currentPageWidget();
-            if (widget != null)
-                widget.selectAll(true);
+            SVControlWindow win = currentControlWindow();
+            if (win != null)
+                win.selectAllMethod();
         }
 
         private void 打印ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SVPageWidget pageWidget = currentPageWidget();
+            var window = currentControlWindow();
+            if (window == null)
+                return;
+
+            SVPageWidget pageWidget = window.CoreControl as SVPageWidget;
             if (pageWidget == null)
                 return;
 
@@ -1334,30 +1340,11 @@ namespace SvduPro
             printPixmap.printBmp(ctlbitmap);
         }
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.Delete:
-                    SVSelectPanelObjs.removeOperator();
-                    break;
-                case Keys.Up:
-                    SVSelectPanelObjs.up();
-                    break;
-                case Keys.Down:
-                    SVSelectPanelObjs.down();
-                    break;
-                case Keys.Left:
-                    SVSelectPanelObjs.left();
-                    break;
-                case Keys.Right:
-                    SVSelectPanelObjs.right();
-                    break;
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
+        /// <summary>
+        /// 处理Ctrl的按下和弹起状态
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
         protected override bool ProcessKeyPreview(ref Message m)
         {
             switch (m.Msg)

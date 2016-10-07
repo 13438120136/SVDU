@@ -25,7 +25,8 @@ namespace SVCore
         /// </summary>
         static public void clearSelectControls()
         {
-            foreach (var item in set)
+            List<Control> tmp = new List<Control>(set);
+            foreach (var item in tmp)
             {
                 SVPanel panel = item as SVPanel;
                 if (panel == null)
