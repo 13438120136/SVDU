@@ -40,8 +40,10 @@ namespace SVControl
             this.AutoScroll = true;
 
             this.KeyPreview = true;
-            ///注册快捷键方式
-            initShortKey();
+
+            ///注册快捷键方式,只有页面控件才有
+            if (control is SVPageWidget)
+                initShortKey();
         }
 
         /// <summary>
@@ -52,41 +54,47 @@ namespace SVControl
             ///一个隐藏的右键菜单
             ContextMenuStrip menu = new ContextMenuStrip();
             this.ContextMenuStrip = menu;
-            menu.Visible = false;
 
             ///添加Ctrl+C
             ToolStripMenuItem copyItem = new ToolStripMenuItem();
             copyItem.ShortcutKeys = Keys.Control | Keys.C;
+            copyItem.Visible = false;
             menu.Items.Add(copyItem);
 
             ///添加Ctrl+X
             ToolStripMenuItem cutItem = new ToolStripMenuItem();
             cutItem.ShortcutKeys = Keys.Control | Keys.X;
+            cutItem.Visible = false;
             menu.Items.Add(cutItem);
             
             ///添加Ctrl+V
             ToolStripMenuItem pasteItem = new ToolStripMenuItem();
             pasteItem.ShortcutKeys = Keys.Control | Keys.V;
+            pasteItem.Visible = false;
             menu.Items.Add(pasteItem);
 
             ///添加Ctrl+A
             ToolStripMenuItem allItem = new ToolStripMenuItem();
             allItem.ShortcutKeys = Keys.Control | Keys.A;
+            allItem.Visible = false;
             menu.Items.Add(allItem);
 
             ///添加Delete
             ToolStripMenuItem delItem = new ToolStripMenuItem();
             delItem.ShortcutKeys = Keys.Delete;
+            delItem.Visible = false;
             menu.Items.Add(delItem);
 
             ///撤销
             ToolStripMenuItem undoItem = new ToolStripMenuItem();
             undoItem.ShortcutKeys = Keys.Control | Keys.Z;
+            undoItem.Visible = false;
             menu.Items.Add(undoItem);
 
             ///恢复
             ToolStripMenuItem redoItem = new ToolStripMenuItem();
             redoItem.ShortcutKeys = Keys.Control | Keys.Y;
+            redoItem.Visible = false;
             menu.Items.Add(redoItem);
             
 
