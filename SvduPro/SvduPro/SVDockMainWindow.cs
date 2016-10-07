@@ -611,8 +611,16 @@ namespace SvduPro
             {
                 if (pageNode.Equals(e.Node))
                 {
+                    ///名字不合法创建不成功
                     if (String.IsNullOrWhiteSpace(e.Node.Text) ||
                         String.IsNullOrWhiteSpace(e.Label))
+                    {
+                        e.CancelEdit = true;
+                        return;
+                    }
+
+                    ///名字已经存在
+                    if (_svProject.isExist(e.Label))
                     {
                         e.CancelEdit = true;
                         return;
@@ -956,9 +964,13 @@ namespace SvduPro
             this._objTreeView.clearAllNodes();
 
             //关闭工作区
-            SVControlWindow win = currentControlWindow();
-            if (win != null)
-                win.Close();
+            SVPageWidget widget = node.Addtionobj as SVPageWidget;
+            if (widget != null)
+            {
+                SVControlWindow win = widget.Parent as SVControlWindow;
+                if (win != null)
+                    win.Close();
+            }
         }
 
         /// <summary>
@@ -1456,10 +1468,9 @@ namespace SvduPro
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 String file = openFileDialog.FileName;
-                String pageName = Path.GetFileNameWithoutExtension(file);
 
-                if (!_svProject.addPageNode(node.Text, pageName))
-                    return;
+                _svProject.importPageNode(node.Text, file);
+                String pageName = Path.GetFileNameWithoutExtension(file);
 
                 SVPageWidget widget = new SVPageWidget(pageName, file);
                 widget.ClassText = node.Text;

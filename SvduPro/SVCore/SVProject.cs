@@ -250,6 +250,27 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 导入页面文件
+        /// </summary>
+        /// <param name="className">页面分类</param>
+        /// <param name="file">页面文件</param>
+        public void importPageNode(String className, String file)
+        {
+            String pageName = Path.GetFileNameWithoutExtension(file);
+
+            //判断该页面名称是否存在
+            foreach (var parent in _pageDic)
+                if (parent.Value.ContainsKey(pageName))
+                    return ;
+
+            //执行保存
+            if (_pageDic.ContainsKey(className))
+                _pageDic[className].Add(pageName, file);
+            else
+                _pageDic.Add(className, new Dictionary<String, String> { { pageName, file } });
+        }
+
+        /// <summary>
         /// 对页面分类进行重新命名
         /// </summary>
         /// <param name="oldName">旧的分类名称</param>
