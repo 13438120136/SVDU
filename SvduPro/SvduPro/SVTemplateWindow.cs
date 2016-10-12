@@ -139,9 +139,12 @@ namespace SvduPro
         void delItem_Click(object sender, EventArgs e)
         {
             ///将文件句柄释放，不然会被占用。无法删除文件。
-            this.pictureBox.Image.Dispose();
-            this.pictureBox.Image = null;
-            GC.Collect();
+            if (this.pictureBox.Image != null)
+            {
+                this.pictureBox.Image.Dispose();
+                this.pictureBox.Image = null;
+                GC.Collect();
+            }
 
             ///获取文件路径
             ListViewItem item = listView.SelectedItems[0];

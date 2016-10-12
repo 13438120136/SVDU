@@ -134,7 +134,7 @@ namespace SVControl
             XmlDocument docment = gif.OwnerDocument;
 
             ///读取背景图片数组
-            XmlNodeList nls = docment.GetElementsByTagName("PIC");
+            XmlNodeList nls = gif.GetElementsByTagName("PIC");
             foreach (var tmp in nls)
             {
                 XmlElement vElement = (XmlElement)tmp;
@@ -145,7 +145,7 @@ namespace SVControl
             }
 
             ///读取变量名列表
-            nls = docment.GetElementsByTagName("VarName");
+            nls = gif.GetElementsByTagName("VarName");
             foreach (var tmp in nls)
             {
                 XmlElement vElement = (XmlElement)tmp;

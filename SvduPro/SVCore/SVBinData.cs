@@ -11,7 +11,7 @@ namespace SVCore
         public const Int32 PAGE_AREA_MAXNUM = 64;
         public const Int32 PAGE_ICON_MAXNUM = 64;
         public const Int32 PAGE_LINE_MAXNUM = 256;
-        public const Int32 PAGE_GIF_MAXNUM = 4;
+        public const Int32 PAGE_GIF_MAXNUM = 16;
         public const Int32 PAGE_BOOL_MAXNUM = 16;
         public const Int32 PAGE_ANA_MAXNUM = 16;
         public const Int32 PAGE_TCHART_MAXNUM = 4;

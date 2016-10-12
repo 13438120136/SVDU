@@ -21,8 +21,31 @@ namespace SVControl
 
         String _var;
         String[] _varArray = new String[4];   //变量列表
+
+        [Browsable(false)]
+        public String[] VarArray
+        {
+            get { return _varArray; }
+            set { _varArray = value; }
+        }
+
         Color[] _varColorArray = new Color[4];
+
+        [Browsable(false)]
+        public Color[] VarColorArray
+        {
+            get { return _varColorArray; }
+            set { _varColorArray = value; }
+        }
+
         Byte[] _lineEnabled = new Byte[4];
+
+        [Browsable(false)]
+        public Byte[] LineEnabled
+        {
+            get { return _lineEnabled; }
+            set { _lineEnabled = value; }
+        }
 
         Boolean _isLock;
 
@@ -30,36 +53,6 @@ namespace SVControl
         Dictionary<Font, Byte> _fontConfig = new Dictionary<Font, Byte>();
 
         public UpdateControl UpdateControl;
-
-        public void setVarArray(String[] value)
-        {
-            _varArray = value;
-        }
-
-        public String[] getVarArray()
-        {
-            return _varArray;
-        }
-
-        public void setColorArray(Color[] value)
-        {
-            _varColorArray = value;
-        }
-
-        public Color[] getColorArray()
-        {
-            return _varColorArray;
-        }
-
-        public void setLineEnabled(Byte[] value)
-        {
-            _lineEnabled = value;
-        }
-
-        public Byte[] getLineEnabledArray()
-        {
-            return _lineEnabled;
-        }
 
         public SVCurveProperties()
         {
@@ -72,6 +65,7 @@ namespace SVControl
             _interval = 60;
             _controlType = "趋势图";
             _isLock = false;
+            _var = "变量列表";
 
             //字体的映射关系
             _fontConfig.Add(new Font("宋体", 8), 8);

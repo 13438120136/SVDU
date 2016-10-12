@@ -252,6 +252,31 @@ namespace SVControl
             _attrib.Font = new Font(fontFamily, fontSize);
             _attrib.Max = Single.Parse(curve.GetAttribute("Max"));
             _attrib.Min = Single.Parse(curve.GetAttribute("Min"));
+
+            ///读取变量数组
+            XmlNodeList nls = curve.GetElementsByTagName("VarName");
+            for (int i = 0; i < nls.Count; i++)
+            {
+                XmlElement vElement = (XmlElement)nls[i];
+                _attrib.VarArray[i] = vElement.GetAttribute("Name");
+            }
+
+            ///读取颜色数组
+            XmlNodeList colorList = curve.GetElementsByTagName("LineColor");
+            for (int i = 0; i < colorList.Count; i++)
+            {
+                XmlElement vElement = (XmlElement)colorList[i];
+                String value = vElement.GetAttribute("Color");
+                _attrib.VarColorArray[i] = Color.FromArgb(int.Parse(value));
+            }
+
+            ///读取使能数组
+            XmlNodeList enabledList = curve.GetElementsByTagName("LineEnabled");
+            for (int i = 0; i < enabledList.Count; i++)
+            {
+                XmlElement vElement = (XmlElement)enabledList[i];
+                _attrib.LineEnabled[i] = Byte.Parse(vElement.GetAttribute("Enabled"));
+            }
         }
 
         /// <summary>
@@ -274,6 +299,33 @@ namespace SVControl
             curve.SetAttribute("FontSize", _attrib.Font.Size.ToString());
             curve.SetAttribute("Max", _attrib.Max.ToString());
             curve.SetAttribute("Min", _attrib.Min.ToString());
+
+            ///保存变量
+            foreach (var name in _attrib.VarArray)
+            {
+                XmlElement nameList = xml.crateChildNode("VarName");
+                curve.AppendChild(nameList);
+
+                nameList.SetAttribute("Name", name);
+            }
+
+            ///保存线条颜色
+            foreach (var color in _attrib.VarColorArray)
+            {
+                XmlElement colorList = xml.crateChildNode("LineColor");
+                curve.AppendChild(colorList);
+
+                colorList.SetAttribute("Color", color.ToArgb().ToString());
+            }
+
+            ///保存使能
+            foreach (var en in _attrib.LineEnabled)
+            {
+                XmlElement colorList = xml.crateChildNode("LineEnabled");
+                curve.AppendChild(colorList);
+
+                colorList.SetAttribute("Enabled", en.ToString());
+            }
         }
 
         /// <summary>
