@@ -22,7 +22,7 @@ namespace SVControl
         String _var;
         String[] _varArray = new String[4];   //变量列表
         Color[] _varColorArray = new Color[4];
-        Byte[] _lineWidth = new Byte[4];
+        Byte[] _lineEnabled = new Byte[4];
 
         Boolean _isLock;
 
@@ -51,14 +51,14 @@ namespace SVControl
             return _varColorArray;
         }
 
-        public void setLineWidthArray(Byte[] value)
+        public void setLineEnabled(Byte[] value)
         {
-            _lineWidth = value;
+            _lineEnabled = value;
         }
 
-        public Byte[] getLineWidthArray()
+        public Byte[] getLineEnabledArray()
         {
-            return _lineWidth;
+            return _lineEnabled;
         }
 
         public SVCurveProperties()
@@ -245,6 +245,7 @@ namespace SVControl
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
                 if (UpdateControl != null)
                     UpdateControl(undoItem);
+
                 Rectangle before = _rect;
                 undoItem.ReDo = () =>
                 {
@@ -408,14 +409,16 @@ namespace SVControl
             {
                 String str =_varArray[i];
             }
+
             //线条颜色
             for (int i = 0; i < _varArray.Length; i++)
             {
                 UInt32 value = (UInt32)_varColorArray[i].ToArgb();
                 curveBin.lineClr[i] = value;
             }
+
             //线条宽度
-            Array.Copy(curveBin.lineWidth, _lineWidth, _varArray.Length);
+            Array.Copy(curveBin.lineWidth, _lineEnabled, _varArray.Length);
 
             pageArrayBin.pageArray[pageCount].m_trendChart[curveCount] = curveBin;
         }

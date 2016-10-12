@@ -22,16 +22,16 @@ namespace SVControl
 
                 IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
                 if (edSvc != null)
-                {                    
-                    SVCurveVarWindow varWindow = new SVCurveVarWindow();
+                {
+                    SVCurveVarWindow varWindow = new SVCurveVarWindow(curve);
                     varWindow.VarArray = curve.Attrib.getVarArray();
                     varWindow.ColorArray = curve.Attrib.getColorArray();
-                    varWindow.LineWidthArray = curve.Attrib.getLineWidthArray();
+                    varWindow.LineWidthArray = curve.Attrib.getLineEnabledArray();
 
                     edSvc.DropDownControl(varWindow);
                     curve.Attrib.setVarArray(varWindow.VarArray);
                     curve.Attrib.setColorArray(varWindow.ColorArray);
-                    curve.Attrib.setLineWidthArray(varWindow.LineWidthArray);
+                    curve.Attrib.setLineEnabled(varWindow.LineWidthArray);
                     return String.Empty;
                 }
             }

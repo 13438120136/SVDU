@@ -43,7 +43,16 @@ namespace SVControl
 
             ///注册快捷键方式,只有页面控件才有
             if (control is SVPageWidget)
+            {
                 initShortKey();
+
+                ///当单击当前窗体，也要使得页面控件被反选
+                this.MouseDown += new MouseEventHandler((sender, e)=>
+                {
+                    SVPageWidget widget = this._control as SVPageWidget;
+                    widget.selectAll(false);
+                });
+            }
         }
 
         /// <summary>

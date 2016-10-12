@@ -76,7 +76,10 @@ namespace SVControl
         public SVBitmapArray BitMapArray
         {
             get { return _bitMapArray; }
-            set { _bitMapArray = value; }
+            set 
+            {
+                _bitMapArray = value;
+            }
         }
 
         [CategoryAttribute("属性")]

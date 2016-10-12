@@ -38,6 +38,8 @@ namespace SVControl
                 {
                     SVBitmapArrayWindow window = new SVBitmapArrayWindow(heart.Attrib.BitMapArray);
                     window.ShowDialog();
+                    heart.refreshPropertyToPanel();
+                    heart.RedoUndo.operChanged();
 
                     return window.bitmapArray();
                 }

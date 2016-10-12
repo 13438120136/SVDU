@@ -9,12 +9,23 @@ namespace SVCore
     /// <summary>
     /// 针对自定义的图片对象，封装的图片数组类。
     /// </summary>
-    public class SVBitmapArray : TypeConverter
+    [Serializable]
+    public class SVBitmapArray : TypeConverter, ISerializable
     {
         /// <summary>
         /// 图片数组
         /// </summary>
         public List<SVBitmap> BitmapArray { get; set; }
+
+        protected SVBitmapArray(SerializationInfo info, StreamingContext context)
+        {
+            BitmapArray = (List<SVBitmap>)info.GetValue("stream", typeof(List<SVBitmap>));
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("stream", BitmapArray);
+        }
 
         /// <summary>
         /// 重写父类，这里不需要关注

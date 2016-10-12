@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Drawing;
-using System.Xml;
-using SVCore;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Xml;
+using SVCore;
 
 namespace SVControl
 {
@@ -25,6 +25,49 @@ namespace SVControl
 
         public SVCurve()
         {
+            ///修正趋势图的宽度和高度
+            this.SizeChangedEvent += new Action(SVCurve_SizeChanged);
+        }
+
+        /// <summary>
+        /// 当趋势图的宽和高发生变化的时候，调整使其满足需要
+        /// </summary>
+        void SVCurve_SizeChanged()
+        {
+            correctionWindow();
+        }
+
+        /// <summary>
+        /// 修正窗口宽度和高度
+        /// </summary>
+        private void correctionWindow()
+        {
+            ///宽度
+            Single floatLen = this.Width - 110;
+            Single floatInterval = _attrib.Interval * 10;
+            Single widthValue = floatInterval / floatLen;
+            double va = Math.Round(widthValue, MidpointRounding.AwayFromZero);
+            this.Width = (Int32)(floatInterval / va) + 110;
+
+            if (this.Width < 210)
+                this.Width = 210;
+
+            if (this.Width > 720)
+                this.Width = 720;
+
+            Single floatHeight = this.Height - 60;
+            Single interval = floatHeight / 50;
+            double vainterval = Math.Round(interval, MidpointRounding.AwayFromZero);
+            this.Height = (Int32)vainterval * 50 + 60;
+
+            ///高度
+            if (this.Height < 110)
+                this.Height = 110;
+
+            if (this.Height > 490)
+                this.Height = 490;
+
+            setStartPos(_attrib.Rect.Location);
         }
 
         override public void initalizeRedoUndo()
@@ -34,17 +77,25 @@ namespace SVControl
                 refreshPropertyToPanel();
             };
 
+            ///如果是属性发生了变化
             _attrib.UpdateControl += new UpdateControl((item) =>
             {
+                this.Height--;
                 RedoUndo.recordOper(item);
             });
         }
 
+        /// <summary>
+        /// 创建ID
+        /// </summary>
         public override void createID()
         {
             _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
         }
 
+        /// <summary>
+        /// 回收ID号
+        /// </summary>
         public override void delID()
         {
             SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
@@ -84,6 +135,9 @@ namespace SVControl
             return result;
         }
 
+        /// <summary>
+        /// 将控件属性更新到界面上
+        /// </summary>
         public override void refreshPropertyToPanel()
         {
             this.Id = _attrib.ID;
@@ -96,55 +150,86 @@ namespace SVControl
             this.IsMoved = !_attrib.Lock;
         }
 
+        /// <summary>
+        /// 自绘制趋势图
+        /// </summary>
+        /// <param name="e">绘制图形对象</param>
         protected void drawCurve(PaintEventArgs e)
         {
+            ///横纵标尺间隔
+            Int32 scaleStepX = 100;
+            ///纵轴标尺间隔
+            Int32 scaleStepY = 50;
+
+            ///绘制趋势图的背景
             Graphics gh = e.Graphics;
             SolidBrush brush = new SolidBrush(Attrib.BackgdColor);
             gh.FillRectangle(brush, this.ClientRectangle);
 
-            Rectangle rect = new Rectangle(50, 30, this.Width - 50 - 20, this.Height - 30 - 30);
+            ///趋势图内部图形
+            Rectangle rect = new Rectangle(59, 29, this.Width - 49 - 59, this.Height - 29 - 29);
             gh.DrawRectangle(new Pen(Attrib.FrontColor), rect);
 
-            for (int i = 0; i <= rect.Width; i += 120)
+            ///解决除数如果为0，出现异常情况
+            if (rect.Width <= 0)
+                rect.Width = 1;       
+
+            ///绘制颜色
+            SolidBrush fontBrush = new SolidBrush(Attrib.FrontColor);
+
+            for (int i = 0; i <= rect.Width; i += scaleStepX)
             {
+                ///横轴刻度
                 int xPos = rect.X + i;
                 int yPos = rect.Y + rect.Height;
                 gh.DrawLine(new Pen(Attrib.FrontColor), new Point(xPos, yPos), new Point(xPos, yPos + 6));
-                SolidBrush fontBrush = new SolidBrush(Attrib.FrontColor);
+                
+                ///刻度文本
                 String text = (i * Attrib.Interval / rect.Width).ToString();
                 gh.DrawString(text, Attrib.Font, fontBrush, new Point(xPos, yPos + 6));
             }
 
-            for (int i = 0; i <= rect.Height; i += 60)
+            ///纵轴刻度
+            for (int i = 0; i <= rect.Height; i += scaleStepY)
             {
                 int xPos = rect.X;
                 int yPos = rect.Y + rect.Height - i;
                 gh.DrawLine(new Pen(Attrib.FrontColor), new Point(xPos - 6, yPos), new Point(xPos, yPos));
-                SolidBrush fontBrush = new SolidBrush(Attrib.FrontColor);
-                String text = ((UInt32)(i * (Attrib.Max - Attrib.Min) / rect.Height)).ToString();
-                gh.DrawString(text, Attrib.Font, fontBrush, new Point(xPos - 50, yPos));
             }
 
-            for (int i = 120; i < rect.Width; i += 120)
+            ///绘制纵轴刻度文本
+            gh.DrawString(Attrib.Max.ToString(), Attrib.Font, fontBrush, new Point(rect.X - 59, rect.Y - 10));
+            gh.DrawString(Attrib.Min.ToString(), Attrib.Font, fontBrush, new Point(rect.X - 59, rect.Y + rect.Height - 8));
+
+            ///绘制纵轴背景刻度
+            for (int x = scaleStepX; x < rect.Width; x += scaleStepX)
             {
-                int xPos = rect.X + i;
-                int yPos = rect.Y + rect.Height;
-                gh.DrawLine(new Pen(Color.DarkGray), new Point(xPos, rect.Y), new Point(xPos, yPos));
+                int xPos = rect.X + x;
+                gh.DrawLine(new Pen(Color.DarkGray), new Point(xPos, rect.Y + 1), new Point(xPos, rect.Y + rect.Height - 1));
             }
 
-            for (int i = 60; i < rect.Height; i += 60)
+            ///绘制横轴背景刻度
+            for (int x = scaleStepY; x < rect.Height; x += scaleStepY)
             {
-                int xPos = rect.X;
-                int yPos = rect.Y + rect.Height - i;
-                gh.DrawLine(new Pen(Color.DarkGray), new Point(xPos, yPos), new Point(xPos + rect.Width, yPos));
+                int yPos = rect.Y + rect.Height - x;
+                gh.DrawLine(new Pen(Color.DarkGray), new Point(rect.X + 1, yPos), new Point(rect.X + rect.Width - 1, yPos));
             }
         }
 
+        /// <summary>
+        /// 覆盖窗体的原有绘制
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             drawCurve(e);
         }
 
+        /// <summary>
+        /// 从文件中加载数据
+        /// </summary>
+        /// <param name="xml">xml文件对象</param>
+        /// <param name="isCreate"></param>
         override public void loadXML(SVXml xml, Boolean isCreate = false)
         {
             XmlElement curve = xml.CurrentElement;
@@ -169,6 +254,10 @@ namespace SVControl
             _attrib.Min = Single.Parse(curve.GetAttribute("Min"));
         }
 
+        /// <summary>
+        /// 保存数据到xml文件中
+        /// </summary>
+        /// <param name="xml">xml文件对象</param>
         override public void saveXML(SVXml xml)
         {
             XmlElement curve = xml.createNode(this.GetType().Name);
@@ -187,11 +276,19 @@ namespace SVControl
             curve.SetAttribute("Min", _attrib.Min.ToString());
         }
 
+        /// <summary>
+        /// 执行当前对象的编译过程
+        /// </summary>
+        /// <param name="pageArrayBin"></param>
+        /// <param name="serialize"></param>
         public void buildControlToBin(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             _attrib.make(ref pageArrayBin, ref serialize);
         }
 
+        /// <summary>
+        /// 编译的时候进行的合法性检查
+        /// </summary>
         public override void checkValid() 
         {
             SVPageWidget pageWidget = this.Parent as SVPageWidget;

@@ -6,9 +6,11 @@ namespace SVControl
 {
     public partial class SVCurveVarWindow : UserControl
     {
-        String[] _varArray;        //变量数组
+        SVCurve _curve;
+
+        String[] _varArray;       //变量数组
         Color[] _colorArray;      //颜色数组
-        Byte[] _lineWidthArray;      //线宽数组
+        Byte[] _lineWidthArray;   //线宽数组
 
         public String[] VarArray
         {
@@ -62,9 +64,24 @@ namespace SVControl
             }
         }
 
-        public SVCurveVarWindow()
+        /// <summary>
+        /// 趋势图构造函数
+        /// </summary>
+        public SVCurveVarWindow(SVCurve curve)
         {
             InitializeComponent();
+            _curve = curve;
+
+            String[] varArray = _curve.Attrib.getVarArray();
+
+            ///设置颜色
+            Color[] colorArray = _curve.Attrib.getColorArray();
+            varBtn1.BackColor = colorArray[0];
+            varBtn2.BackColor = colorArray[1];
+            varBtn3.BackColor = colorArray[2];
+            varBtn4.BackColor = colorArray[3];
+
+            ///设置使能
         }
     }
 }

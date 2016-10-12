@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using SVCore;
 
 namespace SVControl
 {
+    /// <summary>
+    /// 心跳控件
+    /// </summary>
     [Serializable]
-    public class SVHeartbeat : SVPanel, SVInterfaceBuild
+    public class SVHeartbeat : SVPanel, SVInterfaceBuild, ISerializable
     {
         SVHeartbeatProperties _attrib = new SVHeartbeatProperties();
 
@@ -22,6 +26,17 @@ namespace SVControl
         public SVHeartbeat()
         {
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            refreshPropertyToPanel();
+        }
+
+        protected SVHeartbeat(SerializationInfo info, StreamingContext context)
+        {
+            _attrib = (SVHeartbeatProperties)info.GetValue("stream", typeof(SVHeartbeatProperties));
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("stream", _attrib);
         }
 
         /// <summary>
@@ -88,11 +103,16 @@ namespace SVControl
             this.IsMoved = !_attrib.Lock;
             this.Location = new Point(_attrib.Rect.X, _attrib.Rect.Y);
 
+            ///保证心跳控件必须至少设置了一副图片
             if (_attrib.BitMapArray.BitmapArray.Count > 0)
             {
                 SVBitmap svbitMap = _attrib.BitMapArray.BitmapArray[0];
 
+                ///判断文件是否已经被删除，如果删除控件不在显示图片
                 String file = Path.Combine(SVProData.IconPath, svbitMap.ImageFileName);
+                if (!File.Exists(file))
+                    return;
+
                 SVPixmapFile pixmapFile = new SVPixmapFile();
                 pixmapFile.readPixmapFile(file);
                 this.BackgroundImage = pixmapFile.getBitmapFromData();
@@ -119,6 +139,7 @@ namespace SVControl
             int height = int.Parse(button.GetAttribute("height"));
             _attrib.Rect = new Rectangle(x, y, width, height);
 
+            ///遍历节点，循环读取图片文件数据
             XmlNodeList nls = button.ChildNodes;
             foreach (var tmp in nls)
             {
@@ -143,7 +164,7 @@ namespace SVControl
             button.SetAttribute("width", _attrib.Rect.Width.ToString());
             button.SetAttribute("height", _attrib.Rect.Height.ToString());
 
-            ///保存图片数组
+            ///循环保存图片数组
             List<SVBitmap> list = _attrib.BitMapArray.imageArray();
             foreach (var item in list)
             {

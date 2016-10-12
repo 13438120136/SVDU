@@ -58,14 +58,14 @@
             // 
             // var1
             // 
-            resources.ApplyResources(this.var1, "var1");
             this.var1.FormattingEnabled = true;
+            resources.ApplyResources(this.var1, "var1");
             this.var1.Name = "var1";
             // 
             // varBtn1
             // 
-            resources.ApplyResources(this.varBtn1, "varBtn1");
             this.varBtn1.BackColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.varBtn1, "varBtn1");
             this.varBtn1.Name = "varBtn1";
             this.varBtn1.UseVisualStyleBackColor = false;
             // 
@@ -76,13 +76,11 @@
             // 
             // lineWidth1
             // 
-            resources.ApplyResources(this.lineWidth1, "lineWidth1");
             this.lineWidth1.FormattingEnabled = true;
             this.lineWidth1.Items.AddRange(new object[] {
             resources.GetString("lineWidth1.Items"),
-            resources.GetString("lineWidth1.Items1"),
-            resources.GetString("lineWidth1.Items2"),
-            resources.GetString("lineWidth1.Items3")});
+            resources.GetString("lineWidth1.Items1")});
+            resources.ApplyResources(this.lineWidth1, "lineWidth1");
             this.lineWidth1.Name = "lineWidth1";
             // 
             // label3
@@ -92,14 +90,14 @@
             // 
             // var2
             // 
-            resources.ApplyResources(this.var2, "var2");
             this.var2.FormattingEnabled = true;
+            resources.ApplyResources(this.var2, "var2");
             this.var2.Name = "var2";
             // 
             // varBtn2
             // 
-            resources.ApplyResources(this.varBtn2, "varBtn2");
             this.varBtn2.BackColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.varBtn2, "varBtn2");
             this.varBtn2.Name = "varBtn2";
             this.varBtn2.UseVisualStyleBackColor = false;
             // 
@@ -110,13 +108,11 @@
             // 
             // lineWidth2
             // 
-            resources.ApplyResources(this.lineWidth2, "lineWidth2");
             this.lineWidth2.FormattingEnabled = true;
             this.lineWidth2.Items.AddRange(new object[] {
             resources.GetString("lineWidth2.Items"),
-            resources.GetString("lineWidth2.Items1"),
-            resources.GetString("lineWidth2.Items2"),
-            resources.GetString("lineWidth2.Items3")});
+            resources.GetString("lineWidth2.Items1")});
+            resources.ApplyResources(this.lineWidth2, "lineWidth2");
             this.lineWidth2.Name = "lineWidth2";
             // 
             // label5
@@ -126,14 +122,14 @@
             // 
             // var3
             // 
-            resources.ApplyResources(this.var3, "var3");
             this.var3.FormattingEnabled = true;
+            resources.ApplyResources(this.var3, "var3");
             this.var3.Name = "var3";
             // 
             // varBtn3
             // 
-            resources.ApplyResources(this.varBtn3, "varBtn3");
             this.varBtn3.BackColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.varBtn3, "varBtn3");
             this.varBtn3.Name = "varBtn3";
             this.varBtn3.UseVisualStyleBackColor = false;
             // 
@@ -144,13 +140,11 @@
             // 
             // lineWidth3
             // 
-            resources.ApplyResources(this.lineWidth3, "lineWidth3");
             this.lineWidth3.FormattingEnabled = true;
             this.lineWidth3.Items.AddRange(new object[] {
             resources.GetString("lineWidth3.Items"),
-            resources.GetString("lineWidth3.Items1"),
-            resources.GetString("lineWidth3.Items2"),
-            resources.GetString("lineWidth3.Items3")});
+            resources.GetString("lineWidth3.Items1")});
+            resources.ApplyResources(this.lineWidth3, "lineWidth3");
             this.lineWidth3.Name = "lineWidth3";
             // 
             // label7
@@ -160,14 +154,14 @@
             // 
             // var4
             // 
-            resources.ApplyResources(this.var4, "var4");
             this.var4.FormattingEnabled = true;
+            resources.ApplyResources(this.var4, "var4");
             this.var4.Name = "var4";
             // 
             // varBtn4
             // 
-            resources.ApplyResources(this.varBtn4, "varBtn4");
             this.varBtn4.BackColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.varBtn4, "varBtn4");
             this.varBtn4.Name = "varBtn4";
             this.varBtn4.UseVisualStyleBackColor = false;
             // 
@@ -178,13 +172,11 @@
             // 
             // lineWidth4
             // 
-            resources.ApplyResources(this.lineWidth4, "lineWidth4");
             this.lineWidth4.FormattingEnabled = true;
             this.lineWidth4.Items.AddRange(new object[] {
             resources.GetString("lineWidth4.Items"),
-            resources.GetString("lineWidth4.Items1"),
-            resources.GetString("lineWidth4.Items2"),
-            resources.GetString("lineWidth4.Items3")});
+            resources.GetString("lineWidth4.Items1")});
+            resources.ApplyResources(this.lineWidth4, "lineWidth4");
             this.lineWidth4.Name = "lineWidth4";
             // 
             // SVCurveVarWindow
