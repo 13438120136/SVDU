@@ -20,12 +20,34 @@ namespace SVCore
 
     public class SVRedoUndo
     {
+        /// <summary>
+        /// 当前撤销和恢复记录的队列
+        /// </summary>
         private List<SVRedoUndoItem> listItem;
+
+        /// <summary>
+        /// 目前操作的位置
+        /// </summary>
         private Int32 index;
+
+        /// <summary>
+        /// 一个标志，用来确定是否记录操作
+        /// </summary>
         private Boolean isRecord;
+
+        /// <summary>
+        /// 当执行撤销或者重做操作的时候，发送的信号
+        /// </summary>
         public DoFunction UpdateOperator;
+
+        /// <summary>
+        /// 用来通知页面，当前页面中有数据修改
+        /// </summary>
         public OperatorChanged operChanged;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public SVRedoUndo()
         {
             isRecord = true;

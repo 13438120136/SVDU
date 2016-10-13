@@ -72,6 +72,13 @@ namespace SVCore
             0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d
         };
 
+        /// <summary>
+        /// 计算一段内存的CRC值
+        /// </summary>
+        /// <param name="init">设置初始值</param>
+        /// <param name="s">内存起始地址</param>
+        /// <param name="len">长度</param>
+        /// <returns>32位CRC值</returns>
         UInt32 calCrc32Append(UInt32 init, byte[] s, UInt32 len)
         {
             UInt32 POLYNOMIAL = 0xF4ACFB13;
@@ -93,6 +100,12 @@ namespace SVCore
             return crc;
         }
 
+        /// <summary>
+        /// 包装的calCrc32Append，使用初始值为0进行计算
+        /// </summary>
+        /// <param name="buffer">内存起始地址</param>
+        /// <param name="len">长度</param>
+        /// <returns>32位CRC值</returns>
         public UInt32 calculateCrc32(byte[] buffer, UInt32 len)
         {
             UInt32 crc = 0;

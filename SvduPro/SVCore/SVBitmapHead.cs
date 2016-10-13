@@ -7,22 +7,26 @@ namespace SVCore
 {
     public class SVBitmapHead
     {
-        UInt32 _id;
-        UInt32 _rsv;
-        UInt32 _palOffset;
-        UInt32 _palCnt;
-        UInt32 _dataOffset;
-        UInt32 _dataCnt;
+        //UInt32 _id;
+        //UInt32 _rsv;
+        //UInt32 _palOffset;
+        //UInt32 _palCnt;
+        //UInt32 _dataOffset;
+        //UInt32 _dataCnt;
         byte[] _data;
 
         public SVBitmapHead()
         {
-            _palOffset = 24;
+            //_palOffset = 24;
         }
 
+        /// <summary>
+        /// 设置当前的图片对象
+        /// </summary>
+        /// <param name="image">图片对象</param>
         public SVBitmapHead(Image image)
         {
-            _palOffset = 24;
+            //_palOffset = 24;
             setImageObj(image);
         }
 
@@ -31,6 +35,10 @@ namespace SVCore
         //    _id = id;
         //}
 
+        /// <summary>
+        /// 设置当前的图片对象
+        /// </summary>
+        /// <param name="image"></param>
         public void setImageObj(Image image)
         {
             //_palCnt = (UInt32)image.Palette.Entries.Length;
@@ -47,6 +55,10 @@ namespace SVCore
             _data = byteArrayImage;
         }
 
+        /// <summary>
+        /// 获取图片的内存数据
+        /// </summary>
+        /// <returns></returns>
         public byte[] data()
         {
             return _data;

@@ -53,7 +53,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="SVAutoSave.cs" />
     <Compile Include="SVBackGroundControl.cs">
       <SubType>Component</SubType>
     </Compile>
