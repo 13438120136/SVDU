@@ -139,19 +139,19 @@ namespace SVSimulation
                 });
             }
 
-            //for (int i = 0; i < bin.trendChartNum; i++)
-            //{
-            //    SVSCurve curve = new SVSCurve();
-            //    curve.fromBin(bin.m_trendChart[i]);
-            //    page.Controls.Add(curve);
-            //}
+            for (int i = 0; i < bin.trendChartNum; i++)
+            {
+                SVSCurve curve = new SVSCurve();
+                curve.fromBin(bin.m_trendChart[i]);
+                page.Controls.Add(curve);
+            }
 
-            //for (int i = 0; i < bin.gif_num; i++)
-            //{
-            //    SVSGif gif = new SVSGif();
-            //    gif.fromBin(bin.m_gif[i], fileBuffer);
-            //    page.Controls.Add(gif);
-            //}
+            for (int i = 0; i < bin.gif_num; i++)
+            {
+                SVSGif gif = new SVSGif(_timer);
+                gif.fromBin(bin.m_gif[i], picBuffer);
+                page.Controls.Add(gif);
+            }
 
 
             for (int i = 0; i < bin.iconNum; i++)

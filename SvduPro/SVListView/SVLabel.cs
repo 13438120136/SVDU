@@ -29,6 +29,14 @@ namespace SVControl
         /// </summary>
         public SVLabel()
         {
+            this.SizeChanged += new EventHandler((sender, e) =>
+            {
+                if (this.Width < 21)
+                    this.Width = 21;
+
+                if (this.Height < 21)
+                    this.Height = 21;
+            });
         }
 
         /// <summary>

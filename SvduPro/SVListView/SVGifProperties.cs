@@ -271,6 +271,8 @@ namespace SVControl
                 serialize.Write(data, 0, (Int32)data.Length);
             }
 
+            gifBin.type = (Byte)(list.Count - 1);
+
             pageArrayBin.pageArray[pageCount].m_gif[gifCount] = gifBin;
         }
     }

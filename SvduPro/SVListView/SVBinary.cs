@@ -22,6 +22,14 @@ namespace SVControl
 
         public SVBinary()
         {
+            this.SizeChanged += new EventHandler((sender, e) =>
+            {
+                if (this.Width < 21)
+                    this.Width = 21;
+
+                if (this.Height < 21)
+                    this.Height = 21;
+            });
         }
 
         override public void initalizeRedoUndo()
@@ -109,7 +117,11 @@ namespace SVControl
                 {6, "开|关"},
                 {7, "自定义"}
             };
-            this.Text = config[_attrib.Type];
+
+            if (_attrib.Type == 7)
+                this.Text = String.Format("{0}|{1}", Attrib.CustomTrueText, Attrib.CustomFlaseText);
+            else
+                this.Text = config[_attrib.Type];
         }
 
         override public void loadXML(SVXml xml, Boolean isCreate = false)
@@ -143,7 +155,7 @@ namespace SVControl
             String fontFamily = binary.GetAttribute("Font");
             Single fontSize = Single.Parse(binary.GetAttribute("FontSize"));
             _attrib.Font = new Font(fontFamily, fontSize);
-            //_attrib.Type = Byte.Parse(binary.GetAttribute("Type"));
+            _attrib.Type = Byte.Parse(binary.GetAttribute("Type"));
         }
 
         override public void saveXML(SVXml xml)
@@ -196,6 +208,29 @@ namespace SVControl
             if (!this.Parent.ClientRectangle.Contains(this.Bounds))
             {
                 String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 已经超出页面显示范围", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            return;
+
+            var varInstance = SVVaribleType.instance();
+            if (!varInstance.isOpen())
+            {
+                String msg = String.Format("数据库打开失败，请检查！");
+                throw new SVCheckValidException(msg);
+            }
+
+            var address = varInstance.strToAddress(Attrib.Var);
+            if (address == 0)
+            {
+                String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            var type = varInstance.strToType(Attrib.Var);
+            if (type == -1)
+            {
+                String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 变量类型不满足条件", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
             }
         }

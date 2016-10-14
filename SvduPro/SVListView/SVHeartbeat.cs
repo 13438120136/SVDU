@@ -186,7 +186,7 @@ namespace SVControl
             BinaryFormatter binFormat = new BinaryFormatter();
             binFormat.Serialize(stream, this);
             stream.Position = 0;
-            SVButton result = (SVButton)binFormat.Deserialize(stream);
+            SVHeartbeat result = (SVHeartbeat)binFormat.Deserialize(stream);
 
             result.refreshPropertyToPanel();
 

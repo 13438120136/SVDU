@@ -21,6 +21,14 @@ namespace SVControl
 
         public SVAnalog()
         {
+            this.SizeChanged += new EventHandler((sender, e) =>
+            {
+                if (this.Width < 21)
+                    this.Width = 21;
+
+                if (this.Height < 21)
+                    this.Height = 21;
+            });
         }
 
         override public void initalizeRedoUndo()
@@ -185,6 +193,27 @@ namespace SVControl
             if (!this.Parent.ClientRectangle.Contains(this.Bounds))
             {
                 String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 已经超出页面显示范围", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            var varInstance = SVVaribleType.instance();
+            if (!varInstance.isOpen())
+            {
+                String msg = String.Format("数据库打开失败，请检查！");
+                throw new SVCheckValidException(msg);
+            }
+
+            var address = varInstance.strToAddress(Attrib.Var);
+            if (address == 0)
+            {
+                String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            var type = varInstance.strToType(Attrib.Var);
+            if (type == -1)
+            {
+                String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 变量类型不满足条件", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
             }
         }

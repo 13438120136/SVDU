@@ -7,14 +7,14 @@ namespace SVCore
     {
         public const Int32 MAX_PAGE_NUMBER = 100;
         public const Int32 PAGE_TITILE_MAXLEN = 128 * 2;
-        public const Int32 PAGE_BTN_MAXNUM = 64;
-        public const Int32 PAGE_AREA_MAXNUM = 64;
-        public const Int32 PAGE_ICON_MAXNUM = 64;
-        public const Int32 PAGE_LINE_MAXNUM = 256;
-        public const Int32 PAGE_GIF_MAXNUM = 16;
-        public const Int32 PAGE_BOOL_MAXNUM = 16;
-        public const Int32 PAGE_ANA_MAXNUM = 16;
-        public const Int32 PAGE_TCHART_MAXNUM = 4;
+        public const Int32 PAGE_BTN_MAXNUM = 80;
+        public const Int32 PAGE_AREA_MAXNUM = 150;
+        public const Int32 PAGE_ICON_MAXNUM = 150;
+        public const Int32 PAGE_LINE_MAXNUM = 80;
+        public const Int32 PAGE_GIF_MAXNUM = 50;
+        public const Int32 PAGE_BOOL_MAXNUM = 40;
+        public const Int32 PAGE_ANA_MAXNUM = 40;
+        public const Int32 PAGE_TCHART_MAXNUM = 6;
         public const Int32 PAGE_TICKGIF_MAXNUM = 1;
 
         public const Int32 TEXT_MAX_LEN = 64 * 2;
@@ -227,7 +227,7 @@ namespace SVCore
         public UInt32 iamgeOffsetErr;
 
         public UInt16 id;         /*动态图标元素的Id*/
-        public Byte type;         //动态图的类型
+        public Byte type;         //type;/*1:一值两图，3：二值四图，7：三值8图*/
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public Byte[] varType;    /*对应变量的类型*/

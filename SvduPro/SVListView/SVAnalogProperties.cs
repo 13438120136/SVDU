@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using SVCore;
 using System.Drawing.Design;
+using System.Data;
 
 namespace SVControl
 {
@@ -13,8 +14,8 @@ namespace SVControl
     public class SVAnalogProperties
     {
         UInt16 _id;               //ID
-        Single _max;               //最大值
-        Single _min;               //最小值
+        Single _max;              //最大值
+        Single _min;              //最小值
         Font _font;               //显示字体
 
         Color _normalColor;       //正常显示
@@ -600,6 +601,11 @@ namespace SVControl
             analogBin.font = _fontConfig[_font];
             analogBin.nDecimalNum = DecNum;
             analogBin.enExponent = _isExponent ? (Byte)1 : (Byte)0;
+
+            ///根据名称来获取地址
+            var varInstance = SVVaribleType.instance();
+            analogBin.addrOffset = varInstance.strToAddress(_var);
+            analogBin.varType = (Byte)varInstance.strToType(_var);
 
             pageArrayBin.pageArray[pageCount].m_analog[analogCount] = analogBin;
         }

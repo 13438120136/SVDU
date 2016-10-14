@@ -7,6 +7,7 @@ using SVCore;
 
 namespace SVControl
 {
+    [Serializable]
     public class SVHeartbeatProperties
     {
         Rectangle _rect;     //心跳控件尺寸

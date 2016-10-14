@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -59,10 +60,40 @@ namespace SVCore
                 {
                     SVSelectPanelObjs.removeControlItem(this);
                     clearFocus();
+
+                    resizeControl();
+                    return;
                 }
 
                 _selected = value;
             }
+        }
+
+        /// <summary>
+        /// 失去焦点，自动设置宽和高
+        /// </summary>
+        private void resizeControl()
+        {
+            ///如果字符为空，就不做下面处理
+            if (String.IsNullOrWhiteSpace(this.Text))
+                return;
+
+            Dictionary<Font, Int32> dict = new Dictionary<Font, Int32>() 
+            {
+                {new Font("宋体", 8), 11},
+                {new Font("宋体", 12), 16},
+                {new Font("宋体", 16), 21}
+            };
+
+            ///
+            int singleLine = dict[this.Font];
+            int sunCount = this.Text.Length * singleLine;
+
+            int lineCount = sunCount / this.Width;
+            int tmpHeight = lineCount * singleLine + (lineCount - 1) * 2;
+
+            if (tmpHeight > this.Height)
+                this.Height = tmpHeight;
         }
 
         /// <summary>

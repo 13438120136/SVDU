@@ -92,10 +92,14 @@ namespace SVCore
         /// <returns>变量对应的内存表格</returns>
         public DataTable getVarDataList(Int32 stationID)
         {
-            String sql = String.Format(@"select table_varinfo.varname, table_netinfo.AddressOffset 
-                  from table_netinfo, table_varinfo 
-                  where table_netinfo.ConnID = table_varinfo.uid 
-                  and table_varinfo.StationID = {0}", stationID);
+            String sql = String.Format(@"select table_channelinfo.ioblockname, table_netinfo.addressoffset, table_valuetype.valueType
+                from table_varinfo, table_channelinfo, table_netinfo, table_valuetype
+                where table_varinfo.stationid = 11 
+                and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
+                and table_varinfo.ioblockid = table_channelinfo.uid 
+                and table_varinfo.uid = table_netinfo.connid
+                and table_netinfo.netvarid = table_valuetype.uid", stationID);
+
             MySqlCommand mysqlcom = new MySqlCommand(sql, _mysqlConnect);
 
             try

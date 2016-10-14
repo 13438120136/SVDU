@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using SVControl;
 using SVCore;
+using System.Text;
 
 namespace SVSimulation
 {
@@ -17,6 +18,7 @@ namespace SVSimulation
         Color trueBgColor;
         Color falseColor;
         Color falseBgColor;
+        List<String> customList = new List<String>();
 
         /// <summary>
         /// 获取当前数据控制组件
@@ -80,7 +82,15 @@ namespace SVSimulation
                 {5, "正确"},
                 {6, "开"}
             };
-            this.Text = trueConfig[bin.type];
+
+            if (bin.type == 7)
+            {
+                this.Text = Encoding.ASCII.GetString(bin.trueText);
+                customList.Add(Encoding.ASCII.GetString(bin.trueText));
+                customList.Add(Encoding.ASCII.GetString(bin.falseText));
+            }
+            else
+                this.Text = trueConfig[bin.type];
 
             Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>();
             FontConfig.Add(8, new Font("宋体", 8));
@@ -113,7 +123,11 @@ namespace SVSimulation
                 {6, new List<String>{"开", "关"}}
             };
 
-            List<String> strList = trueConfig[_typeByte];
+            List<String> strList = null;
+            if (_typeByte == 7)
+                strList = customList;
+            else
+                strList = trueConfig[_typeByte];
 
             //根据最大和最小值进行随机
             this.Text = strList[value];

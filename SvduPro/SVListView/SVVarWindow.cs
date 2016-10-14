@@ -107,14 +107,11 @@ namespace SVControl
             SVSqlDataBase sqlDataBase = app.DataBase;
 
             _dataTable.Clear();
-            //DataTable dataTable = sqlDataBase.getVarDataList(1);
-            //_dataTable = new DataTable();
-
-            _dataTable.Rows.Add(new object[] { "var", 100 });
-            _dataTable.Rows.Add(new object[] { "var1", 120 });
-            _dataTable.Rows.Add(new object[] { "vvar009", 160 });
-
+            _dataTable = sqlDataBase.getVarDataList(11);
             dataGridView.DataSource = _dataTable;
+
+            var instance = SVVaribleType.instance();
+            instance.setData(_dataTable);
         }
 
         /// <summary>

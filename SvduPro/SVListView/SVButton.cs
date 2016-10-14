@@ -41,6 +41,15 @@ namespace SVControl
         {
             this.TextAlign = ContentAlignment.MiddleCenter;
             _paintEvent = drawButtonNormal;
+
+            this.SizeChanged += new EventHandler((sender, e)=>
+            {
+                if (this.Width < 21)
+                    this.Width = 21;
+
+                if (this.Height < 21)
+                    this.Height = 21;
+            });
         }
 
         /// <summary>
@@ -391,6 +400,29 @@ namespace SVControl
                 String msg = String.Format("页面 {0} 中,按钮ID为:{1}, 设置的文本字体不合法", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
             }
+
+            return;
+
+            var varInstance = SVVaribleType.instance();
+            if (!varInstance.isOpen())
+            {
+                String msg = String.Format("数据库打开失败，请检查！");
+                throw new SVCheckValidException(msg);
+            }
+
+            var address = varInstance.strToAddress(Attrib.BtnType.EnVarText);
+            if (address == 0)
+            {
+                String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 使能变量未正确设置", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            var varAddress = varInstance.strToAddress(Attrib.BtnType.VarText);
+            if (varAddress == 0)
+            {
+                String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 按钮关联变量未正确设置", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }            
         }
     }
 }

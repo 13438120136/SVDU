@@ -134,6 +134,7 @@
     <Compile Include="SVTextBoxTraceListenter.cs" />
     <Compile Include="SVTextTraceListenter.cs" />
     <Compile Include="SVUniqueID.cs" />
+    <Compile Include="SVVaribleType.cs" />
     <Compile Include="SVVersion.cs" />
     <Compile Include="SVXml.cs" />
   </ItemGroup>
