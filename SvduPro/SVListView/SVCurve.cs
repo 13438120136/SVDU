@@ -167,7 +167,7 @@ namespace SVControl
             gh.FillRectangle(brush, this.ClientRectangle);
 
             ///趋势图内部图形
-            Rectangle rect = new Rectangle(59, 29, this.Width - 49 - 59, this.Height - 29 - 29);
+            Rectangle rect = new Rectangle(60, 30, this.Width - 50 - 60, this.Height - 30 - 30);
             gh.DrawRectangle(new Pen(Attrib.FrontColor), rect);
 
             ///解决除数如果为0，出现异常情况

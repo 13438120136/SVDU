@@ -286,6 +286,12 @@
   <ItemGroup>
     <None Include="Resources\project.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

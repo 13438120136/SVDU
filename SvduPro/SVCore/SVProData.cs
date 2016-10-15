@@ -20,5 +20,13 @@ namespace SVCore
         static public String IconPath { get; set; }
         //保存文件日志路径
         static public String LogPath { get; set; }
+        ///保存当前工程的站号
+        static public Int32 stationID { get; set; }
+        ///数据库连接用户名
+        static public String user { get; set; }
+        ///数据库连接密码
+        static public String passwd { get; set; }
+        ///连接的数据库名称
+        static public String dbIp { get; set; }
     }
 }

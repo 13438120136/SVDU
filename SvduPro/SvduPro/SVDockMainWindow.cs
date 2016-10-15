@@ -125,10 +125,9 @@ namespace SvduPro
             init();
 
             ///参数
-            commandLine(args);
-            //Environment.Exit(0);            
+            commandLine(args);          
             
-            ///获取屏幕分辨率
+            ///获取屏幕分辨率，并设置界面宽和高
             Rectangle ScreenArea = Screen.GetWorkingArea(this);
             this.Location = ScreenArea.Location;
             this.Width = ScreenArea.Width;
@@ -138,10 +137,10 @@ namespace SvduPro
         /// <summary>
         /// 处理命令行参数命令
         /// 
-        /// 1、不带任何参数，执行打开软件
-        /// 2、-p file, 打开指定的工程文件
-        /// 3、-c file, 编译指定的工程文件
-        /// 4、-n proName, 在当前目录创建工程，如果已经创建就打开
+        /// 1、不带任何参数，执行打开软件，不打开任何工程
+        /// 2、-e projectFile -s stationNum -u userName -p passwd -ip databaseIP 打开指定的工程
+        /// 3、-c projectFile -s stationNum -u userName -p passwd -ip databaseIP 编译指定的工程文件
+        /// 4、-n projectName -s stationNum -u userName -p passwd -ip databaseIP 在当前目录创建工程，如果已经创建就打开
         /// </summary>
         /// <param name="args">输入参数</param>
         void commandLine(String[] args)
@@ -149,62 +148,130 @@ namespace SvduPro
             if (args.Length == 0)
                 return;
 
-            ///创建工程
-            if (args[0] == "-n")
+            ///工程文件路径
+            String proFile = null;
+            ///当前的操作模式，
+            /// 0 表示没有输入任何参数
+            /// 1 表示当前为新建工程
+            /// 2 表示打开当前工程
+            /// 3 表示编译当前工程
+            Int32 operMode = 0;
+
+            Dictionary<String, Action<String>> dictAction = new Dictionary<String, Action<String>>();
+            dictAction.Add("-e", (str) => 
             {
-                if (args.Length < 2)
-                    return;
+                if (String.IsNullOrWhiteSpace(str))
+                    throw new ArgumentException();
 
-                if (String.IsNullOrWhiteSpace(args[1]))
-                    return;
+                operMode = 2;
+                proFile = str;
+            });
 
-                String proName = args[1];
-                openProject(".", proName);
-                return;
-            }
-
-            ///打开软件的同时，打开工程
-            if (args[0] == "-p")
+            dictAction.Add("-c", (str) =>
             {
-                if (args.Length < 2)
-                    return;
+                if (String.IsNullOrWhiteSpace(str))
+                    throw new ArgumentException();
 
-                if (String.IsNullOrWhiteSpace(args[1]))
-                    return;
+                operMode = 3;
+                proFile = str;
+            });
 
-                String path = Path.GetDirectoryName(args[1]);
-                String proPath = Directory.GetParent(path).FullName;
-                String proName = Path.GetFileNameWithoutExtension(args[1]);
-                openProject(proPath, proName);
-                return;
-            }
-
-            ///打开软件的同时，编译工程
-            if (args[0] == "-c")
+            dictAction.Add("-n", (str) =>
             {
-                if (args.Length < 2)
-                    return;
+                if (String.IsNullOrWhiteSpace(str))
+                    throw new ArgumentException();
 
-                if (String.IsNullOrWhiteSpace(args[1]))
-                    return;
+                operMode = 1;
+                proFile = str;
+            });
 
-                String path = Path.GetDirectoryName(args[1]);
-                String proPath = Directory.GetParent(path).FullName;
-                String proName = Path.GetFileNameWithoutExtension(args[1]);
-                openProject(proPath, proName);
+            dictAction.Add("-s", (str) =>
+            {
+                Int32 outValue = 0;
+                if (Int32.TryParse(str, out outValue))
+                    SVProData.stationID = outValue;
+                else
+                    throw new ArgumentException();
+            });
+
+            dictAction.Add("-u", (str) =>
+            {
+                if (String.IsNullOrWhiteSpace(str))
+                    throw new ArgumentException();
+
+                SVProData.user = str;
+            });
+
+            dictAction.Add("-p", (str) =>
+            {
+                if (String.IsNullOrWhiteSpace(str))
+                    throw new ArgumentException();
+
+                SVProData.passwd = str;
+            });
+
+            dictAction.Add("-ip", (str) =>
+            {
+                if (String.IsNullOrWhiteSpace(str))
+                    throw new ArgumentException();
+
+                SVProData.dbIp = str;
+            });
+
+            ///循环遍历输入的每一个参数
+            for (int i = 0; i < args.Length; i += 2)
+            {
+                if (!dictAction.ContainsKey(args[i]))
+                    throw new ArgumentException();
 
                 try
                 {
-                    SVCheckBeforeBuild check = new SVCheckBeforeBuild();
-                    check.checkAll();
-                    buildDownLoadFiles();
-                    return;
+                    dictAction[args[i]](args[i + 1]);
                 }
-                catch (SVCheckValidException ex)
+                catch (ArgumentOutOfRangeException)
                 {
-                    SVLog.WinLog.Info(ex.Message);
-                    _outPutWindow.Activate();
+                    throw new ArgumentException();
                 }
+            }
+
+            switch (operMode)
+            {
+                case 1:
+                    {
+                        openProject(".", proFile);
+                        break;
+                    }
+                case 2:
+                    {
+                        String path = Path.GetDirectoryName(proFile);
+                        String proPath = Directory.GetParent(path).FullName;
+                        String proName = Path.GetFileNameWithoutExtension(proFile);
+                        openProject(proPath, proName);
+                        break;
+                    }
+                case 3:
+                    {
+                        String path = Path.GetDirectoryName(proFile);
+                        String proPath = Directory.GetParent(path).FullName;
+                        String proName = Path.GetFileNameWithoutExtension(proFile);
+                        openProject(proPath, proName);
+
+                        try
+                        {
+                            SVCheckBeforeBuild check = new SVCheckBeforeBuild();
+                            check.checkAll();
+                            buildDownLoadFiles();
+                            Environment.Exit(0);
+                            return;
+                        }
+                        catch (SVCheckValidException ex)
+                        {
+                            SVLog.WinLog.Info(ex.Message);
+                            _outPutWindow.Activate();
+                        }
+
+                        break;
+                    }
             }
         }
 

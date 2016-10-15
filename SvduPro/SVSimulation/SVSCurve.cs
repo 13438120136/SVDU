@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using SVControl;
 using SVCore;
@@ -20,8 +21,16 @@ namespace SVSimulation
             this.Height = bin.rect.eY - bin.rect.sY;
 
             this.BackColor = Color.FromArgb((Int32)bin.bgClr);
-            //this.FlatAppearance.MouseDownBackColor = BackColor;
-            //this.FlatAppearance.MouseOverBackColor = BackColor; 
+            this.ForeColor = Color.FromArgb((Int32)bin.scaleClr);
+            Attrib.Interval = bin.maxTime;
+            Attrib.Min = bin.yMin;
+            Attrib.Max = bin.yMax;
+
+            Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>();
+            FontConfig.Add(8, new Font("宋体", 8));
+            FontConfig.Add(12, new Font("宋体", 12));
+            FontConfig.Add(16, new Font("宋体", 16));
+            Attrib.Font = FontConfig[bin.font];
         }
     }
 }

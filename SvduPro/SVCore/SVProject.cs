@@ -158,7 +158,7 @@ namespace SVCore
             SVLog.TextLog.Listeners().Add(textListener);
             SVLog.WinLog.Listeners().Add(textListener);
 
-            _sqlDataBase.connect("192.168.2.105", "safeware", "lixiaolong", "123456");
+            _sqlDataBase.connect(SVProData.dbIp, "safeware", SVProData.user, SVProData.passwd);
             //SVProData.DownLoadFile = _sqlDataBase.getProPath();
             ///先不从数据库中去下装文件生成的路径
             SVProData.DownLoadFile = Path.Combine(SVProData.ProPath, "Download");

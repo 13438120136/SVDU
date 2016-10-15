@@ -60,6 +60,8 @@ namespace SVControl
             LargeImageList.Images.Add("binary", Resource.binary);
             LargeImageList.Images.Add("line", Resource.line);
             LargeImageList.Images.Add("ico", Resource.ico);
+            LargeImageList.Images.Add("hline", Resource.hline);
+            LargeImageList.Images.Add("tick", Resource.tick);
             this.LargeImageList.ImageSize = new Size(80, 40);// 设置行高 20 //分别是宽和高  
 
             ///设置图片
@@ -71,6 +73,8 @@ namespace SVControl
             analogItem.ImageKey = "analog";
             binaryItem.ImageKey = "binary";
             vLineItem.ImageKey = "line";
+            hLineItem.ImageKey = "hline";
+            heartBeatItem.ImageKey = "tick";
 
             //线条
             _funcDict.Add(vLineItem.Index, () =>

@@ -175,7 +175,7 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                UpdateControl(undoItem);
+
                 Font before = _font;
                 undoItem.ReDo = () =>
                 {
@@ -185,6 +185,9 @@ namespace SVControl
                 {
                     _font = before;
                 };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
 
                 _font = value;
             }
