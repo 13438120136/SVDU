@@ -61,8 +61,8 @@ namespace SVCore
                     SVSelectPanelObjs.removeControlItem(this);
                     clearFocus();
 
-                    resizeControl();
-                    return;
+                    if (_selected)
+                        resizeControl();
                 }
 
                 _selected = value;

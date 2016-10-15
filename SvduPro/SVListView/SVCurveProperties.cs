@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using SVCore;
+using System.Windows.Forms;
 
 namespace SVControl
 {
@@ -338,7 +339,7 @@ namespace SVControl
         }
 
         [CategoryAttribute("数据")]
-        [DescriptionAttribute("单位为:秒，范围60 - 3600之间。")]
+        [DescriptionAttribute("单位为:秒，范围60 - 3600之间，\r\n并且必须满足10的倍数。")]
         [DisplayName("最大显示时间")]
         public UInt16 Interval
         {
@@ -346,6 +347,14 @@ namespace SVControl
             {
                 if (value < 60 || value > 3600)
                     return;
+
+                if (value % 10 != 0)
+                {
+                    SVMessageBox msgBox = new SVMessageBox();
+                    msgBox.content(" ", "值必须满足10的倍数!");
+                    msgBox.ShowDialog();
+                    return;
+                }
 
                 if (_max == value)
                     return;

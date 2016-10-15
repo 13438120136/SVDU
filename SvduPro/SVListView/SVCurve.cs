@@ -42,32 +42,45 @@ namespace SVControl
         /// </summary>
         private void correctionWindow()
         {
-            ///宽度
-            Single floatLen = this.Width - 110;
-            Single floatInterval = _attrib.Interval * 10;
-            Single widthValue = floatInterval / floatLen;
-            double va = Math.Round(widthValue, MidpointRounding.AwayFromZero);
-            this.Width = (Int32)(floatInterval / va) + 110;
+            const Int32 minWidth = 200;
+            const Int32 maxWidth = 730;
+            const Int32 minHeight = 200;
+            const Int32 maxHeight = 540;
 
-            if (this.Width < 210)
-                this.Width = 210;
+            Int32 tmpWidth = this.Width - 70;
 
-            if (this.Width > 720)
-                this.Width = 720;
+            if (tmpWidth > maxWidth)
+                tmpWidth = maxWidth;
 
-            Single floatHeight = this.Height - 60;
-            Single interval = floatHeight / 50;
-            double vainterval = Math.Round(interval, MidpointRounding.AwayFromZero);
-            this.Height = (Int32)vainterval * 50 + 60;
+            if (tmpWidth < minWidth)
+                tmpWidth = minWidth;
 
-            ///高度
-            if (this.Height < 110)
-                this.Height = 110;
+            Int32 beishu = tmpWidth % 10;
+            if (beishu != 0)
+            {
+                tmpWidth -= beishu;
+            }
 
-            if (this.Height > 490)
-                this.Height = 490;
+            if (tmpWidth > _attrib.Interval * 10)
+                tmpWidth = _attrib.Interval * 10;
 
-            setStartPos(_attrib.Rect.Location);
+            this.Width = tmpWidth + 70;
+
+
+            Int32 tmpHeight = this.Height - 60;
+
+            if (tmpHeight > maxHeight)
+                tmpHeight = maxHeight;
+
+            if (tmpHeight < minHeight)
+                tmpHeight = minHeight;
+
+            Int32 heightB = tmpHeight % 10;
+            if (heightB != 0)
+            {
+                tmpHeight -= heightB;
+            }
+            this.Height = tmpHeight + 60;
         }
 
         override public void initalizeRedoUndo()
@@ -80,7 +93,6 @@ namespace SVControl
             ///如果是属性发生了变化
             _attrib.UpdateControl += new UpdateControl((item) =>
             {
-                this.Height--;
                 RedoUndo.recordOper(item);
             });
         }
@@ -167,7 +179,7 @@ namespace SVControl
             gh.FillRectangle(brush, this.ClientRectangle);
 
             ///趋势图内部图形
-            Rectangle rect = new Rectangle(60, 30, this.Width - 50 - 60, this.Height - 30 - 30);
+            Rectangle rect = new Rectangle(60, 30, this.Width - 10 - 60, this.Height - 30 - 30);
             gh.DrawRectangle(new Pen(Attrib.FrontColor), rect);
 
             ///解决除数如果为0，出现异常情况
@@ -177,20 +189,25 @@ namespace SVControl
             ///绘制颜色
             SolidBrush fontBrush = new SolidBrush(Attrib.FrontColor);
 
+            scaleStepX = rect.Width / 10;
             for (int i = 0; i <= rect.Width; i += scaleStepX)
             {
                 ///横轴刻度
                 int xPos = rect.X + i;
                 int yPos = rect.Y + rect.Height;
                 gh.DrawLine(new Pen(Attrib.FrontColor), new Point(xPos, yPos), new Point(xPos, yPos + 6));
-                
-                ///刻度文本
-                String text = (i * Attrib.Interval / rect.Width).ToString();
-                Int32 start = (Int32)gh.MeasureString(text, this.Font).Width / 2;
-                gh.DrawString(text, Attrib.Font, fontBrush, new Point(xPos - start, yPos + 6));
+
+                if (i == 0 || i == rect.Width)
+                {
+                    ///刻度文本
+                    String text = (i * Attrib.Interval / rect.Width).ToString();
+                    Int32 start = (Int32)gh.MeasureString(text, this.Font).Width / 2;
+                    gh.DrawString(text, Attrib.Font, fontBrush, new Point(xPos - start, yPos + 6));
+                }
             }
 
             ///纵轴刻度
+            scaleStepY = rect.Height / 10;
             for (int i = 0; i <= rect.Height; i += scaleStepY)
             {
                 int xPos = rect.X;
