@@ -160,7 +160,7 @@ namespace SVCore
 
             _sqlDataBase.connect(SVProData.dbIp, "safeware", SVProData.user, SVProData.passwd);
             //SVProData.DownLoadFile = _sqlDataBase.getProPath();
-            ///先不从数据库中去下装文件生成的路径
+            ///先不从数据库中获取下装文件生成的路径
             SVProData.DownLoadFile = Path.Combine(SVProData.ProPath, "Download");
             if (String.IsNullOrEmpty(SVProData.DownLoadFile))
                 SVLog.WinLog.Warning("获取工程路径出错");

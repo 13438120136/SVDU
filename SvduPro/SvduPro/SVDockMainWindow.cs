@@ -125,13 +125,25 @@ namespace SvduPro
             init();
 
             ///参数
-            commandLine(args);          
-            
-            ///获取屏幕分辨率，并设置界面宽和高
-            Rectangle ScreenArea = Screen.GetWorkingArea(this);
-            this.Location = ScreenArea.Location;
-            this.Width = ScreenArea.Width;
-            this.Height = ScreenArea.Height;
+            try
+            {
+                commandLine(args);
+            }
+            catch (ArgumentException)
+            {
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content(" ", "命令行打开参数错误!");
+                msgBox.ShowDialog();
+                Environment.Exit(-1);
+            }
+            finally
+            {
+                ///获取屏幕分辨率，并设置界面宽和高
+                Rectangle ScreenArea = Screen.GetWorkingArea(this);
+                this.Location = ScreenArea.Location;
+                this.Width = ScreenArea.Width;
+                this.Height = ScreenArea.Height;
+            }
         }
 
         /// <summary>
@@ -228,7 +240,7 @@ namespace SvduPro
                 {
                     dictAction[args[i]](args[i + 1]);
                 }
-                catch (ArgumentOutOfRangeException)
+                catch (IndexOutOfRangeException)
                 {
                     throw new ArgumentException();
                 }
