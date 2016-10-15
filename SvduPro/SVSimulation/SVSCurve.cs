@@ -20,6 +20,8 @@ namespace SVSimulation
             this.Width = bin.rect.eX - bin.rect.sX;
             this.Height = bin.rect.eY - bin.rect.sY;
 
+            Attrib.Rect = new Rectangle(this.Location, new Size(this.Width, this.Height));
+
             this.BackColor = Color.FromArgb((Int32)bin.bgClr);
             this.ForeColor = Color.FromArgb((Int32)bin.scaleClr);
             Attrib.Interval = bin.maxTime;

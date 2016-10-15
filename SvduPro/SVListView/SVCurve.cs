@@ -186,7 +186,8 @@ namespace SVControl
                 
                 ///刻度文本
                 String text = (i * Attrib.Interval / rect.Width).ToString();
-                gh.DrawString(text, Attrib.Font, fontBrush, new Point(xPos, yPos + 6));
+                Int32 start = (Int32)gh.MeasureString(text, this.Font).Width / 2;
+                gh.DrawString(text, Attrib.Font, fontBrush, new Point(xPos - start, yPos + 6));
             }
 
             ///纵轴刻度

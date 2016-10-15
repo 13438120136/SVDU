@@ -55,7 +55,7 @@ namespace SVControl
             }
             else
             {
-                dataView.RowFilter = String.Format("变量 like '%{0}%'", textBox.Text.Trim());
+                dataView.RowFilter = String.Format("ioblockname like '%{0}%'", textBox.Text.Trim());
             }
 
             dataGridView.DataSource = dataView;

@@ -1634,12 +1634,14 @@ namespace SvduPro
             PageArrayBin pageArrayBin = new PageArrayBin();
 
             //启动项
+            SVLog.WinLog.Info(String.Format("编译启动页面{0}成功", fristWidget.PageName));
             fristWidget.buildControlToBin(ref pageArrayBin, ref picBuffer);
             foreach (var item in SVGlobalData.PageContainer)
             {
                 if (fristWidget.Equals(item.Value))
                     continue;
 
+                SVLog.WinLog.Info(String.Format("编译页面{0}成功", item.Value.PageName));
                 item.Value.buildControlToBin(ref pageArrayBin, ref picBuffer);
             }
 
@@ -1704,7 +1706,9 @@ namespace SvduPro
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Application.ExitThread();
-                Process.Start(Application.ExecutablePath, "-p " + SVProData.FullProPath);
+                String proFileName = String.Format(@"-e {0} -s {1} -u {2} -p {3} -ip {4}",
+                    SVProData.FullProPath, SVProData.stationID, SVProData.user, SVProData.passwd, SVProData.dbIp);
+                Process.Start(Application.ExecutablePath, proFileName);
             }
         }
 
@@ -1725,7 +1729,9 @@ namespace SvduPro
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Application.ExitThread();
-                Process.Start(Application.ExecutablePath, "-p " + SVProData.FullProPath);
+                String proFileName = String.Format(@"-e {0} -s {1} -u {2} -p {3} -ip {4}", 
+                    SVProData.FullProPath, SVProData.stationID, SVProData.user, SVProData.passwd, SVProData.dbIp);
+                Process.Start(Application.ExecutablePath, proFileName);
             }
         }
 
