@@ -4,6 +4,7 @@
 // 存放当前控件的元素，是生成页面页面控件的主要入口。
 //
 
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using SVCore;
@@ -13,6 +14,7 @@ namespace SVControl
 {
     public class SVControlWindow : DockContent
     {
+        public EventHandler HideEventer;
         Control _control = null;
 
         /// <summary>
@@ -283,6 +285,7 @@ namespace SVControl
         /// <param name="e"></param>
         protected override void OnClosing(CancelEventArgs e)
         {
+            HideEventer(this, e);
             e.Cancel = true;
             Hide();
         }

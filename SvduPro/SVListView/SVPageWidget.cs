@@ -170,16 +170,20 @@ namespace SVControl
         ///          false: 使用文件中ID号
         /// </summary>
         /// <param name="bCreate">是否创建新的ID号</param>
-        public void loadSelf(Boolean bCreate = false)
+        public Boolean loadSelf(Boolean bCreate = false)
         {
             SVXml xml = new SVXml();
-            xml.loadXml(pageFileName);
+            if (!xml.loadXml(pageFileName))
+                return false;
+
             xml.initRootEle("Page");
 
             ///从xml文件中加载
             loadXML(xml, bCreate);
             ///将数据更新到界面显示
             refreshPropertyToPanel();
+
+            return true;
         }
 
         /// <summary>

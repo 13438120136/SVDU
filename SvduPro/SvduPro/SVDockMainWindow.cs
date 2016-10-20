@@ -363,6 +363,15 @@ namespace SvduPro
             workWindow.ToolTipText = widget.pageFileName;
             workWindow.Show(_dockPanel, DockState.Document);
             workWindow.Activate();
+
+            workWindow.HideEventer += new EventHandler((sender, e) =>
+            {
+                var pageWidget = workWindow.CoreControl as SVPageWidget;
+                if (pageWidget != null)
+                {
+                    _propertyGrid.SelectedObject = null;
+                }
+            });
         }
 
         /// <summary>
@@ -471,6 +480,13 @@ namespace SvduPro
                 return;
 
             SVSelectPanelObjs.clearSelectControls();
+
+            ///如果是页面窗口
+            var pageWidget = win.CoreControl as SVPageWidget;
+            if (pageWidget != null)
+            {
+                _propertyGrid.SelectedObject = pageWidget;
+            }
         }
 
 
@@ -698,14 +714,16 @@ namespace SvduPro
                         return;
                     }
 
+                    String label = e.Label.Trim();
+
                     ///名字已经存在
-                    if (_svProject.isExist(e.Label))
+                    if (_svProject.isExist(label))
                     {
                         e.CancelEdit = true;
                         return;
                     }
 
-                    _svProject.renamePageName(pageNode.Parent.Text, e.Node.Text, e.Label);
+                    _svProject.renamePageName(pageNode.Parent.Text, e.Node.Text, label);
                     widget.PageName = e.Label;
                 }
             });
@@ -841,20 +859,29 @@ namespace SvduPro
         private TreeNode createPageClass(String className)
         {
             TreeNode pageTreeNode = _stationTreeView.newClassNode(className);
+            _svProject.addPageNode(className, null);
 
             ///如果修改的是当前节点，就需要重新命名分类名称
             _stationTreeView.AfterLabelEdit += new NodeLabelEditEventHandler((sender, e)=>
             {
                 if (pageTreeNode.Equals(e.Node))
                 {
-                    if (String.IsNullOrWhiteSpace(e.Node.Text)
-                         || String.IsNullOrWhiteSpace(e.Label))
+                    if (String.IsNullOrWhiteSpace(e.Label))
                     {
                         e.CancelEdit = true;
                         return;
                     }
 
-                    _svProject.renamePageClassName(e.Node.Text, e.Label);
+                    String label = e.Label.Trim();
+
+                    if (String.IsNullOrWhiteSpace(e.Node.Text)
+                        || _svProject.getDictData().ContainsKey(label))
+                    {
+                        e.CancelEdit = true;
+                        return;
+                    }
+
+                    _svProject.renamePageClassName(e.Node.Text, label);
                 }
             });
 
@@ -889,7 +916,8 @@ namespace SvduPro
             delItem.Click += new EventHandler((sender, e) =>
             {
                 SVMessageBox msgBox = new SVMessageBox();
-                msgBox.content(Resource.提示, Resource.确定删除分类);
+                String text = String.Format("{0} 分类名称:{1}", Resource.确定删除分类, className);
+                msgBox.content(Resource.提示, text);
                 DialogResult result = msgBox.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.No)
                     return;
@@ -1553,7 +1581,12 @@ namespace SvduPro
 
                 SVPageWidget widget = new SVPageWidget(pageName, file);
                 widget.ClassText = node.Text;
-                widget.loadSelf(true);
+                if (!widget.loadSelf(true))
+                {
+                    String errorMsg = String.Format("页面文件{0} 导入失败!", file);
+                    SVLog.WinLog.Info(errorMsg);
+                    return;
+                }
 
                 SVPageNode pageNode = newPageFromWidget(widget);
                 node.Nodes.Add(pageNode);

@@ -77,10 +77,13 @@ namespace SVCore
                 XElement Item = new XElement("Classify", new XAttribute("Text", item.Key));
                 rootElement.Add(Item);
 
-                var itemList = from value in item.Value
-                               select new XElement("Node", new XAttribute("Name", value.Key), new XAttribute("File", value.Value));
+                if (item.Value != null)
+                {
+                    var itemList = from value in item.Value
+                                   select new XElement("Node", new XAttribute("Name", value.Key), new XAttribute("File", value.Value));
 
-                Item.Add(itemList);
+                    Item.Add(itemList);
+                }
             }
 
             rootElement.Save(file);
@@ -199,6 +202,9 @@ namespace SVCore
         /// <returns>页面相对路径</returns>
         public String name2Path(String name)
         {
+            if (name == null)
+                return null;
+
             ///如果存在就直接返回
             foreach (var parent in _pageDic)
                 if (parent.Value.ContainsKey(name))
@@ -236,13 +242,27 @@ namespace SVCore
         {
             //判断该页面名称是否存在
             foreach (var parent in _pageDic)
-                if (parent.Value.ContainsKey(name))
-                    return false;
+            {
+                if (parent.Value != null 
+                    && parent.Value.Count != 0)
+                {
+                    //if (_pageDic.ContainsKey(className))
+                    //    return false;
+
+                     if (name != null && parent.Value.ContainsKey(name))
+                        return false;
+                }
+            }
 
             String file = name2Path(name);
             //执行保存
             if (_pageDic.ContainsKey(className))
-                _pageDic[className].Add(name, file);
+            {
+                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(file))
+                    _pageDic[className].Add(name, file);
+            }
+            else if (file == null)
+                _pageDic.Add(className, null);
             else
                 _pageDic.Add(className, new Dictionary<String, String> { { name, file } });
 
@@ -368,7 +388,7 @@ namespace SVCore
         {
             foreach (var item in _pageDic)
             {
-                if (item.Value.ContainsKey(pageName))
+                if (item.Value != null && item.Value.ContainsKey(pageName))
                     return true;
             }
 

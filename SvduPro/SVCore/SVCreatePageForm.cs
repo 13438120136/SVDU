@@ -61,7 +61,7 @@ namespace SVCore
 
             this.okBtn.Click += new EventHandler((sender, e) =>
             {
-                PageName = this.textBox.Text;
+                PageName = this.textBox.Text.Trim();
                 if (PageName == String.Empty)
                 {
                     SVMessageBox msgBox = new SVMessageBox();
