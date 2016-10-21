@@ -25,7 +25,7 @@ namespace SVControl
 
         public SVIcon()
         {
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         override public void initalizeRedoUndo()
@@ -91,6 +91,7 @@ namespace SVControl
             this.Width = _attrib.Rect.Width;
             this.Height = _attrib.Rect.Height;
             this.Location = new Point(_attrib.Rect.X, _attrib.Rect.Y);
+            this.BackColor = Color.Red;
             this.IsMoved = !_attrib.Lock;
 
             ///根据静态图是否设置了图片来决定外观显示

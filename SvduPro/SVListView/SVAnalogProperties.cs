@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
 using System.Drawing;
-using SVCore;
 using System.Drawing.Design;
-using System.Data;
+using SVCore;
 
 namespace SVControl
 {
@@ -56,7 +53,7 @@ namespace SVControl
             _exceptionBgColor = _normalBgColor;
             _decNum = 1;
             _min = 1;
-            _min = 100;
+            _max = 100;
 
             _controlType = "模拟量";
 
@@ -135,6 +132,23 @@ namespace SVControl
         {
             set
             {
+                if (_var == value)
+                    return;
+
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                String before = _var;
+                undoItem.ReDo = () =>
+                {
+                    _var = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _var = before;
+                };
+
                 _var = value;
             }
 

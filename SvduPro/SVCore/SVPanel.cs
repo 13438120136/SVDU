@@ -182,7 +182,7 @@ namespace SVCore
                 case ContentAlignment.TopLeft:
                     {
                         StringFormat strFormat = new StringFormat();
-                        strFormat.Alignment = StringAlignment.Far;
+                        strFormat.Alignment = StringAlignment.Near;
                         strFormat.LineAlignment = StringAlignment.Near;
                         graphics.DrawString(this.Text, this.Font, fontBrush, this.ClientRectangle, strFormat);
                         break;
@@ -190,7 +190,7 @@ namespace SVCore
                 case ContentAlignment.TopRight:
                     {
                         StringFormat strFormat = new StringFormat();
-                        strFormat.Alignment = StringAlignment.Near;
+                        strFormat.Alignment = StringAlignment.Far;
                         strFormat.LineAlignment = StringAlignment.Near;
                         graphics.DrawString(this.Text, this.Font, fontBrush, this.ClientRectangle, strFormat);
                         break;

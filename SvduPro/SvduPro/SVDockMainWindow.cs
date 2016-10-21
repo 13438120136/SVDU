@@ -660,6 +660,7 @@ namespace SvduPro
                 svPanel.setParentID(widget.Attrib.id);
                 ///新建当前控件ID号
                 svPanel.createID();
+                svPanel.refreshPropertyToPanel();
 
                 ///设置相对位置
                 svPanel.Location = new Point(svPanel.Location.X + disx, svPanel.Location.Y + disy);
@@ -922,8 +923,12 @@ namespace SvduPro
                 if (result == System.Windows.Forms.DialogResult.No)
                     return;
 
+                List<TreeNode> tmpNode = new List<TreeNode>();
+                foreach (TreeNode item in pageTreeNode.Nodes)
+                    tmpNode.Add(item);
+
                 ///遍历移除所有的页面中的控件元素
-                foreach (var item in pageTreeNode.Nodes)
+                foreach (var item in tmpNode)
                 {
                     SVPageNode node = item as SVPageNode;
                     if (node == null)
@@ -1094,6 +1099,9 @@ namespace SvduPro
                 ///分类节点
                 TreeNode treeNode = createPageClass(classItem.Key);
                 ///拷贝一份页面值对象,目的是删除配置信息不发生异常
+                if (classItem.Value == null)
+                    continue;
+
                 var pageValue = new Dictionary<String, String>(classItem.Value);
 
                 ///遍历页面节点

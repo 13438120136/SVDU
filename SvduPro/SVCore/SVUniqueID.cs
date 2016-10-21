@@ -68,6 +68,11 @@ namespace SVCore
                 return;
 
             _data.Push(id);
+
+            ///回收后进行排序
+            List<Int16> tmpList = new List<Int16>(_data);
+            tmpList.Sort((a, b) => { return b - a; });
+            _data = new Stack<Int16>(tmpList);
         }
 
         //将当前类序列化

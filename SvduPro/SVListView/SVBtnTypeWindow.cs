@@ -41,8 +41,6 @@ namespace SVControl
                 this.varText.Text = _svButton.Attrib.BtnType.VarText;
             }
 
-            this.openRadio.Checked = true;
-
             this.groupBoxEnabled.init();
             this.groupBoxEnabled.setEnabledText("使能");
             this.groupBoxEnabled.setChecked(_svButton.Attrib.BtnType.Enable);
@@ -59,6 +57,7 @@ namespace SVControl
             if (!valid())
                 return;
 
+            _svButton.RedoUndo.operChanged();
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 

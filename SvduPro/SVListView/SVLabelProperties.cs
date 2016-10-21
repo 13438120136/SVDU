@@ -31,7 +31,7 @@ namespace SVControl
         public SVLabelProperties()
         {
             _font = new Font("宋体", 8);
-            _rect = new Rectangle(0, 0, 120, 80);
+            _rect = new Rectangle(0, 0, 120, 60);
             _text = "Text";
             _bgcolor = Color.White;
             _fgcolor = Color.Black;

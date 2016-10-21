@@ -123,15 +123,6 @@
   <data name="cancelBtn.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Operator Var</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Done</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Type</value>
-  </data>
   <data name="enVarBtn.Text" xml:space="preserve">
     <value>Browse Var</value>
   </data>
@@ -157,6 +148,9 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Operator Var</value>
+  </data>
   <data name="pageBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 47</value>
   </data>
@@ -169,6 +163,9 @@
   <data name="pageID.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 21</value>
   </data>
+  <data name="label4.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>40, 0</value>
+  </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 12</value>
   </data>
@@ -178,11 +175,20 @@
   <data name="pageText.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 21</value>
   </data>
+  <data name="label3.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>40, 0</value>
+  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Page Name</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Button Dialog</value>

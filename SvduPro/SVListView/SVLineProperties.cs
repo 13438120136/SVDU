@@ -195,12 +195,15 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观")]
-        [DescriptionAttribute("线条宽度")]
+        [DescriptionAttribute("线条宽度, 范围1-20")]
         [DisplayName("宽度")]
         public Byte LineWidth
         {
             set
             {
+                if (value < 1 || value > 20)
+                    return;
+
                 if (_lineWidth == value)
                     return;
 

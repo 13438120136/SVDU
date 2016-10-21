@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using SVCore;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml;
-using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml;
+using SVCore;
 
 namespace SVControl
 {

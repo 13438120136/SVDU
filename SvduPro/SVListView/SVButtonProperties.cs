@@ -75,7 +75,7 @@ namespace SVControl
         public SVButtonProperties()
         {
             _font = new Font("宋体", 8);
-            _rect = new Rectangle(0, 0, 180, 100);
+            _rect = new Rectangle(0, 0, 120, 60);
             _text = "Button";
             _bgcolor = Color.FromArgb(236, 236, 236);
             _fgcolor = Color.Black;
@@ -544,12 +544,18 @@ namespace SVControl
             //按钮的类型
             if (_btnType.Type == 0)
             {
-                btnBin.type = 4;
+                btnBin.type = 1;
                 btnBin.param.pageId = _btnType.PageID;
             }
             else
             {
-                btnBin.type = 5;
+                Int32 tmpType = (Int32)(_btnType.Type + 1);
+                btnBin.type = Convert.ToByte(tmpType);
+                String varName = _btnType.VarText;
+
+                var varInstance = SVVaribleType.instance();
+                btnBin.param.addrOffset = varInstance.strToAddress(varName);
+                btnBin.type = (Byte)varInstance.strToType(varName);
                 btnBin.param.addrOffset = 0x00;
             }
 

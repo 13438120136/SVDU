@@ -40,8 +40,6 @@ namespace SVControl
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.closeRadio = new System.Windows.Forms.RadioButton();
-            this.openRadio = new System.Windows.Forms.RadioButton();
             this.varBtn = new System.Windows.Forms.Button();
             this.varText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -75,7 +73,6 @@ namespace SVControl
             // 
             // groupBox3
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.groupBoxEnabled);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.groupBox5);
@@ -84,15 +81,16 @@ namespace SVControl
             this.groupBox3.Controls.Add(this.doType);
             this.groupBox3.Controls.Add(this.cancelBtn);
             this.groupBox3.Controls.Add(this.okBtn);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
             // groupBoxEnabled
             // 
-            resources.ApplyResources(this.groupBoxEnabled, "groupBoxEnabled");
             this.groupBoxEnabled.Controls.Add(this.enVarBtn);
             this.groupBoxEnabled.Controls.Add(this.enText);
             this.groupBoxEnabled.Controls.Add(this.label6);
+            resources.ApplyResources(this.groupBoxEnabled, "groupBoxEnabled");
             this.groupBoxEnabled.Name = "groupBoxEnabled";
             this.groupBoxEnabled.TabStop = false;
             // 
@@ -116,35 +114,19 @@ namespace SVControl
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
             // groupBox5
             // 
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Controls.Add(this.closeRadio);
-            this.groupBox5.Controls.Add(this.openRadio);
             this.groupBox5.Controls.Add(this.varBtn);
             this.groupBox5.Controls.Add(this.varText);
             this.groupBox5.Controls.Add(this.label5);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
-            // 
-            // closeRadio
-            // 
-            resources.ApplyResources(this.closeRadio, "closeRadio");
-            this.closeRadio.Name = "closeRadio";
-            this.closeRadio.TabStop = true;
-            this.closeRadio.UseVisualStyleBackColor = true;
-            // 
-            // openRadio
-            // 
-            resources.ApplyResources(this.openRadio, "openRadio");
-            this.openRadio.Name = "openRadio";
-            this.openRadio.TabStop = true;
-            this.openRadio.UseVisualStyleBackColor = true;
             // 
             // varBtn
             // 
@@ -166,12 +148,12 @@ namespace SVControl
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.pageBtn);
             this.groupBox4.Controls.Add(this.pageID);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.pageText);
             this.groupBox4.Controls.Add(this.label3);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -191,20 +173,18 @@ namespace SVControl
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
-            this.label4.MinimumSize = new System.Drawing.Size(40, 0);
             this.label4.Name = "label4";
             // 
             // pageText
             // 
-            resources.ApplyResources(this.pageText, "pageText");
             this.pageText.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.pageText, "pageText");
             this.pageText.Name = "pageText";
             this.pageText.ReadOnly = true;
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
-            this.label3.MinimumSize = new System.Drawing.Size(40, 0);
             this.label3.Name = "label3";
             // 
             // label2
@@ -214,12 +194,15 @@ namespace SVControl
             // 
             // doType
             // 
-            resources.ApplyResources(this.doType, "doType");
             this.doType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.doType, "doType");
             this.doType.FormattingEnabled = true;
             this.doType.Items.AddRange(new object[] {
             resources.GetString("doType.Items"),
-            resources.GetString("doType.Items1")});
+            resources.GetString("doType.Items1"),
+            resources.GetString("doType.Items2"),
+            resources.GetString("doType.Items3"),
+            resources.GetString("doType.Items4")});
             this.doType.Name = "doType";
             this.doType.SelectedIndexChanged += new System.EventHandler(this.doType_SelectedIndexChanged);
             // 
@@ -260,8 +243,6 @@ namespace SVControl
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button varBtn;
         private System.Windows.Forms.TextBox varText;
-        private System.Windows.Forms.RadioButton closeRadio;
-        private System.Windows.Forms.RadioButton openRadio;
         private System.Windows.Forms.Label label1;
         private SVCheckGroupBox groupBoxEnabled;
         private System.Windows.Forms.Button enVarBtn;

@@ -40,7 +40,7 @@ namespace SVControl
         public SVBinaryProperties()
         {
             _font = new Font("宋体", 16);
-            _rect = new Rectangle(0, 0, 100, 50);
+            _rect = new Rectangle(0, 0, 120, 40);
             _trueColor = Color.Blue;
             _trueBgColor = Color.Moccasin;
             _falseColor = Color.Red;

@@ -93,7 +93,7 @@ namespace SVControl
             this.Width = _attrib.Rect.Width;
             this.Height = _attrib.Rect.Height;
             this.Location = new Point(_attrib.Rect.X, _attrib.Rect.Y);
-            this.BackColor = Color.White;
+            this.BackColor = Color.Green;
             this.IsMoved = !_attrib.Lock;
 
             if (_attrib.VarName.Count != 0)

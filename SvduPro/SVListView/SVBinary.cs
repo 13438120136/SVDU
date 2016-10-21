@@ -108,18 +108,18 @@ namespace SVControl
 
             Dictionary<Byte, String> config = new Dictionary<Byte, String>()
             {
-                {0, "打开|关闭"},
-                {1, "运行|停止"},
-                {2, "1|0"},
-                {3, "是|否"},
-                {4, "真|假"},
-                {5, "正确|错误"},
-                {6, "开|关"},
+                {0, "关闭"},
+                {1, "停止"},
+                {2, "False"},
+                {3, "否"},
+                {4, "假"},
+                {5, "错误"},
+                {6, "关"},
                 {7, "自定义"}
             };
 
             if (_attrib.Type == 7)
-                this.Text = String.Format("{0}|{1}", Attrib.CustomTrueText, Attrib.CustomFlaseText);
+                this.Text = String.Format("{0}", Attrib.CustomFlaseText);
             else
                 this.Text = config[_attrib.Type];
         }

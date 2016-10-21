@@ -55,6 +55,12 @@ namespace SVCore
             foreach (var onePair in otherResult)
             {
                 Dictionary<String, String> xTmp = new Dictionary<String, String>();
+                if (onePair.Value.Count() == 0)
+                {
+                    _pageDic.Add(onePair.Key, null);
+                    continue;
+                }
+
                 foreach (var item in onePair.Value)
                 {
                     xTmp.Add(item.Key, item.Value);
@@ -207,7 +213,7 @@ namespace SVCore
 
             ///如果存在就直接返回
             foreach (var parent in _pageDic)
-                if (parent.Value.ContainsKey(name))
+                if (parent.Value != null && parent.Value.ContainsKey(name))
                     return parent.Value[name];
 
             //得到页面保存文件的实际路径
@@ -240,29 +246,32 @@ namespace SVCore
         /// <returns>true或者false</returns>
         public Boolean addPageNode(String className, String name)
         {
+            if (name == null)
+            {
+                if (!_pageDic.ContainsKey(className))
+                    _pageDic.Add(className, null);
+                return true;
+            }
+
             //判断该页面名称是否存在
             foreach (var parent in _pageDic)
             {
-                if (parent.Value != null 
-                    && parent.Value.Count != 0)
-                {
-                    //if (_pageDic.ContainsKey(className))
-                    //    return false;
+                if (parent.Value == null)
+                    continue;
 
-                     if (name != null && parent.Value.ContainsKey(name))
-                        return false;
-                }
+                if (parent.Value.ContainsKey(name))
+                    return false;
             }
 
             String file = name2Path(name);
             //执行保存
             if (_pageDic.ContainsKey(className))
             {
-                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(file))
+                if (_pageDic[className] == null)
+                    _pageDic[className] = new Dictionary<String, String> { { name, file } };
+                else
                     _pageDic[className].Add(name, file);
             }
-            else if (file == null)
-                _pageDic.Add(className, null);
             else
                 _pageDic.Add(className, new Dictionary<String, String> { { name, file } });
 
