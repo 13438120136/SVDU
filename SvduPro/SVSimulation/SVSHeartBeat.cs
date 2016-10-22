@@ -24,7 +24,7 @@ namespace SVSimulation
         /// 仿真心跳控件
         /// 构造函数
         /// </summary>
-        /// <param name="timer">定时器对象，用来定时播放图片</param>
+        /// <param Name="timer">定时器对象，用来定时播放图片</param>
         public SVSHeartBeat(Timer timer)
         {
             _timer = timer;
@@ -36,8 +36,8 @@ namespace SVSimulation
         /// 从二进制数据中解析心跳控件数据
         /// 并在界面上设置响应的值和事件
         /// </summary>
-        /// <param name="tickBin">心跳控件内存数据</param>
-        /// <param name="picBuffer">图片数据</param>
+        /// <param Name="tickBin">心跳控件内存数据</param>
+        /// <param Name="picBuffer">图片数据</param>
         internal void fromBin(TickBin tickBin, byte[] picBuffer)
         {
             ///设置控件位置和大小

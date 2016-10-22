@@ -92,9 +92,10 @@ namespace SVCore
         /// <returns>变量对应的内存表格</returns>
         public DataTable getVarDataList(Int32 stationID)
         {
-            String sql = String.Format(@"select table_channelinfo.ioblockname, table_netinfo.addressoffset, table_valuetype.valueType
+            String sql = String.Format(@"select table_channelinfo.ioblockname, table_netinfo.BusAddress_RE, 
+                table_netinfo.BusAddress_SEND, table_valuetype.valueType
                 from table_varinfo, table_channelinfo, table_netinfo, table_valuetype
-                where table_varinfo.stationid = 11 
+                where table_varinfo.stationid = {0} 
                 and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
                 and table_varinfo.ioblockid = table_channelinfo.uid 
                 and table_varinfo.uid = table_netinfo.connid

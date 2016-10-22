@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
-using SVCore;
 using System.IO;
+using SVCore;
 
 namespace SVControl
 {
@@ -15,6 +15,8 @@ namespace SVControl
         Rectangle _rect;     //文本控件尺寸
 
         List<String> _var;
+        List<Byte> _varType;
+
         SVBitmapArray _pic;
         SVBitmap _picError;
 
@@ -32,6 +34,7 @@ namespace SVControl
             _picError = new SVBitmap();
             _pic = new SVBitmapArray();
             _var = new List<String>();
+            _varType = new List<Byte>();
             _isLock = false;
         }
 
@@ -119,6 +122,13 @@ namespace SVControl
             {
                 return _var;
             }
+        }
+
+        [Browsable(false)]
+        public List<Byte> VarType
+        {
+            get { return _varType; }
+            set { _varType = value; }
         }
 
         [CategoryAttribute("数据")]
@@ -233,6 +243,8 @@ namespace SVControl
                 pageArrayBin.pageArray[pageCount].m_gif = new GifBin[SVLimit.PAGE_GIF_MAXNUM];
 
             GifBin gifBin = pageArrayBin.pageArray[pageCount].m_gif[gifCount];
+            gifBin.addOffset = new UInt32[8];
+            gifBin.varType = new Byte[8];
 
             gifBin.id = ID;
             gifBin.rect.sX = (UInt16)Rect.X;
@@ -269,9 +281,21 @@ namespace SVControl
                 SVBitmapHead head = new SVBitmapHead(bitmap);
                 byte[] data = head.data();
                 serialize.Write(data, 0, (Int32)data.Length);
+            }            
+
+            ///根据名称来获取地址
+            var varInstance = SVVaribleType.instance();
+
+            for (int i = 0; i < _var.Count; i++)
+            {
+                varInstance.loadVariableData();
+                varInstance.setDataType(_varType[i]);
+                gifBin.addOffset[i] = varInstance.strToAddress(_var[i], _varType[i]);
+                gifBin.varType[i] = (Byte)varInstance.strToType(_var[i]);
             }
 
-            gifBin.type = (Byte)(list.Count - 1);
+            ///变量个数
+            gifBin.type = Convert.ToByte(_var.Count);
 
             pageArrayBin.pageArray[pageCount].m_gif[gifCount] = gifBin;
         }

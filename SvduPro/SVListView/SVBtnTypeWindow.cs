@@ -16,7 +16,7 @@ namespace SVControl
         /// <summary>
         /// 按钮动作窗口的构造函数
         /// </summary>
-        /// <param name="button">按钮控件</param>
+        /// <param Name="button">按钮控件</param>
         public SVBtnDoWindow(SVButton button)
         {
             _svButton = button;
@@ -50,8 +50,8 @@ namespace SVControl
         /// <summary>
         /// 单击确认按钮后执行的操作
         /// </summary>
-        /// <param name="sender">按钮对象</param>
-        /// <param name="e">按钮事件</param>
+        /// <param Name="sender">按钮对象</param>
+        /// <param Name="e">按钮事件</param>
         private void okBtn_Click(object sender, EventArgs e)
         {
             if (!valid())
@@ -64,8 +64,8 @@ namespace SVControl
         /// <summary>
         /// 单击取消按钮后窗口执行的操作
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -74,8 +74,8 @@ namespace SVControl
         /// <summary>
         /// 当前类型选择Combobox改变后触发的事件处理
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void doType_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = this.doType.SelectedIndex;
@@ -129,7 +129,7 @@ namespace SVControl
         /// <summary>
         /// 检查当前跳转页面是否已经设置
         /// </summary>
-        /// <param name="bResult">true-合法 false-不合法</param>
+        /// <param Name="bResult">true-合法 false-不合法</param>
         void checkPageGoto(ref Boolean bResult)
         {
             if (String.IsNullOrEmpty(this.pageID.Text) 
@@ -151,7 +151,7 @@ namespace SVControl
         /// <summary>
         /// 检查当前变量的选取是否合法
         /// </summary>
-        /// <param name="bResult">true-合法 false-不合法</param>
+        /// <param Name="bResult">true-合法 false-不合法</param>
         void checkVar(ref Boolean bResult)
         {
             if (String.IsNullOrEmpty(this.varText.Text))
@@ -170,8 +170,8 @@ namespace SVControl
         /// <summary>
         /// 弹出选择页面的窗口，并执行选择操作
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void pageBtn_Click(object sender, EventArgs e)
         {
             SVPageSelectWindow win = new SVPageSelectWindow();
@@ -185,13 +185,15 @@ namespace SVControl
         /// <summary>
         /// 选择使能关联变量
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void enVarBtn_Click(object sender, EventArgs e)
         {
             SVVarWindow win = new SVVarWindow();
+            win.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
             if (win.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
             {
+                _svButton.Attrib.BtnType.EnVarTextType = win.getVarType();
                 enText.Text = win.varText();
             }
         }
@@ -199,13 +201,22 @@ namespace SVControl
         /// <summary>
         /// 选择按钮操作变量
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void varBtn_Click(object sender, EventArgs e)
         {
+            int index = this.doType.SelectedIndex;
+
             SVVarWindow win = new SVVarWindow();
+
+            if (index == 1 || index == 2)
+                win.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
+            else
+                win.setFilter(new List<String> {"BOOL_VAR" });
+
             if (win.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
             {
+                _svButton.Attrib.BtnType.VarTextType = win.getVarType();
                 varText.Text = win.varText();
             }
         }

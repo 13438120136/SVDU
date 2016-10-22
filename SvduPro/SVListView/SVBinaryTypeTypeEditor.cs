@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing.Design;
+﻿using System.Drawing.Design;
 using System.Windows.Forms.Design;
-using SVCore;
 
 namespace SVControl
 {
@@ -10,7 +8,7 @@ namespace SVControl
         /// <summary>
         /// 选择开关量类型
         /// </summary>
-        /// <param name="context"></param>
+        /// <param Name="context"></param>
         /// <returns></returns>
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
@@ -18,27 +16,18 @@ namespace SVControl
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
-    System.IServiceProvider provider, object value)
+            System.IServiceProvider provider, object value)
         {
-            try
-            {
-                SVBinary binary = context.Instance as SVBinary;
-                if (binary == null)
-                    return null;
+            SVBinary binary = context.Instance as SVBinary;
+            if (binary == null)
+                return value;
 
-                IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
-                if (edSvc != null)
-                {
-                    SVBinaryTypeWindow window = new SVBinaryTypeWindow(binary);
-                    if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
-                        return binary.Attrib.Type;
-                    else
-                        return null;
-                }
-            }
-            catch (Exception ex)
+            IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (edSvc != null)
             {
-                SVLog.TextLog.Exception(ex);
+                SVBinaryTypeWindow window = new SVBinaryTypeWindow(binary);
+                if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
+                    return binary.Attrib.Type;
             }
 
             return value;

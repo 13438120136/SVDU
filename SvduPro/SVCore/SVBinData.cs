@@ -227,7 +227,7 @@ namespace SVCore
         public UInt32 iamgeOffsetErr;
 
         public UInt16 id;         /*动态图标元素的Id*/
-        public Byte type;         //type;/*1:一值两图，3：二值四图，7：三值8图*/
+        public Byte type;         //type;/*1:一值两图，2：二值四图，3：三值8图*/
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public Byte[] varType;    /*对应变量的类型*/

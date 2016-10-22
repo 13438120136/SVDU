@@ -18,7 +18,7 @@ namespace SVControl
         /// 重写父类
         /// 这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param Name="context"></param>
         /// <returns></returns>
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
@@ -29,7 +29,7 @@ namespace SVControl
         /// 重写父类
         /// 这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param Name="context"></param>
         /// <returns></returns>
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {

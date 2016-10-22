@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using SVCore;
-using System.Windows.Forms;
 
 namespace SVControl
 {
@@ -21,7 +20,15 @@ namespace SVControl
         String _controlType;   //控件类型
 
         String _var;
-        String[] _varArray = new String[4];   //变量列表
+        String[] _varArray = new String[4];      //变量列表
+        Byte[] _varArrayType = new Byte[4];  //变量类型列表
+
+        [Browsable(false)]
+        public Byte[] VarArrayType
+        {
+            get { return _varArrayType; }
+            set { _varArrayType = value; }
+        }
 
         [Browsable(false)]
         public String[] VarArray
@@ -393,6 +400,7 @@ namespace SVControl
             curveBin.lineClr = new UInt32[4];
             curveBin.lineWidth = new Byte[4];
             curveBin.addrOffset = new UInt32[4];
+            curveBin.varType = new Byte[4];
 
             curveBin.id = ID;
             curveBin.rect.sX = (UInt16)Rect.X;
@@ -414,6 +422,14 @@ namespace SVControl
             for (int i = 0; i < _varArray.Length; i++)
             {
                 String str =_varArray[i];
+                Byte type = _varArrayType[i];
+
+                var varInstance = SVVaribleType.instance();
+                varInstance.loadVariableData();
+                varInstance.setDataType(type);
+
+                curveBin.addrOffset[i] = varInstance.strToAddress(str, type);
+                curveBin.varType[i] = (Byte)varInstance.strToType(str);
             }
 
             //线条颜色
@@ -423,8 +439,8 @@ namespace SVControl
                 curveBin.lineClr[i] = value;
             }
 
-            //线条宽度
-            Array.Copy(curveBin.lineWidth, _lineEnabled, _varArray.Length);
+            //线条使能
+            Array.Copy(_lineEnabled, curveBin.lineWidth, _varArray.Length);
 
             pageArrayBin.pageArray[pageCount].m_trendChart[curveCount] = curveBin;
         }

@@ -97,8 +97,8 @@ namespace SVControl
         /// 重写父类的复制构造函数
         /// 这里不需要具体关注
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
+        /// <param Name="info"></param>
+        /// <param Name="context"></param>
         protected SVLine(SerializationInfo info, StreamingContext context)
         {
             _attrib = (SVLineProperties)info.GetValue("stream", typeof(SVLineProperties));
@@ -108,8 +108,8 @@ namespace SVControl
         /// 重写父类的方法，用来执行序列化操作的复制
         /// 这里不需要具体关注
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
+        /// <param Name="info"></param>
+        /// <param Name="context"></param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("stream", _attrib);
@@ -135,7 +135,7 @@ namespace SVControl
         /// <summary>
         /// 设置当前控件起始位置
         /// </summary>
-        /// <param name="pos"></param>
+        /// <param Name="pos"></param>
         public override void setStartPos(Point pos)
         {
             _attrib.start = pos;
@@ -178,8 +178,8 @@ namespace SVControl
         /// <summary>
         /// 从xml文件中加载线条的数据
         /// </summary>
-        /// <param name="xml">xml对象</param>
-        /// <param name="isCreate">true-创建新ID false-使用文件中的ID</param>
+        /// <param Name="xml">xml对象</param>
+        /// <param Name="isCreate">true-创建新ID false-使用文件中的ID</param>
         public override void loadXML(SVXml xml, Boolean isCreate = false)
         {
             XmlElement lineXml = xml.CurrentElement;
@@ -201,7 +201,7 @@ namespace SVControl
         /// <summary>
         /// 保存线条控件数据到xml文件中
         /// </summary>
-        /// <param name="xml">xml对象</param>
+        /// <param Name="xml">xml对象</param>
         public override void saveXML(SVXml xml)
         {
             XmlElement lineXml = xml.createNode(this.GetType().Name);
@@ -217,8 +217,8 @@ namespace SVControl
         /// <summary>
         /// 生成下装文件
         /// </summary>
-        /// <param name="pageArrayBin">二进制的配置数据</param>
-        /// <param name="serialize">二进制的图片数据</param>
+        /// <param Name="pageArrayBin">二进制的配置数据</param>
+        /// <param Name="serialize">二进制的图片数据</param>
         public void buildControlToBin(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             _attrib.make(ref pageArrayBin, ref serialize);

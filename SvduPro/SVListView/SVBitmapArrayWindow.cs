@@ -20,8 +20,8 @@ namespace SVControl
         /// <summary>
         /// 初始化构造函数
         /// </summary>
-        /// <param name="array">初始化图片数组</param>
-        /// <param name="count">最大图片个数</param>
+        /// <param Name="array">初始化图片数组</param>
+        /// <param Name="count">最大图片个数</param>
         public SVBitmapArrayWindow(SVBitmapArray array, Int32 count = 8)
         {
             InitializeComponent();
@@ -61,8 +61,8 @@ namespace SVControl
         /// <summary>
         /// 属性窗口改变后，更新表格中界面的显示
         /// </summary>
-        /// <param name="s"></param>
-        /// <param name="e"></param>
+        /// <param Name="s"></param>
+        /// <param Name="e"></param>
         void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             DataGridViewRowChild child = this.propertyGrid1.SelectedObject as DataGridViewRowChild;
@@ -76,8 +76,8 @@ namespace SVControl
         /// 表格单元格选中后的事件响应
         /// 这里主要是将表格中选中的单元格对象图片属性进行显示
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void dataGridView_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewCell vCell in this.dataGridView.SelectedCells)
@@ -93,8 +93,8 @@ namespace SVControl
         /// <summary>
         /// 由于默认的表格没有行号的显示，自绘制表格左边纵向控件头部的行号
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void dataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             StringFormat stringFormat = new StringFormat();
@@ -116,8 +116,8 @@ namespace SVControl
         /// 单击OK按钮的事件响应
         /// 记录当前用户选择的图片数组数据
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
             List<SVBitmap> list = new List<SVBitmap>();
@@ -138,8 +138,8 @@ namespace SVControl
         /// <summary>
         /// 用户单击退出按钮响应事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.No;

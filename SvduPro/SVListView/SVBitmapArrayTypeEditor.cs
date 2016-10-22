@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing.Design;
+﻿using System.Drawing.Design;
 using System.Windows.Forms.Design;
-using SVCore;
 
 namespace SVControl
 {
@@ -10,7 +8,7 @@ namespace SVControl
         /// <summary>
         /// 重载GetEditStyle
         /// </summary>
-        /// <param name="context"></param>
+        /// <param Name="context"></param>
         /// <returns></returns>
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
@@ -20,33 +18,26 @@ namespace SVControl
         /// <summary>
         /// 重载EditValue
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="provider"></param>
-        /// <param name="value"></param>
+        /// <param Name="context"></param>
+        /// <param Name="provider"></param>
+        /// <param Name="value"></param>
         /// <returns></returns>
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            try
-            {
-                SVHeartbeat heart = context.Instance as SVHeartbeat;
-                if (heart == null)
-                    return null;
+            SVHeartbeat heart = context.Instance as SVHeartbeat;
+            if (heart == null)
+                return null;
 
-                IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
-                if (edSvc != null)
-                {
-                    SVBitmapArrayWindow window = new SVBitmapArrayWindow(heart.Attrib.BitMapArray);
-                    window.ShowDialog();
-                    heart.refreshPropertyToPanel();
-                    heart.RedoUndo.operChanged();
-
-                    return window.bitmapArray();
-                }
-            }
-            catch (Exception ex)
+            IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (edSvc != null)
             {
-                SVLog.TextLog.Exception(ex);
+                SVBitmapArrayWindow window = new SVBitmapArrayWindow(heart.Attrib.BitMapArray);
+                window.ShowDialog();
+                heart.refreshPropertyToPanel();
+                heart.RedoUndo.operChanged();
+
+                return window.bitmapArray();
             }
 
             return value;

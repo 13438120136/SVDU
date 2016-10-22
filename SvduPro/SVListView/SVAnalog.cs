@@ -119,6 +119,7 @@ namespace SVControl
             int width = int.Parse(analog.GetAttribute("Width"));
             int height = int.Parse(analog.GetAttribute("Height"));
             _attrib.Var = analog.GetAttribute("Variable");
+            _attrib.VarType = Byte.Parse(analog.GetAttribute("VariableType"));
 
             _attrib.Rect = new Rectangle(x, y, width, height);
             _attrib.NormalColor = Color.FromArgb(int.Parse(analog.GetAttribute("NormalColor")));
@@ -148,7 +149,9 @@ namespace SVControl
             analog.SetAttribute("Y", _attrib.Rect.Y.ToString());
             analog.SetAttribute("Width", _attrib.Rect.Width.ToString());
             analog.SetAttribute("Height", _attrib.Rect.Height.ToString());
+
             analog.SetAttribute("Variable", _attrib.Var);
+            analog.SetAttribute("VariableType", _attrib.VarType.ToString());
 
             analog.SetAttribute("NormalColor", _attrib.NormalColor.ToArgb().ToString());
             analog.SetAttribute("OverMaxColor", _attrib.OverMaxColor.ToArgb().ToString());
@@ -197,14 +200,16 @@ namespace SVControl
             }
 
             var varInstance = SVVaribleType.instance();
+            varInstance.loadVariableData();
+            varInstance.setDataType(Attrib.VarType);
             if (!varInstance.isOpen())
             {
                 String msg = String.Format("数据库打开失败，请检查！");
                 throw new SVCheckValidException(msg);
             }
 
-            var address = varInstance.strToAddress(Attrib.Var);
-            if (address == 0)
+            var address = varInstance.strToAddress(Attrib.Var, Attrib.VarType);
+            if ((address & 0xff000000) > 48 * 1024)
             {
                 String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);

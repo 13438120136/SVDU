@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace SVCore
 {
@@ -9,7 +10,8 @@ namespace SVCore
         /// 文件头部数据定义
         /// </summary>
         Byte[] _name = new Byte[8];     //等价于后面的UInt32[] _name = new UInt32[2]
-        SVVersion _version;             //版本号
+        //SVVersion _version;             //版本号
+        Byte[] _version = new Byte[8];
         UInt32 _type;                   //类型
         UInt32 _fileSize;               //当前文件长度，包括文件头
         UInt32 _crc;                    //实际数据的CRC值
@@ -59,10 +61,14 @@ namespace SVCore
         /// </summary>
         void init()
         {
-            byte[] byteArray = System.Text.Encoding.ASCII.GetBytes("PFCFG");
+            byte[] byteArray = Encoding.ASCII.GetBytes("PFCFG");
             Array.Copy(byteArray, _name, byteArray.Length);
 
-            _version = new SVVersion();
+            //_version = new SVVersion();
+            ///写入文件版本号
+            byte[] tmpVersion = Encoding.ASCII.GetBytes("1.0.0");
+            Array.Copy(tmpVersion, _version, tmpVersion.Length);
+
             _type = 0x5555AAAA;
             _imagePos = 0;
             _iamgeSize = 0;
@@ -103,17 +109,18 @@ namespace SVCore
         /// </returns>
         public Boolean write()
         {
-            DateTime now = DateTime.Now;
-            _version.Year = (UInt16)now.Year;
-            _version.Month = (Byte)now.Month;
-            _version.Day = (Byte)now.Day;
-            _version.Hour = (Byte)now.Hour;
-            _version.Minute = (Byte)now.Minute;
-            _version.Second = (Byte)now.Second;
+            //DateTime now = DateTime.Now;
+            //_version.Year = (UInt16)now.Year;
+            //_version.Month = (Byte)now.Month;
+            //_version.Day = (Byte)now.Day;
+            //_version.Hour = (Byte)now.Hour;
+            //_version.Minute = (Byte)now.Minute;
+            //_version.Second = (Byte)now.Second;
 
             SVSerialize svSerialize = new SVSerialize();
             svSerialize.pack(_name);
-            _version.pack(svSerialize);
+            //_version.pack(svSerialize);
+            svSerialize.pack(_version);
             svSerialize.pack(_type);
             svSerialize.pack(_fileSize);
             svSerialize.pack(_crc);
@@ -172,7 +179,8 @@ namespace SVCore
 
             SVSerialize svSerialize = new SVSerialize(allData);
             svSerialize.unpack(ref _name);
-            _version.unpack(svSerialize);
+            //_version.unpack(svSerialize);
+            svSerialize.unpack(ref _version);
             svSerialize.unpack(ref _type);
             svSerialize.unpack(ref _fileSize);
             svSerialize.unpack(ref _crc);

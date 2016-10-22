@@ -26,6 +26,7 @@ namespace SVControl
 
         Rectangle _rect;    //尺寸
         String _var;        //关联的变量
+        Byte _varType;      //变量类型
         Byte _type;       //显示的格式
         String _controlType;   //控件类型
         Boolean _isLock;
@@ -44,7 +45,7 @@ namespace SVControl
             _trueColor = Color.Blue;
             _trueBgColor = Color.Moccasin;
             _falseColor = Color.Red;
-            _falseBgColor = Color.Red;
+            _falseBgColor = Color.Blue;
             _exceptionColor = _trueColor;
             _exceptionBgColor = _trueBgColor;
             //_type = "打开 or 关闭";
@@ -77,6 +78,13 @@ namespace SVControl
         {
             get { return _customFlaseText; }
             set { _customFlaseText = value; }
+        }
+
+        [Browsable(false)]
+        public Byte VarType
+        {
+            get { return _varType; }
+            set { _varType = value; }
         }
 
         [CategoryAttribute("属性")]
@@ -493,13 +501,23 @@ namespace SVControl
             binaryBin.vinfoInvalidBg = (UInt32)ExceptionBgColor.ToArgb();
 
             binaryBin.trueText = new Byte[SVLimit.TEXT_MAX_LEN];
-            copyDestByteArray(Encoding.Unicode.GetBytes(CustomTrueText), binaryBin.trueText);
+            if (CustomTrueText != null)
+                copyDestByteArray(Encoding.Unicode.GetBytes(CustomTrueText), binaryBin.trueText);
 
             binaryBin.falseText = new Byte[SVLimit.TEXT_MAX_LEN];
-            copyDestByteArray(Encoding.Unicode.GetBytes(CustomFlaseText), binaryBin.falseText);
+            if (CustomFlaseText != null)
+                copyDestByteArray(Encoding.Unicode.GetBytes(CustomFlaseText), binaryBin.falseText);
 
             binaryBin.font = _fontConfig[_font];
             binaryBin.type = _type;
+
+            ///根据名称来获取地址
+            var varInstance = SVVaribleType.instance();
+            varInstance.loadVariableData();
+            varInstance.setDataType(_varType);
+
+            binaryBin.addrOffset = varInstance.strToAddress(_var, _varType);
+            binaryBin.varType = (Byte)varInstance.strToType(_var);
 
             pageArrayBin.pageArray[pageCount].m_binary[binaryCount] = binaryBin;
         }

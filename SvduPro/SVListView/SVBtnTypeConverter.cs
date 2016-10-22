@@ -16,6 +16,20 @@ namespace SVControl
         String _varText = "";           ///变量名称显示
         Boolean _enable = false;        ///是否使能，如果为true表示使能，否则为禁用
         String _enVarText = "";         ///使能关联变量显示名称
+        Byte _enVarTextType;
+        Byte _varTextType;
+
+        public Byte VarTextType
+        {
+            get { return _varTextType; }
+            set { _varTextType = value; }
+        }
+
+        public Byte EnVarTextType
+        {
+            get { return _enVarTextType; }
+            set { _enVarTextType = value; }
+        }
 
         public String EnVarText
         {
@@ -60,7 +74,7 @@ namespace SVControl
         /// <summary>
         /// 判断两个对象的值是否相同
         /// </summary>
-        /// <param name="other">比较的另外一个输入对象</param>
+        /// <param Name="other">比较的另外一个输入对象</param>
         /// <returns>true-相等  false-不想等</returns>
         public Boolean isEqual(SVBtnTypeConverter other)
         {
@@ -77,10 +91,10 @@ namespace SVControl
         /// <summary>
         /// 重写ConvertTo函数，用来自定义显示属性内容
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="culture"></param>
-        /// <param name="value"></param>
-        /// <param name="destinationType"></param>
+        /// <param Name="context"></param>
+        /// <param Name="culture"></param>
+        /// <param Name="value"></param>
+        /// <param Name="destinationType"></param>
         /// <returns></returns>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
@@ -108,7 +122,9 @@ namespace SVControl
             VarText = (String)info.GetValue("VarText", typeof(String));
             PageText = (String)info.GetValue("PageText", typeof(String));
             Enable = (Boolean)info.GetValue("Enable", typeof(Boolean));
-            EnVarText = (String)info.GetValue("EnVarText", typeof(String)); 
+            EnVarText = (String)info.GetValue("EnVarText", typeof(String));
+            EnVarTextType = (Byte)info.GetValue("EnVarTextType", typeof(Byte));
+            VarTextType = (Byte)info.GetValue("VarTextType", typeof(Byte)); 
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -119,6 +135,8 @@ namespace SVControl
             info.AddValue("PageText", PageText);
             info.AddValue("Enable", Enable);
             info.AddValue("EnVarText", EnVarText);
+            info.AddValue("EnVarTextType", EnVarTextType);
+            info.AddValue("VarTextType", VarTextType);
         }
 
         public SVBtnTypeConverter cloneObject()

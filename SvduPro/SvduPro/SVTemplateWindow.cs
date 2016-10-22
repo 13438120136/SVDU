@@ -73,8 +73,8 @@ namespace SvduPro
         /// <summary>
         /// 处理鼠标的右键菜单
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void listView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Right)
@@ -101,8 +101,8 @@ namespace SvduPro
         /// <summary>
         /// 添加模板
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void addItem_Click(object sender, EventArgs e)
         {
             SVDockMainWindow app = SVApplication.Instance as SVDockMainWindow;
@@ -122,8 +122,8 @@ namespace SvduPro
         /// <summary>
         /// 重命名模板名字
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void renameItem_Click(object sender, EventArgs e)
         {
             ListViewItem item = listView.SelectedItems[0];
@@ -134,8 +134,8 @@ namespace SvduPro
         /// <summary>
         /// 删除模板
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void delItem_Click(object sender, EventArgs e)
         {
             ///将文件句柄释放，不然会被占用。无法删除文件。
@@ -168,8 +168,8 @@ namespace SvduPro
         /// <summary>
         /// 单击Listview控件事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void listView_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in this.listView.SelectedItems)
@@ -213,8 +213,8 @@ namespace SvduPro
         /// <summary>
         /// 单击"确定"按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void okBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

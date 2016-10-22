@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using SVCore;
@@ -25,7 +26,7 @@ namespace SVControl
         /// <summary>
         /// 构造函数定义
         /// </summary>
-        /// <param name="gif">传入一个动态图对象</param>
+        /// <param Name="gif">传入一个动态图对象</param>
         public SVGifWindow(SVGif gif)
         {
             _gif = gif;
@@ -167,8 +168,8 @@ namespace SVControl
         /// <summary>
         /// 添加变量事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void addVarBtn_Click(object sender, System.EventArgs e)
         {
             if (varListView.Items.Count >= 3)
@@ -178,8 +179,10 @@ namespace SVControl
             }
 
             SVVarWindow varWindow = new SVVarWindow();
+            varWindow.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
             if (varWindow.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
             {
+                _gif.Attrib.VarType.Add(varWindow.getVarType());
                 varListView.Items.Add(varWindow.varText());
             }
 
@@ -189,13 +192,15 @@ namespace SVControl
         /// <summary>
         /// 删除变量事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void delVarBtn_Click(object sender, System.EventArgs e)
         {
             foreach (ListViewItem item in varListView.SelectedItems)
             {
-                varListView.Items.Remove(item);
+                int index = varListView.Items.IndexOf(item);
+                _gif.Attrib.VarType.RemoveAt(index);
+                varListView.Items.RemoveAt(index);
             }
 
             bgBtn.Enabled = (varListView.Items.Count != 0);
@@ -204,8 +209,8 @@ namespace SVControl
         /// <summary>
         /// 设置出错背景图片
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void errBtn_Click(object sender, System.EventArgs e)
         {
             SVBitmapManagerWindow window = new SVBitmapManagerWindow();
@@ -227,8 +232,8 @@ namespace SVControl
         /// <summary>
         /// 设置动态图背景图片数组
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void bgBtn_Click(object sender, System.EventArgs e)
         {
             Int32 count = this.varListView.Items.Count;
@@ -239,8 +244,8 @@ namespace SVControl
         /// <summary>
         /// 确定
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void okBtn_Click(object sender, System.EventArgs e)
         {
             _gif.Attrib.VarName.Clear();
@@ -256,8 +261,8 @@ namespace SVControl
         /// <summary>
         /// 取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void cancelBtn_Click(object sender, System.EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.No;

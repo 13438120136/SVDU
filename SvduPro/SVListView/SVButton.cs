@@ -89,8 +89,8 @@ namespace SVControl
         /// <summary>
         /// 按钮对象执行序列化的过程中，需要重载的构造函数
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
+        /// <param Name="info"></param>
+        /// <param Name="context"></param>
         protected SVButton(SerializationInfo info, StreamingContext context)
         {
             initButton();
@@ -100,8 +100,8 @@ namespace SVControl
         /// <summary>
         /// 重写GetObjectData函数，为按钮的序列化服务
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
+        /// <param Name="info"></param>
+        /// <param Name="context"></param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("stream", _attrib);
@@ -127,7 +127,7 @@ namespace SVControl
         /// <summary>
         /// 设置当前按钮对象的起始位置
         /// </summary>
-        /// <param name="pos">点坐标，控件的起始位置</param>
+        /// <param Name="pos">点坐标，控件的起始位置</param>
         public override void setStartPos(Point pos)
         {
             _attrib.Rect = new Rectangle(pos.X, pos.Y, this.Width, this.Height);
@@ -201,8 +201,8 @@ namespace SVControl
         /// <summary>
         /// 从xml文件中加载当前按钮对象内容
         /// </summary>
-        /// <param name="xml">xml对象</param>
-        /// <param name="isCreate">true-创建新的ID号，false-表示使用文件中的ID</param>
+        /// <param Name="xml">xml对象</param>
+        /// <param Name="isCreate">true-创建新的ID号，false-表示使用文件中的ID</param>
         public override void loadXML(SVXml xml, Boolean isCreate = false)
         {
             XmlElement button = xml.CurrentElement;
@@ -230,8 +230,11 @@ namespace SVControl
             vTmp.Type = Byte.Parse(button.GetAttribute("ButtonType"));
             vTmp.PageID = UInt16.Parse(button.GetAttribute("ButtonTypeID"));
             vTmp.VarText = button.GetAttribute("ButtonTypeVar");
+            vTmp.VarTextType = Byte.Parse(button.GetAttribute("ButtonTypeVarType"));
             vTmp.PageText = button.GetAttribute("ButtonTypeText");
             vTmp.EnVarText = button.GetAttribute("EnabledVar");
+            vTmp.EnVarTextType = Byte.Parse(button.GetAttribute("EnabledVarType"));
+
             vTmp.Enable = Boolean.Parse(button.GetAttribute("Enabled"));
             _attrib.BtnType = vTmp;
             //按钮图片数据
@@ -245,7 +248,7 @@ namespace SVControl
         /// <summary>
         /// 保存当前按钮内容到xml文件中
         /// </summary>
-        /// <param name="xml">xml对象</param>
+        /// <param Name="xml">xml对象</param>
         override public void saveXML(SVXml xml)
         {
             XmlElement button = xml.createNode(this.GetType().Name);
@@ -265,9 +268,11 @@ namespace SVControl
             button.SetAttribute("ButtonTypeID", _attrib.BtnType.PageID.ToString());
             button.SetAttribute("ButtonTypeText", _attrib.BtnType.PageText.ToString());
             button.SetAttribute("ButtonTypeVar", _attrib.BtnType.VarText);
+            button.SetAttribute("ButtonTypeVarType", _attrib.BtnType.VarTextType.ToString());
             //按钮使能
             button.SetAttribute("Enabled", _attrib.BtnType.Enable.ToString());
             button.SetAttribute("EnabledVar", _attrib.BtnType.EnVarText);
+            button.SetAttribute("EnabledVarType", _attrib.BtnType.EnVarTextType.ToString());
             //按钮图片数据
             button.SetAttribute("IsShowPicture", _attrib.IsShowPic.ToString());
             button.SetAttribute("BtnDownPicFile", _attrib.BtnDownPic.ImageFileName);
@@ -284,7 +289,7 @@ namespace SVControl
         /// <summary>
         /// 按钮按下去的显示状态
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected void drawButtonDown(PaintEventArgs e)
         {
             Graphics gh = e.Graphics;
@@ -320,7 +325,7 @@ namespace SVControl
         /// <summary>
         /// 按钮的正常显示状态
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected void drawButtonNormal(PaintEventArgs e)
         {
             Graphics gh = e.Graphics;
@@ -353,7 +358,7 @@ namespace SVControl
         /// 为保持与下位机显示效果一致性
         /// 这里对按钮的外观进行绘制
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         override protected void panelOnPaint(PaintEventArgs e)
         {
             _paintEvent(e);
@@ -410,14 +415,14 @@ namespace SVControl
                 throw new SVCheckValidException(msg);
             }
 
-            var address = varInstance.strToAddress(Attrib.BtnType.EnVarText);
+            var address = varInstance.strToAddress(Attrib.BtnType.EnVarText, Attrib.BtnType.EnVarTextType);
             if (address == 0)
             {
                 String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 使能变量未正确设置", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
             }
 
-            var varAddress = varInstance.strToAddress(Attrib.BtnType.VarText);
+            var varAddress = varInstance.strToAddress(Attrib.BtnType.VarText, Attrib.BtnType.VarTextType);
             if (varAddress == 0)
             {
                 String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 按钮关联变量未正确设置", pageName, Attrib.ID);

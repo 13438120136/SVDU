@@ -29,6 +29,8 @@ namespace SVControl
         Byte _decNum;           //小数点后面位数
         Rectangle _rect;        //尺寸
         String _var;            //变量
+        Byte _varType;          //变量类型
+
         Boolean _isExponent;    //是否指数显示
         String _controlType;    //控件类型
 
@@ -63,6 +65,13 @@ namespace SVControl
             _fontConfig.Add(new Font("宋体", 16), 16);
 
             _isLock = false;
+        }
+
+        [Browsable(false)]
+        public Byte VarType
+        {
+            get { return _varType; }
+            set { _varType = value; }
         }
 
         [CategoryAttribute("属性")]
@@ -618,7 +627,10 @@ namespace SVControl
 
             ///根据名称来获取地址
             var varInstance = SVVaribleType.instance();
-            analogBin.addrOffset = varInstance.strToAddress(_var);
+            varInstance.loadVariableData();
+            varInstance.setDataType(_varType);
+
+            analogBin.addrOffset = varInstance.strToAddress(_var, _varType);
             analogBin.varType = (Byte)varInstance.strToType(_var);
 
             pageArrayBin.pageArray[pageCount].m_analog[analogCount] = analogBin;

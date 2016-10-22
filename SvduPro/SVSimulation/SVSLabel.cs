@@ -20,7 +20,7 @@ namespace SVSimulation
         /// <summary>
         /// 解析文本并仿真
         /// </summary>
-        /// <param name="bin">文本内存结构对象</param>
+        /// <param Name="bin">文本内存结构对象</param>
         public void fromBin(AreaBin bin)
         {
             Attrib.BackColorground = Color.FromArgb((Int32)bin.bgClr);

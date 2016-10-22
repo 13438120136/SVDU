@@ -31,7 +31,7 @@ namespace SVSimulation
         /// <summary>
         /// 仿真开关量构造函数
         /// </summary>
-        /// <param name="timer">定时器对象</param>
+        /// <param Name="timer">定时器对象</param>
         public SVSBinary(Timer timer)
         {
             this.IsSimulation = true;
@@ -61,7 +61,7 @@ namespace SVSimulation
         /// <summary>
         /// 解析并显示开关量
         /// </summary>
-        /// <param name="bin">开关量内存结构</param>
+        /// <param Name="bin">开关量内存结构</param>
         public void fromBin(BinaryBin bin)
         {
             ///位置和尺寸
@@ -85,9 +85,9 @@ namespace SVSimulation
 
             if (bin.type == 7)
             {
-                this.Text = Encoding.ASCII.GetString(bin.trueText);
-                customList.Add(Encoding.ASCII.GetString(bin.trueText));
-                customList.Add(Encoding.ASCII.GetString(bin.falseText));
+                this.Text = Encoding.Unicode.GetString(bin.trueText);
+                customList.Add(Encoding.Unicode.GetString(bin.trueText));
+                customList.Add(Encoding.Unicode.GetString(bin.falseText));
             }
             else
                 this.Text = trueConfig[bin.type];

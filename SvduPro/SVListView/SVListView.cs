@@ -24,8 +24,8 @@ namespace SVControl
         /// <summary>
         /// 执行具体的拖拽
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void slotItemDrag(object sender, ItemDragEventArgs e)
         {
             ListViewItem item = (ListViewItem)e.Item;

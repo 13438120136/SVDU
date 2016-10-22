@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace SVControl
 {
@@ -20,6 +21,10 @@ namespace SVControl
 
             ///变量数组
             String[] varArray = _curve.Attrib.VarArray;
+            varLabel1.Text = varArray[0];
+            varLabel2.Text = varArray[1];
+            varLabel3.Text = varArray[2];
+            varLabel4.Text = varArray[3];
 
             ///设置颜色
             Color[] colorArray = _curve.Attrib.VarColorArray;
@@ -30,26 +35,10 @@ namespace SVControl
 
             ///设置使能
             Byte[] enabledArray = _curve.Attrib.LineEnabled;
-
-            if (enabledArray[0] == 0)
-                lineWidth1.SelectedIndex = 1;
-            else
-                lineWidth1.SelectedIndex = 0;
-
-            if (enabledArray[1] == 0)
-                lineWidth2.SelectedIndex = 1;
-            else
-                lineWidth2.SelectedIndex = 0;
-
-            if (enabledArray[2] == 0)
-                lineWidth3.SelectedIndex = 1;
-            else
-                lineWidth3.SelectedIndex = 0;
-
-            if (enabledArray[3] == 0)
-                lineWidth4.SelectedIndex = 1;
-            else
-                lineWidth4.SelectedIndex = 0;
+            lineWidth1.SelectedIndex = Convert.ToInt32(enabledArray[0]);
+            lineWidth2.SelectedIndex = Convert.ToInt32(enabledArray[1]);
+            lineWidth3.SelectedIndex = Convert.ToInt32(enabledArray[2]);
+            lineWidth4.SelectedIndex = Convert.ToInt32(enabledArray[3]);
         }
 
         /// <summary>
@@ -79,34 +68,70 @@ namespace SVControl
 
             lineWidth1.SelectedIndexChanged += new EventHandler((sender, e)=>
             {
-                if (lineWidth1.SelectedIndex == 0)
-                    _curve.Attrib.LineEnabled[0] = 1;
-                else
-                    _curve.Attrib.LineEnabled[0] = 0;
+                _curve.Attrib.LineEnabled[0] = Convert.ToByte(lineWidth1.SelectedIndex);
             });
 
             lineWidth2.SelectedIndexChanged += new EventHandler((sender, e) =>
             {
-                if (lineWidth2.SelectedIndex == 0)
-                    _curve.Attrib.LineEnabled[1] = 1;
-                else
-                    _curve.Attrib.LineEnabled[1] = 0;
+                _curve.Attrib.LineEnabled[1] = Convert.ToByte(lineWidth2.SelectedIndex);
             });
 
             lineWidth3.SelectedIndexChanged += new EventHandler((sender, e) =>
             {
-                if (lineWidth3.SelectedIndex == 0)
-                    _curve.Attrib.LineEnabled[2] = 1;
-                else
-                    _curve.Attrib.LineEnabled[2] = 0;
+                _curve.Attrib.LineEnabled[2] = Convert.ToByte(lineWidth3.SelectedIndex);
             });
 
             lineWidth4.SelectedIndexChanged += new EventHandler((sender, e) =>
             {
-                if (lineWidth4.SelectedIndex == 0)
-                    _curve.Attrib.LineEnabled[3] = 1;
-                else
-                    _curve.Attrib.LineEnabled[3] = 0;
+                _curve.Attrib.LineEnabled[3] = Convert.ToByte(lineWidth4.SelectedIndex);
+            });
+
+            this.btn1.Click += new EventHandler((sender, e)=>
+            {
+                SVVarWindow window = new SVVarWindow();
+                window.setFilter(new List<String> { "SHORT_INT", "SHORTINT_VAR", "INT", "INT_VAR", "REAL", "REAL_VAR" });
+                if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.varLabel1.Text = window.varText();                    
+                    _curve.Attrib.VarArray[0] = this.varLabel1.Text;
+                    _curve.Attrib.VarArrayType[0] = window.getVarType();
+                }
+            });
+
+            this.btn2.Click += new EventHandler((sender, e) =>
+            {
+                SVVarWindow window = new SVVarWindow();
+                window.setFilter(new List<String> { "SHORT_INT", "SHORTINT_VAR", "INT", "INT_VAR", "REAL", "REAL_VAR" });
+                if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.varLabel2.Text = window.varText();
+                    _curve.Attrib.VarArray[1] = this.varLabel2.Text;
+                    _curve.Attrib.VarArrayType[1] = window.getVarType();
+                }
+            });
+
+            this.btn3.Click += new EventHandler((sender, e) =>
+            {
+                SVVarWindow window = new SVVarWindow();
+                window.setFilter(new List<String> { "SHORT_INT", "SHORTINT_VAR", "INT", "INT_VAR", "REAL", "REAL_VAR" });
+                if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.varLabel3.Text = window.varText();
+                    _curve.Attrib.VarArray[2] = this.varLabel3.Text;
+                    _curve.Attrib.VarArrayType[2] = window.getVarType();
+                }
+            });
+
+            this.btn4.Click += new EventHandler((sender, e) =>
+            {
+                SVVarWindow window = new SVVarWindow();
+                window.setFilter(new List<String> { "SHORT_INT", "SHORTINT_VAR", "INT", "INT_VAR", "REAL", "REAL_VAR" });
+                if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.varLabel4.Text = window.varText();
+                    _curve.Attrib.VarArray[3] = this.varLabel4.Text;
+                    _curve.Attrib.VarArrayType[3] = window.getVarType();
+                }
             });
         }
     }

@@ -10,7 +10,7 @@
         /// <summary> 
         /// 清理所有正在使用的资源。
         /// </summary>
-        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        /// <param Name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -30,37 +30,35 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVCurveVarWindow));
             this.label1 = new System.Windows.Forms.Label();
-            this.var1 = new System.Windows.Forms.ComboBox();
             this.varBtn1 = new SVCore.SVColorButton();
             this.label2 = new System.Windows.Forms.Label();
             this.lineWidth1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.var2 = new System.Windows.Forms.ComboBox();
             this.varBtn2 = new SVCore.SVColorButton();
             this.label4 = new System.Windows.Forms.Label();
             this.lineWidth2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.var3 = new System.Windows.Forms.ComboBox();
             this.varBtn3 = new SVCore.SVColorButton();
             this.label6 = new System.Windows.Forms.Label();
             this.lineWidth3 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.var4 = new System.Windows.Forms.ComboBox();
             this.varBtn4 = new SVCore.SVColorButton();
             this.label8 = new System.Windows.Forms.Label();
             this.lineWidth4 = new System.Windows.Forms.ComboBox();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.btn4 = new System.Windows.Forms.Button();
+            this.varLabel1 = new System.Windows.Forms.Label();
+            this.varLabel2 = new System.Windows.Forms.Label();
+            this.varLabel3 = new System.Windows.Forms.Label();
+            this.varLabel4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
-            // var1
-            // 
-            this.var1.FormattingEnabled = true;
-            resources.ApplyResources(this.var1, "var1");
-            this.var1.Name = "var1";
             // 
             // varBtn1
             // 
@@ -88,12 +86,6 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // var2
-            // 
-            this.var2.FormattingEnabled = true;
-            resources.ApplyResources(this.var2, "var2");
-            this.var2.Name = "var2";
-            // 
             // varBtn2
             // 
             this.varBtn2.BackColor = System.Drawing.Color.Black;
@@ -119,12 +111,6 @@
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            // 
-            // var3
-            // 
-            this.var3.FormattingEnabled = true;
-            resources.ApplyResources(this.var3, "var3");
-            this.var3.Name = "var3";
             // 
             // varBtn3
             // 
@@ -152,12 +138,6 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // var4
-            // 
-            this.var4.FormattingEnabled = true;
-            resources.ApplyResources(this.var4, "var4");
-            this.var4.Name = "var4";
-            // 
             // varBtn4
             // 
             this.varBtn4.BackColor = System.Drawing.Color.Black;
@@ -179,10 +159,62 @@
             resources.ApplyResources(this.lineWidth4, "lineWidth4");
             this.lineWidth4.Name = "lineWidth4";
             // 
+            // btn1
+            // 
+            resources.ApplyResources(this.btn1, "btn1");
+            this.btn1.Name = "btn1";
+            this.btn1.UseVisualStyleBackColor = true;
+            // 
+            // btn2
+            // 
+            resources.ApplyResources(this.btn2, "btn2");
+            this.btn2.Name = "btn2";
+            this.btn2.UseVisualStyleBackColor = true;
+            // 
+            // btn3
+            // 
+            resources.ApplyResources(this.btn3, "btn3");
+            this.btn3.Name = "btn3";
+            this.btn3.UseVisualStyleBackColor = true;
+            // 
+            // btn4
+            // 
+            resources.ApplyResources(this.btn4, "btn4");
+            this.btn4.Name = "btn4";
+            this.btn4.UseVisualStyleBackColor = true;
+            // 
+            // varLabel1
+            // 
+            resources.ApplyResources(this.varLabel1, "varLabel1");
+            this.varLabel1.Name = "varLabel1";
+            // 
+            // varLabel2
+            // 
+            resources.ApplyResources(this.varLabel2, "varLabel2");
+            this.varLabel2.Name = "varLabel2";
+            // 
+            // varLabel3
+            // 
+            resources.ApplyResources(this.varLabel3, "varLabel3");
+            this.varLabel3.Name = "varLabel3";
+            // 
+            // varLabel4
+            // 
+            resources.ApplyResources(this.varLabel4, "varLabel4");
+            this.varLabel4.Name = "varLabel4";
+            // 
             // SVCurveVarWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.varLabel4);
+            this.Controls.Add(this.varLabel3);
+            this.Controls.Add(this.varLabel2);
+            this.Controls.Add(this.varLabel1);
+            this.Controls.Add(this.btn4);
+            this.Controls.Add(this.btn3);
+            this.Controls.Add(this.btn2);
+            this.Controls.Add(this.btn1);
             this.Controls.Add(this.lineWidth4);
             this.Controls.Add(this.lineWidth3);
             this.Controls.Add(this.lineWidth2);
@@ -192,16 +224,12 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.varBtn3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.var4);
             this.Controls.Add(this.varBtn2);
-            this.Controls.Add(this.var3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.var2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.varBtn1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.var1);
             this.Controls.Add(this.label1);
             this.Name = "SVCurveVarWindow";
             this.ResumeLayout(false);
@@ -212,24 +240,28 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox var1;
         private SVCore.SVColorButton varBtn1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox lineWidth1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox var2;
         private SVCore.SVColorButton varBtn2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox lineWidth2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox var3;
         private SVCore.SVColorButton varBtn3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox lineWidth3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox var4;
         private SVCore.SVColorButton varBtn4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox lineWidth4;
+        private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.Button btn2;
+        private System.Windows.Forms.Button btn3;
+        private System.Windows.Forms.Button btn4;
+        private System.Windows.Forms.Label varLabel1;
+        private System.Windows.Forms.Label varLabel2;
+        private System.Windows.Forms.Label varLabel3;
+        private System.Windows.Forms.Label varLabel4;
     }
 }

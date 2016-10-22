@@ -10,7 +10,7 @@ namespace SVControl
         /// <summary>
         /// 选择图片的属性类
         /// </summary>
-        /// <param name="context"></param>
+        /// <param Name="context"></param>
         /// <returns></returns>
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
@@ -20,21 +20,14 @@ namespace SVControl
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            try
+            IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (edSvc != null)
             {
-                IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
-                if (edSvc != null)
-                {
-                    SVBitmapManagerWindow window = new SVBitmapManagerWindow();
-                    if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
-                        return window.SvBitMap;
-                    else
-                        return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                SVLog.TextLog.Exception(ex);
+                SVBitmapManagerWindow window = new SVBitmapManagerWindow();
+                if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
+                    return window.SvBitMap;
+                else
+                    return null;
             }
 
             return value;

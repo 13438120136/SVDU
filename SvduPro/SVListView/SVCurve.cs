@@ -165,7 +165,7 @@ namespace SVControl
         /// <summary>
         /// 自绘制趋势图
         /// </summary>
-        /// <param name="e">绘制图形对象</param>
+        /// <param Name="e">绘制图形对象</param>
         protected void drawCurve(PaintEventArgs e)
         {
             ///横纵标尺间隔
@@ -237,7 +237,7 @@ namespace SVControl
         /// <summary>
         /// 覆盖窗体的原有绘制
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             drawCurve(e);
@@ -246,8 +246,8 @@ namespace SVControl
         /// <summary>
         /// 从文件中加载数据
         /// </summary>
-        /// <param name="xml">xml文件对象</param>
-        /// <param name="isCreate"></param>
+        /// <param Name="xml">xml文件对象</param>
+        /// <param Name="isCreate"></param>
         override public void loadXML(SVXml xml, Boolean isCreate = false)
         {
             XmlElement curve = xml.CurrentElement;
@@ -300,7 +300,7 @@ namespace SVControl
         /// <summary>
         /// 保存数据到xml文件中
         /// </summary>
-        /// <param name="xml">xml文件对象</param>
+        /// <param Name="xml">xml文件对象</param>
         override public void saveXML(SVXml xml)
         {
             XmlElement curve = xml.createNode(this.GetType().Name);
@@ -349,8 +349,8 @@ namespace SVControl
         /// <summary>
         /// 执行当前对象的编译过程
         /// </summary>
-        /// <param name="pageArrayBin"></param>
-        /// <param name="serialize"></param>
+        /// <param Name="pageArrayBin"></param>
+        /// <param Name="serialize"></param>
         public void buildControlToBin(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             _attrib.make(ref pageArrayBin, ref serialize);

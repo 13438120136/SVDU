@@ -1,9 +1,7 @@
-﻿using System;
+﻿using System.Drawing;
 using System.Drawing.Design;
-using System.Windows.Forms.Design;
 using System.Windows.Forms;
-using System.Drawing;
-using SVCore;
+using System.Windows.Forms.Design;
 
 namespace SVControl
 {
@@ -21,24 +19,16 @@ namespace SVControl
             if (svButton == null)
                 return value;
 
-            try
+            IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (edSvc != null)
             {
-                IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
-                if (edSvc != null)
-                {
-                    TextBox textBox = new TextBox();
-                    textBox.Multiline = true;
-                    textBox.Text = svButton.Attrib.Text;
-                    textBox.Size = new Size(textBox.Width, 100);
-                    edSvc.DropDownControl(textBox);
+                TextBox textBox = new TextBox();
+                textBox.Multiline = true;
+                textBox.Text = svButton.Attrib.Text;
+                textBox.Size = new Size(textBox.Width, 100);
+                edSvc.DropDownControl(textBox);
 
-                    return textBox.Text;
-                }
-            }
-            catch (Exception ex)
-            {
-                SVLog.TextLog.Exception(ex);
-                return value;
+                return textBox.Text;
             }
 
             return value;

@@ -54,8 +54,8 @@ namespace SVControl
         /// <summary>
         /// 树节点标签也修改后的事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void SVTreeView_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             this.LabelEdit = false;
@@ -64,7 +64,7 @@ namespace SVControl
         /// <summary>
         /// 根据输入的名称来新建页面分类节点
         /// </summary>
-        /// <param name="text">新建的页面名称</param>
+        /// <param Name="text">新建的页面名称</param>
         /// <returns>返回新的页面节点</returns>
         public TreeNode newClassNode(String text)
         {
@@ -83,7 +83,7 @@ namespace SVControl
         /// <summary>
         /// 对指定节点进行重命名
         /// </summary>
-        /// <param name="node">输入的树节点</param>
+        /// <param Name="node">输入的树节点</param>
         public void renameTreeNode(TreeNode node)
         {
             ///使其可以编辑

@@ -29,7 +29,7 @@ namespace SVControl
         /// <summary>
         /// 根据控件初始化窗口
         /// </summary>
-        /// <param name="control"></param>
+        /// <param Name="control"></param>
         public SVControlWindow(Control control)
         {
             //DockAreas = (DockAreas.Document | DockAreas.Float | DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom);
@@ -122,8 +122,8 @@ namespace SVControl
         /// <summary>
         /// 执行恢复操作
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void redoItem_Click(object sender, System.EventArgs e)
         {
             redoMethod();
@@ -142,8 +142,8 @@ namespace SVControl
         /// <summary>
         /// 执行撤销操作
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void undoItem_Click(object sender, System.EventArgs e)
         {
             undoMethod();
@@ -159,8 +159,8 @@ namespace SVControl
         /// <summary>
         /// 全选事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void allItem_Click(object sender, System.EventArgs e)
         {
             selectAllMethod();
@@ -176,8 +176,8 @@ namespace SVControl
         /// <summary>
         /// 粘贴事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void pasteItem_Click(object sender, System.EventArgs e)
         {
             if (_control is SVPageWidget)
@@ -187,8 +187,8 @@ namespace SVControl
         /// <summary>
         /// 剪切事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void cutItem_Click(object sender, System.EventArgs e)
         {
             if (_control is SVPageWidget)
@@ -198,8 +198,8 @@ namespace SVControl
         /// <summary>
         /// 复制事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void copyItem_Click(object sender, System.EventArgs e)
         {
             if (_control is SVPageWidget)
@@ -209,8 +209,8 @@ namespace SVControl
         /// <summary>
         /// 处理按键消息
         /// </summary>
-        /// <param name="msg"></param>
-        /// <param name="keyData"></param>
+        /// <param Name="msg"></param>
+        /// <param Name="keyData"></param>
         /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -236,8 +236,8 @@ namespace SVControl
         /// <summary>
         /// 按下删除键
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void delItem_Click(object sender, System.EventArgs e)
         {
             if (_control is SVPageWidget)
@@ -247,7 +247,7 @@ namespace SVControl
         /// <summary>
         /// 设置当前控件
         /// </summary>
-        /// <param name="control"></param>
+        /// <param Name="control"></param>
         public void setControl(Control control)
         {
             control.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -260,7 +260,7 @@ namespace SVControl
         /// <summary>
         /// 当窗口尺寸发生改变的时候
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected override void OnResize(System.EventArgs e)
         {
             base.OnResize(e);
@@ -282,7 +282,7 @@ namespace SVControl
         /// <summary>
         /// 当窗口执行关闭的时候
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected override void OnClosing(CancelEventArgs e)
         {
             HideEventer(this, e);

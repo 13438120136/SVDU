@@ -74,7 +74,7 @@ namespace SVControl
         /// <summary>
         /// 设置当前对象的起始位置
         /// </summary>
-        /// <param name="pos">点坐标，控件的起始位置</param>
+        /// <param Name="pos">点坐标，控件的起始位置</param>
         public override void setStartPos(Point pos)
         {
             _attrib.Rect = new Rectangle(pos.X, pos.Y, this.Width, this.Height);
@@ -175,7 +175,7 @@ namespace SVControl
         /// <summary>
         /// 自定义绘制Label
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected override void panelOnPaint(PaintEventArgs e)
         {
             drawLabel(e);

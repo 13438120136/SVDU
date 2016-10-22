@@ -27,7 +27,7 @@ namespace SVSimulation
         /// <summary>
         /// 从下装文件中加载数据
         /// </summary>
-        /// <param name="file">工程生成的下装文件</param>
+        /// <param Name="file">工程生成的下装文件</param>
         public void load(String file)
         {
             //从下装文件中读取实际数据
@@ -56,8 +56,8 @@ namespace SVSimulation
         /// <summary>
         /// 解析数据将布局当前所有控件
         /// </summary>
-        /// <param name="bin">二进制数据</param>
-        /// <param name="isFirst">是否为其实页面 true表示起始页面</param>
+        /// <param Name="bin">二进制数据</param>
+        /// <param Name="isFirst">是否为其实页面 true表示起始页面</param>
         void fromPageBin(PageBin bin, Boolean isFirst)
         {
             SVSPage page = new SVSPage();

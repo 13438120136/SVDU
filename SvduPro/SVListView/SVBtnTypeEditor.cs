@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing.Design;
+﻿using System.Drawing.Design;
 using System.Windows.Forms.Design;
-using SVCore;
 
 namespace SVControl
 {    
@@ -10,7 +8,7 @@ namespace SVControl
         /// <summary>
         /// 重载GetEditStyle,设置窗口弹出行为
         /// </summary>
-        /// <param name="context"></param>
+        /// <param Name="context"></param>
         /// <returns></returns>
         /// 
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
@@ -21,31 +19,24 @@ namespace SVControl
         /// <summary>
         /// 重载EditValue,编辑按钮动作属性的弹出窗口
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="provider"></param>
-        /// <param name="value"></param>
+        /// <param Name="context"></param>
+        /// <param Name="provider"></param>
+        /// <param Name="value"></param>
         /// <returns></returns>
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            try
-            {
-                //从当前对象中获取按钮控件对象
-                SVButton button = context.Instance as SVButton;
-                if (button == null)
-                    return null; 
+            //从当前对象中获取按钮控件对象
+            SVButton button = context.Instance as SVButton;
+            if (button == null)
+                return null;
 
-                IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
-                if (edSvc != null)
-                {
-                    SVBtnDoWindow win = new SVBtnDoWindow(button);
-                    edSvc.ShowDialog(win);
-                    return button.Attrib.BtnType;
-                }
-            }
-            catch (Exception ex)
+            IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (edSvc != null)
             {
-                SVLog.TextLog.Exception(ex);
+                SVBtnDoWindow win = new SVBtnDoWindow(button);
+                edSvc.ShowDialog(win);
+                return button.Attrib.BtnType;
             }
 
             return value;

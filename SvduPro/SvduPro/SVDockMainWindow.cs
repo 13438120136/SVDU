@@ -154,7 +154,7 @@ namespace SvduPro
         /// 3、-c projectFile -s stationNum -u userName -p passwd -ip databaseIP 编译指定的工程文件
         /// 4、-n projectName -s stationNum -u userName -p passwd -ip databaseIP 在当前目录创建工程，如果已经创建就打开
         /// </summary>
-        /// <param name="args">输入参数</param>
+        /// <param Name="args">输入参数</param>
         void commandLine(String[] args)
         {
             if (args.Length == 0)
@@ -288,6 +288,26 @@ namespace SvduPro
         }
 
         /// <summary>
+        /// 如果程序出现崩溃现象，将保存工程并退出
+        /// </summary>
+        /// <param name="ex"></param>
+        public void captureExceptionAndSaveProject(Object ex)
+        {
+            Exception baseException = ex as Exception;
+
+            ///记录日志
+            if (baseException != null)
+                SVLog.TextLog.Exception(baseException);
+
+            ///保存工程
+            savePro();
+
+            ///提示用户
+            MessageBox.Show("程序出现异常，工程已保存。确认退出!");
+            Application.ExitThread();
+        }
+
+        /// <summary>
         /// 注册查找窗口事件
         /// </summary>
         void initFindWindowEvent()
@@ -345,7 +365,7 @@ namespace SvduPro
         /// <summary>
         /// 在工作区中打开页面
         /// </summary>
-        /// <param name="backPageWidget">页面窗口对象</param>
+        /// <param Name="backPageWidget">页面窗口对象</param>
         void addPageToWorkSpace(SVPageWidget widget)
         {
             SVControlWindow win = widget.Parent as SVControlWindow;
@@ -471,8 +491,8 @@ namespace SvduPro
         /// <summary>
         /// 只要进行切换就去掉选中状态
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void _dockPanel_ActiveDocumentChanged(object sender, EventArgs e)
         {
             SVControlWindow win = currentControlWindow();
@@ -508,8 +528,8 @@ namespace SvduPro
         /// <summary>
         /// 双击工程树节点，打开页面的事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void _stationTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             SVPageNode node = _stationTreeView.SelectedNode as SVPageNode;
@@ -527,8 +547,8 @@ namespace SvduPro
         /// <summary>
         /// 工程节点单击后的事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void _stationTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (_stationTreeView.SelectedNode == null)
@@ -609,9 +629,9 @@ namespace SvduPro
         /// 返回：true表示在页面范围内
         ///       false超出页面显示范围
         /// </summary>
-        /// <param name="vList">粘贴控件对象队列</param>
-        /// <param name="backPageWidget">页面窗口对象</param>
-        /// <param name="point">要检查的粘贴点</param>
+        /// <param Name="vList">粘贴控件对象队列</param>
+        /// <param Name="backPageWidget">页面窗口对象</param>
+        /// <param Name="point">要检查的粘贴点</param>
         /// <returns>true和false</returns>
         Boolean checkRange(List<Control> vList, SVPageWidget backPageWidget, Point point)
         {
@@ -628,8 +648,8 @@ namespace SvduPro
         /// <summary>
         /// 粘贴事件发生的时候执行具体操作
         /// </summary>
-        /// <param name="vList">执行粘贴操作的控件队列</param>
-        /// <param name="point">页面中要粘贴的位置点</param>
+        /// <param Name="vList">执行粘贴操作的控件队列</param>
+        /// <param Name="point">页面中要粘贴的位置点</param>
         void paste(List<Control> vList, Point point)
         {
             if (vList.Count == 0)
@@ -676,7 +696,7 @@ namespace SvduPro
         /// <summary>
         /// 对当前控件队列进行排序
         /// </summary>
-        /// <param name="vList">作为输入和输出，输入控件队列。输出排序后的队列</param>
+        /// <param Name="vList">作为输入和输出，输入控件队列。输出排序后的队列</param>
         void sortControlList(List<Control> vList)
         {
             vList.Sort((one, two) =>
@@ -696,7 +716,7 @@ namespace SvduPro
         /// backPageWidget - 页面控件对象
         /// 根据页面控件对象来初始化页面节点,这里必须保证页面对象完整创建
         /// </summary>
-        /// <param name="widget">当前页面控件对象</param>
+        /// <param Name="widget">当前页面控件对象</param>
         /// <returns>返回新创建的页面节点</returns>
         SVPageNode newPageFromWidget(SVPageWidget widget)
         {
@@ -855,7 +875,7 @@ namespace SvduPro
         /// 添加页面新分类
         /// 根据名称创建新的分类节点
         /// </summary>
-        /// <param name="className">分类名称</param>
+        /// <param Name="className">分类名称</param>
         /// <returns>返回新的页面分类节点</returns>
         private TreeNode createPageClass(String className)
         {
@@ -998,7 +1018,7 @@ namespace SvduPro
         /// <summary>
         /// 移除页面
         /// </summary>
-        /// <param name="pageNode">页面节点</param>
+        /// <param Name="pageNode">页面节点</param>
         void removePage(SVPageNode pageNode)
         {
             SVPageWidget widget = pageNode.Addtionobj as SVPageWidget;
@@ -1016,7 +1036,7 @@ namespace SvduPro
         /// <summary>
         /// 删除页面
         /// </summary>
-        /// <param name="pageNode">页面节点</param>
+        /// <param Name="pageNode">页面节点</param>
         void delPage(SVPageNode pageNode)
         {
             SVPageWidget widget = pageNode.Addtionobj as SVPageWidget;
@@ -1039,7 +1059,7 @@ namespace SvduPro
         /// <summary>
         /// 关闭页面
         /// </summary>
-        /// <param name="backPageWidget">页面节点</param>
+        /// <param Name="backPageWidget">页面节点</param>
         void closePage(SVPageWidget widget)
         {
             //添加属性
@@ -1138,8 +1158,8 @@ namespace SvduPro
         /// <summary>
         /// 根据输入名称打开工程,如果工程不存在则执行创建
         /// </summary>
-        /// <param name="path">工程路径</param>
-        /// <param name="name">工程名</param>
+        /// <param Name="path">工程路径</param>
+        /// <param Name="Name">工程名</param>
         void openProject(String path, String name)
         {
             Directory.SetCurrentDirectory(path);
@@ -1299,8 +1319,8 @@ namespace SvduPro
         /// <summary>
         /// 新建页面执行事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void newPageMenuItem_Click(object sender, EventArgs e)
         {
             ///如果没有选中树节点，就不进行任何操作
@@ -1318,8 +1338,8 @@ namespace SvduPro
         /// <summary>
         /// 导入页面执行事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void importMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode node = _stationTreeView.SelectedNode;
@@ -1440,8 +1460,8 @@ namespace SvduPro
         /// <summary>
         /// 执行当前页面的全选
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void selectAllMenuItem_Click(object sender, EventArgs e)
         {
             SVControlWindow win = currentControlWindow();
@@ -1470,7 +1490,7 @@ namespace SvduPro
         /// <summary>
         /// 处理Ctrl的按下和弹起状态
         /// </summary>
-        /// <param name="m"></param>
+        /// <param Name="m"></param>
         /// <returns></returns>
         protected override bool ProcessKeyPreview(ref Message m)
         {
@@ -1490,8 +1510,8 @@ namespace SvduPro
         /// <summary>
         /// 编译操作
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void 编译ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1504,7 +1524,6 @@ namespace SvduPro
             {
                 SVLog.WinLog.Info(ex.Message);
                 _outPutWindow.Activate();
-                return;
             }
         }
 
@@ -1513,7 +1532,7 @@ namespace SvduPro
         /// 1 - 以模板方式
         /// 2 - 以空白页面方式
         /// </summary>
-        /// <param name="node">当前页面的节点对象</param>
+        /// <param Name="node">当前页面的节点对象</param>
         void createPage(TreeNode node)
         {
             String msg = null;
@@ -1574,7 +1593,7 @@ namespace SvduPro
         /// <summary>
         /// 从指定目录中导入页面文件具体操作
         /// </summary>
-        /// <param name="node">要添加的页面节点对象</param>
+        /// <param Name="node">要添加的页面节点对象</param>
         void importPage(TreeNode node)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -1608,7 +1627,7 @@ namespace SvduPro
         /// <summary>
         /// 将当前页面保存为模板
         /// </summary>
-        /// <param name="backPageWidget">页面窗口</param>
+        /// <param Name="backPageWidget">页面窗口</param>
         void exportToTemplate(SVPageWidget widget)
         {
             SVExportTemplateForm form = new SVExportTemplateForm();
@@ -1711,8 +1730,8 @@ namespace SvduPro
         /// <summary>
         /// 执行变量名管理事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void 变量名管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVVarWindow win = new SVVarWindow();
@@ -1722,8 +1741,8 @@ namespace SvduPro
         /// <summary>
         /// 执行模板管理事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void 模板管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVTemplateWindow win = new SVTemplateWindow();
@@ -1733,8 +1752,8 @@ namespace SvduPro
         /// <summary>
         /// 执行中文环境语言切换
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void 中文ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVConfig currInstance = SVConfig.instance();
@@ -1756,8 +1775,8 @@ namespace SvduPro
         /// <summary>
         /// 执行英文环境语言切换
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void 英文ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVConfig currInstance = SVConfig.instance();
@@ -1779,8 +1798,8 @@ namespace SvduPro
         /// <summary>
         /// 打开关于对话框
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SVAboutWindow win = new SVAboutWindow();
@@ -1790,8 +1809,8 @@ namespace SvduPro
         /// <summary>
         /// 打开帮助文档
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void 主题帮助ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String helpFile = @"Help.chm";

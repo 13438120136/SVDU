@@ -150,7 +150,9 @@ namespace SVControl
             {
                 XmlElement vElement = (XmlElement)tmp;
                 String vName = vElement.GetAttribute("VName");
+                Byte vType = Byte.Parse(vElement.GetAttribute("VType"));
                 _attrib.VarName.Add(vName);
+                _attrib.VarType.Add(vType);
             }
         }
 
@@ -169,12 +171,16 @@ namespace SVControl
             gif.SetAttribute("ErrorShowName", _attrib.PicError.ShowName);
 
             ///保存变量
+            Int32 i = 0;
             foreach (var name in _attrib.VarName)
             {
                 XmlElement nameList = xml.crateChildNode("VarName");
                 gif.AppendChild(nameList);
 
                 nameList.SetAttribute("VName", name);
+                nameList.SetAttribute("VType", _attrib.VarType[i].ToString());
+
+                i++;
             }
 
             ///保存背景图片数据
@@ -192,8 +198,8 @@ namespace SVControl
         /// <summary>
         /// 生成下装文件信息
         /// </summary>
-        /// <param name="pageArrayBin"></param>
-        /// <param name="serialize"></param>
+        /// <param Name="pageArrayBin"></param>
+        /// <param Name="serialize"></param>
         public void buildControlToBin(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             _attrib.make(ref pageArrayBin, ref serialize);

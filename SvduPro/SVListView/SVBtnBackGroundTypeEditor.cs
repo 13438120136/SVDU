@@ -13,7 +13,7 @@ namespace SVControl
         /// <summary>
         /// 重载GetEditStyle,设置窗口弹出行为
         /// </summary>
-        /// <param name="context"></param>
+        /// <param Name="context"></param>
         /// <returns></returns>
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
@@ -23,9 +23,9 @@ namespace SVControl
         /// <summary>
         /// 重载EditValue,编辑按钮动作属性的弹出窗口
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="provider"></param>
-        /// <param name="value"></param>
+        /// <param Name="context"></param>
+        /// <param Name="provider"></param>
+        /// <param Name="value"></param>
         /// <returns></returns>
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)

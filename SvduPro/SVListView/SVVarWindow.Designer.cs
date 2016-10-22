@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param Name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -40,6 +40,8 @@
             this.refreshBtn = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.varTypeCombox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -85,6 +87,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.varTypeCombox);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.labelVar);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.refreshBtn);
@@ -120,6 +124,22 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // varTypeCombox
+            // 
+            this.varTypeCombox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.varTypeCombox, "varTypeCombox");
+            this.varTypeCombox.FormattingEnabled = true;
+            this.varTypeCombox.Items.AddRange(new object[] {
+            resources.GetString("varTypeCombox.Items"),
+            resources.GetString("varTypeCombox.Items1"),
+            resources.GetString("varTypeCombox.Items2")});
+            this.varTypeCombox.Name = "varTypeCombox";
+            // 
             // SVVarWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -129,6 +149,7 @@
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SVVarWindow";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -151,5 +172,7 @@
         private System.Windows.Forms.Button refreshBtn;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox varTypeCombox;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -18,8 +18,8 @@ namespace SVSimulation
         /// <summary>
         /// 解析静态图数据并显示
         /// </summary>
-        /// <param name="bin">静态图结构</param>
-        /// <param name="picBuffer">图片数据</param>
+        /// <param Name="bin">静态图结构</param>
+        /// <param Name="picBuffer">图片数据</param>
         public void fromBin(IconBin bin, byte[] picBuffer)
         {
             ///设置位置和尺寸

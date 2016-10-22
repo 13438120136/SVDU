@@ -76,7 +76,7 @@ namespace SVControl
         /// <summary>
         /// 设置当前对象的起始位置
         /// </summary>
-        /// <param name="pos">点坐标，控件的起始位置</param>
+        /// <param Name="pos">点坐标，控件的起始位置</param>
         public override void setStartPos(Point pos)
         {
             _attrib.Rect = new Rectangle(pos.X, pos.Y, this.Width, this.Height);
@@ -122,8 +122,8 @@ namespace SVControl
                 /// <summary>
         /// 从xml文件中加载当前按钮对象内容
         /// </summary>
-        /// <param name="xml">xml对象</param>
-        /// <param name="isCreate">true-创建新的ID号，false-表示使用文件中的ID</param>
+        /// <param Name="xml">xml对象</param>
+        /// <param Name="isCreate">true-创建新的ID号，false-表示使用文件中的ID</param>
         public override void loadXML(SVXml xml, Boolean isCreate = false)
         {
             XmlElement button = xml.CurrentElement;
@@ -154,7 +154,7 @@ namespace SVControl
         /// <summary>
         /// 保存当前按钮内容到xml文件中
         /// </summary>
-        /// <param name="xml">xml对象</param>
+        /// <param Name="xml">xml对象</param>
         override public void saveXML(SVXml xml)
         {
             XmlElement button = xml.createNode(this.GetType().Name);

@@ -39,8 +39,8 @@ namespace SVControl
         /// <summary>
         /// 状态切换
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void customGroupBox_EnabledChanged(object sender, EventArgs e)
         {
             comboBoxType.Enabled = !customGroupBox.Enabled;
@@ -49,8 +49,8 @@ namespace SVControl
         /// <summary>
         /// 确定事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void okBtn_Click(object sender, EventArgs e)
         {
             if (customGroupBox.Enabled)
@@ -70,8 +70,8 @@ namespace SVControl
         /// <summary>
         /// 取消事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.No;

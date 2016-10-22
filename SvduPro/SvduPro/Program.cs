@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using SVCore;
-using System.Threading;
-using System.Globalization;
 
 namespace SvduPro
 {
@@ -20,9 +20,24 @@ namespace SvduPro
             ///设置语言
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(currInstance.Language);
 
+            ///初始化界面并且启动程序
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SVDockMainWindow(args));
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            ///创建主窗口对象
+            SVDockMainWindow mainWindow = new SVDockMainWindow(args);
+            ///捕获系统异常信息            
+            Application.ThreadException += new ThreadExceptionEventHandler((sender, e) =>
+            {
+                mainWindow.captureExceptionAndSaveProject(e.Exception);
+            });
+
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((sender, e) =>
+            {
+                mainWindow.captureExceptionAndSaveProject(e.ExceptionObject);
+            });
+
+            Application.Run(mainWindow);
         }
     }
 }

@@ -27,8 +27,8 @@ namespace SvduPro
         /// <summary>
         /// 确定
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void okBtn_Click(object sender, EventArgs e)
         {
             SVPageNode node = _svTreeView.SelectedNode as SVPageNode;
@@ -71,8 +71,8 @@ namespace SvduPro
         /// <summary>
         /// 取消
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.No;

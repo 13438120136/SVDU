@@ -544,19 +544,21 @@ namespace SVControl
             //按钮的类型
             if (_btnType.Type == 0)
             {
-                btnBin.type = 1;
+                btnBin.type = 0;
                 btnBin.param.pageId = _btnType.PageID;
             }
             else
             {
-                Int32 tmpType = (Int32)(_btnType.Type + 1);
-                btnBin.type = Convert.ToByte(tmpType);
                 String varName = _btnType.VarText;
+                Byte varNameType = _btnType.VarTextType;
 
                 var varInstance = SVVaribleType.instance();
-                btnBin.param.addrOffset = varInstance.strToAddress(varName);
-                btnBin.type = (Byte)varInstance.strToType(varName);
-                btnBin.param.addrOffset = 0x00;
+                btnBin.param.addrOffset = varInstance.strToAddress(varName, varNameType);
+                btnBin.varTypeBtn = (Byte)varInstance.strToType(varName);
+                btnBin.type = _btnType.Type;
+                btnBin.enable = Convert.ToByte(_btnType.Enable);
+                btnBin.enableAddrOffset = varInstance.strToAddress(_btnType.EnVarText, _btnType.EnVarTextType);
+                btnBin.varTypeEn = (Byte)varInstance.strToType(_btnType.EnVarText);
             }
 
             ///显示背景图片或者显示背景颜色

@@ -249,7 +249,7 @@ namespace SvduPro
         /// <summary>
         /// 检查当前页面中的元素超出了页面的显示范围
         /// </summary>
-        /// <param name="widget">页面对象</param>
+        /// <param Name="widget">页面对象</param>
         void checkOutOfRange(SVPageWidget widget)
         {
             foreach (Control ctrl in widget.Controls)

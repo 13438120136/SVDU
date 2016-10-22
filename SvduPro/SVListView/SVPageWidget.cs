@@ -169,7 +169,7 @@ namespace SVControl
         /// bCreate - true: 创建新ID号
         ///          false: 使用文件中ID号
         /// </summary>
-        /// <param name="bCreate">是否创建新的ID号</param>
+        /// <param Name="bCreate">是否创建新的ID号</param>
         public Boolean loadSelf(Boolean bCreate = false)
         {
             SVXml xml = new SVXml();
@@ -275,8 +275,8 @@ namespace SVControl
         /// <summary>
         /// 页面控件初始化
         /// </summary>
-        /// <param name="pageName">页面显示名称</param>
-        /// <param name="pageFile">页面对应的实际数据文件</param>
+        /// <param Name="pageName">页面显示名称</param>
+        /// <param Name="pageFile">页面对应的实际数据文件</param>
         public SVPageWidget(String pageName, String pageFile)
         {
             initalize();
@@ -310,7 +310,7 @@ namespace SVControl
         /// <summary>
         /// 控件拖入页面窗口中的事件操作
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected override void OnDragDrop(DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(typeof(SVSelectItem)))
@@ -375,7 +375,7 @@ namespace SVControl
         /// <summary>
         /// 重载控件的背景绘制函数
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
@@ -385,7 +385,7 @@ namespace SVControl
         /// <summary>
         /// 绘制页面控件的背景网格
         /// </summary>
-        /// <param name="e"></param>
+        /// <param Name="e"></param>
         void drawBackGroundGrid(PaintEventArgs e)
         {
             int value = this.BackColor.ToArgb();
@@ -505,7 +505,7 @@ namespace SVControl
         /// <summary>
         /// 设置当前页面所有控件的选中状态
         /// </summary>
-        /// <param name="enabled">true表示所有控件选中,false表示所有控件反选</param>
+        /// <param Name="enabled">true表示所有控件选中,false表示所有控件反选</param>
         public void selectAll(Boolean enabled)
         {
             List<SVPanel> vList = new List<SVPanel>();

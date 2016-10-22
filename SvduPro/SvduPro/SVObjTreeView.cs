@@ -142,8 +142,8 @@ namespace SvduPro
         /// 单击树节点事件
         /// 清空当前选中节点对象的选中状态
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void SVObjTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             ObjTreeNode node = this.SelectedNode as ObjTreeNode;
@@ -162,8 +162,8 @@ namespace SvduPro
         /// 选中树节点后发生的事件
         /// 将当前选中节点中的控件对象设置为选中状态
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         void SVObjTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             ObjTreeNode node = e.Node as ObjTreeNode;
@@ -197,7 +197,7 @@ namespace SvduPro
         /// <summary>
         /// 在树中显示当前页面的子控件信息
         /// </summary>
-        /// <param name="pageWidget">页面控件窗口对象</param>
+        /// <param Name="pageWidget">页面控件窗口对象</param>
         public void setPageWidget(SVPageWidget pageWidget)
         {
             //如果没有发生变化，就直接返回

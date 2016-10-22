@@ -24,7 +24,7 @@ namespace SVControl
         /// <summary>
         /// 自定义构造函数
         /// </summary>
-        /// <param name="button">按钮对象</param>
+        /// <param Name="button">按钮对象</param>
         public SVBtnBackGroundWindow(SVButton button)
         {
             InitializeComponent();
@@ -181,8 +181,8 @@ namespace SVControl
         /// <summary>
         /// 单击确定窗口对应的事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void okBtn_Click(object sender, System.EventArgs e)
         {
             if (colorGroupBox.checkEnabled())
@@ -203,8 +203,8 @@ namespace SVControl
         /// <summary>
         /// 单击取消窗口对应的事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void cancelBtn_Click(object sender, System.EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -213,8 +213,8 @@ namespace SVControl
         /// <summary>
         /// 图片按钮按下事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void picBtnDown_Click(object sender, System.EventArgs e)
         {
             SVBitmapManagerWindow window = new SVBitmapManagerWindow();
@@ -229,8 +229,8 @@ namespace SVControl
         /// <summary>
         /// 图片按钮弹起事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param Name="sender"></param>
+        /// <param Name="e"></param>
         private void picBtnUp_Click(object sender, System.EventArgs e)
         {
             SVBitmapManagerWindow window = new SVBitmapManagerWindow();
@@ -245,8 +245,8 @@ namespace SVControl
         /// <summary>
         /// 从当前图元文件获取背景图片数据设置按钮背景
         /// </summary>
-        /// <param name="button">要设置的按钮对象</param>
-        /// <param name="file">当前图片文件</param>
+        /// <param Name="button">要设置的按钮对象</param>
+        /// <param Name="file">当前图片文件</param>
         private void setButtonBackGd(Button button, String file)
         {
             if (!File.Exists(file))

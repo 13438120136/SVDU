@@ -38,7 +38,7 @@ namespace SVSimulation
         /// <summary>
         /// 仿真模拟量
         /// </summary>
-        /// <param name="timer">定时器对象</param>
+        /// <param Name="timer">定时器对象</param>
         public SVSAnalog(Timer timer)
         {
             this.IsSimulation = true;
@@ -69,7 +69,7 @@ namespace SVSimulation
         /// <summary>
         /// 解析模拟量数据并显示
         /// </summary>
-        /// <param name="bin">模拟量内存结构</param>
+        /// <param Name="bin">模拟量内存结构</param>
         public void fromBin(AnalogBin bin)
         {
             ///设置正常的背景和前景颜色
