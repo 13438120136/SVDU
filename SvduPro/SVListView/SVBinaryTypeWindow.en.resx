@@ -124,11 +124,23 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="textBoxFalse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 58</value>
+  </data>
+  <data name="textBoxTrue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 24</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 62</value>
+  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 12</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>False Text</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 28</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>

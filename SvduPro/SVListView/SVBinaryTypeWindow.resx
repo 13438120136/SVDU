@@ -120,28 +120,16 @@
   <data name="label1.Text" xml:space="preserve">
     <value>类型选择</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cancelBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="&gt;&gt;textBoxFalse.Parent" xml:space="preserve">
+    <value>customGroupBox</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cancelBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;textBoxFalse.Parent" xml:space="preserve">
-    <value>customGroupBox</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxFalse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 51</value>
-  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="comboBoxType.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cancelBtn.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -157,6 +145,9 @@
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
+  </data>
+  <data name="&gt;&gt;okBtn.Name" xml:space="preserve">
+    <value>okBtn</value>
   </data>
   <data name="textBoxTrue.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 21</value>
@@ -221,17 +212,23 @@
   <data name="comboBoxType.Items3" xml:space="preserve">
     <value>是:否</value>
   </data>
+  <data name="textBoxFalse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cancelBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
   <data name="&gt;&gt;textBoxFalse.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;okBtn.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="okBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="comboBoxType.Items" xml:space="preserve">
+    <value>打开:关闭</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 12</value>
@@ -239,14 +236,24 @@
   <data name="&gt;&gt;cancelBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="okBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
   <data name="customGroupBox.Text" xml:space="preserve">
     <value>groupBox1</value>
   </data>
   <data name="customGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 66</value>
   </data>
-  <data name="&gt;&gt;comboBoxType.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="okBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 178</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>label4</value>
@@ -260,23 +267,17 @@
   <data name="label3.Text" xml:space="preserve">
     <value>值为假文本信息</value>
   </data>
-  <data name="&gt;&gt;okBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;okBtn.Name" xml:space="preserve">
-    <value>okBtn</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="&gt;&gt;comboBoxType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;okBtn.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -287,14 +288,14 @@
   <data name="okBtn.Text" xml:space="preserve">
     <value>确定</value>
   </data>
-  <data name="textBoxFalse.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="cancelBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 178</value>
+  </data>
+  <data name="&gt;&gt;comboBoxType.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>325, 226</value>
   </data>
   <data name="comboBoxType.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 20</value>
@@ -304,6 +305,9 @@
   </data>
   <data name="&gt;&gt;textBoxFalse.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;cancelBtn.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -317,11 +321,11 @@
   <data name="&gt;&gt;comboBoxType.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
   <data name="&gt;&gt;customGroupBox.Type" xml:space="preserve">
     <value>SVCore.SVCheckGroupBox, SVCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="comboBoxType.Items6" xml:space="preserve">
+    <value>开:关</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>38, 29</value>
@@ -335,33 +339,23 @@
   <data name="comboBoxType.Items2" xml:space="preserve">
     <value>1:0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 21</value>
   </data>
-  <data name="cancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 178</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;okBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 162</value>
   </data>
-  <data name="comboBoxType.Items6" xml:space="preserve">
-    <value>开:关</value>
+  <data name="&gt;&gt;okBtn.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="textBoxTrue.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 21</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 2</value>
-  </data>
-  <data name="&gt;&gt;cancelBtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="okBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 178</value>
   </data>
   <data name="&gt;&gt;textBoxTrue.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -375,11 +369,17 @@
   <data name="comboBoxType.Items4" xml:space="preserve">
     <value>真:假</value>
   </data>
-  <data name="comboBoxType.Items" xml:space="preserve">
-    <value>打开:关闭</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>325, 226</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 21</value>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="customGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 89</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -387,8 +387,8 @@
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="customGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 89</value>
+  <data name="textBoxFalse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 51</value>
   </data>
   <data name="cancelBtn.Text" xml:space="preserve">
     <value>取消</value>
