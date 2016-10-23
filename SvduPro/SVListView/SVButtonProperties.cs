@@ -553,6 +553,9 @@ namespace SVControl
                 Byte varNameType = _btnType.VarTextType;
 
                 var varInstance = SVVaribleType.instance();
+                varInstance.loadVariableData();
+                varInstance.setDataType(varNameType);
+
                 btnBin.param.addrOffset = varInstance.strToAddress(varName, varNameType);
                 btnBin.varTypeBtn = (Byte)varInstance.strToType(varName);
                 btnBin.type = _btnType.Type;

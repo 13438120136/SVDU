@@ -103,12 +103,83 @@ namespace SVCore
             _dataTable = dataTable;
         }
 
+        public DataTable sysDataTable()
+        {
+            DataTable systemDataTable = new DataTable();
+
+            ///添加表头
+            systemDataTable.Columns.Add("变量名", typeof(String));
+            systemDataTable.Columns.Add("变量地址", typeof(UInt32));
+            systemDataTable.Columns.Add("变量类型", typeof(String));
+
+            ///表格中的内容
+            List<SVVarNode> vList = new List<SVVarNode>() 
+            {
+                new SVVarNode("当前运行版本0", 0, "INT"),
+                new SVVarNode("当前运行软件1", 4, "INT"),
+                new SVVarNode("配置文件版本0", 8, "INT"),
+                new SVVarNode("配置文件版本1", 12, "INT"),
+                new SVVarNode("接收任务时间", 16, "INT"),
+                new SVVarNode("接收任务最大时间", 20, "INT"),
+                new SVVarNode("接收任务最大时间", 24, "INT"),
+                new SVVarNode("显示任务时间", 28, "INT"),
+                new SVVarNode("显示任务最大时间", 32, "INT"),
+                new SVVarNode("发送任务时间", 36, "INT"),
+                new SVVarNode("发送任务最大时间", 40, "INT"),
+                new SVVarNode("杂项任务时间", 44, "INT"),
+                new SVVarNode("杂项任务最大时间", 48, "INT"),
+
+                new SVVarNode("当前杂项时间", 52, "INT"),
+                new SVVarNode("当前周期个数", 56, "INT"),
+                new SVVarNode("周期最大设置时间", 60, "INT"),
+
+                new SVVarNode("当前周期时间", 64, "INT"),
+
+                new SVVarNode("平台ROM状态", 68, "INT"),
+                new SVVarNode("平台RAM状态", 72, "INT"),
+                new SVVarNode("cpu诊断状态", 76, "INT"),
+                new SVVarNode("时钟诊断状态", 80, "INT"),
+
+                new SVVarNode("内存使用率", 84, "INT"),
+                new SVVarNode("cpu使用率", 88, "INT"),
+
+                new SVVarNode("数据接收状态", 92, "INT"),
+                new SVVarNode("数据发送状态", 96, "INT"),
+                new SVVarNode("人机交互状态", 100, "INT"),
+
+                new SVVarNode("当前运行模式", 104, "INT"),
+
+                new SVVarNode("接收任务超时", 108, "INT"),
+                new SVVarNode("显示任务超时", 112, "INT"),
+                new SVVarNode("发送任务超时", 116, "INT"),
+                new SVVarNode("杂项任务超时", 120, "INT"),
+                new SVVarNode("周期超时", 124, "INT")
+            };
+
+            foreach (var item in vList)
+            {
+                DataRow dr = systemDataTable.NewRow();
+                dr["变量名"] = item.Name;
+                dr["变量地址"] = item.Address;
+                dr["变量类型"] = item.Type;
+                systemDataTable.Rows.Add(dr);
+            }
+
+            return systemDataTable;
+        }
+
         /// <summary>
         /// 设置变量类型
         /// </summary>
         /// <param name="type"></param>
         public void setDataType(Int32 type)
         {
+            if (type == 2)
+            {
+                _dataTable = sysDataTable();
+                return;
+            }
+
             if (type == 0)
                 _dataTable.Columns.RemoveAt(2);
             else
@@ -154,6 +225,20 @@ namespace SVCore
             { "INT_VAR", VarType.VARTYPE_INT32Q }, 
             { "REAL", VarType.VARTYPE_FLOAT }, 
             { "REAL_VAR", VarType.VARTYPE_FLOATQ }};
+        }
+    }
+
+    public class SVVarNode
+    {
+        public String Name;
+        public UInt32 Address;
+        public String Type;
+
+        public SVVarNode(String name, UInt32 address, String type)
+        {
+            this.Name = name;
+            this.Address = address;
+            this.Type = type;
         }
     }
 }

@@ -209,7 +209,7 @@ namespace SVControl
             }
 
             var address = varInstance.strToAddress(Attrib.Var, Attrib.VarType);
-            if ((address & 0xff000000) > 48 * 1024)
+            if ((address & 0x00ffffff) > 48 * 1024)
             {
                 String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
