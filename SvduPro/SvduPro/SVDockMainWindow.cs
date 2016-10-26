@@ -314,13 +314,20 @@ namespace SvduPro
         {
             _findText.MouseDoubleClick += new MouseEventHandler((sender, e) =>
             {
-                SVPageWidget widget = _findText.getMarkObject() as SVPageWidget;
-                if (widget == null)
+                SVPanel panel = _findText.getMarkObject() as SVPanel;
+                if (panel == null)
+                    return;
+
+                SVPageWidget pageWidget = panel.Parent as SVPageWidget;
+                if (pageWidget == null)
                     return;
 
                 ///双击事件打开对应页面
-                if (_svProject.isExist(widget.PageName))
-                    openPage(widget);
+                if (_svProject.isExist(pageWidget.PageName))
+                {
+                    openPage(pageWidget);
+                    panel.Selected = true;
+                }
             });
         }
 
@@ -716,7 +723,7 @@ namespace SvduPro
         /// backPageWidget - 页面控件对象
         /// 根据页面控件对象来初始化页面节点,这里必须保证页面对象完整创建
         /// </summary>
-        /// <param Name="widget">当前页面控件对象</param>
+        /// <param Name="panel">当前页面控件对象</param>
         /// <returns>返回新创建的页面节点</returns>
         SVPageNode newPageFromWidget(SVPageWidget widget)
         {
@@ -769,7 +776,7 @@ namespace SvduPro
                 //    return;
 
                 //this._propertyGrid.SelectedObject = sder;
-                //this._objTreeView.setPageWidget(widget);
+                //this._objTreeView.setPageWidget(panel);
             });
 
             widget.MouseDown += new MouseEventHandler((sender, e) =>
