@@ -357,6 +357,7 @@ namespace SVControl
             recordItem.UnDo = () =>
             {
                 _redoUndo.setEnabled(false);
+                btn.Selected = false;
                 this.Controls.Remove(btn);
                 _redoUndo.setEnabled(true);
             };
@@ -420,6 +421,7 @@ namespace SVControl
                 if (e.Button != MouseButtons.Left)
                     return;
 
+                SVSelectPanelObjs._VK_Ctrl = false;
                 ///鼠标按下，清空所有控件的选中状态
                 selectAll(false);
                 ///记录鼠标按下时候的坐标点

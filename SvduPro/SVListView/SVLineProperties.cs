@@ -97,7 +97,27 @@ namespace SVControl
         public Boolean ShowType
         {
             get { return _showType; }
-            set { _showType = value; }
+            set 
+            {
+                if (_showType == value)
+                    return;
+
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                Boolean before = _showType;
+                undoItem.ReDo = () =>
+                {
+                    _showType = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _showType = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _showType = value; 
+            }
         }
 
         [CategoryAttribute("外观")]

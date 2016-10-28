@@ -53,6 +53,7 @@ namespace SVControl
                 {
                     SVPageWidget widget = this._control as SVPageWidget;
                     widget.selectAll(false);
+                    SVSelectPanelObjs._VK_Ctrl = false;
                 });
             }
         }

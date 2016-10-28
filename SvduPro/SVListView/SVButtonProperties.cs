@@ -157,8 +157,7 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                if (UpdateControl != null)
-                    UpdateControl(undoItem);
+
                 SVBitmap before = _btnDownPic;
                 undoItem.ReDo = () =>
                 {
@@ -168,6 +167,9 @@ namespace SVControl
                 {
                     _btnDownPic = before;
                 };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
 
                 _btnDownPic = value;
             }
@@ -189,8 +191,7 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                if (UpdateControl != null)
-                    UpdateControl(undoItem);
+
                 SVBitmap before = _btnUpPic;
                 undoItem.ReDo = () =>
                 {
@@ -200,6 +201,9 @@ namespace SVControl
                 {
                     _btnUpPic = before;
                 };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
 
                 _btnUpPic = value;
             }

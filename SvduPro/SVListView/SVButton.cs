@@ -155,6 +155,7 @@ namespace SVControl
             this.Text = _attrib.Text;
             this.Font = _attrib.Font;
             this.ForeColor = _attrib.FrontColorground;
+            this.BackColor = _attrib.BackColorground;
             this.IsMoved = !_attrib.Lock;
 
             if (_attrib.IsShowPic)

@@ -697,6 +697,22 @@ namespace SvduPro
                 widget.Controls.Add(svPanel);
                 ///将控件显示位置置顶
                 svPanel.BringToFront();
+
+                SVRedoUndoItem recordItem = new SVRedoUndoItem();
+                recordItem.ReDo = () =>
+                {
+                    widget.RedoUndo.setEnabled(false);
+                    widget.Controls.Add(svPanel);
+                    widget.RedoUndo.setEnabled(true);
+                };
+                recordItem.UnDo = () =>
+                {
+                    widget.RedoUndo.setEnabled(false);
+                    svPanel.Selected = false;
+                    widget.Controls.Remove(svPanel);
+                    widget.RedoUndo.setEnabled(true);
+                };
+                widget.RedoUndo.recordOper(recordItem);
             }
         }
 
