@@ -5,6 +5,9 @@ using SVCore;
 
 namespace SvduPro
 {
+    /// <summary>
+    /// 查找窗口，通过用户输入的ID号和变量名称来查找并显示结果。
+    /// </summary>
     public partial class SVFindWindow : Form
     {
         //导航树
@@ -12,6 +15,9 @@ namespace SvduPro
         //查找窗口
         SVFindTextBox _findView;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public SVFindWindow()
         {
             InitializeComponent();
@@ -105,47 +111,27 @@ namespace SvduPro
                             if (panel is SVButton)
                             {
                                 SVButton button = (SVButton)panel;
-                                if (button.Attrib.BtnType.VarText == findString)
-                                {
-                                    String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, button.GetType().Name);
-                                    _findView.AppendText(text);
-                                    _findView.setMark(button);
-                                    _findView.AppendText("\n");
-                                }
+                                String str = button.Attrib.BtnType.VarText;
+                                outputFindResult(button, str);
 
-                                if (button.Attrib.BtnType.EnVarText == findString)
-                                {
-                                    String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, button.GetType().Name);
-                                    _findView.AppendText(text);
-                                    _findView.setMark(button);
-                                    _findView.AppendText("\n");
-                                }
+                                str = button.Attrib.BtnType.EnVarText;
+                                outputFindResult(button, str);
                             }
 
                             //如果为模拟量
                             if (panel is SVAnalog)
                             {
                                 SVAnalog analog = (SVAnalog)panel;
-                                if (analog.Attrib.Var == findString)
-                                {
-                                    String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, analog.GetType().Name);
-                                    _findView.AppendText(text);
-                                    _findView.setMark(analog);
-                                    _findView.AppendText("\n");
-                                }
+                                String str = analog.Attrib.Var;
+                                outputFindResult(analog, str);
                             }
 
                             //如果为开关量
                             if (panel is SVBinary)
                             {
                                 SVBinary binary = (SVBinary)panel;
-                                if (binary.Attrib.Var == findString)
-                                {
-                                    String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, binary.GetType().Name);
-                                    _findView.AppendText(text);
-                                    _findView.setMark(binary);
-                                    _findView.AppendText("\n");
-                                }
+                                String str = binary.Attrib.Var;
+                                outputFindResult(binary, str);
                             }
 
                             //动态图
@@ -154,13 +140,7 @@ namespace SvduPro
                                 SVGif gif = (SVGif)panel;
                                 foreach (var str in gif.Attrib.VarName)
                                 {
-                                    if (str == findString)
-                                    {
-                                        String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, gif.GetType().Name);
-                                        _findView.AppendText(text);
-                                        _findView.setMark(gif);
-                                        _findView.AppendText("\n");
-                                    }
+                                    outputFindResult(gif, str);
                                 }
                             }
 
@@ -170,13 +150,7 @@ namespace SvduPro
                                 SVCurve curve = (SVCurve)panel;
                                 foreach (var str in curve.Attrib.VarArray)
                                 {
-                                    if (str == findString)
-                                    {
-                                        String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, curve.GetType().Name);
-                                        _findView.AppendText(text);
-                                        _findView.setMark(curve);
-                                        _findView.AppendText("\n");
-                                    }
+                                    outputFindResult(curve, str);
                                 }
                             }
                         }
@@ -186,6 +160,56 @@ namespace SvduPro
 
             if (!_findView.isMatches())
                 _findView.AppendText("没有找到符合条件的相关内容!");
+        }
+
+        /// <summary>
+        /// 输出查找结果
+        /// </summary>
+        /// <param name="panel">当前控件</param>
+        /// <param name="vStr">当前判断的字符串</param>
+        void outputFindResult(SVPanel panel, String vStr)
+        {
+            SVPageWidget widget = panel.Parent as SVPageWidget;
+            if (widget == null)
+                return;
+
+            ///查找的字符串是否为空
+            String findString = textBox.Text;
+            if (String.IsNullOrWhiteSpace(findString))
+                return;
+
+            ///字符串
+            String findStr = findString;
+            String oldStr = vStr;
+
+            ///是否大小写匹配
+            if (caseCheckBox.Checked)
+            {
+                findStr = findStr.ToLower();
+                oldStr = oldStr.ToLower();
+            }
+
+            ///全字匹配
+            if (wholeCheckBox.Checked)
+            {
+                if (findStr == oldStr)
+                {
+                    String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, panel.GetType().Name);
+                    _findView.AppendText(text);
+                    _findView.setMark(panel);
+                    _findView.AppendText("\n");
+                }
+            }
+            else
+            {
+                if (oldStr.Contains(findStr))
+                {
+                    String text = String.Format("页面【{0}】中, 找到控件====>类型【{1}】.", widget.PageName, panel.GetType().Name);
+                    _findView.AppendText(text);
+                    _findView.setMark(panel);
+                    _findView.AppendText("\n");
+                }
+            }
         }
 
         /// <summary>

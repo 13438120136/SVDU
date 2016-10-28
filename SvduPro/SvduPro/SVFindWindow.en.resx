@@ -117,11 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="caseCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="caseCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 16</value>
   </data>
-  <data name="checkBox2.Text" xml:space="preserve">
+  <data name="caseCheckBox.Text" xml:space="preserve">
     <value>Case sensitive</value>
   </data>
   <data name="wholeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
@@ -130,17 +137,14 @@
   <data name="wholeCheckBox.Text" xml:space="preserve">
     <value>Match whole word</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Option</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Context</value>
   </data>
   <data name="comboBox.Items" xml:space="preserve">
     <value>Control ID</value>
   </data>
   <data name="comboBox.Items1" xml:space="preserve">
     <value>Variable</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Context</value>
   </data>
   <data name="okBtn.Text" xml:space="preserve">
     <value>Ok</value>
