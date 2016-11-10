@@ -106,6 +106,9 @@ namespace SVControl
                 SVBitmap svbitMap = _attrib.Pic.BitmapArray[0];
 
                 String file = Path.Combine(SVProData.IconPath, svbitMap.ImageFileName);
+                if (!File.Exists(file))
+                    return;
+
                 SVPixmapFile pixmapFile = new SVPixmapFile();
                 pixmapFile.readPixmapFile(file);
                 this.BackgroundImage = pixmapFile.getBitmapFromData();

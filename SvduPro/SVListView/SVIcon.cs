@@ -97,7 +97,10 @@ namespace SVControl
             ///根据静态图是否设置了图片来决定外观显示
             if (_attrib.Pic.isValidShow())
             {
-                String file = Path.Combine(SVProData.IconPath, _attrib.Pic.ImageFileName); 
+                String file = Path.Combine(SVProData.IconPath, _attrib.Pic.ImageFileName);
+                if (!File.Exists(file))
+                    return;
+
                 SVPixmapFile pixmapFile = new SVPixmapFile();
                 pixmapFile.readPixmapFile(file);
                 this.BackgroundImage = pixmapFile.getBitmapFromData();
