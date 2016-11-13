@@ -196,7 +196,7 @@ namespace SVControl
 
             if (Attrib.ID <= 0 || Attrib.ID >= uniqueObj.MaxID)
             {
-                String msg = String.Format("页面 {0} 中,开关ID为:{1}, ID值已经超出最大范围[{2} - {3}]", pageName, Attrib.ID, 0, uniqueObj.MaxID);
+                String msg = String.Format("页面 {0} 中,开关ID为:{1}, ID值已经超出最大范围[{2} - {3}]", pageName, Attrib.ID, 1, uniqueObj.MaxID);
                 throw new SVCheckValidException(msg);
             }
 
@@ -204,6 +204,33 @@ namespace SVControl
             {
                 String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 已经超出页面显示范围", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
+            }
+
+            if (Attrib.Type == 1)
+            {
+                SVBitmap trueBitmap = new SVBitmap();
+                trueBitmap.ImageFileName = Attrib.CustomTrueText;
+                if (trueBitmap.bitmap() == null)
+                {
+                    String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 为真的图片未设置，或者图元数据有误！", pageName, Attrib.ID);
+                    throw new SVCheckValidException(msg);
+                }
+
+                SVBitmap falseBitmap = new SVBitmap();
+                falseBitmap.ImageFileName = Attrib.CustomFlaseText;
+                if (falseBitmap.bitmap() == null)
+                {
+                    String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 为假的图片未设置，或者图元数据有误！", pageName, Attrib.ID);
+                    throw new SVCheckValidException(msg);
+                }
+
+                SVBitmap exBitmap = new SVBitmap();
+                exBitmap.ImageFileName = Attrib.CustomExceptionText;
+                if (exBitmap.bitmap() == null)
+                {
+                    String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 异常图片未设置，或者图元数据有误！", pageName, Attrib.ID);
+                    throw new SVCheckValidException(msg);
+                }
             }
 
             //var varInstance = SVVaribleType.instance();

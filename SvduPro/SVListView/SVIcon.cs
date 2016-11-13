@@ -90,20 +90,7 @@ namespace SVControl
             this.IsMoved = !_attrib.Lock;
 
             ///根据静态图是否设置了图片来决定外观显示
-            if (_attrib.Pic.isValidShow())
-            {
-                String file = Path.Combine(SVProData.IconPath, _attrib.Pic.ImageFileName);
-                if (!File.Exists(file))
-                    return;
-
-                SVPixmapFile pixmapFile = new SVPixmapFile();
-                pixmapFile.readPixmapFile(file);
-                this.BackgroundImage = pixmapFile.getBitmapFromData();
-            }
-            else
-            {
-                this.BackgroundImage = null;
-            }
+            this.BackgroundImage = Attrib.PicIconData.bitmap();
         }
 
         override public void loadXML(SVXml xml, Boolean isCreate = false)
@@ -120,8 +107,8 @@ namespace SVControl
             int width = int.Parse(icon.GetAttribute("Width"));
             int height = int.Parse(icon.GetAttribute("Height"));
             _attrib.Rect = new Rectangle(x, y, width, height);
-            _attrib.Pic.ImageFileName = icon.GetAttribute("ImageFile");
-            _attrib.Pic.ShowName = icon.GetAttribute("ImageShowName");
+            _attrib.PicIconData.ImageFileName = icon.GetAttribute("ImageFile");
+            _attrib.PicIconData.ShowName = icon.GetAttribute("ImageShowName");
         }
 
         override public void saveXML(SVXml xml)
@@ -133,8 +120,8 @@ namespace SVControl
             icon.SetAttribute("Y", _attrib.Rect.Y.ToString());
             icon.SetAttribute("Width", _attrib.Rect.Width.ToString());
             icon.SetAttribute("Height", _attrib.Rect.Height.ToString());
-            icon.SetAttribute("ImageFile", _attrib.Pic.ImageFileName);
-            icon.SetAttribute("ImageShowName", _attrib.Pic.ShowName);
+            icon.SetAttribute("ImageFile", _attrib.PicIconData.ImageFileName);
+            icon.SetAttribute("ImageShowName", _attrib.PicIconData.ShowName);
         }
 
         public void buildControlToBin(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
@@ -158,7 +145,7 @@ namespace SVControl
                 throw new SVCheckValidException(msg);
             }
 
-            if (!Attrib.Pic.isValidShow())
+            if (Attrib.PicIconData.bitmap() == null)
             {
                 String msg = String.Format("页面 {0} 中,静态图ID为:{1}, 图片属性没有设置!", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);

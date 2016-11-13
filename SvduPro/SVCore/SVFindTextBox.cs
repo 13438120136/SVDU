@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace SVCore
 {
-    public class SVFindTextBox : TextBox
+    public class SVFindTextBox : RichTextBox
     {
         Dictionary<Int32, Object> _selectDict = new Dictionary<Int32, Object>();
 

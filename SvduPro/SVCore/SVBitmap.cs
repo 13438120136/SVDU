@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
+using System.Drawing;
+using System.IO;
 
 namespace SVCore
 {
@@ -29,6 +31,46 @@ namespace SVCore
         public Boolean isValidShow()
         {
             return !(String.IsNullOrEmpty(ImageFileName) || String.IsNullOrEmpty(ShowName));
+        }
+
+        public Bitmap bitmap()
+        {
+            Bitmap result = null;
+
+            try
+            {
+                String file = Path.Combine(SVProData.IconPath, ImageFileName);
+                SVPixmapFile pixmapFile = new SVPixmapFile();
+                pixmapFile.readPixmapFile(file);
+                result = pixmapFile.getBitmapFromData();
+            }
+            catch
+            {
+                return result;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 获取图片数据
+        /// </summary>
+        /// <returns></returns>
+        public byte[] bitmap8Data(int width, int height)
+        {
+            try
+            {
+                String picFile = Path.Combine(SVProData.IconPath, ImageFileName);
+                SVPixmapFile file = new SVPixmapFile();
+                file.readPixmapFile(picFile);
+                Bitmap bitmap = file.get8Bitmap(width, height);
+                SVBitmapHead head = new SVBitmapHead(bitmap);
+                return head.data();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         /// <summary>

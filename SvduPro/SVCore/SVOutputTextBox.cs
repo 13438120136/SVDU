@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace SVCore
 {
-    public class SVOutputTextBox : TextBox
+    public class SVOutputTextBox : RichTextBox
     {
         static SVOutputTextBox _textBox = null;
 
@@ -23,7 +23,6 @@ namespace SVCore
             this.BackColor = Color.White;
             this.Location = new Point(0, 23);
             this.Name = "_textBox";
-            this.ScrollBars = ScrollBars.Both;
             this.Size = new Size(255, 340);
             this.TabIndex = 2;
             this.WordWrap = false;

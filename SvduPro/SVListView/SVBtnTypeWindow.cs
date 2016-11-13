@@ -35,10 +35,18 @@ namespace SVControl
             {
                 this.pageID.Text = _svButton.Attrib.BtnType.PageID.ToString();
                 this.pageText.Text = _svButton.Attrib.BtnType.PageText;
+                textGroupBox.Enabled = false;
+            }
+            else if (this.doType.SelectedIndex == 3)
+            {
+                textGroupBox.Enabled = true;
+                this.varText.Text = _svButton.Attrib.BtnType.VarText;
+                falseTextBox.Text = _svButton.Attrib.FText;
             }
             else
             {
                 this.varText.Text = _svButton.Attrib.BtnType.VarText;
+                textGroupBox.Enabled = false;
             }
 
             this.groupBoxEnabled.init();
@@ -57,6 +65,7 @@ namespace SVControl
             if (!valid())
                 return;
 
+            _svButton.Attrib.FText = falseTextBox.Text;
             _svButton.RedoUndo.operChanged();
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
@@ -85,12 +94,21 @@ namespace SVControl
                     {
                         groupBox4.Enabled = true;
                         groupBox5.Enabled = false;
+                        textGroupBox.Enabled = false;
+                    }
+                    break;
+                case 3:
+                    {
+                        groupBox4.Enabled = false;
+                        groupBox5.Enabled = true;
+                        textGroupBox.Enabled = true;
                     }
                     break;
                 default:
                     {
                         groupBox4.Enabled = false;
                         groupBox5.Enabled = true;
+                        textGroupBox.Enabled = false; 
                     }
                     break;
             }

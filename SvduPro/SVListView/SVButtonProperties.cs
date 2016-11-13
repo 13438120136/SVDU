@@ -14,6 +14,8 @@ namespace SVControl
     {
         Color _fgcolor;      //文本颜色
         String _text;        //文本内容
+        String _fText;       //文本为假的内容
+
         Font _font;          //文本字体
         Rectangle _rect;     //按钮控件尺寸
         UInt16 _id;          //文本ID
@@ -30,6 +32,13 @@ namespace SVControl
         String _backGround;    //背景
 
         Boolean _isLock;       //是否锁定
+
+        [Browsable(false)]
+        public String FText
+        {
+            get { return _fText; }
+            set { _fText = value; }
+        }
 
         /// <summary>
         /// 如果是true显示背景图片
@@ -77,6 +86,7 @@ namespace SVControl
             _font = new Font("宋体", 8);
             _rect = new Rectangle(0, 0, 120, 60);
             _text = "Button";
+            _fText = "None";
             _bgcolor = Color.FromArgb(236, 236, 236);
             _fgcolor = Color.Black;
             _bgDownColor = _bgcolor;
@@ -538,9 +548,13 @@ namespace SVControl
 
             btnBin.fontClr = (UInt32)FrontColorground.ToArgb();
 
-
+            ///为真的文本
             btnBin.text = new Byte[SVLimit.TEXT_MAX_LEN];
             copyDestByteArray(Encoding.Unicode.GetBytes(Text), btnBin.text);
+
+            ///为假的文本
+            btnBin.fText = new Byte[SVLimit.TEXT_MAX_LEN];
+            copyDestByteArray(Encoding.Unicode.GetBytes(FText), btnBin.fText);
 
             btnBin.font = _fontConfig[_font];
             //是否有确认窗口
@@ -582,29 +596,20 @@ namespace SVControl
                 btnBin.bgDownFlag = 1;
 
                 //设置弹起图片
-                btnBin.bgUpColor = (UInt32)serialize.ToArray().Length;
-                if (BtnUpPic != null && BtnUpPic.isValidShow())
+
+                var upAddress = BtnUpPic.bitmap8Data(Rect.Width, Rect.Height);
+                if (upAddress != null)
                 {
-                    String picFile = Path.Combine(SVProData.IconPath, BtnUpPic.ImageFileName);
-                    SVPixmapFile file = new SVPixmapFile();
-                    file.readPixmapFile(picFile);
-                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                    SVBitmapHead head = new SVBitmapHead(bitmap);
-                    byte[] data = head.data();
-                    serialize.Write(data, 0, (Int32)data.Length);
+                    btnBin.bgUpColor = (UInt32)serialize.ToArray().Length;
+                    serialize.pack(upAddress);
                 }
 
                 //设置按下图片
-                btnBin.bgDownColor = (UInt32)serialize.ToArray().Length;
-                if (BtnDownPic != null && BtnDownPic.isValidShow())
+                var downAddress = BtnDownPic.bitmap8Data(Rect.Width, Rect.Height);                
+                if (downAddress != null)
                 {
-                    String picFile = Path.Combine(SVProData.IconPath, BtnDownPic.ImageFileName);
-                    SVPixmapFile file = new SVPixmapFile();
-                    file.readPixmapFile(picFile);
-                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                    SVBitmapHead head = new SVBitmapHead(bitmap);
-                    byte[] data = head.data();
-                    serialize.Write(data, 0, (Int32)data.Length);
+                    btnBin.bgDownColor = (UInt32)serialize.ToArray().Length;
+                    serialize.pack(downAddress);
                 }
             }
 

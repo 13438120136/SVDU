@@ -51,7 +51,10 @@ namespace SVCore
         public UInt32 enableAddrOffset; /*使能变量的地址*/
         public UInt16 id;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TEXT_MAX_LEN)]
-        public Byte[] text;
+        public Byte[] text;    //为真
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TEXT_MAX_LEN)]
+        public Byte[] fText;   //为假
         public Byte type;
         public Byte confirm;
         public Byte font;

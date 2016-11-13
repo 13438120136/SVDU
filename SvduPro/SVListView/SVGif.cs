@@ -99,14 +99,7 @@ namespace SVControl
             if (_attrib.Pic.BitmapArray.Count > 0)
             {
                 SVBitmap svbitMap = _attrib.Pic.BitmapArray[0];
-
-                String file = Path.Combine(SVProData.IconPath, svbitMap.ImageFileName);
-                if (!File.Exists(file))
-                    return;
-
-                SVPixmapFile pixmapFile = new SVPixmapFile();
-                pixmapFile.readPixmapFile(file);
-                this.BackgroundImage = pixmapFile.getBitmapFromData();
+                this.BackgroundImage = svbitMap.bitmap();
             }
         }
 
@@ -221,6 +214,29 @@ namespace SVControl
             {
                 String msg = String.Format("页面 {0} 中的动态图ID为:{1}, 没有设置变量!", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
+            }
+
+            if (_attrib.PicError.bitmap() == null)
+            {
+                String msg = String.Format("页面 {0} 中的动态图ID为:{1}, 没有设置异常图片!", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            if ((Int32)Math.Pow(2, _attrib.VarName.Count) != _attrib.Pic.BitmapArray.Count)
+            {
+                String msg = String.Format("页面 {0} 中的动态图ID为:{1}, 变量个数和图片个数不匹配!", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            for (int i = 0; i < _attrib.Pic.BitmapArray.Count; i++)
+            {
+                var itemPic = _attrib.Pic.BitmapArray[i];
+
+                if (itemPic.bitmap() == null)
+                {
+                    String msg = String.Format("页面 {0} 中的动态图ID为:{1}, 第{2}副图片设置有误。", pageName, Attrib.ID, i);
+                    throw new SVCheckValidException(msg);
+                }
             }
         }
     }

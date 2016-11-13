@@ -527,52 +527,43 @@ namespace SVControl
             else ///存放与背景图片有关的信息
             {
                 ///为真的图片地址
-                binaryBin.trueBgClr = (UInt32)serialize.ToArray().Length;
-                if (!String.IsNullOrWhiteSpace(this.CustomTrueText))
+                SVBitmap trueBitmap = new SVBitmap();
+                trueBitmap.ImageFileName = this.CustomTrueText;
+                var trueAddress = trueBitmap.bitmap8Data(Rect.Width, Rect.Height);
+                if (trueAddress != null)
                 {
-                    String picFile = Path.Combine(SVProData.IconPath, this.CustomTrueText);
-                    SVPixmapFile file = new SVPixmapFile();
-                    file.readPixmapFile(picFile);
-                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                    SVBitmapHead head = new SVBitmapHead(bitmap);
-                    byte[] data = head.data();
-                    serialize.Write(data, 0, (Int32)data.Length);
+                    binaryBin.trueBgClr = (UInt32)serialize.ToArray().Length;
+                    serialize.pack(trueAddress);
                 }
 
                 ///为假的图片地址
-                binaryBin.falseClr = (UInt32)serialize.ToArray().Length;
-                if (!String.IsNullOrWhiteSpace(this.CustomFlaseText))
+                SVBitmap falseBitmap = new SVBitmap();
+                falseBitmap.ImageFileName = this.CustomFlaseText;
+                var falseAddress = falseBitmap.bitmap8Data(Rect.Width, Rect.Height);
+                if (falseAddress != null)
                 {
-                    String picFile = Path.Combine(SVProData.IconPath, this.CustomFlaseText);
-                    SVPixmapFile file = new SVPixmapFile();
-                    file.readPixmapFile(picFile);
-                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                    SVBitmapHead head = new SVBitmapHead(bitmap);
-                    byte[] data = head.data();
-                    serialize.Write(data, 0, (Int32)data.Length);
+                    binaryBin.falseClr = (UInt32)serialize.ToArray().Length;
+                    serialize.pack(falseAddress);
                 }
 
                 ///异常的图片地址
-                binaryBin.falseClr = (UInt32)serialize.ToArray().Length;
-                if (!String.IsNullOrWhiteSpace(this.CustomFlaseText))
+                SVBitmap exBitmap = new SVBitmap();
+                exBitmap.ImageFileName = this.CustomExceptionText;
+                var exAddress = exBitmap.bitmap8Data(Rect.Width, Rect.Height);
+                if (exAddress != null)
                 {
-                    String picFile = Path.Combine(SVProData.IconPath, this.CustomFlaseText);
-                    SVPixmapFile file = new SVPixmapFile();
-                    file.readPixmapFile(picFile);
-                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                    SVBitmapHead head = new SVBitmapHead(bitmap);
-                    byte[] data = head.data();
-                    serialize.Write(data, 0, (Int32)data.Length);
+                    binaryBin.vinfoInvalid = (UInt32)serialize.ToArray().Length;
+                    serialize.pack(exAddress);
                 }
             }
 
             ///根据名称来获取地址
-            //var varInstance = SVVaribleType.instance();
-            //varInstance.loadVariableData();
-            //varInstance.setDataType(_varType);
+            var varInstance = SVVaribleType.instance();
+            varInstance.loadVariableData();
+            varInstance.setDataType(_varType);
 
-            //binaryBin.addrOffset = varInstance.strToAddress(_var, _varType);
-            //binaryBin.varType = (Byte)varInstance.strToType(_var);
+            binaryBin.addrOffset = varInstance.strToAddress(_var, _varType);
+            binaryBin.varType = (Byte)varInstance.strToType(_var);
 
             pageArrayBin.pageArray[pageCount].m_binary[binaryCount] = binaryBin;
         }

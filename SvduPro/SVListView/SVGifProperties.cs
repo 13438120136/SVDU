@@ -259,28 +259,17 @@ namespace SVControl
             List<SVBitmap> list = _pic.imageArray();
             for (int i = 0; i < list.Count; i++)
             {
-                String fileName = Path.Combine(SVProData.IconPath, list[i].ImageFileName);
+                var address = list[i];
                 gifBin.imageOffset[i] = (UInt32)serialize.ToArray().Length;
-
-                SVPixmapFile file = new SVPixmapFile();
-                file.readPixmapFile(fileName);
-                Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                SVBitmapHead head = new SVBitmapHead(bitmap);
-                byte[] data = head.data();
-                serialize.pack(data);
+                serialize.pack(address.bitmap8Data(Rect.Width, Rect.Height));
             }
 
-            ///写入当前错误图片数据
-            gifBin.iamgeOffsetErr = (UInt32)serialize.ToArray().Length;
-            if (PicError.isValidShow())
+            ///写入当前错误图片数据            
+            var errorAddress = PicError.bitmap8Data(Rect.Width, Rect.Height);
+            if (errorAddress != null)
             {
-                SVPixmapFile pixmapFile = new SVPixmapFile();
-                String file = Path.Combine(SVProData.IconPath, PicError.ImageFileName);
-                pixmapFile.readPixmapFile(file);
-                Bitmap bitmap = pixmapFile.get8Bitmap(Rect.Width, Rect.Height);
-                SVBitmapHead head = new SVBitmapHead(bitmap);
-                byte[] data = head.data();
-                serialize.Write(data, 0, (Int32)data.Length);
+                gifBin.iamgeOffsetErr = (UInt32)serialize.ToArray().Length;
+                serialize.pack(errorAddress);
             }            
 
             ///根据名称来获取地址

@@ -7,13 +7,13 @@ namespace SVCore
     public class SVTextBoxTraceListenter : TraceListener
     {
         //当前TextBox对象
-        TextBox _textBox;
+        RichTextBox _textBox;
 
         /// <summary>
         /// 将日志信息输出到TextBox
         /// </summary>
         /// <param name="textBox">记录日志的TextBox控件窗口</param>
-        public SVTextBoxTraceListenter(TextBox textBox)
+        public SVTextBoxTraceListenter(RichTextBox textBox)
         {
             _textBox = textBox;
         }

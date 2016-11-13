@@ -214,6 +214,8 @@ namespace SVControl
             _attrib.BackColorground = Color.FromArgb(int.Parse(button.GetAttribute("backcolor")));
             _attrib.BackColorgroundDown = Color.FromArgb(int.Parse(button.GetAttribute("backgdcolor")));
             _attrib.Text = button.GetAttribute("text");
+            _attrib.FText = button.GetAttribute("falseText");
+
             String fontFamily = button.GetAttribute("font");
             Single fontSize = float.Parse(button.GetAttribute("fontSize"));
             _attrib.Font = new Font(fontFamily, fontSize);
@@ -253,7 +255,9 @@ namespace SVControl
             button.SetAttribute("color", _attrib.FrontColorground.ToArgb().ToString());
             button.SetAttribute("backcolor", _attrib.BackColorground.ToArgb().ToString());
             button.SetAttribute("backgdcolor", _attrib.BackColorgroundDown.ToArgb().ToString());
-            button.SetAttribute("text", _attrib.Text.ToString());
+            button.SetAttribute("text", _attrib.Text);
+            button.SetAttribute("falseText", _attrib.FText);
+
             button.SetAttribute("font", _attrib.Font.Name.ToString());
             button.SetAttribute("fontSize", _attrib.Font.Size.ToString());
             button.SetAttribute("Confirm", _attrib.Comfirm.ToString());
@@ -399,28 +403,41 @@ namespace SVControl
                 throw new SVCheckValidException(msg);
             }
 
-            return;
+            //var varInstance = SVVaribleType.instance();
+            //if (!varInstance.isOpen())
+            //{
+            //    String msg = String.Format("数据库打开失败，请检查！");
+            //    throw new SVCheckValidException(msg);
+            //}
 
-            var varInstance = SVVaribleType.instance();
-            if (!varInstance.isOpen())
+            //var address = varInstance.strToAddress(Attrib.BtnType.EnVarText, Attrib.BtnType.EnVarTextType);
+            //if (address == 0)
+            //{
+            //    String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 使能变量未正确设置", pageName, Attrib.ID);
+            //    throw new SVCheckValidException(msg);
+            //}
+
+            //var varAddress = varInstance.strToAddress(Attrib.BtnType.VarText, Attrib.BtnType.VarTextType);
+            //if (varAddress == 0)
+            //{
+            //    String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 按钮关联变量未正确设置", pageName, Attrib.ID);
+            //    throw new SVCheckValidException(msg);
+            //}
+
+            if (Attrib.IsShowPic)
             {
-                String msg = String.Format("数据库打开失败，请检查！");
-                throw new SVCheckValidException(msg);
+                if (Attrib.BtnUpPic.bitmap() == null)
+                {
+                    String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 按钮弹起图片未设置", pageName, Attrib.ID);
+                    throw new SVCheckValidException(msg);
+                }
+
+                if (Attrib.BtnDownPic.bitmap() == null)
+                {
+                    String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 按钮按下图片未设置", pageName, Attrib.ID);
+                    throw new SVCheckValidException(msg);
+                }
             }
-
-            var address = varInstance.strToAddress(Attrib.BtnType.EnVarText, Attrib.BtnType.EnVarTextType);
-            if (address == 0)
-            {
-                String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 使能变量未正确设置", pageName, Attrib.ID);
-                throw new SVCheckValidException(msg);
-            }
-
-            var varAddress = varInstance.strToAddress(Attrib.BtnType.VarText, Attrib.BtnType.VarTextType);
-            if (varAddress == 0)
-            {
-                String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 按钮关联变量未正确设置", pageName, Attrib.ID);
-                throw new SVCheckValidException(msg);
-            }            
         }
     }
 }

@@ -12,8 +12,7 @@ namespace SVControl
     {
         UInt16 _id;          //文本ID
         Rectangle _rect;     //按钮控件尺寸        
-        SVBitmap _iconData;    //icon的数据
-
+        SVBitmap _iconData;      //icon的数据
         String _controlType;
         Boolean _isLock;
 
@@ -91,7 +90,7 @@ namespace SVControl
         [TypeConverter(typeof(SVBitmap))]
         [EditorAttribute(typeof(SVBitmapTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]  
         [DisplayName("图片")]
-        public SVBitmap Pic
+        public SVBitmap PicIconData
         {
             set
             {
@@ -168,18 +167,12 @@ namespace SVControl
             iconBin.rect.eX = (UInt16)(Rect.Width + iconBin.rect.sX - 1);
             iconBin.rect.eY = (UInt16)(Rect.Height + iconBin.rect.sY - 1);
 
-            //图标位置
-            iconBin.imageOffset = (UInt32)serialize.ToArray().Length;
-
-            if (Pic.isValidShow())
+            var address = PicIconData.bitmap8Data(Rect.Width, Rect.Height);
+            if (address != null)
             {
-                SVPixmapFile file = new SVPixmapFile();
-                String fileName = Path.Combine(SVProData.IconPath, Pic.ImageFileName);
-                file.readPixmapFile(fileName);
-                Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                SVBitmapHead head = new SVBitmapHead(bitmap);
-                byte[] data = head.data();
-                serialize.Write(data, 0, (Int32)data.Length);                
+                //图标位置
+                iconBin.imageOffset = (UInt32)serialize.ToArray().Length;
+                serialize.pack(address);             
             }
 
             pageArrayBin.pageArray[pageCount].m_icon[curveCount] = iconBin;

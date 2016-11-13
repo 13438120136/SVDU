@@ -314,19 +314,27 @@ namespace SvduPro
         {
             _findText.MouseDoubleClick += new MouseEventHandler((sender, e) =>
             {
-                SVPanel panel = _findText.getMarkObject() as SVPanel;
-                if (panel == null)
-                    return;
-
-                SVPageWidget pageWidget = panel.Parent as SVPageWidget;
-                if (pageWidget == null)
-                    return;
-
-                ///双击事件打开对应页面
-                if (_svProject.isExist(pageWidget.PageName))
+                var obj = _findText.getMarkObject();
+                if (obj is SVPageWidget)
                 {
-                    openPage(pageWidget);
-                    panel.Selected = true;
+                    openPage((SVPageWidget)obj);
+                }
+                else
+                {
+                    SVPanel panel = obj as SVPanel;
+                    if (panel == null)
+                        return;
+
+                    SVPageWidget pageWidget = panel.Parent as SVPageWidget;
+                    if (pageWidget == null)
+                        return;
+
+                    ///双击事件打开对应页面
+                    if (_svProject.isExist(pageWidget.PageName))
+                    {
+                        openPage(pageWidget);
+                        panel.Selected = true;
+                    }
                 }
             });
         }

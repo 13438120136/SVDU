@@ -34,6 +34,8 @@ namespace SVControl
             this.okBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textGroupBox = new System.Windows.Forms.GroupBox();
+            this.falseTextBox = new System.Windows.Forms.TextBox();
             this.groupBoxEnabled = new SVCore.SVCheckGroupBox();
             this.enVarBtn = new System.Windows.Forms.Button();
             this.enText = new System.Windows.Forms.TextBox();
@@ -52,6 +54,7 @@ namespace SVControl
             this.label2 = new System.Windows.Forms.Label();
             this.doType = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
+            this.textGroupBox.SuspendLayout();
             this.groupBoxEnabled.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -73,6 +76,7 @@ namespace SVControl
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textGroupBox);
             this.groupBox3.Controls.Add(this.groupBoxEnabled);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.groupBox5);
@@ -84,6 +88,18 @@ namespace SVControl
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            // 
+            // textGroupBox
+            // 
+            this.textGroupBox.Controls.Add(this.falseTextBox);
+            resources.ApplyResources(this.textGroupBox, "textGroupBox");
+            this.textGroupBox.Name = "textGroupBox";
+            this.textGroupBox.TabStop = false;
+            // 
+            // falseTextBox
+            // 
+            resources.ApplyResources(this.falseTextBox, "falseTextBox");
+            this.falseTextBox.Name = "falseTextBox";
             // 
             // groupBoxEnabled
             // 
@@ -202,7 +218,8 @@ namespace SVControl
             resources.GetString("doType.Items1"),
             resources.GetString("doType.Items2"),
             resources.GetString("doType.Items3"),
-            resources.GetString("doType.Items4")});
+            resources.GetString("doType.Items4"),
+            resources.GetString("doType.Items5")});
             this.doType.Name = "doType";
             this.doType.SelectedIndexChanged += new System.EventHandler(this.doType_SelectedIndexChanged);
             // 
@@ -211,11 +228,13 @@ namespace SVControl
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.Name = "SVBtnDoWindow";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.textGroupBox.ResumeLayout(false);
+            this.textGroupBox.PerformLayout();
             this.groupBoxEnabled.ResumeLayout(false);
             this.groupBoxEnabled.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -248,5 +267,7 @@ namespace SVControl
         private System.Windows.Forms.Button enVarBtn;
         private System.Windows.Forms.TextBox enText;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox textGroupBox;
+        private System.Windows.Forms.TextBox falseTextBox;
     }
 }

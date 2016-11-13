@@ -204,7 +204,7 @@ namespace SVControl
 
             if (Attrib.ID <= 0 || Attrib.ID >= uniqueObj.MaxID)
             {
-                String msg = String.Format("页面 {0} 中,心跳控件ID为:{1}, ID值已经超出最大范围[{2} - {3}]", pageName, Attrib.ID, 0, uniqueObj.MaxID);
+                String msg = String.Format("页面 {0} 中,心跳控件ID为:{1}, ID值已经超出最大范围[{2} - {3}]", pageName, Attrib.ID, 1, uniqueObj.MaxID);
                 throw new SVCheckValidException(msg);
             }
 
@@ -224,6 +224,23 @@ namespace SVControl
             {
                 String msg = String.Format("页面 {0} 中,心跳控件ID为:{1}, 已经超出页面显示范围", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
+            }
+
+            var image = Attrib.BitMapArray.BitmapArray;
+            if (image.Count == 0)
+            {
+                String msg = String.Format("页面 {0} 中,心跳控件ID为:{1}, 未设置任何图片", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
+
+            for (int i = 0; i < image.Count; i++)
+            {
+                var tmpImage = image[i];
+                if (tmpImage.bitmap() == null)
+                {
+                    String msg = String.Format("页面 {0} 中,心跳控件ID为:{1}, 第{2}个图片设置有误", pageName, Attrib.ID, i);
+                    throw new SVCheckValidException(msg);
+                }
             }
         }
     }

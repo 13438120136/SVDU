@@ -322,9 +322,13 @@ namespace SVCore
                 return 0;
 
             HashSet<UInt16> idList = new HashSet<UInt16>();
-            foreach (SVPanel item in this.Parent.Controls)
+            foreach (var item in this.Parent.Controls)
             {
-                idList.Add(item.Id);
+                SVPanel panel = item as SVPanel;
+                if (panel == null)
+                    continue;
+
+                idList.Add(panel.Id);
             }
 
             for (UInt16 i = 1; i < 10000; i++)

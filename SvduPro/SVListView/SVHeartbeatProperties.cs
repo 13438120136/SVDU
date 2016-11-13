@@ -156,16 +156,9 @@ namespace SVControl
 
             for (int i = 0; i < list.Count; i++)
             {
-                String fileName = Path.Combine(SVProData.IconPath, list[i].ImageFileName);
-
+                var offset = list[i];
                 tickBin.imageOffsetList[i] = (UInt32)serialize.ToArray().Length;
-
-                SVPixmapFile file = new SVPixmapFile();
-                file.readPixmapFile(fileName);
-                Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
-                SVBitmapHead head = new SVBitmapHead(bitmap);
-                byte[] data = head.data();
-                serialize.pack(data);
+                serialize.pack(offset.bitmap8Data(Rect.Width, Rect.Height));
             }
 
             pageArrayBin.pageArray[pageCount].m_tick[heartCount] = tickBin;

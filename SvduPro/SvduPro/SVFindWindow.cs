@@ -234,7 +234,7 @@ namespace SvduPro
 
                         if (widget.Attrib.id == id)
                         {
-                            String text = String.Format("找到页面====>【{0}】 id：{1}", widget.PageName, id);
+                            String text = String.Format("找到名为【{0}】的页面, id:{1}", widget.PageName, id);
                             _findView.AppendText(text);
                             _findView.setMark(widget);
                             _findView.AppendText("\n");
@@ -248,7 +248,7 @@ namespace SvduPro
 
                             if (p.Id == id)
                             {
-                                String text = String.Format("名称为【{0}】的页面中, 找到控件====>类型【{1}】.", widget.PageName, p.GetType().Name);
+                                String text = String.Format("名为【{0}】的页面中, 找到控件====>类型【{1}】.", widget.PageName, p.GetType().Name);
                                 _findView.AppendText(text);
                                 _findView.setMark(p);
                                 _findView.AppendText("\n");
