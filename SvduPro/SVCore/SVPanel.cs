@@ -313,6 +313,32 @@ namespace SVCore
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        /// <summary>
+        /// 创建一个页面新的ID号
+        /// </summary>
+        public UInt16 createID()
+        {
+            if (this.Parent == null)
+                return 0;
+
+            HashSet<UInt16> idList = new HashSet<UInt16>();
+            foreach (SVPanel item in this.Parent.Controls)
+            {
+                idList.Add(item.Id);
+            }
+
+            for (UInt16 i = 1; i < 10000; i++)
+            {
+                if (!idList.Contains(i))
+                {
+                    this.Id = i;
+                    return i;
+                }
+            }
+
+            return 0;
+        }
+
         //设置起始位置
         abstract public void setStartPos(Point pos);
         //获取属性对象
@@ -321,10 +347,7 @@ namespace SVCore
         abstract public void loadXML(SVXml element, Boolean isCreate = false);
         abstract public void saveXML(SVXml element);
         abstract public object cloneObject();
-        //创建新的唯一ID号
-        abstract public void createID();
-        //回收ID号
-        abstract public void delID();
+        abstract public void newID();
         //设置恢复和重做相关函数
         abstract public void initalizeRedoUndo();
         //检查控件属性的合法性

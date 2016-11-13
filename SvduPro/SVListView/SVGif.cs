@@ -43,14 +43,9 @@ namespace SVControl
             });
         }
 
-        public override void createID()
+        public override void newID()
         {
-            _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
-        }
-
-        public override void delID()
-        {
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
+            _attrib.ID = base.createID();
         }
 
         public override void setStartPos(Point pos)
@@ -120,7 +115,7 @@ namespace SVControl
             XmlElement gif = xml.CurrentElement;
 
             if (isCreate)
-                createID();
+                newID();
             else
                 _attrib.ID = UInt16.Parse(gif.GetAttribute("ID"));
 

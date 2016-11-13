@@ -27,7 +27,12 @@ namespace SVControl
             {
                 SVBinaryTypeWindow window = new SVBinaryTypeWindow(binary);
                 if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    SVPageWidget widget = binary.Parent as SVPageWidget;
+                    widget.RedoUndo.operChanged();
+
                     return binary.Attrib.Type;
+                }
             }
 
             return value;

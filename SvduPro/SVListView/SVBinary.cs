@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization;
@@ -48,17 +47,9 @@ namespace SVControl
         /// <summary>
         /// 创建ID
         /// </summary>
-        public override void createID()
+        public override void newID()
         {
-            _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
-        }
-
-        /// <summary>
-        /// 回收ID号
-        /// </summary>
-        public override void delID()
-        {
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
+            _attrib.ID = base.createID();
         }
 
         public override void setStartPos(Point pos)
@@ -106,22 +97,21 @@ namespace SVControl
             this.BackColor = _attrib.TrueBgColor;
             this.IsMoved = !_attrib.Lock;
 
-            Dictionary<Byte, String> config = new Dictionary<Byte, String>()
-            {
-                {0, "关闭"},
-                {1, "停止"},
-                {2, "False"},
-                {3, "否"},
-                {4, "假"},
-                {5, "错误"},
-                {6, "关"},
-                {7, "自定义"}
-            };
+            this.Text = null;
+            this.BackgroundImage = null;
 
-            if (_attrib.Type == 7)
-                this.Text = String.Format("{0}", Attrib.CustomFlaseText);
+            if (Attrib.Type == 0)
+                this.Text = Attrib.CustomFlaseText;
             else
-                this.Text = config[_attrib.Type];
+            {
+                String file = Path.Combine(SVProData.IconPath, Attrib.CustomFlaseText);
+                if (File.Exists(file))
+                {
+                    SVPixmapFile pixmapFile = new SVPixmapFile();
+                    pixmapFile.readPixmapFile(file);
+                    this.BackgroundImage = pixmapFile.getBitmapFromData();
+                }
+            }
         }
 
         override public void loadXML(SVXml xml, Boolean isCreate = false)
@@ -129,7 +119,7 @@ namespace SVControl
             XmlElement binary = xml.CurrentElement;
 
             if (isCreate)
-                createID();
+                newID();
             else
                 _attrib.ID = UInt16.Parse(binary.GetAttribute("ID"));
 
@@ -147,6 +137,7 @@ namespace SVControl
             ///读取自定义名称
             _attrib.CustomTrueText = binary.GetAttribute("CustomTrueText");
             _attrib.CustomFlaseText = binary.GetAttribute("CustomFalseText");
+            _attrib.CustomExceptionText = binary.GetAttribute("CustomExText");
             
             _attrib.TrueColor = Color.FromArgb(int.Parse(binary.GetAttribute("TrueColor")));
             _attrib.TrueBgColor = Color.FromArgb(int.Parse(binary.GetAttribute("TrueBgColor")));
@@ -178,6 +169,7 @@ namespace SVControl
             ///写入自定义名称
             binary.SetAttribute("CustomTrueText", _attrib.CustomTrueText);
             binary.SetAttribute("CustomFalseText", _attrib.CustomFlaseText);
+            binary.SetAttribute("CustomExText", _attrib.CustomExceptionText);
 
             binary.SetAttribute("TrueColor", _attrib.TrueColor.ToArgb().ToString());
             binary.SetAttribute("TrueBgColor", _attrib.TrueBgColor.ToArgb().ToString());
@@ -214,34 +206,34 @@ namespace SVControl
                 throw new SVCheckValidException(msg);
             }
 
-            var varInstance = SVVaribleType.instance();
-            varInstance.loadVariableData();
-            varInstance.setDataType(Attrib.VarType);
-            if (!varInstance.isOpen())
-            {
-                String msg = String.Format("数据库打开失败，请检查！");
-                throw new SVCheckValidException(msg);
-            }
+            //var varInstance = SVVaribleType.instance();
+            //varInstance.loadVariableData();
+            //varInstance.setDataType(Attrib.VarType);
+            //if (!varInstance.isOpen())
+            //{
+            //    String msg = String.Format("数据库打开失败，请检查！");
+            //    throw new SVCheckValidException(msg);
+            //}
 
-            if (String.IsNullOrWhiteSpace(Attrib.Var))
-            {
-                String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 变量不合法", pageName, Attrib.ID);
-                throw new SVCheckValidException(msg);
-            }
+            //if (String.IsNullOrWhiteSpace(Attrib.Var))
+            //{
+            //    String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 变量不合法", pageName, Attrib.ID);
+            //    throw new SVCheckValidException(msg);
+            //}
 
-            var address = varInstance.strToAddress(Attrib.Var, Attrib.VarType);
-            if (address == 0)
-            {
-                String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
-                throw new SVCheckValidException(msg);
-            }
+            //var address = varInstance.strToAddress(Attrib.Var, Attrib.VarType);
+            //if (address == 0)
+            //{
+            //    String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
+            //    throw new SVCheckValidException(msg);
+            //}
 
-            var type = varInstance.strToType(Attrib.Var);
-            if (type == -1)
-            {
-                String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 变量类型不满足条件", pageName, Attrib.ID);
-                throw new SVCheckValidException(msg);
-            }
+            //var type = varInstance.strToType(Attrib.Var);
+            //if (type == -1)
+            //{
+            //    String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 变量类型不满足条件", pageName, Attrib.ID);
+            //    throw new SVCheckValidException(msg);
+            //}
         }
     }
 }

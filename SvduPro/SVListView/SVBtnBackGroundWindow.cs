@@ -55,7 +55,6 @@ namespace SVControl
                 setButtonBackGd(picBtnDown, file);
             }
 
-
             if (_button.Attrib.BtnUpPic.ImageFileName != null)
             {
                 String file = Path.Combine(SVProData.IconPath, _button.Attrib.BtnUpPic.ImageFileName);

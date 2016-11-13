@@ -17,6 +17,8 @@ namespace SVControl
         Single _max;
         Single _min;
         UInt16 _interval;
+        UInt16 _step;          //步进
+
         String _controlType;   //控件类型
 
         String _var;
@@ -71,6 +73,7 @@ namespace SVControl
             _min = 0;
             _max = 200;
             _interval = 60;
+            _step = 60;
             _controlType = "趋势图";
             _isLock = false;
             _var = "变量列表";
@@ -79,6 +82,38 @@ namespace SVControl
             _fontConfig.Add(new Font("宋体", 8), 8);
             _fontConfig.Add(new Font("宋体", 12), 12);
             _fontConfig.Add(new Font("宋体", 16), 16);
+        }
+
+        [CategoryAttribute("数据")]
+        [DisplayName("步进")]
+        [DescriptionAttribute("设置可切换的步进值, 范围1-600")]
+        public UInt16 Step
+        {
+            get { return _step; }
+            set 
+            {
+                if (_step < 1 || _step > 600)
+                    return;
+
+                if (_step == value)
+                    return;
+
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                UInt16 before = _step;
+                undoItem.ReDo = () =>
+                {
+                    _step = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _step = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _step = value;
+            }
         }
 
         [CategoryAttribute("属性")]
@@ -417,6 +452,7 @@ namespace SVControl
             curveBin.yMax = Max;
             curveBin.maxTime = Interval;
             curveBin.font = _fontConfig[_font];
+            curveBin.stepTime = Step;
 
             //变量地址
             for (int i = 0; i < _varArray.Length; i++)

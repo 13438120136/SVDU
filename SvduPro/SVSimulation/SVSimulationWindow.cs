@@ -129,7 +129,7 @@ namespace SVSimulation
             for (int i = 0; i < bin.binaryNum; i++)
             {
                 SVSBinary binary = new SVSBinary(_timer);
-                binary.fromBin(bin.m_binary[i]);
+                binary.fromBin(bin.m_binary[i], picBuffer);
                 page.Controls.Add(binary);
 
                 binary.MouseDown += new MouseEventHandler((sender, e) =>

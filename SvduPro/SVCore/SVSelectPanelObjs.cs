@@ -105,7 +105,6 @@ namespace SVCore
             foreach (Control ctrl in tmp)
             {
                 SVPanel sv = (SVPanel)ctrl;
-                sv.delID();
                 sv.Selected = false;
                 ctrl.Parent.Controls.Remove(ctrl);
             }

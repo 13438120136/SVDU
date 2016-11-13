@@ -79,18 +79,9 @@ namespace SVControl
         /// 重写父类的方法
         /// 这里不需要关注
         /// </summary>
-        public override void createID()
+        public override void newID()
         {
-            _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
-        }
-
-        /// <summary>
-        /// 重写父类的方法
-        /// 这里不需要关注
-        /// </summary>
-        public override void delID()
-        {
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
+            _attrib.ID = base.createID();
         }
 
         /// <summary>
@@ -185,7 +176,7 @@ namespace SVControl
             XmlElement lineXml = xml.CurrentElement;
 
             if (isCreate)
-                createID();
+                newID();
             else
                 _attrib.ID = UInt16.Parse(lineXml.GetAttribute("id"));
 

@@ -43,13 +43,13 @@ namespace SVControl
             if (_gif.Attrib.PicError.ImageFileName != null)
             {
                 String file = Path.Combine(SVProData.IconPath, _gif.Attrib.PicError.ImageFileName);
-                if (!File.Exists(file))
-                    return;
-
-                SVPixmapFile pixmapFile = new SVPixmapFile();
-                pixmapFile.readPixmapFile(file);
-                errBtn.BackgroundImageLayout = ImageLayout.Zoom;
-                errBtn.BackgroundImage = pixmapFile.getBitmapFromData();
+                if (File.Exists(file))
+                {
+                    SVPixmapFile pixmapFile = new SVPixmapFile();
+                    pixmapFile.readPixmapFile(file);
+                    errBtn.BackgroundImageLayout = ImageLayout.Zoom;
+                    errBtn.BackgroundImage = pixmapFile.getBitmapFromData();
+                }
             }
 
             this.bgBtn.Enabled = (_gif.Attrib.VarName.Count != 0);

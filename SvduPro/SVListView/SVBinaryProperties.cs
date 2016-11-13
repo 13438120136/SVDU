@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Design;
 using System.Text;
 using SVCore;
+using System.IO;
 
 namespace SVControl
 {
@@ -21,8 +22,14 @@ namespace SVControl
 
         Color _exceptionColor;   //出现异常的字体颜色
         Color _exceptionBgColor; //出现异常的背景颜色
-        String _customTrueText;  //自定义值为真
-        String _customFlaseText; //自定义值为假
+
+        /// <summary>
+        /// 以下三个字段，当显示为文本时，为文本内容
+        /// 当显示为图片的时候，为图片文件路径
+        /// </summary>
+        String _customTrueText;      //自定义值为真
+        String _customFlaseText;     //自定义值为假
+        String _customExceptionText; //异常字段
 
         Rectangle _rect;    //尺寸
         String _var;        //关联的变量
@@ -33,8 +40,6 @@ namespace SVControl
 
         //字体的配置
         Dictionary<Font, Byte> _fontConfig = new Dictionary<Font, Byte>(); 
-        //显示的格式
-        Dictionary<String, Byte> _showConfig = new Dictionary<String, Byte>();
 
         public UpdateControl UpdateControl;
 
@@ -48,7 +53,9 @@ namespace SVControl
             _falseBgColor = Color.Blue;
             _exceptionColor = _trueColor;
             _exceptionBgColor = _trueBgColor;
-            //_type = "打开 or 关闭";
+            _type = 0;
+            _customTrueText = "True";
+            _customFlaseText = "False";
             _controlType = "开关量";
             _isLock = false;
 
@@ -56,14 +63,13 @@ namespace SVControl
             _fontConfig.Add(new Font("宋体", 8), 8);
             _fontConfig.Add(new Font("宋体", 12), 12);
             _fontConfig.Add(new Font("宋体", 16), 16);
-            //显示格式的映射关系
-            _showConfig.Add("打开 or 关闭", 0);
-            _showConfig.Add("运行 or 停止", 1);
-            _showConfig.Add("1 or 0", 2);
-            _showConfig.Add("是 or 否", 3);
-            _showConfig.Add("真 or 假", 4);
-            _showConfig.Add("正确 or 错误", 5);
-            _showConfig.Add("开 or 关", 6);
+        }
+
+        [Browsable(false)]
+        public String CustomExceptionText
+        {
+            get { return _customExceptionText; }
+            set { _customExceptionText = value; }
         }
 
         [Browsable(false)]
@@ -177,19 +183,13 @@ namespace SVControl
         }
 
         [CategoryAttribute("数据")]
-        [DescriptionAttribute("当前开关量的具体含义")]
-        //[TypeConverter(typeof(SVBinaryTypeConverter))]
+        [DescriptionAttribute("当前开关量的具体含义, 0：表示文本显示， 1：表示图片方式显示")]
         [EditorAttribute(typeof(SVBinaryTypeTypeEditor), typeof(UITypeEditor))]
         [DisplayName("类型")]
-        //[Browsable(false)]
         public Byte Type
         {
             set
             {
-                ///限制范围
-                if (!(value >= 0 && value <= 7)) 
-                    return;
-
                 if (_type == value)
                     return;
 
@@ -471,12 +471,22 @@ namespace SVControl
             }
         }
 
+        /// <summary>
+        /// 执行拷贝字节数组中的字符串
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="dest"></param>
         void copyDestByteArray(byte[] src, byte[] dest)
         {
             int minLen = src.Length > dest.Length ? dest.Length : src.Length;
             Array.Copy(src, dest, minLen);
         }
 
+        /// <summary>
+        /// 生成下装文件
+        /// </summary>
+        /// <param name="pageArrayBin">下装配置文件</param>
+        /// <param name="serialize">序列化对象</param>
         public void make(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             UInt32 pageCount = pageArrayBin.pageCount;
@@ -493,31 +503,76 @@ namespace SVControl
             binaryBin.rect.eX = (UInt16)(Rect.Width + binaryBin.rect.sX);
             binaryBin.rect.eY = (UInt16)(Rect.Height + binaryBin.rect.sY);
 
-            binaryBin.trueClr = (UInt32)TrueColor.ToArgb();
-            binaryBin.trueBgClr = (UInt32)TrueBgColor.ToArgb();
-            binaryBin.falseClr = (UInt32)FalseColor.ToArgb();
-            binaryBin.falseBgClr = (UInt32)FalseBgColor.ToArgb();
-            binaryBin.vinfoInvalid = (UInt32)ExceptionColor.ToArgb();
-            binaryBin.vinfoInvalidBg = (UInt32)ExceptionBgColor.ToArgb();
-
-            binaryBin.trueText = new Byte[SVLimit.TEXT_MAX_LEN];
-            if (CustomTrueText != null)
-                copyDestByteArray(Encoding.Unicode.GetBytes(CustomTrueText), binaryBin.trueText);
-
-            binaryBin.falseText = new Byte[SVLimit.TEXT_MAX_LEN];
-            if (CustomFlaseText != null)
-                copyDestByteArray(Encoding.Unicode.GetBytes(CustomFlaseText), binaryBin.falseText);
-
             binaryBin.font = _fontConfig[_font];
             binaryBin.type = _type;
 
-            ///根据名称来获取地址
-            var varInstance = SVVaribleType.instance();
-            varInstance.loadVariableData();
-            varInstance.setDataType(_varType);
+            ///存放字符串相关的属性和文本信息
+            if (_type == 0)
+            {
+                binaryBin.trueClr = (UInt32)TrueColor.ToArgb();
+                binaryBin.trueBgClr = (UInt32)TrueBgColor.ToArgb();
+                binaryBin.falseClr = (UInt32)FalseColor.ToArgb();
+                binaryBin.falseBgClr = (UInt32)FalseBgColor.ToArgb();
+                binaryBin.vinfoInvalid = (UInt32)ExceptionColor.ToArgb();
+                binaryBin.vinfoInvalidBg = (UInt32)ExceptionBgColor.ToArgb();
 
-            binaryBin.addrOffset = varInstance.strToAddress(_var, _varType);
-            binaryBin.varType = (Byte)varInstance.strToType(_var);
+                binaryBin.trueText = new Byte[SVLimit.TEXT_MAX_LEN];
+                if (CustomTrueText != null)
+                    copyDestByteArray(Encoding.Unicode.GetBytes(CustomTrueText), binaryBin.trueText);
+
+                binaryBin.falseText = new Byte[SVLimit.TEXT_MAX_LEN];
+                if (CustomFlaseText != null)
+                    copyDestByteArray(Encoding.Unicode.GetBytes(CustomFlaseText), binaryBin.falseText);
+            }
+            else ///存放与背景图片有关的信息
+            {
+                ///为真的图片地址
+                binaryBin.trueBgClr = (UInt32)serialize.ToArray().Length;
+                if (!String.IsNullOrWhiteSpace(this.CustomTrueText))
+                {
+                    String picFile = Path.Combine(SVProData.IconPath, this.CustomTrueText);
+                    SVPixmapFile file = new SVPixmapFile();
+                    file.readPixmapFile(picFile);
+                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
+                    SVBitmapHead head = new SVBitmapHead(bitmap);
+                    byte[] data = head.data();
+                    serialize.Write(data, 0, (Int32)data.Length);
+                }
+
+                ///为假的图片地址
+                binaryBin.falseClr = (UInt32)serialize.ToArray().Length;
+                if (!String.IsNullOrWhiteSpace(this.CustomFlaseText))
+                {
+                    String picFile = Path.Combine(SVProData.IconPath, this.CustomFlaseText);
+                    SVPixmapFile file = new SVPixmapFile();
+                    file.readPixmapFile(picFile);
+                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
+                    SVBitmapHead head = new SVBitmapHead(bitmap);
+                    byte[] data = head.data();
+                    serialize.Write(data, 0, (Int32)data.Length);
+                }
+
+                ///异常的图片地址
+                binaryBin.falseClr = (UInt32)serialize.ToArray().Length;
+                if (!String.IsNullOrWhiteSpace(this.CustomFlaseText))
+                {
+                    String picFile = Path.Combine(SVProData.IconPath, this.CustomFlaseText);
+                    SVPixmapFile file = new SVPixmapFile();
+                    file.readPixmapFile(picFile);
+                    Bitmap bitmap = file.get8Bitmap(Rect.Width, Rect.Height);
+                    SVBitmapHead head = new SVBitmapHead(bitmap);
+                    byte[] data = head.data();
+                    serialize.Write(data, 0, (Int32)data.Length);
+                }
+            }
+
+            ///根据名称来获取地址
+            //var varInstance = SVVaribleType.instance();
+            //varInstance.loadVariableData();
+            //varInstance.setDataType(_varType);
+
+            //binaryBin.addrOffset = varInstance.strToAddress(_var, _varType);
+            //binaryBin.varType = (Byte)varInstance.strToType(_var);
 
             pageArrayBin.pageArray[pageCount].m_binary[binaryCount] = binaryBin;
         }

@@ -3,8 +3,8 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml;
 using System.Windows.Forms;
+using System.Xml;
 using SVCore;
 
 namespace SVControl
@@ -73,17 +73,9 @@ namespace SVControl
         /// <summary>
         /// 创建一个新的ID号
         /// </summary>
-        public override void createID()
-        {
-            _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
-        }
-
-        /// <summary>
-        /// 回收当前按钮对象的ID号
-        /// </summary>
-        public override void delID()
-        {
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
+        public override void newID()
+        {   
+            _attrib.ID = base.createID();
         }
 
         /// <summary>
@@ -209,7 +201,7 @@ namespace SVControl
             XmlElement button = xml.CurrentElement;
 
             if (isCreate)
-                createID();
+                newID();
             else
                 _attrib.ID = UInt16.Parse(button.GetAttribute("id"));
 

@@ -27,7 +27,7 @@ namespace SVControl
                 if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
                     return window.SvBitMap;
                 else
-                    return null;
+                    return value;
             }
 
             return value;

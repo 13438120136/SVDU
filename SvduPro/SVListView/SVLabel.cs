@@ -58,17 +58,9 @@ namespace SVControl
         /// <summary>
         /// 创建一个新的ID号
         /// </summary>
-        public override void createID()
+        public override void newID()
         {
-            _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
-        }
-
-        /// <summary>
-        /// 回收当前按钮对象的ID号
-        /// </summary>
-        public override void delID()
-        {
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
+            _attrib.ID = base.createID();
         }
 
         /// <summary>
@@ -186,7 +178,7 @@ namespace SVControl
             XmlElement label = xml.CurrentElement;
 
             if (isCreate)
-                createID();
+                newID();
             else
                 _attrib.ID = UInt16.Parse(label.GetAttribute("ID"));
 

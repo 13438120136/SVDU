@@ -685,9 +685,6 @@ namespace SvduPro
                 svPanel.setRedoUndoObject(widget.RedoUndo);
                 ///设置父窗口ID，这里的父窗口为页面窗口
                 svPanel.setParentID(widget.Attrib.id);
-                ///新建当前控件ID号
-                svPanel.createID();
-                svPanel.refreshPropertyToPanel();
 
                 ///设置相对位置
                 svPanel.Location = new Point(svPanel.Location.X + disx, svPanel.Location.Y + disy);
@@ -695,6 +692,9 @@ namespace SvduPro
 
                 ///添加控件到页面中
                 widget.Controls.Add(svPanel);
+                ///新建当前控件ID号
+                svPanel.newID();
+                svPanel.refreshPropertyToPanel();
                 ///将控件显示位置置顶
                 svPanel.BringToFront();
 

@@ -100,17 +100,9 @@ namespace SVControl
         /// <summary>
         /// 创建ID
         /// </summary>
-        public override void createID()
+        public override void newID()
         {
-            _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
-        }
-
-        /// <summary>
-        /// 回收ID号
-        /// </summary>
-        public override void delID()
-        {
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
+            _attrib.ID = base.createID();
         }
 
         public override void setStartPos(Point pos)
@@ -253,7 +245,7 @@ namespace SVControl
             XmlElement curve = xml.CurrentElement;
 
             if (isCreate)
-                createID();
+                newID();
             else
                 _attrib.ID = UInt16.Parse(curve.GetAttribute("ID"));
 

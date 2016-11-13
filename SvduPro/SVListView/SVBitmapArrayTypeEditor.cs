@@ -27,7 +27,7 @@ namespace SVControl
         {
             SVHeartbeat heart = context.Instance as SVHeartbeat;
             if (heart == null)
-                return null;
+                return value;
 
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)

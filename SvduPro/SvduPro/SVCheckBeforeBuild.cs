@@ -49,6 +49,7 @@ namespace SvduPro
         {
             ///用来保存当前工程中已经遍历的页面和控件的ID及名称
             Dictionary<Int32, String> dict = new Dictionary<Int32, String>();
+            HashSet<UInt16> hashSet = new HashSet<UInt16>();
 
             foreach (var item in SVGlobalData.PageContainer)
             {
@@ -65,6 +66,7 @@ namespace SvduPro
                 ///保存页面ID
                 dict.Add(widget.Attrib.id, String.Format("页面{0}", pageText));
 
+                hashSet.Clear();
                 ///遍历页面中的所有子控件
                 foreach (var contrl in widget.Controls)
                 {
@@ -74,14 +76,13 @@ namespace SvduPro
                         continue;
 
                     ///当前控件ID是否存在
-                    if (dict.ContainsKey(panel.Id))
+                    if (hashSet.Contains(panel.Id))
                     {
-                        String msg = String.Format("{0}和页面[{1}]中的控件 ID重复, ID为{2}", dict[panel.Id], pageText, panel.Id);
+                        String msg = String.Format("页面[{0}]存在重复的ID号, 值为：{1}", pageText, panel.Id);
                         throw new SVCheckValidException(msg);
                     }
 
-                    String controlMsg = String.Format("页面[{0}]中的控件", pageText);
-                    dict.Add(panel.Id, controlMsg);
+                    hashSet.Add(panel.Id);
                 }
             }
         }

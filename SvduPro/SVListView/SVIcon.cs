@@ -41,14 +41,9 @@ namespace SVControl
             });
         }
 
-        public override void createID()
+        public override void newID()
         {
-            _attrib.ID = (UInt16)SVUniqueID.instance().newUniqueID();
-        }
-
-        public override void delID()
-        {
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.ID);
+            _attrib.ID = base.createID();
         }
 
         public override void setStartPos(Point pos)
@@ -116,7 +111,7 @@ namespace SVControl
             XmlElement icon = xml.CurrentElement;
 
             if (isCreate)
-                createID();
+                newID();
             else
                 _attrib.ID = UInt16.Parse(icon.GetAttribute("ID"));
 
@@ -147,6 +142,9 @@ namespace SVControl
             _attrib.make(ref pageArrayBin, ref serialize);
         }
 
+        /// <summary>
+        /// 检查静态图中的合法项
+        /// </summary>
         public override void checkValid() 
         {
             SVPageWidget pageWidget = this.Parent as SVPageWidget;
@@ -156,7 +154,7 @@ namespace SVControl
 
             if (Attrib.ID <= 0 || Attrib.ID >= uniqueObj.MaxID)
             {
-                String msg = String.Format("页面 {0} 中,静态图ID为:{1}, ID值已经超出最大范围[{2} - {3}]", pageName, Attrib.ID, 0, uniqueObj.MaxID);
+                String msg = String.Format("页面 {0} 中,静态图ID为:{1}, ID值已经超出合法范围[{2} - {3}]", pageName, Attrib.ID, 1, uniqueObj.MaxID);
                 throw new SVCheckValidException(msg);
             }
 

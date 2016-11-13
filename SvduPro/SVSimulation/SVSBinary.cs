@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using SVControl;
 using SVCore;
-using System.Text;
 
 namespace SVSimulation
 {
@@ -19,6 +19,7 @@ namespace SVSimulation
         Color falseColor;
         Color falseBgColor;
         List<String> customList = new List<String>();
+        List<Bitmap> customImageList = new List<Bitmap>();
 
         /// <summary>
         /// 获取当前数据控制组件
@@ -36,6 +37,7 @@ namespace SVSimulation
         {
             this.IsSimulation = true;
             this.IsMoved = false;
+            this.Text = null;
 
             ///定时刷新值
             timer.Tick += new EventHandler((sender, e)=>
@@ -62,7 +64,7 @@ namespace SVSimulation
         /// 解析并显示开关量
         /// </summary>
         /// <param Name="bin">开关量内存结构</param>
-        public void fromBin(BinaryBin bin)
+        public void fromBin(BinaryBin bin, byte[] byteBuffer)
         {
             ///位置和尺寸
             this.Location = new Point(bin.rect.sX, bin.rect.sY);
@@ -72,39 +74,31 @@ namespace SVSimulation
             ///开关量类型
             _typeByte = bin.type;
 
-            Dictionary<Int32, String> trueConfig = new Dictionary<Int32, String>()
-            {
-                {0, "打开"},
-                {1, "运行"},
-                {2, "1"},
-                {3, "是"},
-                {4, "真"},
-                {5, "正确"},
-                {6, "开"}
-            };
-
-            if (bin.type == 7)
-            {
-                this.Text = Encoding.Unicode.GetString(bin.trueText);
-                customList.Add(Encoding.Unicode.GetString(bin.trueText));
-                customList.Add(Encoding.Unicode.GetString(bin.falseText));
-            }
-            else
-                this.Text = trueConfig[bin.type];
-
+            ///显示字体
             Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>();
             FontConfig.Add(8, new Font("宋体", 8));
             FontConfig.Add(12, new Font("宋体", 12));
             FontConfig.Add(16, new Font("宋体", 16));
             this.Font = FontConfig[bin.font];
 
-            this.ForeColor = Color.FromArgb((Int32)bin.trueClr);
-            this.BackColor = Color.FromArgb((Int32)bin.trueBgClr);
+            ///显示内容
+            if (bin.type == 0)
+            {
+                this.Text = Encoding.Unicode.GetString(bin.trueText);
+                customList.Add(Encoding.Unicode.GetString(bin.trueText));
+                customList.Add(Encoding.Unicode.GetString(bin.falseText));
 
-            trueColor = Color.FromArgb((Int32)bin.trueClr);
-            trueBgColor = Color.FromArgb((Int32)bin.trueBgClr);
-            falseColor = Color.FromArgb((Int32)bin.falseClr);
-            falseBgColor = Color.FromArgb((Int32)bin.falseBgClr);
+                trueColor = Color.FromArgb((Int32)bin.trueClr);
+                trueBgColor = Color.FromArgb((Int32)bin.trueBgClr);
+                falseColor = Color.FromArgb((Int32)bin.falseClr);
+                falseBgColor = Color.FromArgb((Int32)bin.falseBgClr);
+            }
+            else
+            {
+                SVPixmapFile file = new SVPixmapFile();
+                customImageList.Add(file.getFromFile(byteBuffer, bin.trueClr));
+                customImageList.Add(file.getFromFile(byteBuffer, bin.falseClr));
+            }
         }
 
         /// <summary>
@@ -112,35 +106,25 @@ namespace SVSimulation
         /// </summary>
         public void showValue(Int32 value)
         {
-            Dictionary<Byte, List<String>> trueConfig = new Dictionary<Byte, List<String>>()
+            if (_typeByte == 0)
             {
-                {0, new List<String>{"打开", "关闭"}},
-                {1, new List<String>{"运行", "停止"}},
-                {2, new List<String>{"1", "0"}},
-                {3, new List<String>{"是", "否"}},
-                {4, new List<String>{"真", "假"}},
-                {5, new List<String>{"正确", "错误"}},
-                {6, new List<String>{"开", "关"}}
-            };
+                //根据最大和最小值进行随机
+                this.Text = customList[value];
 
-            List<String> strList = null;
-            if (_typeByte == 7)
-                strList = customList;
-            else
-                strList = trueConfig[_typeByte];
-
-            //根据最大和最小值进行随机
-            this.Text = strList[value];
-
-            if (value == 0)
-            {
-                this.ForeColor = trueColor;
-                this.BackColor = trueBgColor;
+                if (value == 0)
+                {
+                    this.ForeColor = trueColor;
+                    this.BackColor = trueBgColor;
+                }
+                else
+                {
+                    this.ForeColor = falseColor;
+                    this.BackColor = falseBgColor;
+                }
             }
             else
             {
-                this.ForeColor = falseColor;
-                this.BackColor = falseBgColor;
+                this.BackgroundImage = customImageList[value];
             }
         }
     }

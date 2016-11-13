@@ -116,17 +116,10 @@ namespace SVCore
         public Byte font;   /*显示变量值时采用的字体*/
 
         /// <summary>
-        /// 
-        /// BINARY_OPEN_CLOSE,
-        /// BINARY_RUN_STOP,
-        /// BINARY_ONE_ZERO,
-        /// BINARY_YES_NO,
-        /// BINARY_TRUE_FALSE,
-        /// BINARY_RIGHT_WRONG,
-        /// BINARY_ON_OFF,
         /// BINARY_CUSTOM ///自定义类型
+        /// BINARY_CUSTOM_ICON
         /// </summary>
-        public Byte type;   ///类型
+        public Byte type;   ///类型 0：自定义显示文本 1：自定义显示图片
 
         public Byte varType;/*变量类型*/
 
@@ -162,6 +155,7 @@ namespace SVCore
         public Single yMin;
         public Single yMax;
         public UInt16 maxTime;           //趋势图的最大时间，单位秒，范围60-3600
+        public UInt16 stepTime; /*用户相要步进值，一定要小于maxTime*/
         public UInt16 id;                /*的元素Id*/
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TREND_LINE_MAX_NUM)]
         public Byte[] lineWidth;         /*趋势线的宽度,该位为非0时表示线段有效，但不能超过4像素。*/
@@ -171,7 +165,7 @@ namespace SVCore
         //uint8_t     varType[TREND_LINE_MAX_NUM];
         public Byte font;                /*趋势图绘制文本时使用的字体*/
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
         public Byte[] rsv;
     }
 

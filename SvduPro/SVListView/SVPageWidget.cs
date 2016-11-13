@@ -77,14 +77,18 @@ namespace SVControl
                 //记录重做操作
                 SVRedoUndoItem recordItem = new SVRedoUndoItem();
                 recordItem.ReDo = () => 
-                { 
+                {
+                    SVPanel panel = value as SVPanel;
                     RedoUndo.setEnabled(false);
+                    panel.Selected = false;
                     base.Remove(value);
                     RedoUndo.setEnabled(true);
                 };
                 recordItem.UnDo = () => 
                 {
+                    SVPanel panel = value as SVPanel;
                     RedoUndo.setEnabled(false);
+                    panel.Selected = false;
                     base.Add(value);
                     RedoUndo.setEnabled(true);
                 };
@@ -289,7 +293,9 @@ namespace SVControl
         /// </summary>
         public void createID()
         {
-            _attrib.id = (UInt16)SVUniqueID.instance().newUniqueID();
+            var instance = SVUniqueID.instance();
+            _attrib.id = instance.newUniqueID();
+            instance.saveFile();
         }
 
         /// <summary>
@@ -297,14 +303,7 @@ namespace SVControl
         /// </summary>
         public void delID()
         {
-            foreach (var item in this.Controls)
-            {
-                SVPanel panel = item as SVPanel;
-                if (panel != null)
-                    panel.delID();
-            }
-
-            SVUniqueID.instance().delUniqueID((Int16)_attrib.id);
+            SVUniqueID.instance().delUniqueID(_attrib.id);
         }
 
         /// <summary>
@@ -323,13 +322,15 @@ namespace SVControl
             SVPanel btn = (SVPanel)(item._obj);
 
             btn.setRedoUndoObject(_redoUndo);
-            btn.setParentID(Attrib.id);
-            btn.createID();
+            btn.setParentID(Attrib.id);            
             btn.refreshPropertyToPanel();
 
             btn.Location = this.PointToClient(new Point(e.X, e.Y));
             btn.Location = new Point(btn.Location.X - btn.Width / 2, btn.Location.Y - btn.Height / 2);
             btn.setStartPos(btn.Location);
+
+            this.Controls.Add(btn);
+            btn.newID();
 
             btn.MouseDown += new MouseEventHandler((sder, ev) =>
             {
@@ -340,7 +341,7 @@ namespace SVControl
             {
                 MouseSelectEvent(sder, ev);
             });
-            this.Controls.Add(btn);
+
 
             ///启用记录
             _redoUndo.setEnabled(true);
@@ -351,7 +352,8 @@ namespace SVControl
             recordItem.ReDo = () =>
             {
                 _redoUndo.setEnabled(false);
-                this.Controls.Add(btn);
+                btn.Selected = false;
+                this.Controls.Add(btn);                
                 _redoUndo.setEnabled(true);
             };
             recordItem.UnDo = () =>
@@ -559,7 +561,11 @@ namespace SVControl
             XmlElement page = xml.CurrentElement;
 
             if (isCreate)
-                _attrib.id = (UInt16)SVUniqueID.instance().newUniqueID();
+            {
+                var instance = SVUniqueID.instance();
+                _attrib.id = instance.newUniqueID();
+                instance.saveFile();
+            }
             else
                 _attrib.id = UInt16.Parse(page.GetAttribute("ID"));
 
