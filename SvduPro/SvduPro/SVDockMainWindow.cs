@@ -521,6 +521,8 @@ namespace SvduPro
             if (pageWidget != null)
             {
                 _propertyGrid.SelectedObject = pageWidget;
+                //添加对象窗口中的内容
+                this._objTreeView.setPageWidget(pageWidget);
             }
         }
 
@@ -555,6 +557,7 @@ namespace SvduPro
             if (widget == null)
                 return;
 
+            this._objTreeView.setPageWidget(widget);
             //打开页面
             openPage(widget);
         }
@@ -1475,17 +1478,33 @@ namespace SvduPro
         private void 撤销ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //执行撤销
-            SVControlWindow win = currentControlWindow();
-            if (win != null)
-                win.undoMethod();       
+            var window = currentControlWindow();
+            if (window == null)
+                return;
+
+            SVPageWidget pageWidget = window.CoreControl as SVPageWidget;
+            if (pageWidget == null)
+                return;
+
+            window.undoMethod();
+            int nCount = pageWidget.RedoUndo.getUndoCount();
+            this.statusLabel.Text = String.Format("剩余撤销次数:{0}", nCount);
         }
 
         private void 恢复ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //执行恢复
-            SVControlWindow win = currentControlWindow();
-            if (win != null)
-                win.redoMethod();
+            //执行撤销
+            var window = currentControlWindow();
+            if (window == null)
+                return;
+
+            SVPageWidget pageWidget = window.CoreControl as SVPageWidget;
+            if (pageWidget == null)
+                return;
+
+            window.redoMethod();
+            int nCount = pageWidget.RedoUndo.getRedoCount();
+            this.statusLabel.Text = String.Format("剩余重做次数:{0}", nCount);
         }
 
         /// <summary>
