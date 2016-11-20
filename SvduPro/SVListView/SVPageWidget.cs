@@ -608,10 +608,10 @@ namespace SVControl
                     MouseSelectEvent(sder, ev);
                 });
 
+                this.Controls.Add(svPanel);
                 xml.CurrentElement = node;
                 svPanel.loadXML(xml, isCreate);
                 svPanel.refreshPropertyToPanel();
-                this.Controls.Add(svPanel);
             }
 
             _redoUndo.setEnabled(true);
