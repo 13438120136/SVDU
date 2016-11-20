@@ -519,7 +519,13 @@ namespace SVControl
                 if (panel == null)
                     continue;
 
-                vList.Add(panel);
+                if (enabled)
+                {
+                    if (panel.IsMoved)
+                        vList.Add(panel);
+                }
+                else
+                    vList.Add(panel);
             }
 
             RedoUndo.setEnabled(false);
