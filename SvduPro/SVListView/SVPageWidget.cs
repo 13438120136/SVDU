@@ -730,6 +730,7 @@ namespace SVControl
 
             pageBin.bgClr = (UInt32)_attrib.BackColor.ToArgb();
             pageBin.index = (UInt16)pageArrayBin.pageCount;
+            pageBin.pointAlign = _attrib.IsAlignment;
             pageArrayBin.pageArray[nCount] = pageBin;
 
             //遍历所有子控件

@@ -5,7 +5,7 @@ namespace SVCore
 {
     static public class SVLimit
     {
-        public const Int32 MAX_PAGE_NUMBER = 100;
+        public const Int32 MAX_PAGE_NUMBER = 1000;
         public const Int32 PAGE_TITILE_MAXLEN = 128 * 2;
         public const Int32 PAGE_BTN_MAXNUM = 80;
         public const Int32 PAGE_AREA_MAXNUM = 150;

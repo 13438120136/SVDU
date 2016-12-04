@@ -18,7 +18,7 @@ namespace SVControl
         int _width = 800;
         int _height = 600;
         Color _backGroundColor = Color.LightGray;
-        Boolean _isAlignment = false;
+        Byte _isAlignment = 0;
         UInt16 _id;
         public UpdateControl UpdateControl;
         #endregion
@@ -29,8 +29,8 @@ namespace SVControl
 
         [CategoryAttribute("数据")]
         [DisplayName("对齐")]
-        [DescriptionAttribute("页面中的控件小数点是否对齐\nTrue为对齐  False为不对齐\n默认:False")]
-        public Boolean IsAlignment
+        [DescriptionAttribute("页面中的控件小数点是否对齐\n 值范围:0-6")]
+        public Byte IsAlignment
         {
             get { return _isAlignment; }
             set 
@@ -38,8 +38,11 @@ namespace SVControl
                 if (_isAlignment == value)
                     return;
 
+                if (_isAlignment < 0 || _isAlignment > 6)
+                    return;
+
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                Boolean before = _isAlignment;
+                Byte before = _isAlignment;
                 undoItem.ReDo = () =>
                 {
                     _isAlignment = value;
