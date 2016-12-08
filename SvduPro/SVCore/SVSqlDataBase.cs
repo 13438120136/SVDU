@@ -29,7 +29,6 @@ namespace SVCore
                 || String.IsNullOrEmpty(charset))
                 return false;
 
-            //String connName = "Database='safeware';Data Source='192.168.2.103';User Id='lixiaolong';Password='123456';charset='utf8';pooling=true";
             String connName = String.Format(@"Database={0};Data Source={1};
                   User Id={2};Password={3};charset={4};
                   pooling = true; Connection Timeout = 1", database, ip, user, passwd, charset);
