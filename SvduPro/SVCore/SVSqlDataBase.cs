@@ -98,8 +98,8 @@ namespace SVCore
                 where table_varinfo.stationid = {0} 
                 and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
                 and table_varinfo.ioblockid = table_channelinfo.uid 
-                and table_varinfo.uid = table_netinfo.connid
-                and table_netinfo.netvarid = table_valuetype.uid", SVProData.stationID);
+                and table_varinfo.uid = table_netinfo.netvarid
+                and table_netinfo.vartypeid = table_valuetype.uid", SVProData.stationID);
 
             MySqlCommand mysqlcom = new MySqlCommand(sql, _mysqlConnect);
 

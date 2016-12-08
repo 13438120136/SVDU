@@ -1648,29 +1648,33 @@ namespace SvduPro
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "页面文件|*.page";
+            openFileDialog.Multiselect = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                String file = openFileDialog.FileName;
-
-                _svProject.importPageNode(node.Text, file);
-                String pageName = Path.GetFileNameWithoutExtension(file);
-
-                SVPageWidget widget = new SVPageWidget(pageName, file);
-                widget.ClassText = node.Text;
-                if (!widget.loadSelf(true))
+                foreach (String file in openFileDialog.FileNames)
                 {
-                    String errorMsg = String.Format("页面文件{0} 导入失败!", file);
-                    SVLog.WinLog.Info(errorMsg);
-                    return;
+                    //String file = openFileDialog.FileName;
+
+                    _svProject.importPageNode(node.Text, file);
+                    String pageName = Path.GetFileNameWithoutExtension(file);
+
+                    SVPageWidget widget = new SVPageWidget(pageName, file);
+                    widget.ClassText = node.Text;
+                    if (!widget.loadSelf(true))
+                    {
+                        String errorMsg = String.Format("页面文件{0} 导入失败!", file);
+                        SVLog.WinLog.Info(errorMsg);
+                        continue ;
+                    }
+
+                    SVPageNode pageNode = newPageFromWidget(widget);
+                    node.Nodes.Add(pageNode);
+                    _stationTreeView.ExpandAll();
+
+                    String msg = String.Format("页面文件{0} 导入成功!", file);
+                    SVLog.WinLog.Info(msg);
                 }
-
-                SVPageNode pageNode = newPageFromWidget(widget);
-                node.Nodes.Add(pageNode);
-                _stationTreeView.ExpandAll();
-
-                String msg = String.Format("页面文件{0} 导入成功!", file);
-                SVLog.WinLog.Info(msg);
             }
         }
 
