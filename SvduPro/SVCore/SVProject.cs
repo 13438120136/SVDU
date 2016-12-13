@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace SVCore
@@ -279,6 +281,13 @@ namespace SVCore
             return true;
         }
 
+        public string GetRelativePaths(string path, string current)
+        {
+            string a = current.ToLower();
+            string b = path.ToLower();
+            return a.Replace(b, ".");
+        }
+
         /// <summary>
         /// 导入页面文件
         /// </summary>
@@ -286,6 +295,8 @@ namespace SVCore
         /// <param name="file">页面文件</param>
         public void importPageNode(String className, String file)
         {
+            file = GetRelativePaths(Application.StartupPath, file);
+
             String pageName = Path.GetFileNameWithoutExtension(file);
 
             //判断该页面名称是否存在
