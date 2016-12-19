@@ -86,6 +86,9 @@ namespace SVControl
                 if (vv == null)
                     continue;
 
+                if (!vv.Attrib.Bitmap.isValidShow())
+                    continue;
+
                 this.propertyGrid1.SelectedObject = vv;
             }
         }
@@ -126,6 +129,9 @@ namespace SVControl
                 DataGridViewCell vCell = this.dataGridView[0, i];
                 DataGridViewRowChild vv = vCell.OwningRow as DataGridViewRowChild;
                 if (vv == null)
+                    continue;
+
+                if (!vv.Attrib.Bitmap.isValidShow())
                     continue;
 
                 list.Add(vv.Attrib.Bitmap);

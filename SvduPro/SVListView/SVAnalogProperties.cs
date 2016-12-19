@@ -60,9 +60,9 @@ namespace SVControl
             _controlType = "模拟量";
 
             //字体的映射关系
-            _fontConfig.Add(new Font("宋体", 8), 8);
-            _fontConfig.Add(new Font("宋体", 12), 12);
-            _fontConfig.Add(new Font("宋体", 16), 16);
+            _fontConfig.Add(new Font("Courier New", 8), 8);
+            _fontConfig.Add(new Font("Courier New", 12), 12);
+            _fontConfig.Add(new Font("Courier New", 16), 16);
 
             _isLock = false;
         }

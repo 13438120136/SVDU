@@ -5,7 +5,7 @@ namespace SVCore
 {
     static public class SVLimit
     {
-        public const Int32 MAX_PAGE_NUMBER = 1000;
+        public const Int32 MAX_PAGE_NUMBER = 800;
         public const Int32 PAGE_TITILE_MAXLEN = 128 * 2;
         public const Int32 PAGE_BTN_MAXNUM = 80;
         public const Int32 PAGE_AREA_MAXNUM = 150;
@@ -283,9 +283,10 @@ namespace SVCore
         public Byte binaryNum; /*页面包含的BOOL的实际个数*/
         public Byte trendChartNum; /*页面包含的趋势线的实际个数*/
         public Byte tickNum;       //心跳控件个数
+        public Byte bgSet;         /*当设置为0时，表示使有颜色填充，当设置为1时表示使用图片填充*/
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public Byte[] rsv; 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+        public Byte[] rsv;
     }
 
     public struct PageArrayBin

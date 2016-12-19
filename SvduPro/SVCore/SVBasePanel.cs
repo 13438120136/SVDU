@@ -80,9 +80,9 @@ namespace SVCore
 
             Dictionary<Font, Int32> dict = new Dictionary<Font, Int32>() 
             {
-                {new Font("宋体", 8), 11},
-                {new Font("宋体", 12), 16},
-                {new Font("宋体", 16), 21}
+                {new Font("Courier New", 8), 11},
+                {new Font("Courier New", 12), 16},
+                {new Font("Courier New", 16), 21}
             };
 
             ///
@@ -316,6 +316,19 @@ namespace SVCore
 
                 Int32 disX = e.X - pos.X + this.Location.X;
                 Int32 disY = e.Y - pos.Y + this.Location.Y;
+
+                if (disX < 0)
+                    disX = 0;
+
+                if (disY < 0)
+                    disY = 0;
+
+                if (disX + this.Width > Parent.Width)
+                    disX = Parent.Width - this.Width;
+
+                if (disY + this.Height > Parent.Height)
+                    disY = Parent.Height - this.Height;
+
                 this.Location = new Point(disX, disY);
 
                 ///移动选中的所有控件

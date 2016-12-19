@@ -551,6 +551,10 @@ namespace SVControl
             this.Width = _attrib.Width;
             this.Height = _attrib.Height;
             this.BackColor = _attrib.BackColor;
+
+            //设置背景
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            this.BackgroundImage = Attrib.PicIconData.bitmap();
         }
         
         /*
@@ -727,12 +731,23 @@ namespace SVControl
             PageBin pageBin = pageArrayBin.pageArray[nCount];
 
             pageBin.id = _attrib.id;
+            pageBin.bgSet = 0;
 
             pageBin.bgClr = (UInt32)_attrib.BackColor.ToArgb();
             pageBin.index = (UInt16)pageArrayBin.pageCount;
-            pageBin.pointAlign = _attrib.IsAlignment;
-            pageArrayBin.pageArray[nCount] = pageBin;
+            pageBin.pointAlign = _attrib.IsAlignment;           
 
+            var address = _attrib.PicIconData.bitmap8Data(this.Width, this.Height);
+            if (address != null)
+            {
+                //设置标志
+                pageBin.bgSet = 1;
+                //图标位置
+                pageBin.bgClr = (UInt32)serialize.ToArray().Length;
+                serialize.pack(address);
+            }
+
+            pageArrayBin.pageArray[nCount] = pageBin;
             //遍历所有子控件
             foreach (Control ctrl in this.Controls)
             {
@@ -741,7 +756,7 @@ namespace SVControl
                     continue;
                 bin.buildControlToBin(ref pageArrayBin, ref serialize);
             }
-
+            
             pageArrayBin.pageCount++;
         }
     }

@@ -20,11 +20,47 @@ namespace SVControl
         Color _backGroundColor = Color.LightGray;
         Byte _isAlignment = 0;
         UInt16 _id;
+        SVBitmap _bitMap;
         public UpdateControl UpdateControl;
         #endregion
 
         public SVPageProperties()
         {
+            _bitMap = new SVBitmap();
+        }
+
+        [CategoryAttribute("数据")]
+        [DescriptionAttribute("设置页面的背景图片")]
+        [TypeConverter(typeof(SVBitmap))]
+        [EditorAttribute(typeof(SVBitmapTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [DisplayName("背景图片")]
+        public SVBitmap PicIconData
+        {
+            set
+            {
+                if (_bitMap == value)
+                    return;
+
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+                SVBitmap before = _bitMap;
+                undoItem.ReDo = () =>
+                {
+                    _bitMap = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _bitMap = before;
+                };
+
+                _bitMap = value;
+            }
+
+            get
+            {
+                return _bitMap;
+            }
         }
 
         [CategoryAttribute("数据")]

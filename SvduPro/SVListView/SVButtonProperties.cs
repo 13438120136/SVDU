@@ -83,7 +83,7 @@ namespace SVControl
 
         public SVButtonProperties()
         {
-            _font = new Font("宋体", 8);
+            _font = new Font("Courier New", 8);
             _rect = new Rectangle(0, 0, 120, 60);
             _text = "Button";
             _fText = "None";
@@ -94,9 +94,9 @@ namespace SVControl
             _controlType = "按钮";
 
             //字体的映射关系
-            _fontConfig.Add(new Font("宋体", 8), 8);
-            _fontConfig.Add(new Font("宋体", 12), 12);
-            _fontConfig.Add(new Font("宋体", 16), 16);
+            _fontConfig.Add(new Font("Courier New", 8), 8);
+            _fontConfig.Add(new Font("Courier New", 12), 12);
+            _fontConfig.Add(new Font("Courier New", 16), 16);
             //
             _btnConfig.Add("页面跳转", 4);
             _btnConfig.Add("开", 5);

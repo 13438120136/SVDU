@@ -395,6 +395,9 @@ namespace SvduPro
             SVControlWindow workWindow = new SVControlWindow(widget);
             widget.Dock = DockStyle.None;
             workWindow.Text = widget.PageName;
+            Bitmap image = (Bitmap)Resource.page;
+            workWindow.ShowIcon = true;
+            workWindow.Icon = Icon.FromHandle(image.GetHicon());
             workWindow.ToolTipText = widget.pageFileName;
             workWindow.Show(_dockPanel, DockState.Document);
             workWindow.Activate();
@@ -405,6 +408,7 @@ namespace SvduPro
                 if (pageWidget != null)
                 {
                     _propertyGrid.SelectedObject = null;
+                    this._objTreeView.clearAllNodes();
                 }
             });
         }
@@ -1774,6 +1778,14 @@ namespace SvduPro
             Array.Copy(result, resultAll, size);
             Array.Copy(picBuffer.ToArray(), 0, resultAll, size, picBuffer.Length);
             buildFile.setDataByteArray(resultAll);
+
+            ///数据长度加上64字节的文件头，如果大于64M停止编译
+            if ((resultAll.Length + 64) > 64 * 1024 * 1024)
+            {
+                SVLog.WinLog.Warning("下装文件生成失败，生成的文件大于64M");
+                return;
+            }
+
             buildFile.write();
 
             //提示生成成功信息

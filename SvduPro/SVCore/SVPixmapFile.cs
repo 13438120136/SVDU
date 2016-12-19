@@ -77,8 +77,8 @@ namespace SVCore
             grPhoto.DrawImage(origin, new Rectangle(0, 0, width, height), new Rectangle(0, 0, origin.Width, origin.Height), GraphicsUnit.Pixel);
             img.RotateFlip(RotateFlipType.Rotate180FlipX);
             //Bitmap upBitmap = KiRotate(img, 180.0f, Color.Transparent);
-            Bitmap bitmapResult = img.Clone(new Rectangle(0, 0, img.Width, img.Height), PixelFormat.Format8bppIndexed);
 
+            Bitmap bitmapResult = img.Clone(new Rectangle(0, 0, img.Width, img.Height), PixelFormat.Format8bppIndexed);
             return bitmapResult;
         }
 

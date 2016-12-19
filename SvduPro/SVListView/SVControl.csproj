@@ -33,18 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking">
       <HintPath>..\SvduPro\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resource.Designer.cs">
@@ -159,6 +165,7 @@
     <Compile Include="SVPageSelectWindow.Designer.cs">
       <DependentUpon>SVPageSelectWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="SVPageUIEditer.cs" />
     <Compile Include="SVPageWidget.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -182,6 +189,9 @@
       <DependentUpon>Resource.zh.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="WPFUser.xaml.cs">
+      <DependentUpon>WPFUser.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +302,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tick.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="WPFUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

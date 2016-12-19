@@ -16,7 +16,7 @@ namespace SVControl
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(new string[] { 
-                "宋体:8", "宋体:12", "宋体:16"
+                "Courier New:8", "Courier New:12", "Courier New:16"
             });
         }
 
