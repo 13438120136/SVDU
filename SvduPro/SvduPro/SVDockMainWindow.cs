@@ -273,7 +273,7 @@ namespace SvduPro
                         {
                             SVCheckBeforeBuild check = new SVCheckBeforeBuild();
                             check.checkAll();
-                            buildDownLoadFiles();
+                            buildDownLoadFiles(new SVWPFProgressBar());
                             Environment.Exit(0);
                             return;
                         }
@@ -1574,11 +1574,16 @@ namespace SvduPro
                 SVCheckBeforeBuild check = new SVCheckBeforeBuild();
                 check.checkAll();
 
+                SVWPFProgressBar bar = new SVWPFProgressBar();
+
                 Thread th = new Thread(() =>
                 {
-                    buildDownLoadFiles();
+                    buildDownLoadFiles(bar);
                 });
+                th.IsBackground = true;
                 th.Start();
+
+                bar.ShowDialog();
             }
             catch (SVCheckValidException ex)
             {
@@ -1742,7 +1747,7 @@ namespace SvduPro
         /// <summary>
         /// 生成下装文件数据
         /// </summary>
-        private void buildDownLoadFiles()
+        private void buildDownLoadFiles(SVWPFProgressBar bar)
         {
             ///这里是固定下装文件的名称
             String downLoadName = @"svducfg.bin";
@@ -1762,7 +1767,15 @@ namespace SvduPro
             Action log = () => { SVLog.WinLog.Info(String.Format("编译启动页面{0}成功", fristWidget.PageName)); };
             this.Invoke(log);
 
+            Action barAc = () => { bar.setMaxBarValue(SVGlobalData.PageContainer.Count); };
+            this.Invoke(barAc);
+            
+            Int32 currCount = 1;
+            
             fristWidget.buildControlToBin(ref pageArrayBin, ref picBuffer);
+            barAc = () => { bar.setText(String.Format("编译页面:{0}", fristWidget.PageName)); bar.setBarValue(currCount); };
+            this.Invoke(barAc);
+            
             foreach (var item in SVGlobalData.PageContainer)
             {
                 if (fristWidget.Equals(item.Value))
@@ -1772,7 +1785,21 @@ namespace SvduPro
                 this.Invoke(log);
                 //
                 item.Value.buildControlToBin(ref pageArrayBin, ref picBuffer);
+
+                Thread.Sleep(500);
+                barAc = () => 
+                {
+                    bar.setText(String.Format("编译页面:{0}", item.Value.PageName));
+                    bar.setBarValue(currCount++); 
+                };
+                this.Invoke(barAc);
             }
+
+            barAc = () =>
+            {
+                bar.Close();
+            };
+            this.Invoke(barAc);
 
             //将当前数据转换为下装数据
             byte[] result = null;
@@ -1798,12 +1825,13 @@ namespace SvduPro
             }
 
             buildFile.write();
-
+            
             //提示生成成功信息
             log = () => 
             {
                 String outMsg = String.Format("在指定目录生成文件:\r\n\t 文件路径: {0}.", file);
                 SVLog.WinLog.Info(outMsg);
+                //MessageBox.Show("编译完成");
             };
             this.Invoke(log);
         }
