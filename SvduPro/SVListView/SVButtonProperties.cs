@@ -15,6 +15,7 @@ namespace SVControl
         Color _fgcolor;      //文本颜色
         String _text;        //文本内容
         String _fText;       //文本为假的内容
+        String _fMemo;       //按钮备注信息
 
         Font _font;          //文本字体
         Rectangle _rect;     //按钮控件尺寸
@@ -38,6 +39,16 @@ namespace SVControl
         {
             get { return _fText; }
             set { _fText = value; }
+        }
+
+        [CategoryAttribute("数据")]
+        [DisplayName("备注信息")]
+        [DescriptionAttribute("按钮的备注信息，用来描述当前按钮的功能及作用")]
+        [EditorAttribute(typeof(SVButtonMemoUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public String FMemo
+        {
+            get { return _fMemo; }
+            set { _fMemo = value; }
         }
 
         /// <summary>
@@ -87,6 +98,7 @@ namespace SVControl
             _rect = new Rectangle(0, 0, 120, 60);
             _text = "Button";
             _fText = "None";
+            _fMemo = "";
             _bgcolor = Color.FromArgb(236, 236, 236);
             _fgcolor = Color.Black;
             _bgDownColor = _bgcolor;
@@ -549,12 +561,14 @@ namespace SVControl
             btnBin.fontClr = (UInt32)FrontColorground.ToArgb();
 
             ///为真的文本
-            btnBin.text = new Byte[SVLimit.TEXT_MAX_LEN];
+            btnBin.text = new Byte[SVLimit.BTN_MAX_LEN];
             copyDestByteArray(Encoding.Unicode.GetBytes(Text), btnBin.text);
-
             ///为假的文本
-            btnBin.fText = new Byte[SVLimit.TEXT_MAX_LEN];
+            btnBin.fText = new Byte[SVLimit.BTN_MAX_LEN];
             copyDestByteArray(Encoding.Unicode.GetBytes(FText), btnBin.fText);
+            ///备注信息
+            btnBin.fMemo = new Byte[SVLimit.BTN_MAX_LEN];
+            copyDestByteArray(Encoding.Unicode.GetBytes(FMemo), btnBin.fMemo);
 
             btnBin.font = _fontConfig[_font];
             //是否有确认窗口

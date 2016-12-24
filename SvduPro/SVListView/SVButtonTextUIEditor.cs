@@ -2,6 +2,7 @@
 using System.Drawing.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using SVCore;
 
 namespace SVControl
 {
@@ -22,13 +23,17 @@ namespace SVControl
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                TextBox textBox = new TextBox();
-                textBox.Multiline = true;
-                textBox.Text = svButton.Attrib.Text;
-                textBox.Size = new Size(textBox.Width, 100);
-                edSvc.DropDownControl(textBox);
+                SVWpfControl textDialog = new SVWpfControl();
+                textDialog.Width = 200;
+                textDialog.Height = 120;
 
-                return textBox.Text;
+                SVWPFBtnTextEdit edit = new SVWPFBtnTextEdit();
+                edit.textBox.DataContext = svButton.Attrib;
+                textDialog.addContent(edit);                
+                edSvc.DropDownControl(textDialog);
+                svButton.refreshPropertyToPanel();
+
+                return value;
             }
 
             return value;

@@ -14,6 +14,8 @@ namespace SVControl
     public class SVPageWidget : Control, SVInterfacePanel, ICustomTypeDescriptor, SVInterfaceBuild
     {
         private static SVPageWidget _mainPageWidget;
+        ///保存当前页面的背景图片数据
+        private static Dictionary<String, UInt32> _backGroundPicData = new Dictionary<String, UInt32>();
 
         /// <summary>
         /// 设置或者获取当前起始页面对象
@@ -722,6 +724,14 @@ namespace SVControl
             Array.Copy(src, dest, minLen);
         }
 
+        /// <summary>
+        /// 清除缓冲的背景图片信息
+        /// </summary>
+        public static void clearBackGroundData()
+        {
+            _backGroundPicData.Clear();
+        }
+
         public void buildControlToBin(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             if (pageArrayBin.pageArray == null)
@@ -737,14 +747,23 @@ namespace SVControl
             pageBin.index = (UInt16)pageArrayBin.pageCount;
             pageBin.pointAlign = _attrib.IsAlignment;           
 
-            var address = _attrib.PicIconData.bitmap8Data(this.Width, this.Height);
+            var address = _attrib.PicIconData.bitmap24Data(this.Width, this.Height);
             if (address != null)
             {
                 //设置标志
                 pageBin.bgSet = 1;
-                //图标位置
-                pageBin.bgClr = (UInt32)serialize.ToArray().Length;
-                serialize.pack(address);
+
+                //背景图标位置
+                if (_backGroundPicData.ContainsKey(_attrib.PicIconData.ShowName))
+                {
+                    pageBin.bgClr = _backGroundPicData[_attrib.PicIconData.ShowName];
+                }
+                else
+                {
+                    pageBin.bgClr = (UInt32)serialize.ToArray().Length;
+                    _backGroundPicData.Add(_attrib.PicIconData.ShowName, pageBin.bgClr);
+                    serialize.pack(address);
+                }
             }
 
             pageArrayBin.pageArray[nCount] = pageBin;

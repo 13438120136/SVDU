@@ -10,6 +10,7 @@ using SVControl;
 using SVCore;
 using SVSimulation;
 using WeifenLuo.WinFormsUI.Docking;
+using System.Threading;
 
 namespace SvduPro
 {
@@ -368,7 +369,7 @@ namespace SvduPro
         /// </summary>
         void initTimeSaves()
         {
-            Timer tm = new Timer();
+            System.Windows.Forms.Timer tm = new System.Windows.Forms.Timer();
             tm.Interval = SVConfig.instance().SaveInterval * 60 * 1000;
             tm.Start();
             tm.Tick += new EventHandler((sender, e) =>
@@ -1572,7 +1573,12 @@ namespace SvduPro
             {
                 SVCheckBeforeBuild check = new SVCheckBeforeBuild();
                 check.checkAll();
-                buildDownLoadFiles();
+
+                Thread th = new Thread(() =>
+                {
+                    buildDownLoadFiles();
+                });
+                th.Start();
             }
             catch (SVCheckValidException ex)
             {
@@ -1745,6 +1751,7 @@ namespace SvduPro
 
             //启动页面
             SVPageWidget fristWidget = SVPageWidget.MainPageWidget;
+            SVPageWidget.clearBackGroundData();
 
             //序列化图片数据
             SVSerialize picBuffer = new SVSerialize();
@@ -1752,14 +1759,18 @@ namespace SvduPro
             PageArrayBin pageArrayBin = new PageArrayBin();
 
             //启动项
-            SVLog.WinLog.Info(String.Format("编译启动页面{0}成功", fristWidget.PageName));
+            Action log = () => { SVLog.WinLog.Info(String.Format("编译启动页面{0}成功", fristWidget.PageName)); };
+            this.Invoke(log);
+
             fristWidget.buildControlToBin(ref pageArrayBin, ref picBuffer);
             foreach (var item in SVGlobalData.PageContainer)
             {
                 if (fristWidget.Equals(item.Value))
                     continue;
 
-                SVLog.WinLog.Info(String.Format("编译页面{0}成功", item.Value.PageName));
+                log = () => { SVLog.WinLog.Info(String.Format("编译页面{0}成功", item.Value.PageName)); };
+                this.Invoke(log);
+                //
                 item.Value.buildControlToBin(ref pageArrayBin, ref picBuffer);
             }
 
@@ -1789,8 +1800,12 @@ namespace SvduPro
             buildFile.write();
 
             //提示生成成功信息
-            String outMsg = String.Format("在指定目录生成文件:\r\n\t 文件路径: {0}.", file);
-            SVLog.WinLog.Info(outMsg);
+            log = () => 
+            {
+                String outMsg = String.Format("在指定目录生成文件:\r\n\t 文件路径: {0}.", file);
+                SVLog.WinLog.Info(outMsg);
+            };
+            this.Invoke(log);
         }
 
         /// <summary>

@@ -97,6 +97,7 @@
     <Compile Include="SVButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SVButtonMemoUIEditor.cs" />
     <Compile Include="SVButtonProperties.cs" />
     <Compile Include="SVButtonTextUIEditor.cs" />
     <Compile Include="SVControlWindow.cs">
@@ -189,6 +190,12 @@
       <DependentUpon>Resource.zh.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SVWPFBtnMemoEdit.xaml.cs">
+      <DependentUpon>SVWPFBtnMemoEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SVWPFBtnTextEdit.xaml.cs">
+      <DependentUpon>SVWPFBtnTextEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPFUser.xaml.cs">
       <DependentUpon>WPFUser.xaml</DependentUpon>
@@ -304,6 +311,14 @@
     <None Include="Resources\tick.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="SVWPFBtnMemoEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFBtnTextEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WPFUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

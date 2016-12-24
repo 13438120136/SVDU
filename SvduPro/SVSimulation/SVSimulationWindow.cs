@@ -61,7 +61,7 @@ namespace SVSimulation
         void fromPageBin(PageBin bin, Boolean isFirst)
         {
             SVSPage page = new SVSPage();
-            page.fromBin(bin);
+            page.fromBin(bin, picBuffer);
 
             ///标题栏高度
             Int32 titleHeight = this.Height - this.ClientRectangle.Height;

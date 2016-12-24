@@ -10,9 +10,20 @@ namespace SVSimulation
     {
         public UInt16 ID { get; set; }
 
-        public void fromBin(PageBin bin)
+        public void fromBin(PageBin bin, byte[] picBuffer)
         {
-            this.BackColor = Color.FromArgb((Int32)bin.bgClr);
+            if (bin.bgSet == 0)
+            {
+                ///背景颜色显示
+                this.BackColor = Color.FromArgb((Int32)bin.bgClr);
+            }
+            else
+            {
+                ///背景图片显示
+                SVPixmapFile file = new SVPixmapFile();
+                this.BackgroundImage = file.getFromFile(picBuffer, bin.bgClr);
+            }
+
             this.ID = bin.id;
         }
     }

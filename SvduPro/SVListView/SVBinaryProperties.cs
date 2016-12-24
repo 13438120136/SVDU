@@ -516,11 +516,11 @@ namespace SVControl
                 binaryBin.vinfoInvalid = (UInt32)ExceptionColor.ToArgb();
                 binaryBin.vinfoInvalidBg = (UInt32)ExceptionBgColor.ToArgb();
 
-                binaryBin.trueText = new Byte[SVLimit.TEXT_MAX_LEN];
+                binaryBin.trueText = new Byte[SVLimit.BINARY_MAX_LEN];
                 if (CustomTrueText != null)
                     copyDestByteArray(Encoding.Unicode.GetBytes(CustomTrueText), binaryBin.trueText);
 
-                binaryBin.falseText = new Byte[SVLimit.TEXT_MAX_LEN];
+                binaryBin.falseText = new Byte[SVLimit.BINARY_MAX_LEN];
                 if (CustomFlaseText != null)
                     copyDestByteArray(Encoding.Unicode.GetBytes(CustomFlaseText), binaryBin.falseText);
             }

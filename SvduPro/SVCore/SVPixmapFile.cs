@@ -60,7 +60,14 @@ namespace SVCore
         }
 
         //根据输入的宽和高返回8位的位图对象
-        public Bitmap get8Bitmap(Int32 width, Int32 height)
+        /// <summary>
+        /// 返回图片指定图片对象
+        /// </summary>
+        /// <param name="width">宽度</param>
+        /// <param name="height">高度</param>
+        /// <param name="mark">标志：8:返回8位图片，24返回24位图片</param>
+        /// <returns>具体的内存图片对象</returns>
+        public Bitmap getBitmapObject(Int32 width, Int32 height, Int32 mark)
         {
             Bitmap origin = getBitmapFromData();
 
@@ -78,8 +85,21 @@ namespace SVCore
             img.RotateFlip(RotateFlipType.Rotate180FlipX);
             //Bitmap upBitmap = KiRotate(img, 180.0f, Color.Transparent);
 
-            Bitmap bitmapResult = img.Clone(new Rectangle(0, 0, img.Width, img.Height), PixelFormat.Format8bppIndexed);
-            return bitmapResult;
+            switch (mark)
+            {
+                case 8:
+                    {
+                        Bitmap bitmapResult = img.Clone(new Rectangle(0, 0, img.Width, img.Height), PixelFormat.Format8bppIndexed);
+                        return bitmapResult;
+                    }
+                case 24:
+                    {
+                        Bitmap bitmapResult = img.Clone(new Rectangle(0, 0, img.Width, img.Height), PixelFormat.Format32bppRgb);
+                        return bitmapResult;
+                    }
+                default:
+                    return null;
+            }
         }
 
         //上下反转图片

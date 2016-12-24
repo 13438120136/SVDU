@@ -53,7 +53,7 @@ namespace SVCore
         }
 
         /// <summary>
-        /// 获取图片数据
+        /// 获取8位BMP位图数据
         /// </summary>
         /// <returns></returns>
         public byte[] bitmap8Data(int width, int height)
@@ -63,7 +63,30 @@ namespace SVCore
                 String picFile = Path.Combine(SVProData.IconPath, ImageFileName);
                 SVPixmapFile file = new SVPixmapFile();
                 file.readPixmapFile(picFile);
-                Bitmap bitmap = file.get8Bitmap(width, height);
+                Bitmap bitmap = file.getBitmapObject(width, height, 8);
+                SVBitmapHead head = new SVBitmapHead(bitmap);
+                return head.data();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 获取24位BMP位图数据
+        /// </summary>
+        /// <param name="width">图片的宽度</param>
+        /// <param name="height">图片的高度</param>
+        /// <returns>实际二进制数据</returns>
+        public byte[] bitmap24Data(int width, int height)
+        {
+            try
+            {
+                String picFile = Path.Combine(SVProData.IconPath, ImageFileName);
+                SVPixmapFile file = new SVPixmapFile();
+                file.readPixmapFile(picFile);
+                Bitmap bitmap = file.getBitmapObject(width, height, 24);
                 SVBitmapHead head = new SVBitmapHead(bitmap);
                 return head.data();
             }

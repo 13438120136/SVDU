@@ -18,6 +18,8 @@ namespace SVCore
         public const Int32 PAGE_TICKGIF_MAXNUM = 1;
 
         public const Int32 TEXT_MAX_LEN = 64 * 2;
+        public const Int32 BTN_MAX_LEN = 64;
+        public const Int32 BINARY_MAX_LEN = 64;
         public const Int32 AREA_MAX_LEN = 64 * 2;
         public const Int32 TREND_LINE_MAX_NUM = 4;
     }
@@ -50,11 +52,14 @@ namespace SVCore
         public btnParaBin param;
         public UInt32 enableAddrOffset; /*使能变量的地址*/
         public UInt16 id;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TEXT_MAX_LEN)]
-        public Byte[] text;    //为真
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TEXT_MAX_LEN)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.BTN_MAX_LEN)]
+        public Byte[] text;    //为真
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.BTN_MAX_LEN)]
         public Byte[] fText;   //为假
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.BTN_MAX_LEN)]
+        public Byte[] fMemo;   //备注
+
         public Byte type;
         public Byte confirm;
         public Byte font;
@@ -109,10 +114,9 @@ namespace SVCore
         public UInt32 vinfoInvalid;   //质量位无效的字体颜色
         public UInt32 vinfoInvalidBg; //质量位无效的背景显示颜色
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TEXT_MAX_LEN)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.BINARY_MAX_LEN)]
         public Byte[] trueText;   /*真时自定义文本*/
-
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TEXT_MAX_LEN)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.BINARY_MAX_LEN)]
         public Byte[] falseText;   /*假时自定义文本*/
 
         public UInt16 id;   /*Bool型变量的显示元素Id*/
