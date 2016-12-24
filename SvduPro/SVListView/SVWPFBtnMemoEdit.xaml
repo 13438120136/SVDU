@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="SVControl.SVWPFBtnMemoEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0"  Content="设置按钮备注信息" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="11" FontFamily="Courier New">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FFA7A9AB" Offset="1" />
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <TextBox Name="textBox" Grid.Row="1" Text="{Binding Path=FMemo}" FontSize="20" AcceptsReturn="True" MaxLength="32" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Background="Azure" FontFamily="Courier New"></TextBox>
+    </Grid>
+</UserControl>

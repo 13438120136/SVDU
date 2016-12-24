@@ -148,6 +148,9 @@
     <Compile Include="SVWpfControl.Designer.cs">
       <DependentUpon>SVWpfControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SVWPFProgressBar.xaml.cs">
+      <DependentUpon>SVWPFProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SVXml.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="SVWPFProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
