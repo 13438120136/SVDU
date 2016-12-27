@@ -1724,8 +1724,13 @@ namespace SvduPro
 
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SVSettingWindow setWin = new SVSettingWindow();
-            setWin.ShowDialog();
+            SVConfig config = SVConfig.instance();
+
+            SVWPFSettingWindow win = new SVWPFSettingWindow();
+            win.DataContext = config;
+            win.ShowDialog();
+            //SVSettingWindow setWin = new SVSettingWindow();
+            //setWin.ShowDialog();
         }
 
         private void 图元管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1911,8 +1916,10 @@ namespace SvduPro
         /// <param Name="e"></param>
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SVAboutWindow win = new SVAboutWindow();
+            SVWPFAboutWindow win = new SVWPFAboutWindow();            
             win.ShowDialog();
+            //SVAboutWindow win = new SVAboutWindow();
+            //win.ShowDialog();
         }
 
         /// <summary>

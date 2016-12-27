@@ -14,11 +14,18 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                    <TextBlock Text="背景选项" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
-                    <ComboBox SelectedIndex="{Binding ElementName=tabCtrl, Path=SelectedIndex}" Margin="20,0,0,0" Width="120" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Margin="20,0,0,0" Text="背景选项" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox SelectedIndex="{Binding ElementName=tabCtrl, Path=SelectedIndex}" Margin="20,0,0,0" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <ComboBoxItem>背景颜色</ComboBoxItem>
                         <ComboBoxItem>背景图片</ComboBoxItem>
                     </ComboBox>
+
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0" />
+                            <GradientStop Color="#FFA7A9AB" Offset="1" />
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
                 </StackPanel>
 
                 <Grid Grid.Row="1" Grid.Column="0">                    
@@ -30,9 +37,16 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 
-                                <StackPanel x:Name="sPanel" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" >
-                                    <TextBlock Text="当前颜色背景" VerticalAlignment="Center"></TextBlock>
-                                    <Rectangle Fill="{Binding ElementName=lv, Path=SelectedItem.Name}" Height="32" Width="100" VerticalAlignment="Top"></Rectangle>
+                                <StackPanel x:Name="sPanel" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="0">
+                                    <TextBlock Text="当前颜色背景" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+                                    <Rectangle Fill="{Binding ElementName=lv, Path=SelectedItem.Name}" Height="32" Width="64" VerticalAlignment="Center" Margin="40,0,0,0">
+                                        <Rectangle.Stroke>
+                                            <RadialGradientBrush>
+                                                <GradientStop Color="Black" Offset="0" />
+                                                <GradientStop Color="#FF117941" Offset="1" />
+                                            </RadialGradientBrush>
+                                        </Rectangle.Stroke>
+                                    </Rectangle>
                                 </StackPanel>
 
                                 <ListView x:Name="lv" BorderThickness="1" Grid.Row="1" Grid.Column="0">

@@ -32,7 +32,7 @@ namespace SVControl
         [CategoryAttribute("数据")]
         [DescriptionAttribute("设置页面的背景图片")]
         [TypeConverter(typeof(SVBitmap))]
-        [EditorAttribute(typeof(SVBitmapTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [EditorAttribute(typeof(SVPageUIEditer), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("背景图片")]
         public SVBitmap PicIconData
         {

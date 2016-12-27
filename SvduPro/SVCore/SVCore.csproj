@@ -159,6 +159,9 @@
     <Compile Include="SVWPFProgressBar.xaml.cs">
       <DependentUpon>SVWPFProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SVWPFSettingWindow.xaml.cs">
+      <DependentUpon>SVWPFSettingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SVXml.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +206,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="SVWPFProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFSettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

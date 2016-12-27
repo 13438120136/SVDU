@@ -2,6 +2,7 @@
 using System.Windows.Forms.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
+using SVCore;
 
 namespace SVControl
 {
@@ -18,14 +19,13 @@ namespace SVControl
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                UserControl user = new UserControl();
-                ElementHost host = new ElementHost();
-                host.Dock = DockStyle.Fill;
-                user.Controls.Add(host);
-                user.Width = 400;
-                user.Height = 300;
-                host.Child = new WPFUser();
-                edSvc.DropDownControl(user);
+                SVWpfControl textDialog = new SVWpfControl();
+                textDialog.Width = 200;
+                textDialog.Height = 300;
+
+                WPFUser edit = new WPFUser();
+                textDialog.addContent(edit);
+                edSvc.DropDownControl(textDialog);
             }
 
             return value;
