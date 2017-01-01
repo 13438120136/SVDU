@@ -3,8 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:SVControl"
+             mc:Ignorable="d"     
              d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <local:NameToImageConverter x:Key="NameConverter"></local:NameToImageConverter>
+        <local:ColorConverter x:Key="ColorConverter"></local:ColorConverter>
+        <local:PicConverter x:Key="PictureConverter"></local:PicConverter>
+    </UserControl.Resources>
+    
     <Grid>
         <GroupBox Header="页面背景设置">
             <Grid>
@@ -28,8 +36,8 @@
                     </StackPanel.Background>
                 </StackPanel>
 
-                <Grid Grid.Row="1" Grid.Column="0">                    
-                    <TabControl x:Name="tabCtrl" Grid.Row="0" Grid.Column="1" BorderBrush="{x:Null}">
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <TabControl x:Name="tabCtrl" Grid.Row="0" Grid.Column="1" BorderBrush="{x:Null}" SelectedIndex="{Binding BackGroundType}">
                         <TabItem Header="颜色" Visibility="Collapsed">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -39,17 +47,11 @@
                                 
                                 <StackPanel x:Name="sPanel" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="0">
                                     <TextBlock Text="当前颜色背景" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
-                                    <Rectangle Fill="{Binding ElementName=lv, Path=SelectedItem.Name}" Height="32" Width="64" VerticalAlignment="Center" Margin="40,0,0,0">
-                                        <Rectangle.Stroke>
-                                            <RadialGradientBrush>
-                                                <GradientStop Color="Black" Offset="0" />
-                                                <GradientStop Color="#FF117941" Offset="1" />
-                                            </RadialGradientBrush>
-                                        </Rectangle.Stroke>
+                                    <Rectangle Name="color" Stroke="Black" Fill="{Binding Path=BackColor, Converter={StaticResource ColorConverter}, Mode=TwoWay}" Height="32" Width="64" VerticalAlignment="Center" Margin="40,0,0,0" >           
                                     </Rectangle>
                                 </StackPanel>
 
-                                <ListView x:Name="lv" BorderThickness="1" Grid.Row="1" Grid.Column="0">
+                                <ListView x:Name="lv" BorderThickness="1" Grid.Row="1" Grid.Column="0" SelectionMode="Single" SelectionChanged="lv_SelectionChanged">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -70,21 +72,27 @@
                                 </Grid.RowDefinitions>
 
                                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" >
-                                    <TextBlock Text="当前图片背景" VerticalAlignment="Center"></TextBlock>
-                                    <Rectangle Fill="{Binding ElementName=lv, Path=SelectedItem.Name}" Height="32" Width="100" VerticalAlignment="Top"></Rectangle>
+                                    <TextBlock Text="当前图片背景" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+                                    <Image Name="picture" Width="64" Height="32" Margin="40,0,0,0" Source="{Binding Path=PicIconData.ShowName, Converter={StaticResource PictureConverter}}">
+                                    </Image>
                                 </StackPanel>
 
-                                <ListView x:Name="listViewPic" BorderThickness="1" Grid.Row="1" Grid.Column="0">
-                                    <ListView.ItemTemplate>
+                                <ListView x:Name="listViewPic" BorderThickness="1" Grid.Row="1" Grid.Column="0" SelectionChanged="listViewPic_SelectionChanged">
+                                    <ListView.ItemTemplate>                                        
                                         <DataTemplate>
-                                            <Image Width="100" Height="100"></Image>
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel.ToolTip>
+                                                    <Image Width="256" Height="256" Source="{Binding Converter={StaticResource NameConverter}}"></Image>
+                                                </StackPanel.ToolTip>
+                                                <Image Width="20" Height="20" Source="{Binding Converter={StaticResource NameConverter}}"></Image>
+                                                <TextBlock Name="picText" FontSize="16" Text="{Binding}"></TextBlock>
+                                            </StackPanel>                                            
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </Grid>
                         </TabItem>
-                    </TabControl>
-                    
+                    </TabControl>                    
                 </Grid>
             </Grid>
         </GroupBox>

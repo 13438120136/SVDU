@@ -21,6 +21,8 @@ namespace SVControl
         Byte _isAlignment = 0;
         UInt16 _id;
         SVBitmap _bitMap;
+        Byte _backGroundType = 0;  //为0的时候表示颜色背景，1的时候表示图片背景
+
         public UpdateControl UpdateControl;
         #endregion
 
@@ -30,9 +32,42 @@ namespace SVControl
         }
 
         [CategoryAttribute("数据")]
+        [DescriptionAttribute("设置背景颜色或者图片")]
+        [EditorAttribute(typeof(SVPageUIEditer), typeof(System.Drawing.Design.UITypeEditor))]
+        [DisplayName("背景设置")]
+        public Byte BackGroundType
+        {
+            get 
+            {
+                return _backGroundType;
+            }
+            set
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                if (_backGroundType == value)
+                    return;
+
+                Byte before = _backGroundType;
+                undoItem.ReDo = () =>
+                {
+                    _backGroundType = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _backGroundType = before;
+                };
+
+                _backGroundType = value; 
+            }
+        }
+
+        [Browsable(false)]
+        [CategoryAttribute("数据")]
         [DescriptionAttribute("设置页面的背景图片")]
         [TypeConverter(typeof(SVBitmap))]
-        [EditorAttribute(typeof(SVPageUIEditer), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("背景图片")]
         public SVBitmap PicIconData
         {
@@ -42,8 +77,7 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                if (UpdateControl != null)
-                    UpdateControl(undoItem);
+
                 SVBitmap before = _bitMap;
                 undoItem.ReDo = () =>
                 {
@@ -55,6 +89,9 @@ namespace SVControl
                 };
 
                 _bitMap = value;
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
             }
 
             get
@@ -87,7 +124,9 @@ namespace SVControl
                 {
                     _isAlignment = before;
                 };
-                UpdateControl(undoItem);
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
 
                 _isAlignment = value; 
             }
@@ -109,6 +148,7 @@ namespace SVControl
             }
         }
 
+        [Browsable(false)]
         [CategoryAttribute("外观"),
         DescriptionAttribute("设置当前页面的背景显示颜色")]
         [DisplayName("背景")]
@@ -128,10 +168,12 @@ namespace SVControl
                 undoItem.UnDo = () =>
                 {
                     _backGroundColor = before;
-                };
-                UpdateControl(undoItem);
+                };                
 
                 _backGroundColor = value;
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
             }
 
             get

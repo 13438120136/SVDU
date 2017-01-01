@@ -242,6 +242,7 @@ namespace SVControl
             Attrib.UpdateControl += new UpdateControl((item) =>
             {
                 RedoUndo.recordOper(item);
+                refreshPropertyToPanel();
             });
 
             ///鼠标拖入控件事件
@@ -552,11 +553,18 @@ namespace SVControl
         {
             this.Width = _attrib.Width;
             this.Height = _attrib.Height;
-            this.BackColor = _attrib.BackColor;
 
-            //设置背景
-            this.BackgroundImageLayout = ImageLayout.Stretch;
-            this.BackgroundImage = Attrib.PicIconData.bitmap();
+            if (_attrib.BackGroundType == 0)
+            {
+                this.BackColor = _attrib.BackColor;
+                this.BackgroundImage = null;
+            }
+            else
+            {
+                //设置背景
+                this.BackgroundImageLayout = ImageLayout.Stretch;
+                this.BackgroundImage = Attrib.PicIconData.bitmap();
+            }
         }
         
         /*
@@ -592,6 +600,15 @@ namespace SVControl
 
             XmlElement mainPage = xml.select("MainPage");
             IsMainPage = Boolean.Parse(mainPage.InnerText);
+
+            XmlElement backGroundType = xml.select("BackGroundType");
+            _attrib.BackGroundType = Byte.Parse(backGroundType.InnerText);
+
+            XmlElement picShowName = xml.select("PicShowName");
+            _attrib.PicIconData.ShowName = picShowName.InnerText;
+
+            XmlElement picFile = xml.select("PicFile");
+            _attrib.PicIconData.ImageFileName = picFile.InnerText;
 
             //读取当前页面的所有子控件
             List<XmlElement> listNodes = xml.selectChilds();
@@ -641,6 +658,15 @@ namespace SVControl
 
             XmlElement mainPage = xml.createNode("MainPage");
             mainPage.InnerText = IsMainPage.ToString();
+
+            XmlElement backGroundType = xml.createNode("BackGroundType");
+            backGroundType.InnerText = _attrib.BackGroundType.ToString();
+
+            XmlElement picShowName = xml.createNode("PicShowName");
+            picShowName.InnerText = _attrib.PicIconData.ShowName;
+
+            XmlElement picFile = xml.createNode("PicFile");
+            picFile.InnerText = _attrib.PicIconData.ImageFileName;
 
             //保存当前页面的所有子控件
             foreach (Control ctrl in this.Controls)
