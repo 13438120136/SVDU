@@ -33,6 +33,7 @@ namespace SVControl
 
         [CategoryAttribute("数据")]
         [DescriptionAttribute("设置背景颜色或者图片")]
+        [TypeConverter(typeof(SVPageBackGroundTypeConverter))]
         [EditorAttribute(typeof(SVPageUIEditer), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("背景设置")]
         public Byte BackGroundType

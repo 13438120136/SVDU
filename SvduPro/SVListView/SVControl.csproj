@@ -167,6 +167,7 @@
       <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="SVFontTypeConverter.cs" />
+    <Compile Include="SVPageBackGroundTypeConverter.cs" />
     <Compile Include="SVPageProperties.cs" />
     <Compile Include="SVPageSelectWindow.cs">
       <SubType>Form</SubType>
