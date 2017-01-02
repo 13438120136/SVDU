@@ -70,7 +70,7 @@ namespace SVControl
         }
 
         [CategoryAttribute("数据")]
-        [DescriptionAttribute("设置心跳控件显示的图片,显示已设置图片的个数")]
+        [DescriptionAttribute("设置心跳控件显示的图片,显示已设置图片的个数,最大个数为8")]
         [DisplayName("图片")]
         [EditorAttribute(typeof(SVBitmapArrayTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [TypeConverter(typeof(SVBitmapArray))]

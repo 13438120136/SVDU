@@ -17,6 +17,7 @@ namespace SVCore
         public SVWpfControl()
         {
             InitializeComponent();
+            this.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
 
         /// <summary>

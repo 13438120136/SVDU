@@ -1,5 +1,6 @@
 ﻿using System.Drawing.Design;
 using System.Windows.Forms.Design;
+using SVCore;
 
 namespace SVControl
 {
@@ -32,12 +33,18 @@ namespace SVControl
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                SVBitmapArrayWindow window = new SVBitmapArrayWindow(heart.Attrib.BitMapArray);
-                window.ShowDialog();
+                SVWpfControl picDialog = new SVWpfControl();
+                picDialog.Width = 300;
+                picDialog.Height = 300;
+
+                SVWPFHeartPic heartPicture = new SVWPFHeartPic();
+                heartPicture.resultListView.ItemsSource = heart.Attrib.BitMapArray.BitmapArray;
+                picDialog.addContent(heartPicture);
+                edSvc.DropDownControl(picDialog);
                 heart.refreshPropertyToPanel();
                 heart.RedoUndo.operChanged();
 
-                return window.bitmapArray();
+                return value;
             }
 
             return value;

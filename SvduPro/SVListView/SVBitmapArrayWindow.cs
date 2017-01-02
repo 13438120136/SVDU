@@ -86,8 +86,8 @@ namespace SVControl
                 if (vv == null)
                     continue;
 
-                if (!vv.Attrib.Bitmap.isValidShow())
-                    continue;
+                //if (!vv.Attrib.Bitmap.isValidShow())
+                //    continue;
 
                 this.propertyGrid1.SelectedObject = vv;
             }

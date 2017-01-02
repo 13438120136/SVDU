@@ -152,6 +152,7 @@ namespace SVControl
             this.ForeColor = _attrib.FrontColor;
             this.Font = _attrib.Font;
             this.IsMoved = !_attrib.Lock;
+            this.Refresh();
         }
 
         /// <summary>

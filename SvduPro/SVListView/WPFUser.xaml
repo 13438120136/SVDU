@@ -6,7 +6,15 @@
              xmlns:local="clr-namespace:SVControl"
              mc:Ignorable="d"     
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFF8F8F8" Offset="0" />
+            <GradientStop Color="#FFB4B7BB" Offset="0.574" />
+            <GradientStop Color="#FF353838" Offset="1" />
+        </LinearGradientBrush>
+    </UserControl.Background>
+
     <UserControl.Resources>
         <local:NameToImageConverter x:Key="NameConverter"></local:NameToImageConverter>
         <local:ColorConverter x:Key="ColorConverter"></local:ColorConverter>
@@ -27,17 +35,10 @@
                         <ComboBoxItem>颜色</ComboBoxItem>
                         <ComboBoxItem>图片</ComboBoxItem>
                     </ComboBox>
-
-                    <StackPanel.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0" />
-                            <GradientStop Color="#FFA7A9AB" Offset="1" />
-                        </LinearGradientBrush>
-                    </StackPanel.Background>
                 </StackPanel>
 
                 <Grid Grid.Row="1" Grid.Column="0">
-                    <TabControl x:Name="tabCtrl" Grid.Row="0" Grid.Column="1" BorderBrush="{x:Null}" SelectedIndex="{Binding BackGroundType}">
+                    <TabControl x:Name="tabCtrl" Grid.Row="0" Grid.Column="1" BorderBrush="Aqua" SelectedIndex="{Binding BackGroundType}">
                         <TabItem Header="颜色" Visibility="Collapsed">
                             <Grid>
                                 <Grid.RowDefinitions>

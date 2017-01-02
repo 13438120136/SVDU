@@ -43,7 +43,7 @@ namespace SVControl
 
         public SVAnalogProperties()
         {
-            _font = new Font("宋体", 8);
+            _font = new Font("Courier New", 8);
             _rect = new Rectangle(0, 0, 120, 40);
             _normalColor = Color.DodgerBlue;
             _overMaxClr = Color.Green;

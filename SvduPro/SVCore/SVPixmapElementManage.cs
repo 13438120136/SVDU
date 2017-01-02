@@ -56,7 +56,10 @@ namespace SVCore
         /// <returns>文件名路径字符串</returns>
         public String getFilePathFromName(String name)
         {
-            return _mapDict[name];
+            if (_mapDict.ContainsKey(name))
+                return _mapDict[name];
+
+            return null;
         }
 
         /// <summary>

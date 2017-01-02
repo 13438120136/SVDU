@@ -690,6 +690,8 @@ namespace SvduPro
             Int32 disx = point.X - first.Location.X;
             Int32 disy = point.Y - first.Location.Y;
 
+            widget.selectAll(false);
+
             foreach (var item in vList)
             {
                 SVPanel svPanel = item as SVPanel;
@@ -713,6 +715,7 @@ namespace SvduPro
                 svPanel.refreshPropertyToPanel();
                 ///将控件显示位置置顶
                 svPanel.BringToFront();
+                svPanel.Selected = true;
 
                 SVRedoUndoItem recordItem = new SVRedoUndoItem();
                 recordItem.ReDo = () =>
@@ -1791,7 +1794,6 @@ namespace SvduPro
                 //
                 item.Value.buildControlToBin(ref pageArrayBin, ref picBuffer);
 
-                Thread.Sleep(500);
                 barAc = () => 
                 {
                     bar.setText(String.Format("编译页面:{0}", item.Value.PageName));

@@ -31,7 +31,7 @@ namespace SVControl
 
                 WPFUser edit = new WPFUser();
                 edit.DataContext = page.Attrib;
-                //edit.picture.DataContext = page.Attrib;
+
                 textDialog.addContent(edit);
                 edSvc.DropDownControl(textDialog);
 

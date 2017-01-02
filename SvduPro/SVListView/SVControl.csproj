@@ -90,6 +90,7 @@
     <Compile Include="SVBitmapArrayWindow.Designer.cs">
       <DependentUpon>SVBitmapArrayWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="SVBitmapConverter.cs" />
     <Compile Include="SVBitmapTypeEditor.cs" />
     <Compile Include="SVBtnBackGroundTypeEditor.cs" />
     <Compile Include="SVBtnBackGroundWindow.cs">
@@ -180,6 +181,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SVLabelTextUIEditor.cs" />
+    <Compile Include="SVPicConverter.cs" />
     <Compile Include="SVTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -205,6 +207,12 @@
     </Compile>
     <Compile Include="SVWPFBtnTextEdit.xaml.cs">
       <DependentUpon>SVWPFBtnTextEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SVWPFHeartPic.xaml.cs">
+      <DependentUpon>SVWPFHeartPic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SVWPfIconPic.xaml.cs">
+      <DependentUpon>SVWPfIconPic.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPFUser.xaml.cs">
       <DependentUpon>WPFUser.xaml</DependentUpon>
@@ -328,13 +336,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SVWPFHeartPic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPfIconPic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WPFUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\house_0003_图层 1.bmp" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="SVControl.SVWPFHeartPic"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SVControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="400">
+
+    <UserControl.Resources>
+        <local:SVBitmapConverter x:Key="BitmapConverter"></local:SVBitmapConverter>
+        <local:SVPicConverter x:Key="PictureConverter"></local:SVPicConverter>
+    </UserControl.Resources>
+
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White" Offset="0" />
+            <GradientStop Color="#FFA7A9AB" Offset="1" />
+        </LinearGradientBrush>
+    </UserControl.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock  Text="图片类别：" Margin="10, 0, 15, 0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <ComboBox Name="comboboxType" Width="130" Height="25" SelectedIndex="0" SelectionChanged="comboboxType_SelectionChanged">
+            </ComboBox>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Name="listListView" Grid.Row="0" Grid.Column="0" SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Converter={StaticResource PictureConverter}}" Width="30" Height="30"></Image>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="OnMouseLeftButtonDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                <Button Name="btnIn" Height="30" Content="=>" Margin="0,0,0,40" Click="btnIn_Click"></Button>
+                <Button Name="btnOut" Height="30" Content="&lt;=" Click="btnOut_Click"></Button>
+            </StackPanel>
+
+            <ListView Name="resultListView" SelectionMode="Single" Grid.Row="0" Grid.Column="2" AllowDrop="True" DragEnter="resultListView_DragEnter" Drop="resultListView_Drop" DragOver="resultListView_DragOver">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Converter={StaticResource BitmapConverter}}" Width="30" Height="30"></Image>
+                            <TextBlock Text="{Binding ShowName}" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Template>
+                    <ControlTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1">
+                            <Grid Background="{TemplateBinding Background}">
+                                <TextBlock Opacity="0.3" Foreground="Black" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Text="拖拽至该窗口" FontWeight="Bold" FontFamily="Courier New"></TextBlock>
+                                <ScrollViewer BorderBrush="Black" BorderThickness="2">
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </ListView.Template>
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>

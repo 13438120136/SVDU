@@ -71,7 +71,6 @@ namespace SVControl
             SVPageProperties attrib = this.DataContext as SVPageProperties;
             attrib.PicIconData.ShowName = str;
             attrib.PicIconData.ImageFileName = manage.getFilePathFromName(str);
-            //attrib.BackGroundType = (Byte)1;
         }
 
         private BitmapImage BitmapToBitmapImage(System.Drawing.Bitmap bitmap)
@@ -94,10 +93,6 @@ namespace SVControl
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            //SVBitmap svBitmap = value as SVBitmap;
-            //if (!svBitmap.isValidShow())
-            //    return null;
-
             if (value == null)
                 return null;
 
@@ -120,8 +115,6 @@ namespace SVControl
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            //String str = value as String;
-
             return value;
         }
 

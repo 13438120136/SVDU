@@ -14,20 +14,32 @@ namespace SVControl
         /// <returns></returns>
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
-            return UITypeEditorEditStyle.Modal;
+            return UITypeEditorEditStyle.DropDown;
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
+            SVIcon icon = context.Instance as SVIcon;
+            if (icon == null)
+                return null;
+
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                SVBitmapManagerWindow window = new SVBitmapManagerWindow();
-                if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
-                    return window.SvBitMap;
-                else
-                    return value;
+                SVWpfControl picDialog = new SVWpfControl();
+                picDialog.Width = 300;
+                picDialog.Height = 300;
+
+                SVWPfIconPic iconPicture = new SVWPfIconPic();
+                iconPicture.image.DataContext = icon.Attrib.PicIconData.ShowName;
+                iconPicture.DataContext = icon;
+                picDialog.addContent(iconPicture);
+                edSvc.DropDownControl(picDialog);
+                icon.refreshPropertyToPanel();
+                icon.RedoUndo.operChanged();
+
+                return value;
             }
 
             return value;

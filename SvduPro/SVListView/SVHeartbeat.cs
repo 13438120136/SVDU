@@ -109,6 +109,8 @@ namespace SVControl
                 pixmapFile.readPixmapFile(file);
                 this.BackgroundImage = pixmapFile.getBitmapFromData();
             }
+            else
+                this.BackgroundImage = null;
         }
 
                 /// <summary>
