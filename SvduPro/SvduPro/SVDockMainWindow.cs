@@ -1672,7 +1672,7 @@ namespace SvduPro
             {
                 foreach (String file in openFileDialog.FileNames)
                 {
-                    //String file = openFileDialog.FileName;
+                    //String File = openFileDialog.FileName;
 
                     _svProject.importPageNode(node.Text, file);
                     String pageName = Path.GetFileNameWithoutExtension(file);
@@ -1738,7 +1738,7 @@ namespace SvduPro
 
         private void 图元管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SVBitmapManagerWindow win = new SVBitmapManagerWindow();
+            SVWPFBitmapManagerWindow win = new SVWPFBitmapManagerWindow();
             win.ShowDialog();
         }
 

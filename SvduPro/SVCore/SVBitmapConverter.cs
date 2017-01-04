@@ -1,40 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
-using SVCore;
-using System.Windows.Controls;
 
-namespace SVControl
+namespace SVCore
 {
-    public class SVPicConverter : IValueConverter
+    public class SVBitmapConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
                 return null;
 
-            String fileShowName = value as String;
-            if (String.IsNullOrWhiteSpace(fileShowName))
+            SVBitmap bitmap = value as SVBitmap;
+            if (bitmap == null)
                 return null;
 
             String infile = System.IO.Path.Combine(SVProData.IconPath, "icon.proj");
             SVPixmapElementManage manage = new SVPixmapElementManage();
             manage.loadElementFromFile(infile);
 
-            String imageFile = manage.getFilePathFromName(fileShowName);
-            if (imageFile == null)
-                return null;
-
-            String file1 = System.IO.Path.Combine(SVProData.IconPath, imageFile);
+            String file1 = System.IO.Path.Combine(SVProData.IconPath, manage.getFilePathFromName(bitmap.ShowName));
             SVPixmapFile pixmap = new SVPixmapFile();
             pixmap.readPixmapFile(file1);
             System.Drawing.Image srcImg = System.Drawing.Image.FromStream(pixmap.Pixmap);
-            System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(srcImg);
+            System.Drawing.Bitmap oBitmap = new System.Drawing.Bitmap(srcImg);
 
-            return BitmapToBitmapImage(bitmap);
+            return BitmapToBitmapImage(oBitmap);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

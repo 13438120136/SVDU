@@ -90,7 +90,6 @@
     <Compile Include="SVBitmapArrayWindow.Designer.cs">
       <DependentUpon>SVBitmapArrayWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="SVBitmapConverter.cs" />
     <Compile Include="SVBitmapTypeEditor.cs" />
     <Compile Include="SVBtnBackGroundTypeEditor.cs" />
     <Compile Include="SVBtnBackGroundWindow.cs">
@@ -182,7 +181,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SVLabelTextUIEditor.cs" />
-    <Compile Include="SVPicConverter.cs" />
     <Compile Include="SVTreeView.cs">
       <SubType>Component</SubType>
     </Compile>

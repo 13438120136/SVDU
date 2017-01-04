@@ -292,7 +292,7 @@ namespace SVCore
         /// 导入页面文件
         /// </summary>
         /// <param name="className">页面分类</param>
-        /// <param name="file">页面文件</param>
+        /// <param name="File">页面文件</param>
         public void importPageNode(String className, String file)
         {
             file = GetRelativePaths(Application.StartupPath, file);

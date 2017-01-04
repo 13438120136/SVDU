@@ -114,7 +114,7 @@ namespace SVControl
         /// 从当前图元文件获取背景图片数据设置按钮背景
         /// </summary>
         /// <param Name="button">要设置的按钮对象</param>
-        /// <param Name="file">当前图片文件</param>
+        /// <param Name="File">当前图片文件</param>
         private void setButtonBackGd(Button button, String file)
         {
             if (!File.Exists(file))

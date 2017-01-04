@@ -76,6 +76,7 @@
     <Compile Include="SVBinData.cs" />
     <Compile Include="SVBitmap.cs" />
     <Compile Include="SVBitmapArray.cs" />
+    <Compile Include="SVBitmapConverter.cs" />
     <Compile Include="SVBitmapHead.cs" />
     <Compile Include="SVBitmapManagerWindow.cs">
       <SubType>Form</SubType>
@@ -105,6 +106,7 @@
     <Compile Include="SVPanelNode.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SVPicConverter.cs" />
     <Compile Include="SVSqlDataBase.cs" />
     <Compile Include="SVExportTemplateForm.cs">
       <SubType>Form</SubType>
@@ -150,6 +152,9 @@
     <Compile Include="SVUniqueID.cs" />
     <Compile Include="SVVaribleType.cs" />
     <Compile Include="SVVersion.cs" />
+    <Compile Include="SVWPFBitmapManagerWindow.xaml.cs">
+      <DependentUpon>SVWPFBitmapManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SVWpfControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -205,6 +210,10 @@
     <None Include="Resources\page.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="SVWPFBitmapManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SVWPFProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +222,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\class.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

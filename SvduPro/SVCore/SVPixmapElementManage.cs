@@ -65,7 +65,7 @@ namespace SVCore
         /// <summary>
         /// 从指定文件中加载图元管理信息
         /// </summary>
-        /// <param name="file">图元管理文件</param>
+        /// <param name="File">图元管理文件</param>
         public void loadElementFromFile(String file)
         {
             _mapDict.Clear();
@@ -94,7 +94,7 @@ namespace SVCore
         /// <summary>
         /// 保存当前图元管理内存信息到文件中
         /// </summary>
-        /// <param name="file">要保存的文件名</param>
+        /// <param name="File">要保存的文件名</param>
         public void saveElementToFile(String file)
         {
             XElement rootElement = new XElement("Root");

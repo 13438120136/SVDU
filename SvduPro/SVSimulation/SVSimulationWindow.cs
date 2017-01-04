@@ -27,7 +27,7 @@ namespace SVSimulation
         /// <summary>
         /// 从下装文件中加载数据
         /// </summary>
-        /// <param Name="file">工程生成的下装文件</param>
+        /// <param Name="File">工程生成的下装文件</param>
         public void load(String file)
         {
             //从下装文件中读取实际数据
