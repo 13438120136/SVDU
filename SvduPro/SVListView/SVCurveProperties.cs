@@ -209,6 +209,7 @@ namespace SVControl
         [CategoryAttribute("外观")]
         [DescriptionAttribute("趋势图字体")]
         [TypeConverter(typeof(SVFontTypeConverter))]
+        [EditorAttribute(typeof(SVFontTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("字体")]
         public Font Font
         {

@@ -123,6 +123,7 @@
     <Compile Include="SVCurveVarWindow.Designer.cs">
       <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="SVFontTypeEditor.cs" />
     <Compile Include="SVGif.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -207,6 +208,9 @@
     </Compile>
     <Compile Include="SVWPFBtnTextEdit.xaml.cs">
       <DependentUpon>SVWPFBtnTextEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SVWPFFontDialog.xaml.cs">
+      <DependentUpon>SVWPFFontDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="SVWPFHeartPic.xaml.cs">
       <DependentUpon>SVWPFHeartPic.xaml</DependentUpon>
@@ -336,6 +340,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SVWPFFontDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SVWPFHeartPic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -350,7 +358,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\Font.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -429,6 +429,7 @@ namespace SVControl
         [CategoryAttribute("外观")]
         [DescriptionAttribute("按钮上文本的字体")]
         [TypeConverter(typeof(SVFontTypeConverter))]
+        [EditorAttribute(typeof(SVFontTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("字体")]
         public Font Font
         {

@@ -279,6 +279,7 @@ namespace SVControl
         [CategoryAttribute("数据")]
         [DescriptionAttribute("设置显示字体")]
         [TypeConverter(typeof(SVFontTypeConverter))]
+        [EditorAttribute(typeof(SVFontTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("字体")]
         public Font Font
         {

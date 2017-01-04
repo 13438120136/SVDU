@@ -1,28 +1,21 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Globalization;
 using System.Drawing;
+using System.Globalization;
 
 namespace SVControl
 {
     [Serializable]
-    public class SVFontTypeConverter : StringConverter
+    public class SVFontTypeConverter : TypeConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
             return true;
         }
 
-        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
-        {
-            return new StandardValuesCollection(new string[] { 
-                "Courier New:8", "Courier New:12", "Courier New:16"
-            });
-        }
-
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
-            if (sourceType == typeof(String))
+            if (sourceType == typeof(Font))
                 return true;
 
             return base.CanConvertFrom(context, sourceType);
@@ -30,19 +23,16 @@ namespace SVControl
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            String str = value as String;
-            if (str == null)
+            Font font = value as Font;
+            if (font == null)
                 return base.ConvertFrom(context, culture, value);
 
-            String[] split = new String[] { ":" };
-            String[] arg = str.Split(split, StringSplitOptions.RemoveEmptyEntries);
-            Font font = new Font(arg[0], Int32.Parse(arg[1]));
             return font;
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
-            if (destinationType == typeof(String))
+            if (destinationType == typeof(Font))
                 return true;
 
             return base.CanConvertTo(context, destinationType);
