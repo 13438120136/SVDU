@@ -16,7 +16,7 @@ namespace SVControl
         Font _font;          //文本字体
         Rectangle _rect;     //文本控件尺寸
         UInt16 _id;          //文本ID
-        String _align;       //文本对齐方式
+        Byte _align;       //文本对齐方式
         Boolean _transparent; //背景是否透明
         String _controlType;
         Boolean _isLock;
@@ -33,7 +33,7 @@ namespace SVControl
             _text = "Text";
             _bgcolor = Color.White;
             _fgcolor = Color.Black;
-            _align = "水平和垂直居中";
+            _align = 3;
             _transparent = false;
             _controlType = "文本框";
             _isLock = false;
@@ -169,8 +169,9 @@ namespace SVControl
         [CategoryAttribute("外观")]
         [DescriptionAttribute("文本对齐方式显示")]
         [DisplayName("对齐方式")]
-        [TypeConverter(typeof(SVSelectAlignProperty))]        
-        public String Align
+        [EditorAttribute(typeof(SVAlignTextUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [TypeConverter(typeof(SVSelectAlignProperty))]
+        public Byte Align
         {
             set
             {
@@ -180,7 +181,7 @@ namespace SVControl
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
                 if (UpdateControl != null)
                     UpdateControl(undoItem);
-                String before = _align;
+                Byte before = _align;
                 undoItem.ReDo = () =>
                 {
                     _align = value;
@@ -364,7 +365,7 @@ namespace SVControl
             copyDestByteArray(Encoding.Unicode.GetBytes(Text), areaBin.text);
 
             areaBin.font = (Byte)_font.Size;
-            areaBin.align = _alignConfig[Align];
+            areaBin.align = Align;
             areaBin.transparent = Transparent ? (Byte)1 : (Byte)0;
 
             pageArrayBin.pageArray[pageCount].m_area[areaCount] = areaBin;

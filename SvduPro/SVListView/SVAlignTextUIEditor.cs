@@ -4,7 +4,7 @@ using SVCore;
 
 namespace SVControl
 {
-    public class SVLabelTextUIEditor : UITypeEditor
+    class SVAlignTextUIEditor : UITypeEditor
     {
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
@@ -14,22 +14,22 @@ namespace SVControl
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            SVLabel svLabel = context.Instance as SVLabel;
-            if (svLabel == null)
-                return value;
-
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                SVWpfControl textDialog = new SVWpfControl();
-                textDialog.Width = 200;
-                textDialog.Height = 120;
+                SVWpfControl alignTextDialog = new SVWpfControl();
+                alignTextDialog.Width = 120;
+                alignTextDialog.Height = 120;
 
-                SVWPFLabelTextEdit edit = new SVWPFLabelTextEdit();
-                edit.textBox.DataContext = value;
-                textDialog.addContent(edit);
-                edSvc.DropDownControl(textDialog);
-                value = edit.textBox.Text;
+                SVWPFAlignDialog dialog = new SVWPFAlignDialog();
+                alignTextDialog.addContent(dialog);
+                dialog.CloseEvent += () => 
+                {
+                    edSvc.CloseDropDown();
+                    value = dialog.AlignValue;
+                };
+
+                edSvc.DropDownControl(alignTextDialog);
 
                 return value;
             }

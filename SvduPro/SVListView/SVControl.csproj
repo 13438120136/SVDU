@@ -66,6 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="SVAlignTextUIEditor.cs" />
     <Compile Include="SVAnalog.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -203,6 +204,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="SVWPFAlignDialog.xaml.cs">
+      <DependentUpon>SVWPFAlignDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SVWPFBtnMemoEdit.xaml.cs">
       <DependentUpon>SVWPFBtnMemoEdit.xaml</DependentUpon>
     </Compile>
@@ -217,6 +221,9 @@
     </Compile>
     <Compile Include="SVWPfIconPic.xaml.cs">
       <DependentUpon>SVWPfIconPic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SVWPFLabelTextEdit.xaml.cs">
+      <DependentUpon>SVWPFLabelTextEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPFUser.xaml.cs">
       <DependentUpon>WPFUser.xaml</DependentUpon>
@@ -332,6 +339,10 @@
     <None Include="Resources\tick.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="SVWPFAlignDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SVWPFBtnMemoEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -349,6 +360,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SVWPfIconPic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFLabelTextEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

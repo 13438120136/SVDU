@@ -132,11 +132,11 @@ namespace SVControl
                 this.ForeColor = _attrib.FrontColorground;
             }
 
-            Dictionary<String, ContentAlignment> alignDict = new Dictionary<String, ContentAlignment>();
-            alignDict.Add("左对齐", ContentAlignment.TopLeft);
-            alignDict.Add("右对齐", ContentAlignment.TopRight);
-            alignDict.Add("居中对齐", ContentAlignment.TopCenter);
-            alignDict.Add("水平和垂直居中", ContentAlignment.MiddleCenter);
+            Dictionary<Byte, ContentAlignment> alignDict = new Dictionary<Byte, ContentAlignment>();
+            alignDict.Add(0, ContentAlignment.TopLeft);
+            alignDict.Add(1, ContentAlignment.TopRight);
+            alignDict.Add(2, ContentAlignment.TopCenter);
+            alignDict.Add(3, ContentAlignment.MiddleCenter);
             this.TextAlign = alignDict[_attrib.Align];
         }
 
@@ -190,7 +190,7 @@ namespace SVControl
             _attrib.FrontColorground = Color.FromArgb(int.Parse(label.GetAttribute("Color")));
             _attrib.BackColorground = Color.FromArgb(int.Parse(label.GetAttribute("Backcolor")));
             _attrib.Text = label.GetAttribute("Text");
-            _attrib.Align = label.GetAttribute("TextAlign");
+            _attrib.Align = Byte.Parse(label.GetAttribute("TextAlign"));
             _attrib.Transparent = Boolean.Parse(label.GetAttribute("Transparent"));
             String fontFamily = label.GetAttribute("Font");
             Single fontSize = float.Parse(label.GetAttribute("FontSize"));
@@ -208,7 +208,7 @@ namespace SVControl
             label.SetAttribute("Height", _attrib.Rect.Height.ToString());
             label.SetAttribute("Color", _attrib.FrontColorground.ToArgb().ToString());
             label.SetAttribute("Backcolor", _attrib.BackColorground.ToArgb().ToString());
-            label.SetAttribute("TextAlign", _attrib.Align);
+            label.SetAttribute("TextAlign", _attrib.Align.ToString());
             label.SetAttribute("Text", _attrib.Text);
             label.SetAttribute("Font", _attrib.Font.Name.ToString());
             label.SetAttribute("FontSize", _attrib.Font.Size.ToString());

@@ -1,6 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
 using System.Drawing.Design;
-using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using SVCore;
 
@@ -16,9 +15,9 @@ namespace SVControl
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            SVButton svButton = context.Instance as SVButton;
-            if (svButton == null)
-                return value;
+            //SVButton svButton = context.Instance as SVButton;
+            //if (svButton == null)
+            //    return value;
 
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
@@ -28,10 +27,11 @@ namespace SVControl
                 textDialog.Height = 120;
 
                 SVWPFBtnTextEdit edit = new SVWPFBtnTextEdit();
-                edit.textBox.DataContext = svButton.Attrib;
+                edit.textBox.DataContext = value;
                 textDialog.addContent(edit);                
                 edSvc.DropDownControl(textDialog);
-                svButton.refreshPropertyToPanel();
+                value = edit.textBox.Text;
+                //svButton.refreshPropertyToPanel();
 
                 return value;
             }
