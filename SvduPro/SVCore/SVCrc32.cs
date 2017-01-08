@@ -84,8 +84,8 @@ namespace SVCore
             UInt32 POLYNOMIAL = 0xF4ACFB13;
             UInt32 uLoop;
             UInt32 crc = init;
-
             Int32 index = 0;
+
             while ((len--) != 0)
             {
                 crc ^= (UInt32)(s[index++]) << 24;
@@ -97,7 +97,27 @@ namespace SVCore
                         crc <<= 1;
                 }
             }
+
+            crc = ((crc & 0xff) << 24) | (((crc >> 8) & 0xff) << 16) | (((crc >> 16) & 0xff) << 8) | ((crc >> 24) & 0xff);
             return crc;
+
+            //UInt32 POLYNOMIAL = 0xF4ACFB13;
+            //UInt32 uLoop;
+            //UInt32 crc = init;
+
+            //Int32 index = 0;
+            //while ((len--) != 0)
+            //{
+            //    crc ^= (UInt32)(s[index++]) << 24;
+            //    for (uLoop = 0; uLoop < 8; ++uLoop)
+            //    {
+            //        if ((crc & 0x80000000) != 0)
+            //            crc = (crc << 1) ^ POLYNOMIAL;
+            //        else
+            //            crc <<= 1;
+            //    }
+            //}
+            //return crc;
         }
 
         /// <summary>

@@ -1,0 +1,182 @@
+﻿<UserControl x:Class="SVCore.SVWpfColorDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SVCore"
+             xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="230" d:DesignWidth="240">
+    <UserControl.Resources>        
+        <Style x:Key="ColorButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Name="Rectangle" Margin="2" Fill="{TemplateBinding Background}" ToolTip="{TemplateBinding Background}" Stroke="Black" StrokeThickness="1"></Rectangle>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="StrokeThickness" Value="2" TargetName="Rectangle"/>
+                                <Setter Property="Stroke" Value="#FEAB38" TargetName="Rectangle"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <LinearGradientBrush x:Key="morecolorgradientbrush" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="Orange" Offset="0.1"/>
+            <GradientStop Color="White" Offset=".9"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="moreColorsLabel" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="{StaticResource morecolorgradientbrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BorderLessButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="Auto" Height="26" Background="#DDE7EE"  BorderThickness="0,0,0,0" BorderBrush="#BFBFBF">
+                            <DockPanel Width="196" >
+                                <Label Content="{TemplateBinding Content}" SnapsToDevicePixels="True" FontFamily="微软雅黑" Foreground="DarkBlue" FontSize="11" FontWeight="Bold" VerticalContentAlignment="Center" 
+                                                VerticalAlignment="Center" Style="{StaticResource moreColorsLabel}">
+                                </Label>
+                            </DockPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <StackPanel>            
+            <Border Height="26" Background="#DDE7EE"  BorderThickness="0,0,0,2" BorderBrush="#BFBFBF">
+                <DockPanel Width="196" >
+                    <Label SnapsToDevicePixels="True" FontFamily="微软雅黑" Foreground="DarkBlue" FontSize="11" FontWeight="Bold" VerticalContentAlignment="Center" VerticalAlignment="Center" Content="主题颜色"/>
+                </DockPanel>
+            </Border>
+            <StackPanel SnapsToDevicePixels="True" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,5">
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#FFFFFF"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#000000"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#EEECE1"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#1f497d"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#4f81bd"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#c0504d"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#9bbb59"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#8064a2"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#4bacc6"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#f79646"/>
+            </StackPanel>
+            <StackPanel SnapsToDevicePixels="True" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#f2f2f2"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#7f7f7f"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#ddd9c3"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#c6d9f0"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#dbe5f1"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#f2dcdb"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#ebf1dd"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#e5e0ec"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#dbeef3"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#fdeada"/>
+            </StackPanel>
+            <StackPanel SnapsToDevicePixels="True" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#d8d8d8" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#595959" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#c4bd97" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#8db3e2" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#b8cce4" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#e5b9b7" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#d7e3bc" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#ccc1d9" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#b7dde8" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#fbd5b5" />
+            </StackPanel>
+            <StackPanel SnapsToDevicePixels="True" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#bfbfbf" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#3f3f3f" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#938953" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#548dd4" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#95b3d7" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#d99694" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#c3d69b" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#b2a2c7" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#92cddc" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#fac08f" />
+            </StackPanel>
+            <StackPanel SnapsToDevicePixels="True" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#a5a5a5"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#262626"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#494429"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#17365d"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#366092"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#953734"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#76923c"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#5f497a"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#31859b"/>
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#e36c09"/>
+            </StackPanel>
+            <StackPanel SnapsToDevicePixels="True" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#7f7f7f" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#0c0c0c" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#1d1b10" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#0f243e" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#244061" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#632423" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#4f6128" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#3f3151" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#205867" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#974806" />
+            </StackPanel>
+            <Border Height="26" Background="#DDE7EE"  BorderThickness="0,0,0,2" BorderBrush="#BFBFBF">
+                <DockPanel Width="196" >
+                    <Label SnapsToDevicePixels="True" FontFamily="微软雅黑" Foreground="DarkBlue" FontSize="11" FontWeight="Bold" VerticalContentAlignment="Center" VerticalAlignment="Center" Content="标准颜色"/>
+                </DockPanel>
+            </Border>
+
+            <StackPanel SnapsToDevicePixels="True" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#c00000" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#ff0000" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#ffc000" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#ffff00" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#92d050" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#00b050" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#00b0f0" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#0070c0" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#002060" />
+                <Button Click="Button_Click" Width="20" Height="20"  Style="{StaticResource ColorButton}" Background="#7030a0" />
+            </StackPanel>
+            <!--<Button Click="ButtonColor_Click" Content="更多..." Style="{DynamicResource BorderLessButtonStyle}" />-->
+            <toolkit:ColorCanvas x:Name="canvas" SelectedColorChanged="SelectedColorChanged"></toolkit:ColorCanvas>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -242,7 +242,7 @@ namespace SVControl
             Attrib.UpdateControl += new UpdateControl((item) =>
             {
                 RedoUndo.recordOper(item);
-                refreshPropertyToPanel();
+                //refreshPropertyToPanel();
             });
 
             ///鼠标拖入控件事件

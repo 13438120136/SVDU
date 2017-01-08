@@ -108,6 +108,8 @@
     <Compile Include="SVButtonMemoUIEditor.cs" />
     <Compile Include="SVButtonProperties.cs" />
     <Compile Include="SVButtonTextUIEditor.cs" />
+    <Compile Include="SVColorConverter.cs" />
+    <Compile Include="SVColorTypeEditor.cs" />
     <Compile Include="SVControlWindow.cs">
       <SubType>Form</SubType>
     </Compile>

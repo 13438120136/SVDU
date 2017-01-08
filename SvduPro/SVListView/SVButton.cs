@@ -397,11 +397,11 @@ namespace SVControl
                 throw new SVCheckValidException(msg);
             }
 
-            if (!Attrib.isValidFont())
-            {
-                String msg = String.Format("页面 {0} 中,按钮ID为:{1}, 设置的文本字体不合法", pageName, Attrib.ID);
-                throw new SVCheckValidException(msg);
-            }
+            //if (!Attrib.isValidFont())
+            //{
+            //    String msg = String.Format("页面 {0} 中,按钮ID为:{1}, 设置的文本字体不合法", pageName, Attrib.ID);
+            //    throw new SVCheckValidException(msg);
+            //}
 
             //var varInstance = SVVaribleType.instance();
             //if (!varInstance.isOpen())

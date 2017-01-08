@@ -122,6 +122,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("线条的显示颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("线条颜色")]
         public Color LineColor
         {

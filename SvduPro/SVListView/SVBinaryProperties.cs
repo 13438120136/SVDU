@@ -38,31 +38,23 @@ namespace SVControl
         String _controlType;   //控件类型
         Boolean _isLock;
 
-        //字体的配置
-        Dictionary<Font, Byte> _fontConfig = new Dictionary<Font, Byte>(); 
-
         public UpdateControl UpdateControl;
 
         public SVBinaryProperties()
         {
-            _font = new Font("Courier New", 16);
+            _font = new Font("华文细黑", 12);
             _rect = new Rectangle(0, 0, 120, 40);
-            _trueColor = Color.Blue;
+            _trueColor = Color.Green;
             _trueBgColor = Color.Moccasin;
-            _falseColor = Color.Red;
-            _falseBgColor = Color.Blue;
-            _exceptionColor = _trueColor;
-            _exceptionBgColor = _trueBgColor;
+            _falseColor = Color.Blue;
+            _falseBgColor = Color.White;
+            _exceptionColor = Color.Red;
+            _exceptionBgColor = Color.White;
             _type = 0;
             _customTrueText = "True";
             _customFlaseText = "False";
             _controlType = "开关量";
             _isLock = false;
-
-            //字体的映射关系
-            _fontConfig.Add(new Font("Courier New", 8), 8);
-            _fontConfig.Add(new Font("Courier New", 12), 12);
-            _fontConfig.Add(new Font("Courier New", 16), 16);
         }
 
         [Browsable(false)]
@@ -217,6 +209,8 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("出现异常后，字体显示的颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("异常")]
         public Color ExceptionColor
         {
@@ -247,6 +241,8 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("出现异常后，背景显示的颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("异常背景")]
         public Color ExceptionBgColor
         {
@@ -313,6 +309,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为真的时候的颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("为真")]
         public Color TrueColor
         {
@@ -346,6 +344,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为真的时候的背景颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("为真背景")]
         public Color TrueBgColor
         {
@@ -379,6 +379,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为假的时候的颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("为假")]
         public Color FalseColor
         {
@@ -411,6 +413,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为假的时候的背景颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("为假背景")]
         public Color FalseBgColor
         {
@@ -504,7 +508,7 @@ namespace SVControl
             binaryBin.rect.eX = (UInt16)(Rect.Width + binaryBin.rect.sX);
             binaryBin.rect.eY = (UInt16)(Rect.Height + binaryBin.rect.sY);
 
-            binaryBin.font = _fontConfig[_font];
+            binaryBin.font = (Byte)_font.Size;
             binaryBin.type = _type;
 
             ///存放字符串相关的属性和文本信息

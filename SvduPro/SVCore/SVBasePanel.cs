@@ -78,15 +78,8 @@ namespace SVCore
             if (String.IsNullOrWhiteSpace(this.Text))
                 return;
 
-            Dictionary<Font, Int32> dict = new Dictionary<Font, Int32>() 
-            {
-                {new Font("Courier New", 8), 11},
-                {new Font("Courier New", 12), 16},
-                {new Font("Courier New", 16), 21}
-            };
-
             ///
-            int singleLine = dict[this.Font];
+            int singleLine = (int)this.Font.Size + 4;
             int sunCount = this.Text.Length * singleLine;
 
             int lineCount = sunCount / this.Width;

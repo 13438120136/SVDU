@@ -22,14 +22,14 @@
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#FFF0F0F0" ></SolidColorBrush>
-        </Grid.Background>
+        </Grid.Background>       
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        
-        <GroupBox Grid.Row="0" Grid.Column="0" Header="分类">
+
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="分类">
             <ListView Margin="10" Name="classlistView" SelectedIndex="0" SelectionMode="Single" SelectionChanged="classlistView_SelectionChanged" Style="{StaticResource background}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -39,11 +39,19 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="新建分类"></MenuItem>
+                        <MenuItem Header="重命名分类"></MenuItem>
+                        <MenuItem Header="删除分类"></MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
             </ListView>
         </GroupBox>
 
-        <GroupBox Grid.Row="0" Grid.Column="1" Header="视图">
-            <ListBox Margin="10" Name="piclistView" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource background}">
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="视图">
+            <ListBox Margin="10" Name="piclistView" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource background}">
 
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -69,6 +77,13 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="importIcon" Header="导入图元" Click="importIcon_Click"></MenuItem>
+                        <MenuItem x:Name="delIcon" Header="删除图元" Click="delIcon_Click"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
             </ListBox>
         </GroupBox>
     </Grid>

@@ -59,14 +59,11 @@ namespace SVControl
 
         Boolean _isLock;
 
-        //字体的配置
-        Dictionary<Font, Byte> _fontConfig = new Dictionary<Font, Byte>();
-
         public UpdateControl UpdateControl;
 
         public SVCurveProperties()
         {
-            _font = new Font("Courier New", 8);
+            _font = new Font("华文细黑", 12);
             _rect = new Rectangle(0, 0, 150, 150);
             _bgcolor = Color.DimGray;
             _fgcolor = Color.White;
@@ -77,11 +74,6 @@ namespace SVControl
             _controlType = "趋势图";
             _isLock = false;
             _var = "变量列表";
-
-            //字体的映射关系
-            _fontConfig.Add(new Font("Courier New", 8), 8);
-            _fontConfig.Add(new Font("Courier New", 12), 12);
-            _fontConfig.Add(new Font("Courier New", 16), 16);
         }
 
         [CategoryAttribute("数据")]
@@ -177,6 +169,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("趋势图背景颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("背景")]
         public Color BackgdColor
         {
@@ -244,6 +238,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("趋势图坐标字体颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("颜色")]
         public Color FrontColor
         {
@@ -452,7 +448,7 @@ namespace SVControl
             curveBin.yMin = Min;
             curveBin.yMax = Max;
             curveBin.maxTime = Interval;
-            curveBin.font = _fontConfig[_font];
+            curveBin.font = (Byte)_font.Size;
             curveBin.stepTime = Step;
 
             //变量地址

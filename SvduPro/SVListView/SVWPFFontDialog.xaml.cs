@@ -26,9 +26,6 @@ namespace SVControl
 
             List<Font> fontList = new List<Font>()
             {
-                new Font("Courier New", 8),
-                new Font("Courier New", 12),
-                new Font("Courier New", 16),
                 new Font("华文细黑", 8),
                 new Font("华文细黑", 12),
                 new Font("华文细黑", 16)

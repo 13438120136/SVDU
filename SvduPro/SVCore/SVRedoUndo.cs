@@ -68,7 +68,7 @@ namespace SVCore
         /// <summary>
         /// 记录当前操作
         /// </summary>
-        /// <param name="item">当前操作项</param>
+        /// <param name="name">当前操作项</param>
         public void recordOper(SVRedoUndoItem item)
         {
             if (!isRecord)

@@ -95,9 +95,12 @@ namespace SVControl
             this.ForeColor = _attrib.NormalColor;
             this.BackColor = _attrib.NormalBgColor;
             this.IsMoved = !_attrib.Lock;
-            this.Font = _attrib.Font;            
+            this.Font = _attrib.Font;
             double num = 0.0;
-            this.Text = num.ToString(String.Format("f{0}", _attrib.DecNum));
+            if (_attrib.IsExponent)
+                this.Text = num.ToString(String.Format("E{0}", _attrib.DecNum));
+            else
+                this.Text = num.ToString(String.Format("f{0}", _attrib.DecNum));
         }
 
         override public void loadXML(SVXml xml, Boolean isCreate = false)

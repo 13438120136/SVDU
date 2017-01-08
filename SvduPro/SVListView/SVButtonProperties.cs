@@ -85,8 +85,6 @@ namespace SVControl
             }
         }
 
-        //字体的配置
-        Dictionary<Font, Byte> _fontConfig = new Dictionary<Font, Byte>(); 
         //按钮类型配置
         Dictionary<String, Byte> _btnConfig = new Dictionary<String, Byte>();
 
@@ -94,7 +92,7 @@ namespace SVControl
 
         public SVButtonProperties()
         {
-            _font = new Font("Courier New", 8);
+            _font = new Font("华文细黑", 12);
             _rect = new Rectangle(0, 0, 120, 60);
             _text = "Button";
             _fText = "None";
@@ -105,10 +103,6 @@ namespace SVControl
             _btnType = new SVBtnTypeConverter();
             _controlType = "按钮";
 
-            //字体的映射关系
-            _fontConfig.Add(new Font("Courier New", 8), 8);
-            _fontConfig.Add(new Font("Courier New", 12), 12);
-            _fontConfig.Add(new Font("Courier New", 16), 16);
             //
             _btnConfig.Add("页面跳转", 4);
             _btnConfig.Add("开", 5);
@@ -395,6 +389,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("设置按钮上文本颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("颜色")]
         public Color FrontColorground
         {
@@ -404,6 +400,7 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
+
                 Color before = _fgcolor;
                 undoItem.ReDo = () =>
                 {
@@ -532,11 +529,6 @@ namespace SVControl
             }
         }
 
-        public Boolean isValidFont()
-        {
-            return _fontConfig.ContainsKey(_font);
-        }
-
         void copyDestByteArray(byte[] src, byte[] dest)
         {
             int minLen = src.Length > dest.Length ? dest.Length : src.Length;
@@ -571,7 +563,7 @@ namespace SVControl
             btnBin.fMemo = new Byte[SVLimit.BTN_MAX_LEN];
             copyDestByteArray(Encoding.Unicode.GetBytes(FMemo), btnBin.fMemo);
 
-            btnBin.font = _fontConfig[_font];
+            btnBin.font = (Byte)_font.Size;
             //是否有确认窗口
             btnBin.confirm = Comfirm ? (byte)1 : (byte)0;
             //按钮的类型

@@ -21,8 +21,6 @@ namespace SVControl
         String _controlType;
         Boolean _isLock;
 
-        //字体的配置
-        Dictionary<Font, Byte> _fontConfig = new Dictionary<Font, Byte>(); 
         //对齐方式的配置
         Dictionary<String, Byte> _alignConfig = new Dictionary<String, Byte>();
 
@@ -30,7 +28,7 @@ namespace SVControl
 
         public SVLabelProperties()
         {
-            _font = new Font("Courier New", 8);
+            _font = new Font("华文细黑", 12);
             _rect = new Rectangle(0, 0, 120, 60);
             _text = "Text";
             _bgcolor = Color.White;
@@ -40,10 +38,6 @@ namespace SVControl
             _controlType = "文本框";
             _isLock = false;
 
-            //字体的映射关系
-            _fontConfig.Add(new Font("Courier New", 8), 8);
-            _fontConfig.Add(new Font("Courier New", 12), 12);
-            _fontConfig.Add(new Font("Courier New", 16), 16);
             //对齐方式的映射关系
             _alignConfig.Add("左对齐", 0);
             _alignConfig.Add("右对齐", 1);
@@ -140,6 +134,8 @@ namespace SVControl
 
         [CategoryAttribute("外观")]
         [DescriptionAttribute("文本背景显示颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("背景")]
         public Color BackColorground
         {
@@ -204,6 +200,8 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("文本文字颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("颜色")]
         public Color FrontColorground
         {
@@ -365,7 +363,7 @@ namespace SVControl
             areaBin.text = new Byte[SVLimit.TEXT_MAX_LEN];
             copyDestByteArray(Encoding.Unicode.GetBytes(Text), areaBin.text);
 
-            areaBin.font = _fontConfig[_font];
+            areaBin.font = (Byte)_font.Size;
             areaBin.align = _alignConfig[Align];
             areaBin.transparent = Transparent ? (Byte)1 : (Byte)0;
 

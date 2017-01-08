@@ -36,34 +36,25 @@ namespace SVControl
 
         Boolean _isLock;        //是否被锁定
 
-        //字体的配置
-        Dictionary<Font, Byte> _fontConfig = new Dictionary<Font, Byte>();
-
         public UpdateControl UpdateControl;
 
         public SVAnalogProperties()
         {
-            _font = new Font("Courier New", 8);
+            _font = new Font("华文细黑", 12);
             _rect = new Rectangle(0, 0, 120, 40);
-            _normalColor = Color.DodgerBlue;
-            _overMaxClr = Color.Green;
-            _overMinClr = Color.Green;
+            _normalColor = Color.Green;
+            _overMaxClr = Color.Black;
+            _overMinClr = Color.White;
             _normalBgColor = Color.Moccasin;
             _overMaxBgClr = Color.Red;
             _overMinBgClr = Color.Red;
-            _exceptionColor = _normalColor;
-            _exceptionBgColor = _normalBgColor;
+            _exceptionColor = Color.Red;
+            _exceptionBgColor = Color.White;
             _decNum = 1;
             _min = 1;
             _max = 100;
 
             _controlType = "模拟量";
-
-            //字体的映射关系
-            _fontConfig.Add(new Font("Courier New", 8), 8);
-            _fontConfig.Add(new Font("Courier New", 12), 12);
-            _fontConfig.Add(new Font("Courier New", 16), 16);
-
             _isLock = false;
         }
 
@@ -261,7 +252,9 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("出现异常后，字体显示的颜色")]
-        [DisplayName("异常")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [DisplayName("异常颜色")]
         public Color ExceptionColor
         {
             set
@@ -291,6 +284,8 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("出现异常后，背景显示的颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("异常背景")]
         public Color ExceptionBgColor
         {
@@ -321,6 +316,8 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("设置文本正常显示颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("颜色")]
         public Color NormalColor
         {
@@ -351,7 +348,9 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("文本大于最大值,设置显示颜色")]
-        [DisplayName("颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [DisplayName("小于颜色")]
         public Color OverMaxColor
         {
             set
@@ -381,7 +380,9 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("文本小于最小值, 设置显示颜色")]
-        [DisplayName("颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [DisplayName("大于颜色")]
         public Color OverMinColor
         {
             set
@@ -411,6 +412,8 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("设置当前值处于正常范围内的背景颜色")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [DisplayName("背景")]
         public Color NormalBgColor
         {
@@ -441,7 +444,9 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("设置当前值小于最小值正常范围内的背景颜色")]
-        [DisplayName("背景")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [DisplayName("小于背景")]
         public Color OverMinBgColor
         {
             set
@@ -471,7 +476,9 @@ namespace SVControl
         }
 
         [CategoryAttribute("外观"), DescriptionAttribute("设置当前值大于最大值正常范围内的背景颜色")]
-        [DisplayName("背景")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [DisplayName("大于背景")]
         public Color OverMaxBgColor
         {
             set
@@ -622,7 +629,7 @@ namespace SVControl
             analogBin.vMax = Max;
             analogBin.vMin = Min;
 
-            analogBin.font = _fontConfig[_font];
+            analogBin.font = (Byte)_font.Size;
             analogBin.nDecimalNum = DecNum;
             analogBin.enExponent = _isExponent ? (Byte)1 : (Byte)0;
 

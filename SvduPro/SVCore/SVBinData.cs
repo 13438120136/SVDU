@@ -140,7 +140,7 @@ namespace SVCore
         public UInt32 bgClr;            /*AREA的背景颜色*/
         public UInt32 fontClr;          /*AREA的文本颜色*/        
         public UInt16 id;               /*AREA的元素Id*/
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.AREA_MAX_LEN)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TEXT_MAX_LEN)]
         public Byte[] text;            /*AREA的文本*/
         public Byte font;              /*AREA绘制文本时使用的字体*/
         public Byte align;             /*AREA绘制文本时使用的对齐方式*/
