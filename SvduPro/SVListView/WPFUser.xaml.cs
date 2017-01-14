@@ -32,6 +32,9 @@ namespace SVControl
             this.lv.ItemsSource = typeof(Colors).GetProperties();
 
             String file = System.IO.Path.Combine(SVProData.IconPath, "icon.proj");
+            if (!File.Exists(file))
+                return;
+
             SVPixmapElementManage manage = new SVPixmapElementManage();
             manage.loadElementFromFile(file);
             
