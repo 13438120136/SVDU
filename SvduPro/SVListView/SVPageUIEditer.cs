@@ -1,7 +1,7 @@
-﻿using System.Drawing.Design;
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Design;
 using System.Windows.Forms.Design;
-using System.Windows.Forms;
-using System.Windows.Forms.Integration;
 using SVCore;
 
 namespace SVControl
@@ -12,6 +12,28 @@ namespace SVControl
         {
             //从当前对象中获取按钮控件对象
             return UITypeEditorEditStyle.DropDown;
+        }
+
+        public override bool GetPaintValueSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+
+        public override void PaintValue(PaintValueEventArgs e)
+        {
+            SVPageWidget widget = e.Context.Instance as SVPageWidget;
+            if (widget.Attrib.BackGroundType == 0)
+            {
+                SolidBrush brush = new SolidBrush(widget.Attrib.BackColor);
+                Rectangle rect = new Rectangle(1, 1, 19, 17);
+
+                e.Graphics.FillRectangle(brush, rect);
+            }
+            else
+            {
+                Rectangle rect = new Rectangle(1, 1, 19, 17);
+                e.Graphics.DrawImage(widget.Attrib.PicIconData.bitmap(), rect);
+            }
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
