@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using SVCore;
 using System.Windows.Media.Imaging;
-using System.Windows.Data;
-using System.Globalization;
+using SVCore;
 
 namespace SVControl
 {

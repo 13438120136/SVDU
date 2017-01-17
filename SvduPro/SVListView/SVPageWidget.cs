@@ -767,28 +767,28 @@ namespace SVControl
             PageBin pageBin = pageArrayBin.pageArray[nCount];
 
             pageBin.id = _attrib.id;
-            pageBin.bgSet = 0;
+            pageBin.bgSet = _attrib.BackGroundType;
 
             pageBin.bgClr = (UInt32)_attrib.BackColor.ToArgb();
             pageBin.index = (UInt16)pageArrayBin.pageCount;
-            pageBin.pointAlign = _attrib.IsAlignment;           
+            pageBin.pointAlign = _attrib.IsAlignment;
 
-            var address = _attrib.PicIconData.bitmap24Data(this.Width, this.Height);
-            if (address != null)
+            if (pageBin.bgSet == 1)
             {
-                //设置标志
-                pageBin.bgSet = 1;
-
-                //背景图标位置
-                if (_backGroundPicData.ContainsKey(_attrib.PicIconData.ShowName))
+                var address = _attrib.PicIconData.bitmap24Data(this.Width, this.Height);
+                if (address != null)
                 {
-                    pageBin.bgClr = _backGroundPicData[_attrib.PicIconData.ShowName];
-                }
-                else
-                {
-                    pageBin.bgClr = (UInt32)serialize.ToArray().Length;
-                    _backGroundPicData.Add(_attrib.PicIconData.ShowName, pageBin.bgClr);
-                    serialize.pack(address);
+                    //背景图标位置
+                    if (_backGroundPicData.ContainsKey(_attrib.PicIconData.ShowName))
+                    {
+                        pageBin.bgClr = _backGroundPicData[_attrib.PicIconData.ShowName];
+                    }
+                    else
+                    {
+                        pageBin.bgClr = (UInt32)serialize.ToArray().Length;
+                        _backGroundPicData.Add(_attrib.PicIconData.ShowName, pageBin.bgClr);
+                        serialize.pack(address);
+                    }
                 }
             }
 
