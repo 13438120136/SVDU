@@ -1092,9 +1092,6 @@ namespace SvduPro
             var result = msgBox.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                if (File.Exists(widget.pageFileName))
-                    File.Delete(widget.pageFileName);
-
                 removePage(pageNode);
             }
         }
