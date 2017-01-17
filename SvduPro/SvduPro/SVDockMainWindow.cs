@@ -642,6 +642,7 @@ namespace SvduPro
                         continue ;
 
                     window.refreshPropertyToPanel();
+                    this._propertyGrid.Refresh();
                 }
             });
         }

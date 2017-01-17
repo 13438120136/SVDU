@@ -218,8 +218,8 @@ namespace SVControl
                 return _min;
             }
         }
-
-        [CategoryAttribute("外观"), DescriptionAttribute("设置文本显示字体")]
+        [CategoryAttribute("字体与尺寸")]
+        [DescriptionAttribute("设置文本显示字体")]
         [DisplayName("字体")]
         [TypeConverter(typeof(SVFontTypeConverter))]
         [EditorAttribute(typeof(SVFontTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
@@ -507,7 +507,8 @@ namespace SVControl
             }
         }
 
-        [CategoryAttribute("外观"), DescriptionAttribute("模拟量控件的尺寸")]
+        [CategoryAttribute("字体与尺寸")]
+        [DescriptionAttribute("模拟量控件的尺寸")]
         [DisplayName("位置")]
         public Rectangle Rect
         {

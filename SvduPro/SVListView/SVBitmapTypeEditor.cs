@@ -1,7 +1,8 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Drawing.Design;
 using System.Windows.Forms.Design;
 using SVCore;
+using System.Drawing;
 
 namespace SVControl
 {
@@ -17,12 +18,27 @@ namespace SVControl
             return UITypeEditorEditStyle.DropDown;
         }
 
+        public override bool GetPaintValueSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+
+        public override void PaintValue(PaintValueEventArgs e)
+        {
+            SVBitmap bitmap = e.Value as SVBitmap;
+            if (bitmap == null)
+                return ;
+
+            Rectangle rect = new Rectangle(1, 1, 19, 17);
+            e.Graphics.DrawImage(bitmap.bitmap(), rect);
+        }
+
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            SVIcon icon = context.Instance as SVIcon;
-            if (icon == null)
-                return null;
+            SVBitmap bitmap = value as SVBitmap;
+            if (bitmap == null)
+                return value;
 
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
@@ -32,12 +48,13 @@ namespace SVControl
                 picDialog.Height = 300;
 
                 SVWPfIconPic iconPicture = new SVWPfIconPic();
-                iconPicture.image.DataContext = icon.Attrib.PicIconData.ShowName;
-                iconPicture.DataContext = icon;
+                iconPicture.image.DataContext = bitmap.ShowName;
+                //iconPicture.DataContext = icon;
                 picDialog.addContent(iconPicture);
                 edSvc.DropDownControl(picDialog);
-                icon.refreshPropertyToPanel();
-                icon.RedoUndo.operChanged();
+                value = iconPicture.resultBitmap();
+                //icon.refreshPropertyToPanel();
+                //icon.RedoUndo.operChanged();
 
                 return value;
             }

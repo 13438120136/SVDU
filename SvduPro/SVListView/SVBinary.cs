@@ -103,15 +103,7 @@ namespace SVControl
             if (Attrib.Type == 0)
                 this.Text = Attrib.CustomFlaseText;
             else
-            {
-                String file = Path.Combine(SVProData.IconPath, Attrib.CustomFlaseText);
-                if (File.Exists(file))
-                {
-                    SVPixmapFile pixmapFile = new SVPixmapFile();
-                    pixmapFile.readPixmapFile(file);
-                    this.BackgroundImage = pixmapFile.getBitmapFromData();
-                }
-            }
+                this.BackgroundImage = Attrib.FlasePicture.bitmap();
         }
 
         override public void loadXML(SVXml xml, Boolean isCreate = false)
@@ -138,6 +130,14 @@ namespace SVControl
             _attrib.CustomTrueText = binary.GetAttribute("CustomTrueText");
             _attrib.CustomFlaseText = binary.GetAttribute("CustomFalseText");
             _attrib.CustomExceptionText = binary.GetAttribute("CustomExText");
+
+            ///图片
+            _attrib.TruePicture.ImageFileName = binary.GetAttribute("TImageFile");
+            _attrib.TruePicture.ShowName = binary.GetAttribute("TImageShowName");
+            _attrib.FlasePicture.ImageFileName = binary.GetAttribute("FImageFile");
+            _attrib.FlasePicture.ShowName = binary.GetAttribute("FImageShowName");
+            _attrib.ExPicture.ImageFileName = binary.GetAttribute("EImageFile");
+            _attrib.ExPicture.ShowName = binary.GetAttribute("EImageShowName");
             
             _attrib.TrueColor = Color.FromArgb(int.Parse(binary.GetAttribute("TrueColor")));
             _attrib.TrueBgColor = Color.FromArgb(int.Parse(binary.GetAttribute("TrueBgColor")));
@@ -170,6 +170,14 @@ namespace SVControl
             binary.SetAttribute("CustomTrueText", _attrib.CustomTrueText);
             binary.SetAttribute("CustomFalseText", _attrib.CustomFlaseText);
             binary.SetAttribute("CustomExText", _attrib.CustomExceptionText);
+
+            ///图片
+            binary.SetAttribute("TImageFile", _attrib.TruePicture.ImageFileName);
+            binary.SetAttribute("TImageShowName", _attrib.TruePicture.ShowName);
+            binary.SetAttribute("FImageFile", _attrib.FlasePicture.ImageFileName);
+            binary.SetAttribute("FImageShowName", _attrib.FlasePicture.ShowName);
+            binary.SetAttribute("EImageFile", _attrib.ExPicture.ImageFileName);
+            binary.SetAttribute("EImageShowName", _attrib.ExPicture.ShowName);
 
             binary.SetAttribute("TrueColor", _attrib.TrueColor.ToArgb().ToString());
             binary.SetAttribute("TrueBgColor", _attrib.TrueBgColor.ToArgb().ToString());
@@ -208,25 +216,19 @@ namespace SVControl
 
             if (Attrib.Type == 1)
             {
-                SVBitmap trueBitmap = new SVBitmap();
-                trueBitmap.ImageFileName = Attrib.CustomTrueText;
-                if (trueBitmap.bitmap() == null)
+                if (Attrib.TruePicture.bitmap() == null)
                 {
                     String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 为真的图片未设置，或者图元数据有误！", pageName, Attrib.ID);
                     throw new SVCheckValidException(msg);
                 }
 
-                SVBitmap falseBitmap = new SVBitmap();
-                falseBitmap.ImageFileName = Attrib.CustomFlaseText;
-                if (falseBitmap.bitmap() == null)
+                if (Attrib.FlasePicture.bitmap() == null)
                 {
                     String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 为假的图片未设置，或者图元数据有误！", pageName, Attrib.ID);
                     throw new SVCheckValidException(msg);
                 }
 
-                SVBitmap exBitmap = new SVBitmap();
-                exBitmap.ImageFileName = Attrib.CustomExceptionText;
-                if (exBitmap.bitmap() == null)
+                if (Attrib.ExPicture.bitmap() == null)
                 {
                     String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 异常图片未设置，或者图元数据有误！", pageName, Attrib.ID);
                     throw new SVCheckValidException(msg);
