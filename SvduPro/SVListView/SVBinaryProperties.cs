@@ -631,9 +631,7 @@ namespace SVControl
             else ///存放与背景图片有关的信息
             {
                 ///为真的图片地址
-                SVBitmap trueBitmap = new SVBitmap();
-                trueBitmap.ImageFileName = this.CustomTrueText;
-                var trueAddress = trueBitmap.bitmap8Data(Rect.Width, Rect.Height);
+                var trueAddress = this.TruePicture.bitmap8Data(Rect.Width, Rect.Height);
                 if (trueAddress != null)
                 {
                     binaryBin.trueClr = (UInt32)serialize.ToArray().Length;
@@ -641,9 +639,7 @@ namespace SVControl
                 }
 
                 ///为假的图片地址
-                SVBitmap falseBitmap = new SVBitmap();
-                falseBitmap.ImageFileName = this.CustomFlaseText;
-                var falseAddress = falseBitmap.bitmap8Data(Rect.Width, Rect.Height);
+                var falseAddress = this.FlasePicture.bitmap8Data(Rect.Width, Rect.Height);
                 if (falseAddress != null)
                 {
                     binaryBin.falseClr = (UInt32)serialize.ToArray().Length;
@@ -651,9 +647,7 @@ namespace SVControl
                 }
 
                 ///异常的图片地址
-                SVBitmap exBitmap = new SVBitmap();
-                exBitmap.ImageFileName = this.CustomExceptionText;
-                var exAddress = exBitmap.bitmap8Data(Rect.Width, Rect.Height);
+                var exAddress = this.ExPicture.bitmap8Data(Rect.Width, Rect.Height);
                 if (exAddress != null)
                 {
                     binaryBin.vinfoInvalid = (UInt32)serialize.ToArray().Length;
