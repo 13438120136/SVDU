@@ -24,6 +24,8 @@ namespace SVCore
             InitializeComponent();
 
             String file = System.IO.Path.Combine(SVProData.IconPath, "icon.proj");
+            if (!File.Exists(file))
+                return;
             _picManager.loadElementFromFile(file);
             _iconData = _picManager.getData();
 

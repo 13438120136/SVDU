@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="SVControl.SVWPFBinaryTypeDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"  
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="ComboBoxItems" Type="sys:String">
+                <sys:String>文本显示</sys:String>
+                <sys:String>图片显示</sys:String>
+            </x:Array>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>        
+        <ListView Name="listView" ItemsSource="{StaticResource ComboBoxItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="10,2,0,2" Name="textBlock" Text="{Binding}" FontSize="16"></TextBlock>
+
+                    <DataTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="Red" TargetName="textBlock"/>
+                        </Trigger>
+                    </DataTemplate.Triggers>                    
+                </DataTemplate>                
+            </ListView.ItemTemplate>
+
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FFA7A9AB" Offset="1" />
+                </LinearGradientBrush>
+            </ListView.Background>
+        </ListView>
+    </Grid>
+</UserControl>

@@ -2,13 +2,14 @@
 using System.Drawing.Design;
 using System.Windows.Forms.Design;
 using SVCore;
-using System.Drawing;
+using System;
+
 
 namespace SVControl
 {
-    public class SVBitmapTypeEditor : UITypeEditor
+    public class SVLockUITypeEditor : UITypeEditor
     {
-        /// <summary>
+                /// <summary>
         /// 选择图片的属性类
         /// </summary>
         /// <param Name="context"></param>
@@ -20,41 +21,28 @@ namespace SVControl
 
         public override bool GetPaintValueSupported(ITypeDescriptorContext context)
         {
-            return true;
+            return false;
         }
 
         public override void PaintValue(PaintValueEventArgs e)
         {
-            SVBitmap bitmap = e.Value as SVBitmap;
-            if (bitmap == null)
-                return ;
-
-            Rectangle rect = new Rectangle(1, 1, 19, 17);
-            e.Graphics.DrawImage(bitmap.bitmap(), rect);
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            SVBitmap bitmap = value as SVBitmap;
-            if (bitmap == null)
-                return value;
-
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
                 SVWpfControl picDialog = new SVWpfControl();
-                picDialog.Width = 300;
-                picDialog.Height = 300;
+                picDialog.Width = 40;
+                picDialog.Height = 110;
 
-                SVWPfIconPic iconPicture = new SVWPfIconPic();
-                iconPicture.image.DataContext = bitmap.ShowName;
-                //iconPicture.DataContext = icon;
-                picDialog.addContent(iconPicture);
+                SVWPFLockDialog lockDialog = new SVWPFLockDialog();
+                lockDialog.setChecked((Boolean)value);
+                picDialog.addContent(lockDialog);
                 edSvc.DropDownControl(picDialog);
-                value = iconPicture.resultBitmap();
-                //icon.refreshPropertyToPanel();
-                //icon.RedoUndo.operChanged();
+                value = lockDialog.getChecked();
 
                 return value;
             }

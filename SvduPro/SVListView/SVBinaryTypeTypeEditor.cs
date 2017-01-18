@@ -1,5 +1,7 @@
-﻿using System.Drawing.Design;
+﻿using System;
+using System.Drawing.Design;
 using System.Windows.Forms.Design;
+using SVCore;
 
 namespace SVControl
 {
@@ -12,27 +14,26 @@ namespace SVControl
         /// <returns></returns>
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
-            return UITypeEditorEditStyle.Modal;
+            return UITypeEditorEditStyle.DropDown;
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            SVBinary binary = context.Instance as SVBinary;
-            if (binary == null)
-                return value;
-
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                SVBinaryTypeWindow window = new SVBinaryTypeWindow(binary);
-                if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    SVPageWidget widget = binary.Parent as SVPageWidget;
-                    widget.RedoUndo.operChanged();
+                SVWpfControl textDialog = new SVWpfControl();
+                textDialog.Width = 100;
+                textDialog.Height = 40;
 
-                    return binary.Attrib.Type;
-                }
+                SVWPFBinaryTypeDialog dialog = new SVWPFBinaryTypeDialog();
+                textDialog.addContent(dialog);
+                edSvc.DropDownControl(textDialog);
+                if (dialog.listView.SelectedIndex != -1)
+                    value = (Byte)dialog.listView.SelectedIndex;
+
+                return value;
             }
 
             return value;

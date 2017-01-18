@@ -171,6 +171,7 @@
       <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="SVFontTypeConverter.cs" />
+    <Compile Include="SVLockUITypeEditor.cs" />
     <Compile Include="SVPageBackGroundTypeConverter.cs" />
     <Compile Include="SVPageProperties.cs" />
     <Compile Include="SVPageSelectWindow.cs">
@@ -206,6 +207,9 @@
     </Compile>
     <Compile Include="SVWPFAlignDialog.xaml.cs">
       <DependentUpon>SVWPFAlignDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SVWPFBinaryTypeDialog.xaml.cs">
+      <DependentUpon>SVWPFBinaryTypeDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="SVWPFBtnMemoEdit.xaml.cs">
       <DependentUpon>SVWPFBtnMemoEdit.xaml</DependentUpon>
@@ -343,6 +347,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="SVWPFAlignDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFBinaryTypeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

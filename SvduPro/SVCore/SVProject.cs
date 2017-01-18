@@ -222,8 +222,8 @@ namespace SVCore
             //得到页面保存文件的实际路径
             String tmpPath = Path.Combine(".", SVProData.ProName);
             ///获取当前时间，为了避免页面文件重复
-            String timeString = DateTime.Now.ToFileTime().ToString();
-            String file = Path.Combine(tmpPath, name + timeString + ".page");
+            ///String timeString = DateTime.Now.ToFileTime().ToString();
+            String file = Path.Combine(tmpPath, name + ".page");
             return file;
         }
 
@@ -351,7 +351,10 @@ namespace SVCore
                 {
                     var pageValue = value[oldName];
                     value.Remove(oldName);
-                    value.Add(newName, pageValue);
+
+                    String newValue = Path.GetDirectoryName(pageValue) + Path.DirectorySeparatorChar + newName + ".page";
+                    File.Move(pageValue, newValue);
+                    value.Add(newName, newValue);
                 }
             }
         }
@@ -365,7 +368,11 @@ namespace SVCore
             foreach (var item in _pageDic)
             {
                 if (item.Value.ContainsKey(name))
+                {
+                    if (File.Exists(item.Value[name]))
+                        File.Delete(item.Value[name]);
                     item.Value.Remove(name);
+                }
             }
         }
 

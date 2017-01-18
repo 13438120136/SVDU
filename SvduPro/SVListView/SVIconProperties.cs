@@ -37,6 +37,7 @@ namespace SVControl
         }
 
         [CategoryAttribute("属性")]
+        [EditorAttribute(typeof(SVLockUITypeEditor), typeof(UITypeEditor))]
         [DescriptionAttribute("是否锁定当前控件?\nTrue锁定,False不锁定")]
         [DisplayName("锁定")]
         public Boolean Lock

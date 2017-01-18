@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using SVCore;
 using System.Windows.Media.Imaging;
-using System.Windows.Data;
-using System.Globalization;
+using SVCore;
 
 namespace SVControl
 {
@@ -17,6 +15,7 @@ namespace SVControl
         //图片的分类及对应的图片名称列表
         Dictionary<String, List<String>> _iconData = null;
         SVPixmapElementManage _picManager = new SVPixmapElementManage();
+        SVBitmap _resultBitmap = new SVBitmap();
 
         public SVWPfIconPic()
         {
@@ -27,6 +26,11 @@ namespace SVControl
             _iconData = _picManager.getData();
 
             this.comboboxType.ItemsSource = _iconData.Keys;
+        }
+
+        public SVBitmap resultBitmap()
+        {
+            return _resultBitmap;
         }
 
         private void comboboxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,9 +67,11 @@ namespace SVControl
             BitmapImage source = BitmapToBitmapImage(bitmap);
             this.image.Source = source;
 
-            SVIcon icon = this.DataContext as SVIcon;
-            icon.Attrib.PicIconData.ShowName = text;
-            icon.Attrib.PicIconData.ImageFileName = _picManager.getFilePathFromName(text);
+            _resultBitmap.ShowName = text;
+            _resultBitmap.ImageFileName = _picManager.getFilePathFromName(text);
+            //SVIcon icon = this.DataContext as SVIcon;
+            //icon.Attrib.PicIconData.ShowName = text;
+            //icon.Attrib.PicIconData.ImageFileName = _picManager.getFilePathFromName(text);
         }
 
 
