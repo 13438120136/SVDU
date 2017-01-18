@@ -225,6 +225,9 @@
     <Compile Include="SVWPFLabelTextEdit.xaml.cs">
       <DependentUpon>SVWPFLabelTextEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SVWPFVariableDialog.xaml.cs">
+      <DependentUpon>SVWPFVariableDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPFUser.xaml.cs">
       <DependentUpon>WPFUser.xaml</DependentUpon>
     </Compile>
@@ -364,6 +367,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SVWPFLabelTextEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFVariableDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

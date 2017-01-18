@@ -15,29 +15,41 @@ namespace SVControl
         /// <returns></returns>
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
-            return UITypeEditorEditStyle.Modal;
+            return UITypeEditorEditStyle.DropDown;
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-
-            SVBinary bin = context.Instance as SVBinary;
-            if (bin == null)
-                return value;
-
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                SVVarWindow window = new SVVarWindow();
-                window.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
-                if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    bin.Attrib.VarType = window.getVarType();
-                    bin.RedoUndo.operChanged();
-                    return window.varText();
-                }
+                SVWpfControl variableDialog = new SVWpfControl();
+                variableDialog.Width = 260;
+                variableDialog.Height = 300;
+
+                SVWPFVariableDialog dialog = new SVWPFVariableDialog();
+                variableDialog.addContent(dialog);
+
+                edSvc.DropDownControl(variableDialog);
             }
+
+            //SVBinary bin = context.Instance as SVBinary;
+            //if (bin == null)
+            //    return value;
+
+            //IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            //if (edSvc != null)
+            //{
+            //    SVVarWindow window = new SVVarWindow();
+            //    window.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
+            //    if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
+            //    {
+            //        bin.Attrib.VarType = window.getVarType();
+            //        bin.RedoUndo.operChanged();
+            //        return window.varText();
+            //    }
+            //}
 
             return value;
         }
