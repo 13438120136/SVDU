@@ -79,7 +79,7 @@ namespace SVControl
 
         [CategoryAttribute("数据")]
         [DisplayName("步进")]
-        [DescriptionAttribute("设置可切换的步进值, 范围1-600")]
+        [DescriptionAttribute("设置可切换的步进值, 范围1-600，单位：秒")]
         public UInt16 Step
         {
             get { return _step; }
