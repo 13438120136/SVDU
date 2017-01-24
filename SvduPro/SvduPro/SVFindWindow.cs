@@ -122,7 +122,7 @@ namespace SvduPro
                             if (panel is SVAnalog)
                             {
                                 SVAnalog analog = (SVAnalog)panel;
-                                String str = analog.Attrib.Var;
+                                String str = analog.Attrib.Variable.VarName;
                                 outputFindResult(analog, str);
                             }
 
