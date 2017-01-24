@@ -34,11 +34,13 @@ namespace SVControl
         SVBitmap _exPicture;         //异常图片
 
         Rectangle _rect;    //尺寸
-        String _var;        //关联的变量
-        Byte _varType;      //变量类型
+        //String _var;        //关联的变量
+        //Byte _varType;      //变量类型
         Byte _type;       //显示的格式
         String _controlType;   //控件类型
         Boolean _isLock;
+
+        SVVarDefine _var;  //变量
 
         public UpdateControl UpdateControl;
 
@@ -57,10 +59,22 @@ namespace SVControl
             _customFlaseText = "False";
             _controlType = "开关量";
             _isLock = false;
+            _var = new SVVarDefine();
 
             _truePicture = new SVBitmap();
             _flasePicture = new SVBitmap();
             _exPicture = new SVBitmap();
+        }
+
+        [CategoryAttribute("数据")]
+        [DescriptionAttribute("关联的开关量变量, I:表示接收区 O:表示发送区 S:表示系统区")]
+        [DisplayName("关联变量")]
+        [TypeConverter(typeof(SVDefineVarConverter))]
+        [EditorAttribute(typeof(SVBinaryVarTypeEditor), typeof(UITypeEditor))]
+        public SVVarDefine Variable
+        {
+            get { return _var; }
+            set { _var = value; }
         }
 
         /// <summary>
@@ -141,12 +155,12 @@ namespace SVControl
             set { _customFlaseText = value; }
         }
 
-        [Browsable(false)]
-        public Byte VarType
-        {
-            get { return _varType; }
-            set { _varType = value; }
-        }
+        //[Browsable(false)]
+        //public Byte VarType
+        //{
+        //    get { return _varType; }
+        //    set { _varType = value; }
+        //}
 
         [CategoryAttribute("属性")]
         [EditorAttribute(typeof(SVLockUITypeEditor), typeof(UITypeEditor))]
@@ -208,41 +222,41 @@ namespace SVControl
             }
         }
 
-        [CategoryAttribute("数据")]
-        [DescriptionAttribute("关联的开关量变量")]
-        [DisplayName("变量")]
-        [EditorAttribute(typeof(SVBinaryVarTypeEditor), typeof(UITypeEditor))]
-        public String Var
-        {
-            get { return _var; }
-            set 
-            {
-                if (_var == value)
-                    return;
+        //[CategoryAttribute("数据")]
+        //[DescriptionAttribute("关联的开关量变量")]
+        //[DisplayName("变量")]
+        //[EditorAttribute(typeof(SVBinaryVarTypeEditor), typeof(UITypeEditor))]
+        //public String Var
+        //{
+        //    get { return _var; }
+        //    set 
+        //    {
+        //        if (_var == value)
+        //            return;
 
-                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+        //        SVRedoUndoItem undoItem = new SVRedoUndoItem();
 
-                if (UpdateControl != null)
-                    UpdateControl(undoItem);
-                String before = _var;
-                undoItem.ReDo = () =>
-                {
-                    _var = value;
-                };
-                undoItem.UnDo = () =>
-                {
-                    _var = before;
-                };
+        //        if (UpdateControl != null)
+        //            UpdateControl(undoItem);
+        //        String before = _var;
+        //        undoItem.ReDo = () =>
+        //        {
+        //            _var = value;
+        //        };
+        //        undoItem.UnDo = () =>
+        //        {
+        //            _var = before;
+        //        };
 
-                _var = value; 
-            }
-        }
+        //        _var = value; 
+        //    }
+        //}
         
         [CategoryAttribute("数据")]
         [TypeConverter(typeof(SVBinaryTypeConverter))]
         [DescriptionAttribute("当前开关量的具体含义, 0：表示文本显示， 1：表示图片方式显示")]
         [EditorAttribute(typeof(SVBinaryTypeTypeEditor), typeof(UITypeEditor))]
-        [DisplayName("类型")]
+        [DisplayName("背景显示类型")]
         public Byte Type
         {
             set
@@ -659,10 +673,10 @@ namespace SVControl
             ///根据名称来获取地址
             var varInstance = SVVaribleType.instance();
             varInstance.loadVariableData();
-            varInstance.setDataType(_varType);
+            varInstance.setDataType(_var.VarType);
 
-            binaryBin.addrOffset = varInstance.strToAddress(_var, _varType);
-            binaryBin.varType = (Byte)varInstance.strToType(_var);
+            binaryBin.addrOffset = varInstance.strToAddress(_var.VarName, _var.VarType);
+            binaryBin.varType = (Byte)varInstance.strToType(_var.VarName);
 
             pageArrayBin.pageArray[pageCount].m_binary[binaryCount] = binaryBin;
         }

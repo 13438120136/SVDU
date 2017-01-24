@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="SVControl.SVWPFVariableDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SVControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <local:VarTypeConverter x:Key="VarTypeConverter"></local:VarTypeConverter>
+        
+        <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="#F2F2F2" />
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <!--隔行换色-->
+                <Trigger Property="AlternationIndex" Value="0" >
+                    <Setter Property="Background" Value="#e7e7e7" />
+                </Trigger>
+                <Trigger Property="AlternationIndex" Value="1" >
+                    <Setter Property="Background" Value="#f2f2f2" />
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF14A7C1"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="#FF14A7C1" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FF6B8E95" Offset="0"/>
+                        <GradientStop Color="#FF14A7C1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <ControlTemplate x:Key="TabHeaderStyle" TargetType="TabItem">
+            <Grid>
+                <Border Name="Border" Background="#FFD4D0C8" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="10, 10, 0, 0">
+                    <ContentPresenter x:Name="ContentSite" ContentSource="Header" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8" RecognizesAccessKey="True"/>
+                </Border>
+            </Grid>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter TargetName="Border" Property="Background" Value="#FF80C7C7" />
+                </Trigger>
+                <!--<Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="#FF80C7C7"/>
+                </Trigger>-->
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="当前变量" Margin="3">
+            <StackPanel Orientation="Horizontal" Background="#FFE5F2F2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="变量：" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"></Label>
+                    <TextBlock Grid.Column="1" Name="name" Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0,0,0"></TextBlock>
+
+                    <Label Grid.Column="2" Content="类型：" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,0,0"></Label>
+                    <TextBlock  Grid.Column="3" Name="type" Text="{Binding Converter={StaticResource VarTypeConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0,0,0"></TextBlock>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="变量选择" Margin="3"  Grid.Row="1" Padding="6">
+            <TabControl>
+
+                <TabItem Header="接收区" Template="{StaticResource TabHeaderStyle}">                  
+                    
+                    <DataGrid Name="inputDataGrid"  AutoGenerateColumns="False" AlternationCount="2" SelectionMode="Single" RowStyle="{StaticResource DataGridRowStyle}" CellStyle="{StaticResource ResourceKey=DataGridCellStyle}" ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}" SelectionChanged="inputDataGrid_SelectionChanged" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="区块名称" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding ioblockname}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="地址" Width="60">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding BusAddress_RE}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="类型" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding valueType}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+
+                <TabItem Header="发送区" Template="{StaticResource TabHeaderStyle}">
+
+                    <DataGrid Name="outputDataGrid" AutoGenerateColumns="False" AlternationCount="2" SelectionMode="Single" RowStyle="{StaticResource DataGridRowStyle}" CellStyle="{StaticResource ResourceKey=DataGridCellStyle}" ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}" SelectionChanged="outputDataGrid_SelectionChanged" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="区块名称" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding ioblockname}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="地址" Width="60">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding BusAddress_SEND}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="类型" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding valueType}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+
+                <TabItem Header="系统区" Template="{StaticResource TabHeaderStyle}">
+
+                    <DataGrid Name="systemDataGrid" AutoGenerateColumns="False" AlternationCount="2" SelectionMode="Single" RowStyle="{StaticResource DataGridRowStyle}" CellStyle="{StaticResource ResourceKey=DataGridCellStyle}" ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}" SelectionChanged="systemDataGrid_SelectionChanged" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="区块名称" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding blockName}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="地址" Width="60">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding varAddress}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="类型" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding varType}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+    </Grid>
+</UserControl>

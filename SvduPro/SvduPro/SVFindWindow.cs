@@ -130,7 +130,7 @@ namespace SvduPro
                             if (panel is SVBinary)
                             {
                                 SVBinary binary = (SVBinary)panel;
-                                String str = binary.Attrib.Var;
+                                String str = binary.Attrib.Variable.VarName;
                                 outputFindResult(binary, str);
                             }
 

@@ -240,4 +240,21 @@ namespace SVCore
             this.Type = type;
         }
     }
+
+    /// <summary>
+    /// 一个变量的定义类
+    /// </summary>
+    public class SVVarDefine
+    {
+        /// <summary>
+        /// 变量名称
+        /// </summary>
+        public String VarName { get; set; }
+
+        /// <summary>
+        /// 变量类型,表示接收区、发送区、系统区类型
+        /// 值分别为0,1,2
+        /// </summary>
+        public Byte VarType { get; set; }
+    }
 }

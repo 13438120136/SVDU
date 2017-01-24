@@ -123,8 +123,8 @@ namespace SVControl
             _attrib.Rect = new Rectangle(x, y, width, height);
 
             ///读取变量
-            _attrib.Var = binary.GetAttribute("Variable");
-            _attrib.VarType = Byte.Parse(binary.GetAttribute("VarialeType"));
+            _attrib.Variable.VarName = binary.GetAttribute("Variable");
+            _attrib.Variable.VarType = Byte.Parse(binary.GetAttribute("VarialeType"));
 
             ///读取自定义名称
             _attrib.CustomTrueText = binary.GetAttribute("CustomTrueText");
@@ -163,8 +163,8 @@ namespace SVControl
             binary.SetAttribute("Height", _attrib.Rect.Height.ToString());
 
             ///写入变量
-            binary.SetAttribute("Variable", _attrib.Var);
-            binary.SetAttribute("VarialeType", _attrib.VarType.ToString());
+            binary.SetAttribute("Variable", _attrib.Variable.VarName);
+            binary.SetAttribute("VarialeType", _attrib.Variable.VarType.ToString());
 
             ///写入自定义名称
             binary.SetAttribute("CustomTrueText", _attrib.CustomTrueText);
