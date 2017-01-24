@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using SVCore;
 using System.Windows.Data;
 using System.Globalization;
+using System.Text;
 
 namespace SVControl
 {
@@ -13,17 +14,54 @@ namespace SVControl
     /// </summary>
     public partial class SVWPFVariableDialog : UserControl
     {
+        private DataTable _systemDataTable = new DataTable();
+        private DataTable _dataTable;
+
         public SVWPFVariableDialog()
         {
             InitializeComponent();
 
             var instance = SVVaribleType.instance();
-            var dataTable = instance.loadVariableData();
+            _dataTable = instance.loadVariableData();
 
-            DataTable dd = dataTable;
-            this.inputDataGrid.ItemsSource = dataTable.DefaultView;
-            this.outputDataGrid.ItemsSource = dataTable.DefaultView;
+            this.inputDataGrid.ItemsSource = _dataTable.DefaultView;
+            this.outputDataGrid.ItemsSource = _dataTable.DefaultView;
             initSysTable();
+        }
+
+        /// <summary>
+        /// 设置变量类型过滤条件
+        /// 
+        /// 条件设置如下值：
+        /// 
+        /// INT, INT_VAR
+        /// SHORT_INT, SHORTINT_VAR
+        /// REAL, REAL_VAR
+        /// BOOL, BOOL_VAR
+        /// 
+        /// </summary>
+        /// <param Name="filters">过滤条件</param>
+        public void setFilter(List<String> filters)
+        {
+            if (filters == null || filters.Count == 0)
+                return;
+
+            DataView dataView = _dataTable.DefaultView;
+
+            StringBuilder strBuilder = new StringBuilder();
+            Int32 nCount = filters.Count;
+            for (int i = 0; i < nCount; i++)
+            {
+                strBuilder.Append(String.Format("valueType = '{0}'", filters[i]));
+                if (i != (nCount - 1))
+                    strBuilder.Append(" or ");
+            }
+
+            dataView.RowFilter = strBuilder.ToString();
+            _systemDataTable.DefaultView.RowFilter = strBuilder.ToString();
+            this.inputDataGrid.ItemsSource = _dataTable.DefaultView;
+            this.outputDataGrid.ItemsSource = _dataTable.DefaultView;
+            this.systemDataGrid.ItemsSource = _systemDataTable.DefaultView;
         }
 
         private void inputDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,12 +80,10 @@ namespace SVControl
         /// </summary>
         private void initSysTable()
         {
-            DataTable systemDataTable = new DataTable();
-
             ///添加表头
-            systemDataTable.Columns.Add("blockName", typeof(String));
-            systemDataTable.Columns.Add("varAddress", typeof(UInt32));
-            systemDataTable.Columns.Add("varType", typeof(String));
+            _systemDataTable.Columns.Add("blockName", typeof(String));
+            _systemDataTable.Columns.Add("varAddress", typeof(UInt32));
+            _systemDataTable.Columns.Add("valueType", typeof(String));
 
             ///表格中的内容
             List<SVVarNode> vList = new List<SVVarNode>() 
@@ -94,14 +130,14 @@ namespace SVControl
 
             foreach (var item in vList)
             {
-                DataRow dr = systemDataTable.NewRow();
+                DataRow dr = _systemDataTable.NewRow();
                 dr["blockName"] = item.Name;
                 dr["varAddress"] = item.Address;
-                dr["varType"] = item.Type;
-                systemDataTable.Rows.Add(dr);
+                dr["valueType"] = item.Type;
+                _systemDataTable.Rows.Add(dr);
             }
 
-            this.systemDataGrid.ItemsSource = systemDataTable.DefaultView;
+            this.systemDataGrid.ItemsSource = _systemDataTable.DefaultView;
         }
 
         private void outputDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

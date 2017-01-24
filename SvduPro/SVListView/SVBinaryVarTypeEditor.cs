@@ -72,6 +72,7 @@ namespace SVControl
                 variableDialog.Height = 400;
 
                 SVWPFVariableDialog dialog = new SVWPFVariableDialog();
+                dialog.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
                 dialog.name.DataContext = variable.VarName;
                 dialog.type.DataContext = variable.VarType;
                 variableDialog.addContent(dialog);
@@ -81,23 +82,6 @@ namespace SVControl
                 variable.VarName = (String)dialog.name.DataContext;
                 variable.VarType = Convert.ToByte(dialog.type.DataContext);
             }
-
-            //SVBinary bin = context.Instance as SVBinary;
-            //if (bin == null)
-            //    return value;
-
-            //IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
-            //if (edSvc != null)
-            //{
-            //    SVVarWindow window = new SVVarWindow();
-            //    window.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
-            //    if (edSvc.ShowDialog(window) == System.Windows.Forms.DialogResult.Yes)
-            //    {
-            //        bin.Attrib.VarType = window.getVarType();
-            //        bin.RedoUndo.operChanged();
-            //        return window.varText();
-            //    }
-            //}
 
             return value;
         }

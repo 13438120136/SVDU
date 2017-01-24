@@ -28,8 +28,7 @@ namespace SVControl
 
         Byte _decNum;           //小数点后面位数
         Rectangle _rect;        //尺寸
-        String _var;            //变量
-        Byte _varType;          //变量类型
+        SVVarDefine _variable;  //关联变量
 
         Boolean _isExponent;    //是否指数显示
         String _controlType;    //控件类型
@@ -53,16 +52,21 @@ namespace SVControl
             _decNum = 1;
             _min = 1;
             _max = 100;
+            _variable = new SVVarDefine();
 
             _controlType = "模拟量";
             _isLock = false;
         }
 
-        [Browsable(false)]
-        public Byte VarType
+        [CategoryAttribute("数据")]
+        [DescriptionAttribute("关联的模拟量量变量, I:表示接收区 O:表示发送区 S:表示系统区")]
+        [DisplayName("关联变量")]
+        [TypeConverter(typeof(SVDefineVarConverter))]
+        [EditorAttribute(typeof(SVAnalogVarTypeEditor), typeof(UITypeEditor))]
+        public SVVarDefine Variable
         {
-            get { return _varType; }
-            set { _varType = value; }
+            get { return _variable; }
+            set { _variable = value; }
         }
 
         [CategoryAttribute("属性")]
@@ -122,40 +126,6 @@ namespace SVControl
             get
             {
                 return _id;
-            }
-        }
-
-        [CategoryAttribute("数据")]
-        [DescriptionAttribute("设置当前模拟量关联的变量")]
-        [DisplayName("变量")]
-        [EditorAttribute(typeof(SVAnalogVarTypeEditor), typeof(UITypeEditor))]
-        public String Var
-        {
-            set
-            {
-                if (_var == value)
-                    return;
-
-                SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                if (UpdateControl != null)
-                    UpdateControl(undoItem);
-
-                String before = _var;
-                undoItem.ReDo = () =>
-                {
-                    _var = value;
-                };
-                undoItem.UnDo = () =>
-                {
-                    _var = before;
-                };
-
-                _var = value;
-            }
-
-            get
-            {
-                return _var;
             }
         }
 
@@ -638,10 +608,10 @@ namespace SVControl
             ///根据名称来获取地址
             var varInstance = SVVaribleType.instance();
             varInstance.loadVariableData();
-            varInstance.setDataType(_varType);
+            varInstance.setDataType(Variable.VarType);
 
-            analogBin.addrOffset = varInstance.strToAddress(_var, _varType);
-            analogBin.varType = (Byte)varInstance.strToType(_var);
+            analogBin.addrOffset = varInstance.strToAddress(Variable.VarName, Variable.VarType);
+            analogBin.varType = (Byte)varInstance.strToType(Variable.VarName);
 
             pageArrayBin.pageArray[pageCount].m_analog[analogCount] = analogBin;
         }

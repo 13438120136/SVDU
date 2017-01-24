@@ -184,7 +184,7 @@
                             <DataGridTemplateColumn Header="类型" Width="120">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock HorizontalAlignment="Center" Text="{Binding varType}"></TextBlock>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding valueType}"></TextBlock>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

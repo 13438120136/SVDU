@@ -116,8 +116,8 @@ namespace SVControl
             int y = int.Parse(analog.GetAttribute("Y"));
             int width = int.Parse(analog.GetAttribute("Width"));
             int height = int.Parse(analog.GetAttribute("Height"));
-            _attrib.Var = analog.GetAttribute("Variable");
-            _attrib.VarType = Byte.Parse(analog.GetAttribute("VariableType"));
+            _attrib.Variable.VarName = analog.GetAttribute("Variable");
+            _attrib.Variable.VarType = Byte.Parse(analog.GetAttribute("VariableType"));
 
             _attrib.Rect = new Rectangle(x, y, width, height);
             _attrib.NormalColor = Color.FromArgb(int.Parse(analog.GetAttribute("NormalColor")));
@@ -148,8 +148,8 @@ namespace SVControl
             analog.SetAttribute("Width", _attrib.Rect.Width.ToString());
             analog.SetAttribute("Height", _attrib.Rect.Height.ToString());
 
-            analog.SetAttribute("Variable", _attrib.Var);
-            analog.SetAttribute("VariableType", _attrib.VarType.ToString());
+            analog.SetAttribute("Variable", _attrib.Variable.VarName);
+            analog.SetAttribute("VariableType", _attrib.Variable.VarType.ToString());
 
             analog.SetAttribute("NormalColor", _attrib.NormalColor.ToArgb().ToString());
             analog.SetAttribute("OverMaxColor", _attrib.OverMaxColor.ToArgb().ToString());
