@@ -43,13 +43,6 @@ namespace SVControl
                     if (File.Exists(file))
                         setButtonBackGd(falsePic, file);
                 }
-
-                if (_binary.Attrib.CustomExceptionText != null)
-                {
-                    String file = Path.Combine(SVProData.IconPath, _binary.Attrib.CustomExceptionText);
-                    if (File.Exists(file))
-                        setButtonBackGd(exPic, file);
-                }
             }
 
             this.customGroupBox.EnabledChanged += new EventHandler(customGroupBox_EnabledChanged);
@@ -66,14 +59,14 @@ namespace SVControl
         /// <param name="e"></param>
         void exPic_Click(object sender, EventArgs e)
         {
-            SVBitmapManagerWindow window = new SVBitmapManagerWindow();
-            if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
-            {
-                String file = Path.Combine(SVProData.IconPath, window.SvBitMap.ImageFileName);
+            //SVBitmapManagerWindow window = new SVBitmapManagerWindow();
+            //if (window.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    String file = Path.Combine(SVProData.IconPath, window.SvBitMap.ImageFileName);
 
-                _binary.Attrib.CustomExceptionText = window.SvBitMap.ImageFileName;
-                setButtonBackGd(exPic, file);
-            }
+            //    _binary.Attrib.CustomExceptionText = window.SvBitMap.ImageFileName;
+            //    setButtonBackGd(exPic, file);
+            //}
         }
 
         /// <summary>

@@ -27,9 +27,11 @@ namespace SVControl
                 textDialog.Width = 100;
                 textDialog.Height = 40;
 
-                SVWPFBinaryTypeDialog dialog = new SVWPFBinaryTypeDialog();
+                SVWPFBinaryTypeDialog dialog = new SVWPFBinaryTypeDialog();                
                 textDialog.addContent(dialog);
+                dialog.listView.DataContext = value;
                 edSvc.DropDownControl(textDialog);
+
                 if (dialog.listView.SelectedIndex != -1)
                     value = (Byte)dialog.listView.SelectedIndex;
 

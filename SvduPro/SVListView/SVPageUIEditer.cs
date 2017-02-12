@@ -51,7 +51,7 @@ namespace SVControl
                 textDialog.Width = 200;
                 textDialog.Height = 300;
 
-                WPFUser edit = new WPFUser();
+                WPFWidgetBackGround edit = new WPFWidgetBackGround();
                 edit.DataContext = page.Attrib;
 
                 textDialog.addContent(edit);

@@ -26,6 +26,26 @@ namespace SVControl
             return base.ConvertFrom(context, culture, value);
         }
 
+        public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
+        {
+            PropertyDescriptorCollection collection = TypeDescriptor.GetProperties(value, true);
+
+            List<PropertyDescriptor> list = new List<PropertyDescriptor>();
+            list.Add(collection["ShowDetail"]);
+
+            if ((value as SVBinaryProperties) != null)
+            {
+                list.Add(collection["Address1"]);
+                list.Add(collection["Address2"]);
+            }
+            else
+            {
+                list.Add(collection["Summary"]);
+            }
+
+            return new PropertyDescriptorCollection(list.ToArray());
+        }
+
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
             if (destinationType == typeof(String))

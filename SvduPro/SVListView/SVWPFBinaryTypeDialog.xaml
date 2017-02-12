@@ -17,7 +17,7 @@
     </UserControl.Resources>
     
     <Grid>        
-        <ListView Name="listView" ItemsSource="{StaticResource ComboBoxItems}">
+        <ListView Name="listView" ItemsSource="{StaticResource ComboBoxItems}" SelectedIndex="{Binding Path=., Mode=OneWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Margin="10,2,0,2" Name="textBlock" Text="{Binding}" FontSize="16"></TextBlock>

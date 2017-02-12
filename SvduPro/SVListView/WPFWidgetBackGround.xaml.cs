@@ -19,13 +19,13 @@ using System.Reflection;
 namespace SVControl
 {
     /// <summary>
-    /// WPFUser.xaml 的交互逻辑
+    /// WPFWidgetBackGround.xaml 的交互逻辑
     /// </summary>
-    public partial class WPFUser : UserControl
+    public partial class WPFWidgetBackGround : UserControl
     {
         List<String> picList = new List<String>();
 
-        public WPFUser()
+        public WPFWidgetBackGround()
         {
             InitializeComponent();
 

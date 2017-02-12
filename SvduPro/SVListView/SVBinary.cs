@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using SVCore;
+using System.ComponentModel;
 
 namespace SVControl
 {
@@ -129,7 +130,7 @@ namespace SVControl
             ///读取自定义名称
             _attrib.CustomTrueText = binary.GetAttribute("CustomTrueText");
             _attrib.CustomFlaseText = binary.GetAttribute("CustomFalseText");
-            _attrib.CustomExceptionText = binary.GetAttribute("CustomExText");
+            //_attrib.CustomExceptionText = binary.GetAttribute("CustomExText");
 
             ///图片
             _attrib.TruePicture.ImageFileName = binary.GetAttribute("TImageFile");
@@ -169,7 +170,7 @@ namespace SVControl
             ///写入自定义名称
             binary.SetAttribute("CustomTrueText", _attrib.CustomTrueText);
             binary.SetAttribute("CustomFalseText", _attrib.CustomFlaseText);
-            binary.SetAttribute("CustomExText", _attrib.CustomExceptionText);
+            //binary.SetAttribute("CustomExText", _attrib.CustomExceptionText);
 
             ///图片
             binary.SetAttribute("TImageFile", _attrib.TruePicture.ImageFileName);

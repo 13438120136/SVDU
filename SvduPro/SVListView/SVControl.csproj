@@ -233,8 +233,8 @@
     <Compile Include="SVWPFVariableDialog.xaml.cs">
       <DependentUpon>SVWPFVariableDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFUser.xaml.cs">
-      <DependentUpon>WPFUser.xaml</DependentUpon>
+    <Compile Include="WPFWidgetBackGround.xaml.cs">
+      <DependentUpon>WPFWidgetBackGround.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -383,7 +383,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFUser.xaml">
+    <Page Include="WPFWidgetBackGround.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,6 +5,7 @@ using System.Drawing.Design;
 using System.Reflection;
 using System.Text;
 using SVCore;
+using System.Collections.Generic;
 
 namespace SVControl
 {
@@ -28,7 +29,7 @@ namespace SVControl
         /// </summary>
         String _customTrueText;      //自定义值为真
         String _customFlaseText;     //自定义值为假
-        String _customExceptionText; //异常字段
+        //String _customExceptionText; //异常字段
         SVBitmap _truePicture;       //为真的图片
         SVBitmap _flasePicture;      //为假的图片
         SVBitmap _exPicture;         //异常图片
@@ -88,11 +89,12 @@ namespace SVControl
             Type type = typeof(BrowsableAttribute);
             PropertyDescriptorCollection props = TypeDescriptor.GetProperties(obj);
             AttributeCollection attrs = props[propertyName].Attributes;
+
             FieldInfo fld = type.GetField("browsable", BindingFlags.Instance | BindingFlags.NonPublic);
             fld.SetValue(attrs[type], visible);        
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为真的时候，显示的背景图片")]
         [TypeConverter(typeof(SVBitmap))]
@@ -104,7 +106,7 @@ namespace SVControl
             set { _truePicture = value; }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为假的时候，显示的背景图片")]
         [TypeConverter(typeof(SVBitmap))]
@@ -116,7 +118,7 @@ namespace SVControl
             set { _flasePicture = value; }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为异常情况下，显示的背景图片")]
         [TypeConverter(typeof(SVBitmap))]
@@ -128,14 +130,14 @@ namespace SVControl
             set { _exPicture = value; }
         }
 
-        [Browsable(false)]
-        public String CustomExceptionText
-        {
-            get { return _customExceptionText; }
-            set { _customExceptionText = value; }
-        }
+        //[Browsable(false)]
+        //public String CustomExceptionText
+        //{
+        //    get { return _customExceptionText; }
+        //    set { _customExceptionText = value; }
+        //}
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观")]
         [DisplayName("真文本")]
         [DescriptionAttribute("当前开关量值为真表示的文本")]
@@ -145,7 +147,7 @@ namespace SVControl
             set { _customTrueText = value; }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观")]
         [DisplayName("假文本")]
         [DescriptionAttribute("当前开关量值为假表示的文本")]
@@ -274,6 +276,7 @@ namespace SVControl
                     SetPropertyVisibility(this, "TruePicture", false);
                     SetPropertyVisibility(this, "FlasePicture", false);
                     SetPropertyVisibility(this, "ExPicture", false);
+                    SetPropertyVisibility(this, "Font", true);
                 }
                 else
                 {
@@ -288,6 +291,7 @@ namespace SVControl
                     SetPropertyVisibility(this, "TruePicture", true);
                     SetPropertyVisibility(this, "FlasePicture", true);
                     SetPropertyVisibility(this, "ExPicture", true);
+                    SetPropertyVisibility(this, "Font", false);
                 }
 
                 if (_type == value)
@@ -316,7 +320,7 @@ namespace SVControl
             }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观"), DescriptionAttribute("出现异常后，字体显示的颜色")]
         [TypeConverter(typeof(SVColorConverter))]
         [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
@@ -349,7 +353,7 @@ namespace SVControl
             }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观"), DescriptionAttribute("出现异常后，背景显示的颜色")]
         [TypeConverter(typeof(SVColorConverter))]
         [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
@@ -382,7 +386,7 @@ namespace SVControl
             }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("数据")]
         [DescriptionAttribute("设置显示字体")]
         [TypeConverter(typeof(SVFontTypeConverter))]
@@ -418,7 +422,7 @@ namespace SVControl
             }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("外观")]
         [DescriptionAttribute("值为真的时候的颜色")]
         [TypeConverter(typeof(SVColorConverter))]

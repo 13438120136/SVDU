@@ -11,6 +11,10 @@ namespace SVCore
 {
     public class SVPrinter
     {
+        /// <summary>
+        /// 打印指定图片对象
+        /// </summary>
+        /// <param name="bitmap">图片对象</param>
         public void printBmp(Bitmap bitmap)
         {
             PrintDocument printDocument = new PrintDocument();

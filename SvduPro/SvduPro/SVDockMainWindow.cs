@@ -606,7 +606,8 @@ namespace SvduPro
             //状态栏显示选中对象
             SVSelectPanelObjs.SelectEvents = new SelectControlEvents((v) =>
             {
-                this._propertyGrid.SelectedObjects = v.ToArray();
+                this._propertyGrid.Refresh();
+                this._propertyGrid.SelectedObjects = v.ToArray();                
                 String text = String.Format("已选中{0}个对象.", v.Count);
                 this.undoStatusLabel.Text = text;
             });
@@ -819,6 +820,7 @@ namespace SvduPro
             {
                 this.undoStatusLabel.Text = "";
                 this._propertyGrid.SelectedObject = widget;
+                this._propertyGrid.Refresh();
                 this._objTreeView.setPageWidget(widget);
             });
 
