@@ -22,6 +22,9 @@ namespace SVControl
         public override void PaintValue(PaintValueEventArgs e)
         {
             SVPageWidget widget = e.Context.Instance as SVPageWidget;
+            if (widget == null)
+                return;
+
             if (widget.Attrib.BackGroundType == 0)
             {
                 SolidBrush brush = new SolidBrush(widget.Attrib.BackColor);
