@@ -416,8 +416,14 @@ namespace SVCore
         {
             foreach (var item in _pageDic)
             {
-                if (item.Value != null && item.Value.ContainsKey(pageName))
-                    return true;
+                if (item.Value == null)
+                    continue ;
+
+                foreach (var values in item.Value)
+                {
+                    if (values.Key.ToLower() == pageName.ToLower())
+                        return true;
+                }
             }
 
             return false;
