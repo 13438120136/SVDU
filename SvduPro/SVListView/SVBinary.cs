@@ -60,6 +60,7 @@ namespace SVControl
 
         public override object property()
         {
+            _attrib.reRefresh();
             return _attrib;
         }
 

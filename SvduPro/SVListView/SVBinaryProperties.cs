@@ -253,6 +253,39 @@ namespace SVControl
         //        _var = value; 
         //    }
         //}
+        public void reRefresh()
+        {
+            if (_type == 0)
+            {
+                SetPropertyVisibility(this, "CustomTrueText", true);
+                SetPropertyVisibility(this, "CustomFlaseText", true);
+                SetPropertyVisibility(this, "ExceptionColor", true);
+                SetPropertyVisibility(this, "ExceptionBgColor", true);
+                SetPropertyVisibility(this, "TrueColor", true);
+                SetPropertyVisibility(this, "TrueBgColor", true);
+                SetPropertyVisibility(this, "FalseColor", true);
+                SetPropertyVisibility(this, "FalseBgColor", true);
+                SetPropertyVisibility(this, "TruePicture", false);
+                SetPropertyVisibility(this, "FlasePicture", false);
+                SetPropertyVisibility(this, "ExPicture", false);
+                SetPropertyVisibility(this, "Font", true);
+            }
+            else
+            {
+                SetPropertyVisibility(this, "CustomTrueText", false);
+                SetPropertyVisibility(this, "CustomFlaseText", false);
+                SetPropertyVisibility(this, "ExceptionColor", false);
+                SetPropertyVisibility(this, "ExceptionBgColor", false);
+                SetPropertyVisibility(this, "TrueColor", false);
+                SetPropertyVisibility(this, "TrueBgColor", false);
+                SetPropertyVisibility(this, "FalseColor", false);
+                SetPropertyVisibility(this, "FalseBgColor", false);
+                SetPropertyVisibility(this, "TruePicture", true);
+                SetPropertyVisibility(this, "FlasePicture", true);
+                SetPropertyVisibility(this, "ExPicture", true);
+                SetPropertyVisibility(this, "Font", false);
+            }
+        }
         
         [CategoryAttribute("数据")]
         [TypeConverter(typeof(SVBinaryTypeConverter))]
