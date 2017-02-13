@@ -168,7 +168,7 @@
                             <DataGridTemplateColumn Header="区块名称" Width="120">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock HorizontalAlignment="Center" Text="{Binding blockName}"></TextBlock>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding ioblockname}"></TextBlock>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

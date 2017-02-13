@@ -85,6 +85,189 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 获取IO变量的接收地址列表
+        /// </summary>
+        /// <param name="stationID">站ID号</param>
+        /// <returns></returns>
+        public DataTable getRecvAddressForIO(Int32 stationID)
+        {
+            String sql = String.Format(@"select table_channelinfo.ioblockname, 
+                table_netinfo.BusAddress_RE, 
+                table_valuetype.valueType
+                from table_varinfo, table_channelinfo, table_netinfo, table_valuetype
+                where table_netinfo.stationid = {0} 
+                and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
+                and table_varinfo.typeid = 6 
+                and table_varinfo.ioblockid = table_channelinfo.uid
+                and table_varinfo.is_net = 1
+                and table_varinfo.uid = table_netinfo.NetVarID
+                and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
+
+//            String sql = String.Format(@"select table_channelinfo.ioblockname, 
+//                table_netinfo.BusAddress_RE, 
+//                table_valuetype.valueType
+//                from table_varinfo, table_channelinfo, table_netinfo, table_valuetype
+//                where table_netinfo.stationid = {0} 
+//                and table_varinfo.typeid = 6 
+//                and table_varinfo.ioblockid = table_channelinfo.uid
+//                and table_varinfo.is_net = 0
+//                and table_varinfo.uid = table_netinfo.NetVarID
+//                and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
+
+            MySqlCommand mysqlcom = new MySqlCommand(sql, _mysqlConnect);
+
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = mysqlcom;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+            catch (MySqlException ex)
+            {
+                SVLog.TextLog.Exception(ex);
+                return null;
+            }
+        }
+
+
+        /// <summary>
+        /// 获取中间变量的接收地址列表
+        /// </summary>
+        /// <param name="stationID">站ID号</param>
+        /// <returns></returns>
+        public DataTable getRecvAddressForNormal(Int32 stationID)
+        {
+            String sql = String.Format(@"select table_varinfo.varname, 
+                table_netinfo.BusAddress_RE, 
+                table_valuetype.valueType
+                from table_varinfo, table_netinfo, table_valuetype
+                where table_netinfo.stationid = {0} 
+                and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
+                and table_varinfo.typeid = 5 
+                and table_varinfo.ioblockid = 0
+                and table_varinfo.is_net = 1
+                and table_varinfo.uid = table_netinfo.NetVarID
+                and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
+
+//            String sql = String.Format(@"select table_varinfo.varname, 
+//                table_netinfo.BusAddress_RE, 
+//                table_valuetype.valueType
+//                from table_varinfo, table_netinfo, table_valuetype
+//                where table_netinfo.stationid = {0} 
+//                and table_varinfo.typeid = 5 
+//                and table_varinfo.ioblockid = 0
+//                and table_varinfo.is_net = 1
+//                and table_varinfo.uid = table_netinfo.NetVarID
+//                and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
+
+            MySqlCommand mysqlcom = new MySqlCommand(sql, _mysqlConnect);
+
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = mysqlcom;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+            catch (MySqlException ex)
+            {
+                SVLog.TextLog.Exception(ex);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 获取IO变量的发送地址列表
+        /// </summary>
+        /// <param name="stationID"></param>
+        /// <returns></returns>
+        public DataTable getSendAddressForIO(Int32 stationID)
+        {
+            String sql = String.Format(@"select table_channelinfo.ioblockname, 
+                table_netinfo.BusAddress_SEND, 
+                table_valuetype.valueType
+                from table_varinfo, table_channelinfo, table_netinfo, table_valuetype
+                where table_varinfo.stationid = {0} 
+                and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
+                and table_varinfo.typeid = 6 
+                and table_varinfo.ioblockid = table_channelinfo.uid
+                and table_varinfo.is_net = 1
+                and table_varinfo.uid = table_netinfo.NetVarID
+                and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
+
+            MySqlCommand mysqlcom = new MySqlCommand(sql, _mysqlConnect);
+
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = mysqlcom;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+            catch (MySqlException ex)
+            {
+                SVLog.TextLog.Exception(ex);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 获取中间变量的发送地址列表
+        /// </summary>
+        /// <param name="stationID">站ID号</param>
+        /// <returns></returns>
+        public DataTable getSendAddressForNormal(Int32 stationID)
+        {
+            String sql = String.Format(@"select table_varinfo.varname, 
+                table_netinfo.BusAddress_SEND, 
+                table_valuetype.valueType
+                from table_varinfo, table_netinfo, table_valuetype
+                where table_varinfo.stationid = {0} 
+                and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
+                and table_varinfo.typeid = 5 
+                and table_varinfo.ioblockid = 0
+                and table_varinfo.is_net = 1
+                and table_varinfo.uid = table_netinfo.NetVarID
+                and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
+
+//            String sql = String.Format(@"select table_varinfo.varname, 
+//                            table_netinfo.BusAddress_SEND, 
+//                            table_valuetype.valueType
+//                            from table_varinfo, table_netinfo, table_valuetype
+//                            where table_varinfo.stationid = {0} 
+//                            and table_varinfo.typeid = 5 
+//                            and table_varinfo.ioblockid = 0
+//                            and table_varinfo.is_net = 1
+//                            and table_varinfo.uid = table_netinfo.NetVarID
+//                            and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
+
+            MySqlCommand mysqlcom = new MySqlCommand(sql, _mysqlConnect);
+
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = mysqlcom;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+            catch (MySqlException ex)
+            {
+                SVLog.TextLog.Exception(ex);
+                return null;
+            }
+        }
+
+
+        /// <summary>
         /// 获取当前站点的变量名称及地址
         /// </summary>
         /// <param name="stationID">站号</param>
@@ -94,7 +277,7 @@ namespace SVCore
             String sql = String.Format(@"select table_channelinfo.ioblockname, table_netinfo.BusAddress_RE, 
                 table_netinfo.BusAddress_SEND, table_valuetype.valueType
                 from table_varinfo, table_channelinfo, table_netinfo, table_valuetype
-                where table_varinfo.stationid = {0} 
+                where table_netinfo.stationid = {0} 
                 and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
                 and ((table_varinfo.typeid = 6 and table_varinfo.ioblockid = table_channelinfo.uid)
                 or (table_varinfo.is_net = 1 and table_varinfo.typeid = 5 and table_varinfo.ioblockid = 0))

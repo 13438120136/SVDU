@@ -607,11 +607,8 @@ namespace SVControl
 
             ///根据名称来获取地址
             var varInstance = SVVaribleType.instance();
-            varInstance.loadVariableData();
-            varInstance.setDataType(Variable.VarType);
-
             analogBin.addrOffset = varInstance.strToAddress(Variable.VarName, Variable.VarType);
-            analogBin.varType = (Byte)varInstance.strToType(Variable.VarName);
+            analogBin.varType = (Byte)varInstance.strToType(Variable.VarName, Variable.VarType);
 
             pageArrayBin.pageArray[pageCount].m_analog[analogCount] = analogBin;
         }

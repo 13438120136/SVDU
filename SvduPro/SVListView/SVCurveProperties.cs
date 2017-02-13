@@ -460,11 +460,8 @@ namespace SVControl
                 Byte type = _varArrayType[i];
 
                 var varInstance = SVVaribleType.instance();
-                varInstance.loadVariableData();
-                varInstance.setDataType(type);
-
                 curveBin.addrOffset[i] = varInstance.strToAddress(str, type);
-                curveBin.varType[i] = (Byte)varInstance.strToType(str);
+                curveBin.varType[i] = (Byte)varInstance.strToType(str, type);
             }
 
             //线条颜色

@@ -709,11 +709,8 @@ namespace SVControl
 
             ///根据名称来获取地址
             var varInstance = SVVaribleType.instance();
-            varInstance.loadVariableData();
-            varInstance.setDataType(_var.VarType);
-
             binaryBin.addrOffset = varInstance.strToAddress(_var.VarName, _var.VarType);
-            binaryBin.varType = (Byte)varInstance.strToType(_var.VarName);
+            binaryBin.varType = (Byte)varInstance.strToType(_var.VarName, _var.VarType);
 
             pageArrayBin.pageArray[pageCount].m_binary[binaryCount] = binaryBin;
         }

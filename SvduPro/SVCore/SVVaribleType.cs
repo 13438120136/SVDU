@@ -29,6 +29,10 @@ namespace SVCore
         static SVVaribleType _instance = null;
         DataTable _dataTable = null;
 
+        private DataTable _systemDataTable = new DataTable(); //系统变量表格
+        private DataTable _recvTable = new DataTable(); //接收地址表格
+        private DataTable _sendTable = new DataTable(); //发送地址表格
+
         /// <summary>
         /// 全局单例模式
         /// </summary>
@@ -49,13 +53,34 @@ namespace SVCore
         /// <returns>返回变量地址</returns>
         public UInt32 strToAddress(String varName, Byte type)
         {
-            String selectStr = string.Format("变量名='{0}'", varName);
-            DataRow[] dr = _dataTable.Select(selectStr);
+            DataTable dataTable = null;
+
+            switch (type)
+            {
+                case 0:
+                    {
+                        dataTable = loadRecvDataTable();
+                        break;
+                    }
+                case 1:
+                    {
+                        dataTable = loadSendDataTable();
+                        break;
+                    }
+                case 2:
+                    {
+                        dataTable = loadSystemDataTable();
+                        break;
+                    }
+            }
+
+            String selectStr = string.Format("ioblockname='{0}'", varName);
+            DataRow[] dr = dataTable.Select(selectStr);
             if (dr.Length == 0)
                 return 0;
 
             ///首先以字符串的形式得到变量的地址
-            String address = dr[0]["变量地址"].ToString();
+            String address = dr[0][1].ToString();
             ///从字符串转换为数字
             UInt32 iAddress = UInt32.Parse(address);
 
@@ -70,14 +95,35 @@ namespace SVCore
         /// 根据当前变量名称来获取变量类型
         /// </summary>
         /// <param name="dataTable"></param>
-        public SByte strToType(String varName)
+        public SByte strToType(String varName, Byte type)
         {
-            String selectStr = string.Format("变量名='{0}'", varName);
-            DataRow[] dr = _dataTable.Select(selectStr);
+            DataTable dataTable = null;
+
+            switch (type)
+            {
+                case 0:
+                    {
+                        dataTable = loadRecvDataTable();
+                        break;
+                    }
+                case 1:
+                    {
+                        dataTable = loadSendDataTable();
+                        break;
+                    }
+                case 2:
+                    {
+                        dataTable = loadSystemDataTable();
+                        break;
+                    }
+            }
+
+            String selectStr = string.Format("ioblockname='{0}'", varName);
+            DataRow[] dr = dataTable.Select(selectStr);
             if (dr.Length == 0)
                 return 0;
 
-            String name = dr[0]["变量类型"].ToString();
+            String name = dr[0]["valueType"].ToString();
             if (_dict.ContainsKey(name))
                 return (SByte)_dict[name];
 
@@ -103,14 +149,14 @@ namespace SVCore
             _dataTable = dataTable;
         }
 
-        public DataTable sysDataTable()
+        public DataTable loadSystemDataTable()
         {
             DataTable systemDataTable = new DataTable();
 
             ///添加表头
-            systemDataTable.Columns.Add("变量名", typeof(String));
-            systemDataTable.Columns.Add("变量地址", typeof(UInt32));
-            systemDataTable.Columns.Add("变量类型", typeof(String));
+            systemDataTable.Columns.Add("ioblockname", typeof(String));
+            systemDataTable.Columns.Add("varAddress", typeof(UInt32));
+            systemDataTable.Columns.Add("valueType", typeof(String));
 
             ///表格中的内容
             List<SVVarNode> vList = new List<SVVarNode>() 
@@ -158,9 +204,9 @@ namespace SVCore
             foreach (var item in vList)
             {
                 DataRow dr = systemDataTable.NewRow();
-                dr["变量名"] = item.Name;
-                dr["变量地址"] = item.Address;
-                dr["变量类型"] = item.Type;
+                dr["ioblockname"] = item.Name;
+                dr["varAddress"] = item.Address;
+                dr["valueType"] = item.Type;
                 systemDataTable.Rows.Add(dr);
             }
 
@@ -168,45 +214,46 @@ namespace SVCore
         }
 
         /// <summary>
-        /// 设置变量类型
-        /// </summary>
-        /// <param name="type"></param>
-        public void setDataType(Int32 type)
-        {
-            if (type == 2)
-            {
-                _dataTable = sysDataTable();
-                return;
-            }
-
-            if (type == 0)
-                _dataTable.Columns.RemoveAt(2);
-            else
-                _dataTable.Columns.RemoveAt(1);
-
-            ///表头进行重命名
-            _dataTable.Columns["ioblockname"].ColumnName = "变量名";
-
-            if (_dataTable.Columns.Contains("BusAddress_RE"))
-                _dataTable.Columns["BusAddress_RE"].ColumnName = "变量地址";
-
-            if (_dataTable.Columns.Contains("BusAddress_SEND"))
-                _dataTable.Columns["BusAddress_SEND"].ColumnName = "变量地址";
-
-            _dataTable.Columns["valueType"].ColumnName = "变量类型";
-        }
-
-        /// <summary>
-        /// 从数据库中加载所有变量数据
+        /// 加载接收表格地址
         /// </summary>
         /// <returns></returns>
-        public DataTable loadVariableData()
+        public DataTable loadRecvDataTable()
         {
             SVInterfaceApplication app = SVApplication.Instance;
             SVSqlDataBase sqlDataBase = app.DataBase;
-            _dataTable = sqlDataBase.getVarDataList(SVProData.stationID);
+            DataTable recvIO = sqlDataBase.getRecvAddressForIO(SVProData.stationID);
+            DataTable recvNormal = sqlDataBase.getRecvAddressForNormal(SVProData.stationID);
 
-            return _dataTable;
+            ///合并表格
+            recvNormal.Columns[0].ColumnName = "ioblockname";
+            DataTable result = new DataTable();
+            result.Merge(recvIO);
+            result.Merge(recvNormal);
+
+            return result;
+        }
+
+        /// <summary>
+        /// 获取发送地址表格
+        /// </summary>
+        /// <returns></returns>
+        public DataTable loadSendDataTable()
+        {
+            SVInterfaceApplication app = SVApplication.Instance;
+            SVSqlDataBase sqlDataBase = app.DataBase;
+
+            DataTable sendIO = sqlDataBase.getSendAddressForIO(SVProData.stationID);
+            DataTable sendNormal = sqlDataBase.getSendAddressForNormal(SVProData.stationID);
+
+            sendNormal.Columns[0].ColumnName = "ioblockname";
+
+            ///合并表格
+            sendNormal.Columns[0].ColumnName = "ioblockname";
+            DataTable result = new DataTable();
+            result.Merge(sendIO);
+            result.Merge(sendNormal);
+
+            return result;
         }
 
         /// <summary>

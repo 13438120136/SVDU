@@ -278,10 +278,8 @@ namespace SVControl
 
             for (int i = 0; i < _var.Count; i++)
             {
-                varInstance.loadVariableData();
-                varInstance.setDataType(_varType[i]);
                 gifBin.addOffset[i] = varInstance.strToAddress(_var[i], _varType[i]);
-                gifBin.varType[i] = (Byte)varInstance.strToType(_var[i]);
+                gifBin.varType[i] = (Byte)varInstance.strToType(_var[i], _varType[i]);
             }
 
             ///变量个数

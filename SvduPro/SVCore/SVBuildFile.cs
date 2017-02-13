@@ -101,6 +101,63 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 添加下装协议头
+        /// </summary>
+        /// <param name="buffer">实际的下装二进制数据</param>
+        /// <returns>加了协议头的二进制数据</returns>
+        public byte[] addProtocolHead(byte[] buffer)
+        {
+            Int32 totalSize = buffer.Length;
+            MemoryStream steam = new MemoryStream();
+
+            Byte index = 1;
+            Int32 address = 0;
+            Int32 baseAdd = 0;
+
+            while (true)
+            {
+                Int32 remainSize = totalSize - baseAdd;
+                if (remainSize == 0)
+                    break;
+                
+                byte[] head = byteHead(index, address);
+                steam.Write(head, 0, 10);
+                
+                if (remainSize < 128)
+                {
+                    steam.Write(buffer, baseAdd, remainSize);
+                    break;
+                }
+                else
+                    steam.Write(buffer, baseAdd, 128);
+
+                index++;
+                address++;
+                baseAdd += 128;
+            }
+
+            return steam.ToArray();
+        }
+
+        /// <summary>
+        /// 根据当前索引和地址，返回10字节的头部二进制
+        /// </summary>
+        /// <param name="index">帧序号</param>
+        /// <param name="address">地址，从0开始，每次加1</param>
+        /// <returns></returns>
+        public byte[] byteHead(Byte index, Int32 address)
+        {
+            byte[] initByte = new byte[] { 0x00, 0xFE, 0x60, 0x02, 0x07, 0x00, 0x00, 0x00, 0x00, 0x80 };
+            initByte[5] = index;
+            byte[] tmp = BitConverter.GetBytes(address);
+            initByte[6] = tmp[0];
+            initByte[7] = tmp[1];
+            initByte[8] = tmp[2];
+
+            return initByte;
+        }
+
+        /// <summary>
         /// 执行实际的写数据
         /// </summary>
         /// <returns>
@@ -133,7 +190,7 @@ namespace SVCore
             FileStream fileStream = new FileStream(_fileName, FileMode.Create);
             try
             {
-                byte[] allData = svSerialize.ToArray();
+                byte[] allData = addProtocolHead(svSerialize.ToArray());
                 fileStream.Write(allData, 0, allData.Length);
             }
             catch (IOException ex)

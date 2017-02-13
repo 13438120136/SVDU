@@ -579,15 +579,13 @@ namespace SVControl
                 Byte varNameType = _btnType.VarTextType;
 
                 var varInstance = SVVaribleType.instance();
-                varInstance.loadVariableData();
-                varInstance.setDataType(varNameType);
 
                 btnBin.param.addrOffset = varInstance.strToAddress(varName, varNameType);
-                btnBin.varTypeBtn = (Byte)varInstance.strToType(varName);
+                btnBin.varTypeBtn = (Byte)varInstance.strToType(varName, varNameType);
                 btnBin.type = _btnType.Type;
                 btnBin.enable = Convert.ToByte(_btnType.Enable);
                 btnBin.enableAddrOffset = varInstance.strToAddress(_btnType.EnVarText, _btnType.EnVarTextType);
-                btnBin.varTypeEn = (Byte)varInstance.strToType(_btnType.EnVarText);
+                btnBin.varTypeEn = (Byte)varInstance.strToType(_btnType.EnVarText, _btnType.EnVarTextType);
             }
 
             ///显示背景图片或者显示背景颜色

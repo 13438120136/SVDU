@@ -62,7 +62,7 @@ namespace SVControl
         void loadSystemData()
         {
             var instance = SVVaribleType.instance();
-            _dataTable = instance.sysDataTable();
+            _dataTable = instance.loadSystemDataTable();
             dataGridView.DataSource = _dataTable;
 
             filters();
@@ -189,9 +189,6 @@ namespace SVControl
         void loadDataFromDB(Int32 type)
         {
             var instance = SVVaribleType.instance();
-            _dataTable = instance.loadVariableData();
-            instance.setDataType(type);
-
             filters();
         }
 

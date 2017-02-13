@@ -208,7 +208,7 @@ namespace SVControl
         private void enVarBtn_Click(object sender, EventArgs e)
         {
             SVVarWindow win = new SVVarWindow();
-            win.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
+            //win.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
             if (win.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
             {
                 _svButton.Attrib.BtnType.EnVarTextType = win.getVarType();
