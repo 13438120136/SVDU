@@ -144,8 +144,7 @@ namespace SVCore
                 table_netinfo.BusAddress_RE, 
                 table_valuetype.valueType
                 from table_varinfo, table_netinfo, table_valuetype
-                where table_netinfo.stationid = {0} 
-                and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
+                where table_netinfo.stationid = {0}                 
                 and table_varinfo.typeid = 5 
                 and table_varinfo.ioblockid = 0
                 and table_varinfo.is_net = 1
@@ -229,8 +228,7 @@ namespace SVCore
                 table_netinfo.BusAddress_SEND, 
                 table_valuetype.valueType
                 from table_varinfo, table_netinfo, table_valuetype
-                where table_varinfo.stationid = {0} 
-                and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
+                where table_varinfo.stationid = {0}                 
                 and table_varinfo.typeid = 5 
                 and table_varinfo.ioblockid = 0
                 and table_varinfo.is_net = 1

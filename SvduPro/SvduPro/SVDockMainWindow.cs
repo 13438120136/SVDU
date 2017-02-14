@@ -499,6 +499,7 @@ namespace SvduPro
             _dockPanel.Parent = this;
 
             _dockPanel.ActiveDocumentChanged += new EventHandler(_dockPanel_ActiveDocumentChanged);
+
             //_dockPanel.DockAreas = (DockAreas.Document | DockAreas.Float | DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom);
             //this._dockPanel.Location = new Point(0, 49);
             //this._dockPanel.Name = "dockPanel";
