@@ -1759,8 +1759,11 @@ namespace SvduPro
         {
             ///这里是固定下装文件的名称
             String downLoadName = @"svducfg.bin";
+            ///这里加了协议头的文件
+            String downLoadNameProtocol = @"psvducfg.bin";
 
             String file = Path.Combine(SVProData.DownLoadFile, downLoadName);
+            String protocolFile = Path.Combine(SVProData.DownLoadFile, downLoadNameProtocol);
 
             //启动页面
             SVPageWidget fristWidget = SVPageWidget.MainPageWidget;
@@ -1832,6 +1835,7 @@ namespace SvduPro
             }
 
             buildFile.write();
+            buildFile.writeProtocol(protocolFile);
             
             //提示生成成功信息
             log = () => 

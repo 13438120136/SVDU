@@ -166,17 +166,8 @@ namespace SVCore
         /// </returns>
         public Boolean write()
         {
-            //DateTime now = DateTime.Now;
-            //_version.Year = (UInt16)now.Year;
-            //_version.Month = (Byte)now.Month;
-            //_version.Day = (Byte)now.Day;
-            //_version.Hour = (Byte)now.Hour;
-            //_version.Minute = (Byte)now.Minute;
-            //_version.Second = (Byte)now.Second;
-
             SVSerialize svSerialize = new SVSerialize();
             svSerialize.pack(_name);
-            //_version.pack(svSerialize);
             svSerialize.pack(_version);
             svSerialize.pack(_type);
             svSerialize.pack(_fileSize);
@@ -190,10 +181,47 @@ namespace SVCore
             FileStream fileStream = new FileStream(_fileName, FileMode.Create);
             try
             {
+                byte[] allData = svSerialize.ToArray();
+                fileStream.Write(allData, 0, allData.Length);
+            }
+            catch (IOException)
+            {
+                return false;
+            }
+            finally
+            {
+                fileStream.Close();
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 写文件，包含协议头的
+        /// </summary>
+        /// <returns></returns>
+        public Boolean writeProtocol(String fileName)
+        {
+            SVSerialize svSerialize = new SVSerialize();
+            svSerialize.pack(_name);
+            svSerialize.pack(_version);
+            svSerialize.pack(_type);
+            svSerialize.pack(_fileSize);
+            svSerialize.pack(_crc);
+            svSerialize.pack(_imagePos);
+            svSerialize.pack(_iamgeSize);
+            foreach (var item in _rsv)
+                svSerialize.pack(item);
+            svSerialize.pack(_data);
+
+            FileStream fileStream = new FileStream(fileName, FileMode.Create);
+            try
+            {
+                ///添加协议头
                 byte[] allData = addProtocolHead(svSerialize.ToArray());
                 fileStream.Write(allData, 0, allData.Length);
             }
-            catch (IOException ex)
+            catch (IOException)
             {
                 return false;
             }
