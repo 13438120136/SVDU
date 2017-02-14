@@ -19,7 +19,8 @@ namespace SVControl
         public SVVarWindow()
         {
             InitializeComponent();
-            loadDataFromDB(0);
+
+            //loadDataFromDB(0);
             this.varTypeCombox.SelectedIndex = 0;
 
             this.textBox.TextChanged += new EventHandler(textBox_TextChanged);
@@ -36,36 +37,31 @@ namespace SVControl
         {
             var index = this.varTypeCombox.SelectedIndex;
 
+            var instance = SVVaribleType.instance();
+            DataTable dataTable = new DataTable();
+
             switch (index)
             {
                 case 0:
                     {
-                        loadDataFromDB(index);
+                        dataTable = instance.loadRecvDataTable();
                         break;
                     }
                 case 1:
                     {
-                        loadDataFromDB(index);
+                        dataTable = instance.loadSendDataTable();
                         break;
                     }
                 case 2:
                     {
-                        loadSystemData();
+                        dataTable = instance.loadSystemDataTable();
                         break;
                     }
             }
-        }
 
-        /// <summary>
-        /// 初始系统的默认变量
-        /// </summary>
-        void loadSystemData()
-        {
-            var instance = SVVaribleType.instance();
-            _dataTable = instance.loadSystemDataTable();
-            dataGridView.DataSource = _dataTable;
-
-            filters();
+            if (_filters == null)
+                dataTable.DefaultView.RowFilter = _filters;
+            dataGridView.DataSource = dataTable.DefaultView;
         }
 
         /// <summary>
@@ -122,12 +118,10 @@ namespace SVControl
         /// <param Name="e"></param>
         void textBox_TextChanged(object sender, EventArgs e)
         {
-            filters();
-        }
+            DataView dataView = dataGridView.DataSource as DataView;
+            if (dataView == null)
+                return;
 
-        private void filters()
-        {
-            DataView dataView = _dataTable.DefaultView;
             if (String.IsNullOrWhiteSpace(textBox.Text))
             {
                 dataView.RowFilter = _filters;
@@ -135,9 +129,9 @@ namespace SVControl
             else
             {
                 if (_filters == null)
-                    dataView.RowFilter = String.Format("变量名 like '%{0}%'", textBox.Text.Trim());
+                    dataView.RowFilter = String.Format("ioblockname like '%{0}%'", textBox.Text.Trim());
                 else
-                    dataView.RowFilter = String.Format("变量名 like '%{0}%' and ", textBox.Text.Trim()) + _filters;
+                    dataView.RowFilter = String.Format("ioblockname like '%{0}%' and ", textBox.Text.Trim()) + _filters;
             }
 
             dataGridView.DataSource = dataView;
@@ -178,18 +172,6 @@ namespace SVControl
         private void refreshBtn_Click(object sender, EventArgs e)
         {
             //loadDataFromDB();
-        }
-
-        /// <summary>
-        /// 加载数据库中的数据到内存
-        /// 
-        /// 0 - 表示接收变量
-        /// 1 - 表示发送变量
-        /// </summary>
-        void loadDataFromDB(Int32 type)
-        {
-            var instance = SVVaribleType.instance();
-            filters();
         }
 
         /// <summary>
