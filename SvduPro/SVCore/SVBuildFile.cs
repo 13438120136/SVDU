@@ -66,7 +66,7 @@ namespace SVCore
 
             //_version = new SVVersion();
             ///写入文件版本号
-            byte[] tmpVersion = Encoding.ASCII.GetBytes("1.1.0");
+            byte[] tmpVersion = Encoding.ASCII.GetBytes("1.1.2");
             Array.Copy(tmpVersion, _version, tmpVersion.Length);
 
             _type = 0x5555AAAA;

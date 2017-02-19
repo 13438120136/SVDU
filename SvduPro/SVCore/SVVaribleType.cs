@@ -224,11 +224,16 @@ namespace SVCore
             DataTable recvIO = sqlDataBase.getRecvAddressForIO(SVProData.stationID);
             DataTable recvNormal = sqlDataBase.getRecvAddressForNormal(SVProData.stationID);
 
-            ///合并表格
-            recvNormal.Columns[0].ColumnName = "ioblockname";
             DataTable result = new DataTable();
-            result.Merge(recvIO);
-            result.Merge(recvNormal);
+            ///合并表格
+            if (recvIO != null)
+                result.Merge(recvIO);
+
+            if (recvNormal != null)
+            {
+                recvNormal.Columns[0].ColumnName = "ioblockname";
+                result.Merge(recvNormal);
+            }
 
             return result;
         }
@@ -245,13 +250,17 @@ namespace SVCore
             DataTable sendIO = sqlDataBase.getSendAddressForIO(SVProData.stationID);
             DataTable sendNormal = sqlDataBase.getSendAddressForNormal(SVProData.stationID);
 
-            sendNormal.Columns[0].ColumnName = "ioblockname";
-
-            ///合并表格
-            sendNormal.Columns[0].ColumnName = "ioblockname";
+            ///合并表格            
             DataTable result = new DataTable();
-            result.Merge(sendIO);
-            result.Merge(sendNormal);
+
+            if (sendIO != null)
+                result.Merge(sendIO);
+
+            if (sendNormal != null)
+            {
+                sendNormal.Columns[0].ColumnName = "ioblockname";
+                result.Merge(sendNormal);
+            }
 
             return result;
         }

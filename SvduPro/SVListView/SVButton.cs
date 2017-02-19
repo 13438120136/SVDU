@@ -132,6 +132,7 @@ namespace SVControl
         /// <returns>属性对象</returns>
         public override object property()
         {
+            _attrib.reRefresh();
             return _attrib;
         }
 
@@ -149,11 +150,6 @@ namespace SVControl
             this.ForeColor = _attrib.FrontColorground;
             this.BackColor = _attrib.BackColorground;
             this.IsMoved = !_attrib.Lock;
-
-            if (_attrib.IsShowPic)
-                _attrib.BackGround = "图片";
-            else
-                _attrib.BackGround = "颜色";
 
             /// 设置背景图片
             this.BackgroundImage = null;

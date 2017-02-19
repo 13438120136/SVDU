@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Text;
 using System.Drawing.Design;
+using System.Reflection;
+using System.Text;
 using SVCore;
-using System.IO;
 
 namespace SVControl
 {
@@ -30,15 +29,112 @@ namespace SVControl
         Color _bgcolor;        //背景颜色
         Color _bgDownColor;    //按下去的背景颜色
         Boolean _isShowPic;    //是否显示图片
-        String _backGround;    //背景
+
+        Byte _buttonType;            //按钮的操作类型
+        Boolean _btnEnable = false;  //按钮使能标志
+        SVVarDefine _enVarText;      //选择使能变量
+        SVVarDefine _btnVarText;     //按钮关联变量
 
         Boolean _isLock;       //是否锁定
 
+        /// <summary>
+        /// 设置属性的显示和隐藏属性
+        /// </summary>
+        /// <param name="obj">当前属性对象</param>
+        /// <param name="propertyName">具体属性名称</param>
+        /// <param name="visible">true表示显示，false表示隐藏</param>
+        void SetPropertyVisibility(object obj, string propertyName, bool visible)
+        {
+            Type type = typeof(BrowsableAttribute);
+            PropertyDescriptorCollection props = TypeDescriptor.GetProperties(obj);
+            AttributeCollection attrs = props[propertyName].Attributes;
+
+            FieldInfo fld = type.GetField("browsable", BindingFlags.Instance | BindingFlags.NonPublic);
+            fld.SetValue(attrs[type], visible);
+        }
+
         [Browsable(false)]
+        [CategoryAttribute("数据")]
+        [DisplayName("假文本")]
+        [DescriptionAttribute("变量为假的时候显示的文本内容.")]
         public String FText
         {
             get { return _fText; }
             set { _fText = value; }
+        }
+
+        [Browsable(true)]
+        [CategoryAttribute("数据")]
+        [DisplayName("关联变量")]
+        [DescriptionAttribute("按钮关联变量选择.")]
+        [EditorAttribute(typeof(SVBtnEnabledVarUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [TypeConverter(typeof(SVDefineVarConverter))]
+        public SVVarDefine BtnVarText
+        {
+            get { return _btnVarText; }
+            set { _btnVarText = value; }
+        }
+
+        [CategoryAttribute("使能")]
+        [DisplayName("使能类型")]
+        [DescriptionAttribute("按钮使能变量状态选择，True：表示使能，False：表示禁能.")]
+        public Boolean BtnEnable
+        {
+            get { return _btnEnable; }
+            set 
+            {                
+                _btnEnable = value;
+                SetPropertyVisibility(this, "EnVarText", _btnEnable);
+            }
+        }
+
+        [Browsable(true)]
+        [CategoryAttribute("使能")]
+        [DisplayName("使能变量")]
+        [DescriptionAttribute("选择按钮使能关联变量.")]
+        [EditorAttribute(typeof(SVBtnEnabledVarUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [TypeConverter(typeof(SVDefineVarConverter))]
+        public SVVarDefine EnVarText
+        {
+            get { return _enVarText; }
+            set { _enVarText = value; }
+        }
+
+        [CategoryAttribute("类型")]
+        [DisplayName("操作类型")]
+        [DescriptionAttribute("选取当前按钮的具体操作方式.")]
+        [EditorAttribute(typeof(SVButtonTypeUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [TypeConverter(typeof(SVButtonTypeConverter))]
+        public Byte ButtonType
+        {
+            get { return _buttonType; }
+            set 
+            {
+                _buttonType = value;
+                setBtnTypeShow(_buttonType);
+            }
+        }
+
+        private void setBtnTypeShow(Byte bByte)
+        {
+            switch (bByte)
+            {
+                case 0:
+                    SetPropertyVisibility(this, "BtnVarText", false);
+                    SetPropertyVisibility(this, "FText", false);
+                    break;
+                case 1:
+                case 2:
+                case 4:
+                case 5:
+                    SetPropertyVisibility(this, "BtnVarText", true);
+                    SetPropertyVisibility(this, "FText", false);
+                    break;
+                case 3:
+                    SetPropertyVisibility(this, "BtnVarText", true);
+                    SetPropertyVisibility(this, "FText", true);
+                    break;
+            }
         }
 
         [CategoryAttribute("数据")]
@@ -55,10 +151,10 @@ namespace SVControl
         /// 如果是true显示背景图片
         /// 否则显示背景颜色
         /// </summary>
-        [CategoryAttribute("状态")]
-        [DisplayName("背景选项")]
-        [DescriptionAttribute("背景是否以图片显示，如果为true显示为图片，否则显示为颜色.")]
-        [Browsable(false)]
+        [CategoryAttribute("背景")]
+        [DisplayName("背景类型")]
+        [DescriptionAttribute("背景是否以图片显示，如果为True显示为图片，False显示为颜色.")]
+        [Browsable(true)]
         public Boolean IsShowPic
         {
             get { return _isShowPic; }
@@ -82,11 +178,27 @@ namespace SVControl
                     UpdateControl(undoItem);
 
                 _isShowPic = value;
+                setBackGroundType(_isShowPic);
             }
         }
 
+        private void setBackGroundType(Boolean showPic)
+        {
+            SetPropertyVisibility(this, "BtnDownPic", showPic);
+            SetPropertyVisibility(this, "BtnUpPic", showPic);
+            SetPropertyVisibility(this, "BackColorground", !showPic);
+            SetPropertyVisibility(this, "BackColorgroundDown", !showPic);            
+        }
+
+        public void reRefresh()
+        {
+            SetPropertyVisibility(this, "EnVarText", _btnEnable);
+            setBtnTypeShow(_buttonType);
+            setBackGroundType(_isShowPic);
+        }
+
         //按钮类型配置
-        Dictionary<String, Byte> _btnConfig = new Dictionary<String, Byte>();
+        //Dictionary<String, Byte> _btnConfig = new Dictionary<String, Byte>();
 
         public UpdateControl UpdateControl;
 
@@ -102,26 +214,13 @@ namespace SVControl
             _bgDownColor = _bgcolor;
             _btnType = new SVBtnTypeConverter();
             _controlType = "按钮";
-
-            //
-            _btnConfig.Add("页面跳转", 4);
-            _btnConfig.Add("开", 5);
-            _btnConfig.Add("关", 6);
+            _enVarText = new SVVarDefine();
+            _btnVarText = new SVVarDefine();
 
             _btnDownPic = new SVBitmap();
             _btnUpPic = new SVBitmap();
             _isShowPic = false;
             _isLock = false;
-        }
-
-        [CategoryAttribute("状态")]
-        [DisplayName("背景")]
-        [DescriptionAttribute("设置按钮的背景，分为颜色和图片两种。")]
-        [EditorAttribute(typeof(SVBtnBackGroundTypeEditor), typeof(UITypeEditor))]
-        public String BackGround
-        {
-            get { return _backGround; }
-            set { _backGround = value; }
         }
 
         [CategoryAttribute("属性")]
@@ -158,13 +257,12 @@ namespace SVControl
             }
         }
 
-        [CategoryAttribute("状态")]        
+        [CategoryAttribute("背景")]        
         [DisplayName("按下图片")]
         [DescriptionAttribute("按钮按下后，背景显示的图片")]
-        [EditorAttribute(typeof(SVBitmapTypeEditor), typeof(UITypeEditor))]
         [TypeConverter(typeof(SVBitmap))]
-        [ReadOnlyAttribute(true)]
-        [Browsable(false)]
+        [EditorAttribute(typeof(SVBitmapTypeEditor), typeof(UITypeEditor))]
+        [Browsable(true)]
         public SVBitmap BtnDownPic
         {
             get { return _btnDownPic; }
@@ -192,13 +290,12 @@ namespace SVControl
             }
         }
 
-        [CategoryAttribute("状态")]        
+        [CategoryAttribute("背景")]        
         [DisplayName("弹起图片")]
         [DescriptionAttribute("按钮弹起后，背景显示的图片")]
-        [EditorAttribute(typeof(SVBitmapTypeEditor), typeof(UITypeEditor))]
         [TypeConverter(typeof(SVBitmap))]
-        [ReadOnlyAttribute(true)]
-        [Browsable(false)]
+        [EditorAttribute(typeof(SVBitmapTypeEditor), typeof(UITypeEditor))]
+        [Browsable(true)]
         public SVBitmap BtnUpPic
         {
             get { return _btnUpPic; }
@@ -236,6 +333,7 @@ namespace SVControl
             set { _controlType = value; }
         }
 
+        [Browsable(false)]
         [CategoryAttribute("数据")]
         [DisplayName("设置动作")]
         [EditorAttribute(typeof(SVBtnTypeEditor), typeof(UITypeEditor))]
@@ -319,11 +417,12 @@ namespace SVControl
             }
         }
 
-        [CategoryAttribute("状态")]
-        [DescriptionAttribute("按钮的背景颜色显示")]
-        [DisplayName("背景")]
-        [ReadOnlyAttribute(false)]
-        [Browsable(false)]
+        [CategoryAttribute("背景")]
+        [DescriptionAttribute("按钮处于弹起状态背景颜色显示")]
+        [DisplayName("弹起背景")]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Browsable(true)]
         public Color BackColorground
         {
             set
@@ -353,11 +452,12 @@ namespace SVControl
             }
         }
 
-        [CategoryAttribute("状态")]
+        [CategoryAttribute("背景")]
         [DescriptionAttribute("按钮处于按下去状态的背景颜色显示")]
         [DisplayName("按下背景")]
-        [ReadOnlyAttribute(false)]
-        [Browsable(false)]
+        [TypeConverter(typeof(SVColorConverter))]
+        [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Browsable(true)]
         public Color BackColorgroundDown
         {
             set

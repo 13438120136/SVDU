@@ -58,8 +58,11 @@ namespace SVControl
                     strBuilder.Append(" or ");
             }
 
-            _recvTable.DefaultView.RowFilter = strBuilder.ToString();
-            _sendTable.DefaultView.RowFilter = strBuilder.ToString();
+            if (_recvTable.DefaultView.Count > 0)
+                _recvTable.DefaultView.RowFilter = strBuilder.ToString();
+
+            if (_sendTable.DefaultView.Count > 0)
+                _sendTable.DefaultView.RowFilter = strBuilder.ToString();
             _systemDataTable.DefaultView.RowFilter = strBuilder.ToString();
 
             this.inputDataGrid.ItemsSource = _recvTable.DefaultView;

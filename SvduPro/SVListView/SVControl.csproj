@@ -97,6 +97,7 @@
     <Compile Include="SVBtnBackGroundWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SVBtnEnabledVarUIEditor.cs" />
     <Compile Include="SVBtnTextWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +111,8 @@
     <Compile Include="SVButtonMemoUIEditor.cs" />
     <Compile Include="SVButtonProperties.cs" />
     <Compile Include="SVButtonTextUIEditor.cs" />
+    <Compile Include="SVButtonTypeConverter.cs" />
+    <Compile Include="SVButtonTypeUIEditor.cs" />
     <Compile Include="SVColorConverter.cs" />
     <Compile Include="SVColorTypeEditor.cs" />
     <Compile Include="SVControlWindow.cs">
@@ -219,6 +222,9 @@
     <Compile Include="SVWPFBtnTextEdit.xaml.cs">
       <DependentUpon>SVWPFBtnTextEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SVWPFButtonType.xaml.cs">
+      <DependentUpon>SVWPFButtonType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SVWPFFontDialog.xaml.cs">
       <DependentUpon>SVWPFFontDialog.xaml</DependentUpon>
     </Compile>
@@ -287,6 +293,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SVBtnTypeWindow.resx">
       <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SVGifWindow.en.resx">
       <DependentUpon>SVGifWindow.cs</DependentUpon>
@@ -361,6 +368,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SVWPFBtnTextEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFButtonType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

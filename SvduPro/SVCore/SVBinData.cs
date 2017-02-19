@@ -159,6 +159,10 @@ namespace SVCore
         public UInt32[] addrOffset;      /*趋势图对应的变量偏移地址*/
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = SVLimit.TREND_LINE_MAX_NUM)]
         public UInt32[] lineClr;         /*趋势图的趋势线颜色*/
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+        public UInt32[] keyOffset;       /*数组0：前进，1：当前，2：后退*/
+
         public Single yMin;
         public Single yMax;
         public UInt16 maxTime;           //趋势图的最大时间，单位秒，范围60-3600
