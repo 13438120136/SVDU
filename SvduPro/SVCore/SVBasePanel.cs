@@ -163,6 +163,7 @@ namespace SVCore
 
         //定义当前节点显示类型
         SVNodesType _nodeType = SVNodesType.All;
+        Boolean _isMouseDown = false;
 
         #endregion
 
@@ -261,7 +262,7 @@ namespace SVCore
         void SVBasePanel_MouseUp(object sender, MouseEventArgs e)
         {
             SizeChangedEvent();
-            Selected = true;
+            //Selected = true;
         }
 
         /// <summary>
@@ -272,7 +273,7 @@ namespace SVCore
         void _backControl_MouseUp(object sender, MouseEventArgs e)
         {
             SizeChangedEvent();
-            Selected = true;            
+            //Selected = true;            
         }
 
         /// <summary>
@@ -306,8 +307,17 @@ namespace SVCore
                 Int32 cX = e.X - pos.X;
                 Int32 cY = e.Y - pos.Y;
 
-                Int32 disX = e.X - pos.X + this.Location.X;
-                Int32 disY = e.Y - pos.Y + this.Location.Y;
+                ///防止控件在拖动过程中发生滑动
+                double disIValue = Math.Sqrt(cX * cX + cY * cY);
+                if (!_isMouseDown)
+                {
+                    if (disIValue > 18)
+                        _isMouseDown = true;
+                    return;
+                }
+
+                Int32 disX = cX + this.Location.X;
+                Int32 disY = cY + this.Location.Y;
 
                 if (disX < 0)
                     disX = 0;
@@ -340,6 +350,7 @@ namespace SVCore
                     return;
 
                 this.Selected = true;
+                _isMouseDown = false;
             });
         }
 
@@ -385,7 +396,7 @@ namespace SVCore
                     foreach (var item in Parent.Controls)
                     {
                         SVBasePanel panel = item as SVBasePanel;
-                        if (panel != null)
+                        if ((panel != null) && (panel != this))
                             panel.Selected = false;
                     }
                 }
