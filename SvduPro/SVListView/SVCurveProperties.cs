@@ -26,6 +26,31 @@ namespace SVControl
         String[] _varArray = new String[4];      //变量列表
         Byte[] _varArrayType = new Byte[4];  //变量类型列表
 
+        SVVarDefine _forwardControl;     //前进关联变量
+        SVVarDefine _curControl;         //当前关联变量
+        SVVarDefine _backwardControl;    //后退关联变量
+
+        [Browsable(false)]
+        public SVVarDefine ForwardControl
+        {
+            get { return _forwardControl; }
+            set { _forwardControl = value; }
+        }
+
+        [Browsable(false)]
+        public SVVarDefine CurControl
+        {
+            get { return _curControl; }
+            set { _curControl = value; }
+        }
+
+        [Browsable(false)]
+        public SVVarDefine BackwardControl
+        {
+            get { return _backwardControl; }
+            set { _backwardControl = value; }
+        }
+
         [Browsable(false)]
         public Byte[] VarArrayType
         {
@@ -75,6 +100,17 @@ namespace SVControl
             _controlType = "趋势图";
             _isLock = false;
             _var = "变量列表";
+
+            _forwardControl = new SVVarDefine();
+            _curControl = new SVVarDefine();
+            _backwardControl = new SVVarDefine();
+
+            _forwardControl.VarName = "0";
+            _curControl.VarName = "8";
+            _backwardControl.VarName = "16";
+            _forwardControl.VarType = 3;
+            _curControl.VarType = 3;
+            _backwardControl.VarType = 3;
         }
 
         [CategoryAttribute("数据")]
@@ -453,13 +489,17 @@ namespace SVControl
             curveBin.font = (Byte)_font.Size;
             curveBin.stepTime = Step;
 
+            var varInstance = SVVaribleType.instance();
+            curveBin.keyOffset[0] = varInstance.strToAddress(ForwardControl.VarName, ForwardControl.VarType);
+            curveBin.keyOffset[1] = varInstance.strToAddress(CurControl.VarName, CurControl.VarType);
+            curveBin.keyOffset[2] = varInstance.strToAddress(BackwardControl.VarName, BackwardControl.VarType);
+
             //变量地址
             for (int i = 0; i < _varArray.Length; i++)
             {
                 String str =_varArray[i];
                 Byte type = _varArrayType[i];
 
-                var varInstance = SVVaribleType.instance();
                 curveBin.addrOffset[i] = varInstance.strToAddress(str, type);
                 curveBin.varType[i] = (Byte)varInstance.strToType(str, type);
             }

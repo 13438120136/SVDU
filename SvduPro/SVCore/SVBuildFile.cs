@@ -103,7 +103,7 @@ namespace SVCore
         /// <summary>
         /// 添加下装协议头
         /// </summary>
-        /// <param name="buffer">实际的下装二进制数据</param>
+        /// <param name="tmpBuffer">实际的下装二进制数据</param>
         /// <returns>加了协议头的二进制数据</returns>
         public byte[] addProtocolHead(byte[] buffer)
         {

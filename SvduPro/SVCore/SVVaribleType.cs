@@ -72,6 +72,12 @@ namespace SVCore
                         dataTable = loadSystemDataTable();
                         break;
                     }
+                case 3:
+                    {
+                        byte[] tmpBuffer = BitConverter.GetBytes(Int32.Parse(varName));
+                        tmpBuffer[3] = type;
+                        return BitConverter.ToUInt32(tmpBuffer, 0);
+                    }
             }
 
             String selectStr = string.Format("ioblockname='{0}'", varName);
@@ -116,6 +122,8 @@ namespace SVCore
                         dataTable = loadSystemDataTable();
                         break;
                     }
+                case 3:
+                    break;
             }
 
             String selectStr = string.Format("ioblockname='{0}'", varName);

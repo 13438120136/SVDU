@@ -168,7 +168,7 @@ namespace SVCore
         /// <summary>
         /// 从图片数据的指定位置读取一副图片并返回
         /// </summary>
-        /// <param name="buffer">图片数据</param>
+        /// <param name="tmpBuffer">图片数据</param>
         /// <param name="offset">偏移位置</param>
         /// <returns>图片对象</returns>
         public Bitmap getFromFile(byte[] buffer, UInt32 offset)

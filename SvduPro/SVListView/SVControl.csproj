@@ -97,6 +97,7 @@
     <Compile Include="SVBtnBackGroundWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SVBtnCurveUIEditor.cs" />
     <Compile Include="SVBtnEnabledVarUIEditor.cs" />
     <Compile Include="SVBtnTextWindow.cs">
       <SubType>Form</SubType>
@@ -224,6 +225,9 @@
     </Compile>
     <Compile Include="SVWPFButtonType.xaml.cs">
       <DependentUpon>SVWPFButtonType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SVWPFCurveSelect.xaml.cs">
+      <DependentUpon>SVWPFCurveSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="SVWPFFontDialog.xaml.cs">
       <DependentUpon>SVWPFFontDialog.xaml</DependentUpon>
@@ -372,6 +376,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SVWPFButtonType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFCurveSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

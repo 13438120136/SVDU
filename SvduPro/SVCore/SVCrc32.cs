@@ -123,7 +123,7 @@ namespace SVCore
         /// <summary>
         /// 包装的calCrc32Append，使用初始值为0进行计算
         /// </summary>
-        /// <param name="buffer">内存起始地址</param>
+        /// <param name="tmpBuffer">内存起始地址</param>
         /// <param name="len">长度</param>
         /// <returns>32位CRC值</returns>
         public UInt32 calculateCrc32(byte[] buffer, UInt32 len)

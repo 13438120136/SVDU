@@ -34,6 +34,7 @@ namespace SVControl
         Boolean _btnEnable = false;  //按钮使能标志
         SVVarDefine _enVarText;      //选择使能变量
         SVVarDefine _btnVarText;     //按钮关联变量
+        String _curveObj;            //关联的趋势图对象
 
         Boolean _isLock;       //是否锁定
 
@@ -51,6 +52,17 @@ namespace SVControl
 
             FieldInfo fld = type.GetField("browsable", BindingFlags.Instance | BindingFlags.NonPublic);
             fld.SetValue(attrs[type], visible);
+        }
+
+        [Browsable(true)]
+        [CategoryAttribute("数据")]
+        [DisplayName("趋势图")]
+        [DescriptionAttribute("当前按钮操作的相关趋势图.")]
+        [EditorAttribute(typeof(SVBtnCurveUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public String CurveObj
+        {
+            get { return _curveObj; }
+            set { _curveObj = value; }
         }
 
         [Browsable(false)]
@@ -133,6 +145,11 @@ namespace SVControl
                 case 3:
                     SetPropertyVisibility(this, "BtnVarText", true);
                     SetPropertyVisibility(this, "FText", true);
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    SetPropertyVisibility(this, "BtnVarText", false);
                     break;
             }
         }
