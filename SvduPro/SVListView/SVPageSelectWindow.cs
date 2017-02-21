@@ -7,7 +7,7 @@ namespace SVControl
     public partial class SVPageSelectWindow : Form
     {
         String _pageText;
-        int _pageID = -1;
+        UInt16 _pageID = 0;
 
         public SVPageSelectWindow()
         {
@@ -20,7 +20,7 @@ namespace SVControl
             return _pageText;
         }
 
-        public Int32 getPageID()
+        public UInt16 getPageID()
         {
             return _pageID;
         }
@@ -31,12 +31,12 @@ namespace SVControl
             {
                 MessageBox.Show("没有选中页面项!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 _pageText = String.Empty;
-                _pageID = -1;
+                _pageID = 0;
                 return;
             }
 
             _pageText = pageText.Text;
-            _pageID = Int32.Parse(pageID.Text);
+            _pageID = UInt16.Parse(pageID.Text);
             this.DialogResult = System.Windows.Forms.DialogResult.Yes;
         }
 

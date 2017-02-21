@@ -217,10 +217,9 @@ namespace SVControl
             _attrib.Font = new Font(fontFamily, fontSize);
             _attrib.Comfirm = Boolean.Parse(button.GetAttribute("Confirm"));
 
-            SVBtnTypeConverter vTmp = new SVBtnTypeConverter();
             _attrib.ButtonType = Byte.Parse(button.GetAttribute("ButtonType"));
-            vTmp.PageID = UInt16.Parse(button.GetAttribute("ButtonTypeID"));
-            vTmp.PageText = button.GetAttribute("ButtonTypeText");
+            _attrib.ButtonPage.PageID = UInt16.Parse(button.GetAttribute("ButtonTypeID"));
+            _attrib.ButtonPage.PageText = button.GetAttribute("ButtonTypeText");
 
             _attrib.BtnVarText.VarName = button.GetAttribute("ButtonTypeVar");
             _attrib.BtnVarText.VarType = Byte.Parse(button.GetAttribute("ButtonTypeVarType"));
@@ -229,7 +228,6 @@ namespace SVControl
             _attrib.EnVarText.VarType = Byte.Parse(button.GetAttribute("EnabledVarType"));
             _attrib.BtnEnable = Boolean.Parse(button.GetAttribute("Enabled"));
 
-            _attrib.BtnType = vTmp;
             //按钮图片数据
             _attrib.IsShowPic = Boolean.Parse(button.GetAttribute("IsShowPicture"));
             _attrib.BtnDownPic.ImageFileName = button.GetAttribute("BtnDownPicFile");
@@ -262,8 +260,8 @@ namespace SVControl
             button.SetAttribute("fontSize", _attrib.Font.Size.ToString());
             button.SetAttribute("Confirm", _attrib.Comfirm.ToString());
             button.SetAttribute("ButtonType", _attrib.ButtonType.ToString());
-            button.SetAttribute("ButtonTypeID", _attrib.BtnType.PageID.ToString());
-            button.SetAttribute("ButtonTypeText", _attrib.BtnType.PageText.ToString());
+            button.SetAttribute("ButtonTypeID", _attrib.ButtonPage.PageID.ToString());
+            button.SetAttribute("ButtonTypeText", _attrib.ButtonPage.PageText);
             button.SetAttribute("ButtonTypeVar", _attrib.BtnVarText.VarName);
             button.SetAttribute("ButtonTypeVarType", _attrib.BtnVarText.VarType.ToString());
             //按钮使能
@@ -412,14 +410,14 @@ namespace SVControl
             //    throw new SVCheckValidException(msg);
             //}
 
-            //var address = varInstance.strToAddress(Attrib.BtnType.EnVarText, Attrib.BtnType.EnVarTextType);
+            //var address = varInstance.strToAddress(Attrib.ButtonPage.EnVarText, Attrib.ButtonPage.EnVarTextType);
             //if (address == 0)
             //{
             //    String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 使能变量未正确设置", pageName, Attrib.ID);
             //    throw new SVCheckValidException(msg);
             //}
 
-            //var varAddress = varInstance.strToAddress(Attrib.BtnType.VarText, Attrib.BtnType.VarTextType);
+            //var varAddress = varInstance.strToAddress(Attrib.ButtonPage.VarText, Attrib.ButtonPage.VarTextType);
             //if (varAddress == 0)
             //{
             //    String msg = String.Format("页面 {0} 中, 按钮ID为:{1}, 按钮关联变量未正确设置", pageName, Attrib.ID);

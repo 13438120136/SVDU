@@ -106,7 +106,7 @@
     <Compile Include="SVBtnTextWindow.Designer.cs">
       <DependentUpon>SVBtnTextWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="SVBtnTypeConverter.cs" />
+    <Compile Include="SVBtnChoicePage.cs" />
     <Compile Include="SVButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -171,12 +171,6 @@
       <DependentUpon>SVBitmapWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="SVBtnTypeEditor.cs" />
-    <Compile Include="SVBtnTypeWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SVBtnTypeWindow.Designer.cs">
-      <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="SVFontTypeConverter.cs" />
     <Compile Include="SVLockUITypeEditor.cs" />
     <Compile Include="SVPageBackGroundTypeConverter.cs" />
@@ -284,9 +278,6 @@
     <EmbeddedResource Include="SVBtnTextWindow.resx">
       <DependentUpon>SVBtnTextWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SVBtnTypeWindow.en.resx">
-      <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SVCurveVarWindow.en.resx">
       <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,10 +286,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SVBitmapWindow.resx">
       <DependentUpon>SVBitmapWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SVBtnTypeWindow.resx">
-      <DependentUpon>SVBtnTypeWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SVGifWindow.en.resx">
       <DependentUpon>SVGifWindow.cs</DependentUpon>

@@ -26,17 +26,20 @@ namespace SVControl
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            //从当前对象中获取按钮控件对象
-            SVButton button = context.Instance as SVButton;
-            if (button == null)
-                return null;
+            SVBtnChoicePage page = value as SVBtnChoicePage;
+            if (page == null)
+                return value;
 
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                SVBtnDoWindow win = new SVBtnDoWindow(button);
-                edSvc.ShowDialog(win);
-                return button.Attrib.BtnType;
+                SVPageSelectWindow win = new SVPageSelectWindow();
+                if (win.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                {
+                    page.PageText = win.getPageText();
+                    page.PageID = win.getPageID();
+                    return page;
+                }
             }
 
             return value;

@@ -309,6 +309,7 @@ namespace SVCore
     /// <summary>
     /// 一个变量的定义类
     /// </summary>
+    [Serializable]
     public class SVVarDefine
     {
         /// <summary>

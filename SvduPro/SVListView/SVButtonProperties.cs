@@ -21,7 +21,7 @@ namespace SVControl
         UInt16 _id;          //文本ID
         Boolean _isConfirm;  //是否有确认按钮
 
-        SVBtnTypeConverter _btnType; //按钮类型
+        SVBtnChoicePage _btnType; //按钮类型
         String _controlType;   //控件显示类型
 
         SVBitmap _btnDownPic;  //按钮按下图片
@@ -136,6 +136,7 @@ namespace SVControl
                     SetPropertyVisibility(this, "BtnVarText", false);
                     SetPropertyVisibility(this, "FText", false);
                     SetPropertyVisibility(this, "CurveObj", false);
+                    SetPropertyVisibility(this, "ButtonPage", true);                    
                     break;
                 case 1:
                 case 2:
@@ -144,17 +145,20 @@ namespace SVControl
                     SetPropertyVisibility(this, "BtnVarText", true);
                     SetPropertyVisibility(this, "FText", false);
                     SetPropertyVisibility(this, "CurveObj", false);
+                    SetPropertyVisibility(this, "ButtonPage", false);  
                     break;
                 case 3:
                     SetPropertyVisibility(this, "BtnVarText", true);
                     SetPropertyVisibility(this, "FText", true);
                     SetPropertyVisibility(this, "CurveObj", false);
+                    SetPropertyVisibility(this, "ButtonPage", false);  
                     break;
                 case 6:
                 case 7:
                 case 8:
                     SetPropertyVisibility(this, "BtnVarText", false);
                     SetPropertyVisibility(this, "CurveObj", true);
+                    SetPropertyVisibility(this, "ButtonPage", false);  
                     break;
             }
         }
@@ -234,7 +238,7 @@ namespace SVControl
             _bgcolor = Color.FromArgb(236, 236, 236);
             _fgcolor = Color.Black;
             _bgDownColor = _bgcolor;
-            _btnType = new SVBtnTypeConverter();
+            _btnType = new SVBtnChoicePage();
             _controlType = "按钮";
             _enVarText = new SVVarDefine();
             _btnVarText = new SVVarDefine();
@@ -355,12 +359,12 @@ namespace SVControl
             set { _controlType = value; }
         }
 
-        [Browsable(false)]
+        [Browsable(true)]
         [CategoryAttribute("数据")]
-        [DisplayName("设置动作")]
+        [DisplayName("选择跳转页面")]
         [EditorAttribute(typeof(SVBtnTypeEditor), typeof(UITypeEditor))]
-        [TypeConverter(typeof(SVBtnTypeConverter))]
-        public SVBtnTypeConverter BtnType
+        [TypeConverter(typeof(SVBtnChoicePage))]
+        public SVBtnChoicePage ButtonPage
         {
             set
             {
@@ -368,7 +372,7 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                SVBtnTypeConverter before = _btnType;
+                SVBtnChoicePage before = _btnType;
                 undoItem.ReDo = () =>
                 {
                     _btnType = value;

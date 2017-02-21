@@ -111,10 +111,10 @@ namespace SvduPro
                             if (panel is SVButton)
                             {
                                 SVButton button = (SVButton)panel;
-                                String str = button.Attrib.BtnType.VarText;
+                                String str = button.Attrib.BtnVarText.VarName;
                                 outputFindResult(button, str);
 
-                                str = button.Attrib.BtnType.EnVarText;
+                                str = button.Attrib.EnVarText.VarName;
                                 outputFindResult(button, str);
                             }
 
