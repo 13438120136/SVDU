@@ -471,6 +471,7 @@ namespace SVControl
             curveBin.lineWidth = new Byte[4];
             curveBin.addrOffset = new UInt32[4];
             curveBin.varType = new Byte[4];
+            curveBin.keyOffset = new UInt32[3];
 
             curveBin.id = ID;
             curveBin.rect.sX = (UInt16)Rect.X;

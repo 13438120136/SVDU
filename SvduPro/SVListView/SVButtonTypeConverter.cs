@@ -35,11 +35,11 @@ namespace SVControl
                 case 5:
                     return "模拟量递减";
                 case 6:
-                    return "前进";
+                    return "趋势图前进";
                 case 7:
-                    return "当前";
+                    return "趋势图当前";
                 case 8:
-                    return "后退";
+                    return "趋势图后退";
                 default:
                     return base.ConvertTo(context, culture, value, destinationType);
             }

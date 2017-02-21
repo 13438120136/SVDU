@@ -390,19 +390,22 @@ namespace SVCore
             }
             else
             {
-                ///让兄弟控件不被选中
-                if (this.Parent != null)
+                if (!Selected)
                 {
-                    foreach (var item in Parent.Controls)
+                    ///让兄弟控件不被选中
+                    if (this.Parent != null)
                     {
-                        SVBasePanel panel = item as SVBasePanel;
-                        if ((panel != null) && (panel != this))
-                            panel.Selected = false;
+                        foreach (var item in Parent.Controls)
+                        {
+                            SVBasePanel panel = item as SVBasePanel;
+                            if ((panel != null) && (panel != this))
+                                panel.Selected = false;
+                        }
                     }
-                }
 
-                ///选中当前控件
-                Selected = true;
+                    ///选中当前控件
+                    Selected = true;
+                }
             }
         }
 

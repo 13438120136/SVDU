@@ -59,7 +59,7 @@ namespace SVControl
                     }
             }
 
-            if (_filters == null)
+            if (_filters != null)
                 dataTable.DefaultView.RowFilter = _filters;
             dataGridView.DataSource = dataTable.DefaultView;
         }
@@ -87,14 +87,18 @@ namespace SVControl
             Int32 nCount = filters.Count;
             for (int i = 0; i < nCount;  i++)
             {
-                strBuilder.Append(String.Format("变量类型 = '{0}'", filters[i]));
+                strBuilder.Append(String.Format("valueType = '{0}'", filters[i]));
                 if (i != (nCount - 1))
                     strBuilder.Append(" or ");
             }
 
             _filters = strBuilder.ToString();
-            dataView.RowFilter = strBuilder.ToString();
-            dataGridView.DataSource = dataView;
+
+            if (dataView.Count > 0)
+            {
+                dataView.RowFilter = strBuilder.ToString();
+                dataGridView.DataSource = dataView;
+            }
         }
 
         /// <summary>

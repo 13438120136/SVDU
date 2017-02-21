@@ -74,7 +74,8 @@ namespace SVCore
                     }
                 case 3:
                     {
-                        byte[] tmpBuffer = BitConverter.GetBytes(Int32.Parse(varName));
+                        UInt32 uname = UInt32.Parse(varName);
+                        byte[] tmpBuffer = BitConverter.GetBytes(uname);
                         tmpBuffer[3] = type;
                         return BitConverter.ToUInt32(tmpBuffer, 0);
                     }
@@ -123,7 +124,7 @@ namespace SVCore
                         break;
                     }
                 case 3:
-                    break;
+                    return 0;
             }
 
             String selectStr = string.Format("ioblockname='{0}'", varName);
@@ -316,8 +317,8 @@ namespace SVCore
         public String VarName { get; set; }
 
         /// <summary>
-        /// 变量类型,表示接收区、发送区、系统区类型
-        /// 值分别为0,1,2
+        /// 变量类型,表示接收区、发送区、系统区类型、中间变量
+        /// 值分别为0,1,2,3
         /// </summary>
         public Byte VarType { get; set; }
     }

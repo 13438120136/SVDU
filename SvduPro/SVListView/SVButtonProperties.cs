@@ -59,6 +59,7 @@ namespace SVControl
         [DisplayName("趋势图")]
         [DescriptionAttribute("当前按钮操作的相关趋势图.")]
         [EditorAttribute(typeof(SVBtnCurveUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [TypeConverter(typeof(SVBtnCurveConverter))]
         public String CurveObj
         {
             get { return _curveObj; }
@@ -134,6 +135,7 @@ namespace SVControl
                 case 0:
                     SetPropertyVisibility(this, "BtnVarText", false);
                     SetPropertyVisibility(this, "FText", false);
+                    SetPropertyVisibility(this, "CurveObj", false);
                     break;
                 case 1:
                 case 2:
@@ -141,15 +143,18 @@ namespace SVControl
                 case 5:
                     SetPropertyVisibility(this, "BtnVarText", true);
                     SetPropertyVisibility(this, "FText", false);
+                    SetPropertyVisibility(this, "CurveObj", false);
                     break;
                 case 3:
                     SetPropertyVisibility(this, "BtnVarText", true);
                     SetPropertyVisibility(this, "FText", true);
+                    SetPropertyVisibility(this, "CurveObj", false);
                     break;
                 case 6:
                 case 7:
                 case 8:
                     SetPropertyVisibility(this, "BtnVarText", false);
+                    SetPropertyVisibility(this, "CurveObj", true);
                     break;
             }
         }
@@ -685,24 +690,21 @@ namespace SVControl
             //是否有确认窗口
             btnBin.confirm = Comfirm ? (byte)1 : (byte)0;
             //按钮的类型
-            if (_btnType.Type == 0)
+            if (_buttonType == 0)
             {
                 btnBin.type = 0;
                 btnBin.param.pageId = _btnType.PageID;
             }
             else
             {
-                String varName = _btnType.VarText;
-                Byte varNameType = _btnType.VarTextType;
-
                 var varInstance = SVVaribleType.instance();
 
-                btnBin.param.addrOffset = varInstance.strToAddress(varName, varNameType);
-                btnBin.varTypeBtn = (Byte)varInstance.strToType(varName, varNameType);
-                btnBin.type = _btnType.Type;
-                btnBin.enable = Convert.ToByte(_btnType.Enable);
-                btnBin.enableAddrOffset = varInstance.strToAddress(_btnType.EnVarText, _btnType.EnVarTextType);
-                btnBin.varTypeEn = (Byte)varInstance.strToType(_btnType.EnVarText, _btnType.EnVarTextType);
+                btnBin.param.addrOffset = varInstance.strToAddress(_btnVarText.VarName, _btnVarText.VarType);
+                btnBin.varTypeBtn = (Byte)varInstance.strToType(_btnVarText.VarName, _btnVarText.VarType);
+                btnBin.type = _buttonType;
+                btnBin.enable = Convert.ToByte(_btnEnable);
+                btnBin.enableAddrOffset = varInstance.strToAddress(_enVarText.VarName, _enVarText.VarType);
+                btnBin.varTypeEn = (Byte)varInstance.strToType(_enVarText.VarName, _enVarText.VarType);
             }
 
             ///显示背景图片或者显示背景颜色

@@ -217,16 +217,18 @@ namespace SVControl
             _attrib.Font = new Font(fontFamily, fontSize);
             _attrib.Comfirm = Boolean.Parse(button.GetAttribute("Confirm"));
 
-            SVBtnTypeConverter vTmp = new SVBtnTypeConverter();  
-            vTmp.Type = Byte.Parse(button.GetAttribute("ButtonType"));
+            SVBtnTypeConverter vTmp = new SVBtnTypeConverter();
+            _attrib.ButtonType = Byte.Parse(button.GetAttribute("ButtonType"));
             vTmp.PageID = UInt16.Parse(button.GetAttribute("ButtonTypeID"));
-            vTmp.VarText = button.GetAttribute("ButtonTypeVar");
-            vTmp.VarTextType = Byte.Parse(button.GetAttribute("ButtonTypeVarType"));
             vTmp.PageText = button.GetAttribute("ButtonTypeText");
-            vTmp.EnVarText = button.GetAttribute("EnabledVar");
-            vTmp.EnVarTextType = Byte.Parse(button.GetAttribute("EnabledVarType"));
 
-            vTmp.Enable = Boolean.Parse(button.GetAttribute("Enabled"));
+            _attrib.BtnVarText.VarName = button.GetAttribute("ButtonTypeVar");
+            _attrib.BtnVarText.VarType = Byte.Parse(button.GetAttribute("ButtonTypeVarType"));
+
+            _attrib.EnVarText.VarName = button.GetAttribute("EnabledVar");
+            _attrib.EnVarText.VarType = Byte.Parse(button.GetAttribute("EnabledVarType"));
+            _attrib.BtnEnable = Boolean.Parse(button.GetAttribute("Enabled"));
+
             _attrib.BtnType = vTmp;
             //按钮图片数据
             _attrib.IsShowPic = Boolean.Parse(button.GetAttribute("IsShowPicture"));
@@ -234,6 +236,8 @@ namespace SVControl
             _attrib.BtnDownPic.ShowName = button.GetAttribute("BtnDownPicShowName");
             _attrib.BtnUpPic.ImageFileName = button.GetAttribute("BtnUpPicFile");
             _attrib.BtnUpPic.ShowName = button.GetAttribute("BtnUpPicShowName");
+            //读取趋势图关联
+            _attrib.CurveObj = button.GetAttribute("CurveObj");
         }
 
         /// <summary>
@@ -257,21 +261,23 @@ namespace SVControl
             button.SetAttribute("font", _attrib.Font.Name.ToString());
             button.SetAttribute("fontSize", _attrib.Font.Size.ToString());
             button.SetAttribute("Confirm", _attrib.Comfirm.ToString());
-            button.SetAttribute("ButtonType", _attrib.BtnType.Type.ToString());
+            button.SetAttribute("ButtonType", _attrib.ButtonType.ToString());
             button.SetAttribute("ButtonTypeID", _attrib.BtnType.PageID.ToString());
             button.SetAttribute("ButtonTypeText", _attrib.BtnType.PageText.ToString());
-            button.SetAttribute("ButtonTypeVar", _attrib.BtnType.VarText);
-            button.SetAttribute("ButtonTypeVarType", _attrib.BtnType.VarTextType.ToString());
+            button.SetAttribute("ButtonTypeVar", _attrib.BtnVarText.VarName);
+            button.SetAttribute("ButtonTypeVarType", _attrib.BtnVarText.VarType.ToString());
             //按钮使能
-            button.SetAttribute("Enabled", _attrib.BtnType.Enable.ToString());
-            button.SetAttribute("EnabledVar", _attrib.BtnType.EnVarText);
-            button.SetAttribute("EnabledVarType", _attrib.BtnType.EnVarTextType.ToString());
+            button.SetAttribute("Enabled", _attrib.BtnEnable.ToString());
+            button.SetAttribute("EnabledVar", _attrib.EnVarText.VarName);
+            button.SetAttribute("EnabledVarType", _attrib.EnVarText.VarType.ToString());
             //按钮图片数据
             button.SetAttribute("IsShowPicture", _attrib.IsShowPic.ToString());
             button.SetAttribute("BtnDownPicFile", _attrib.BtnDownPic.ImageFileName);
             button.SetAttribute("BtnDownPicShowName", _attrib.BtnDownPic.ShowName);
             button.SetAttribute("BtnUpPicFile", _attrib.BtnUpPic.ImageFileName);
             button.SetAttribute("BtnUpPicShowName", _attrib.BtnUpPic.ShowName);
+            //趋势图关联
+            button.SetAttribute("CurveObj", _attrib.CurveObj);
         }
 
         public void buildControlToBin(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)

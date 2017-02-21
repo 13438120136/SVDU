@@ -16,9 +16,9 @@
                 <sys:String>变量翻转</sys:String>
                 <sys:String>模拟量递增</sys:String>
                 <sys:String>模拟量递减</sys:String>
-                <sys:String>前进</sys:String>
-                <sys:String>当前</sys:String>
-                <sys:String>后退</sys:String>
+                <sys:String>趋势图前进</sys:String>
+                <sys:String>趋势图当前</sys:String>
+                <sys:String>趋势图后退</sys:String>
             </x:Array>
         </ResourceDictionary>
     </UserControl.Resources>

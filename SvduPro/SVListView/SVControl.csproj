@@ -97,6 +97,7 @@
     <Compile Include="SVBtnBackGroundWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SVBtnCurveConverter.cs" />
     <Compile Include="SVBtnCurveUIEditor.cs" />
     <Compile Include="SVBtnEnabledVarUIEditor.cs" />
     <Compile Include="SVBtnTextWindow.cs">
