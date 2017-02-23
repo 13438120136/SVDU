@@ -148,9 +148,9 @@ namespace SvduPro
                             if (panel is SVCurve)
                             {
                                 SVCurve curve = (SVCurve)panel;
-                                foreach (var str in curve.Attrib.VarArray)
+                                foreach (var str in curve.Attrib.Variable)
                                 {
-                                    outputFindResult(curve, str);
+                                    outputFindResult(curve, str.Var.VarName);
                                 }
                             }
                         }
