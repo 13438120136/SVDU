@@ -264,29 +264,29 @@ namespace SVControl
             _attrib.Max = Single.Parse(curve.GetAttribute("Max"));
             _attrib.Min = Single.Parse(curve.GetAttribute("Min"));
 
-            ///读取变量数组
-            XmlNodeList nls = curve.GetElementsByTagName("VarName");
-            for (int i = 0; i < nls.Count; i++)
+            Int32 count = Int32.Parse(curve.GetAttribute("Count"));
+            for (int i = 0; i < count; i++)
             {
+                SVCurveProper proper = new SVCurveProper();
+
+                XmlNodeList nls = curve.GetElementsByTagName("VarName");
                 XmlElement vElement = (XmlElement)nls[i];
-                _attrib.VarArray[i] = vElement.GetAttribute("Name");
-            }
+                proper.Var.VarName = vElement.GetAttribute("Value");
 
-            ///读取颜色数组
-            XmlNodeList colorList = curve.GetElementsByTagName("LineColor");
-            for (int i = 0; i < colorList.Count; i++)
-            {
-                XmlElement vElement = (XmlElement)colorList[i];
-                String value = vElement.GetAttribute("Color");
-                _attrib.VarColorArray[i] = Color.FromArgb(int.Parse(value));
-            }
+                XmlNodeList varType = curve.GetElementsByTagName("VarType");
+                XmlElement tElement = (XmlElement)varType[i];
+                proper.Var.VarType = Byte.Parse(tElement.GetAttribute("Value"));
 
-            ///读取使能数组
-            XmlNodeList enabledList = curve.GetElementsByTagName("LineEnabled");
-            for (int i = 0; i < enabledList.Count; i++)
-            {
-                XmlElement vElement = (XmlElement)enabledList[i];
-                _attrib.LineEnabled[i] = Byte.Parse(vElement.GetAttribute("Enabled"));
+                XmlNodeList colorList = curve.GetElementsByTagName("VarColor");
+                XmlElement cElement = (XmlElement)colorList[i];
+                String value = cElement.GetAttribute("Value");
+                proper.Color = Color.FromArgb(int.Parse(value));
+
+                XmlNodeList enabledList = curve.GetElementsByTagName("varEnabled");
+                XmlElement eElement = (XmlElement)enabledList[i];
+                proper.Enabled = Boolean.Parse(eElement.GetAttribute("Value"));
+
+                _attrib.Variable.Add(proper);
             }
         }
 
@@ -311,31 +311,26 @@ namespace SVControl
             curve.SetAttribute("Max", _attrib.Max.ToString());
             curve.SetAttribute("Min", _attrib.Min.ToString());
 
-            ///保存变量
-            foreach (var name in _attrib.VarArray)
+            curve.SetAttribute("Count", _attrib.Variable.Count.ToString());
+
+            ///保存变量的字段
+            foreach (var varTmp in _attrib.Variable)
             {
                 XmlElement nameList = xml.crateChildNode("VarName");
                 curve.AppendChild(nameList);
+                nameList.SetAttribute("Value", varTmp.Var.VarName);
 
-                nameList.SetAttribute("Name", name);
-            }
+                XmlElement typeList = xml.crateChildNode("VarType");
+                curve.AppendChild(typeList);
+                typeList.SetAttribute("Value", varTmp.Var.VarType.ToString());
 
-            ///保存线条颜色
-            foreach (var color in _attrib.VarColorArray)
-            {
-                XmlElement colorList = xml.crateChildNode("LineColor");
+                XmlElement colorList = xml.crateChildNode("VarColor");
                 curve.AppendChild(colorList);
+                colorList.SetAttribute("Value", varTmp.Color.ToArgb().ToString());
 
-                colorList.SetAttribute("Color", color.ToArgb().ToString());
-            }
-
-            ///保存使能
-            foreach (var en in _attrib.LineEnabled)
-            {
-                XmlElement colorList = xml.crateChildNode("LineEnabled");
-                curve.AppendChild(colorList);
-
-                colorList.SetAttribute("Enabled", en.ToString());
+                XmlElement enableList = xml.crateChildNode("varEnabled");
+                curve.AppendChild(enableList);
+                enableList.SetAttribute("Value", varTmp.Enabled.ToString());
             }
         }
 

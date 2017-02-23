@@ -124,13 +124,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SVCurveProperties.cs" />
+    <Compile Include="SVCurveVarConverter.cs" />
     <Compile Include="SVCurveVarTypeEditor.cs" />
-    <Compile Include="SVCurveVarWindow.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SVCurveVarWindow.Designer.cs">
-      <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="SVDefineVarConverter.cs" />
     <Compile Include="SVFontTypeEditor.cs" />
     <Compile Include="SVGif.cs">
@@ -224,6 +219,9 @@
     <Compile Include="SVWPFCurveSelect.xaml.cs">
       <DependentUpon>SVWPFCurveSelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SVWPFCurveVar.xaml.cs">
+      <DependentUpon>SVWPFCurveVar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SVWPFFontDialog.xaml.cs">
       <DependentUpon>SVWPFFontDialog.xaml</DependentUpon>
     </Compile>
@@ -277,12 +275,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SVBtnTextWindow.resx">
       <DependentUpon>SVBtnTextWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SVCurveVarWindow.en.resx">
-      <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SVCurveVarWindow.resx">
-      <DependentUpon>SVCurveVarWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVBitmapWindow.resx">
       <DependentUpon>SVBitmapWindow.cs</DependentUpon>
@@ -368,6 +360,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SVWPFCurveSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SVWPFCurveVar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

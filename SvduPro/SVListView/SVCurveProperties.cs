@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using SVCore;
 using System.Drawing.Design;
+using SVControl;
+using SVCore;
 
 namespace SVControl
 {
@@ -22,13 +23,10 @@ namespace SVControl
 
         String _controlType;   //控件类型
 
-        String _var;
-        String[] _varArray = new String[4];      //变量列表
-        Byte[] _varArrayType = new Byte[4];  //变量类型列表
-
         SVVarDefine _forwardControl;     //前进关联变量
         SVVarDefine _curControl;         //当前关联变量
         SVVarDefine _backwardControl;    //后退关联变量
+        List<SVCurveProper> _variable = new List<SVCurveProper>();   //关联的变量
 
         [Browsable(false)]
         public SVVarDefine ForwardControl
@@ -51,38 +49,6 @@ namespace SVControl
             set { _backwardControl = value; }
         }
 
-        [Browsable(false)]
-        public Byte[] VarArrayType
-        {
-            get { return _varArrayType; }
-            set { _varArrayType = value; }
-        }
-
-        [Browsable(false)]
-        public String[] VarArray
-        {
-            get { return _varArray; }
-            set { _varArray = value; }
-        }
-
-        Color[] _varColorArray = new Color[4];
-
-        [Browsable(false)]
-        public Color[] VarColorArray
-        {
-            get { return _varColorArray; }
-            set { _varColorArray = value; }
-        }
-
-        Byte[] _lineEnabled = new Byte[4];
-
-        [Browsable(false)]
-        public Byte[] LineEnabled
-        {
-            get { return _lineEnabled; }
-            set { _lineEnabled = value; }
-        }
-
         Boolean _isLock;
 
         public UpdateControl UpdateControl;
@@ -99,7 +65,6 @@ namespace SVControl
             _step = 60;
             _controlType = "趋势图";
             _isLock = false;
-            _var = "变量列表";
 
             _forwardControl = new SVVarDefine();
             _curControl = new SVVarDefine();
@@ -111,6 +76,17 @@ namespace SVControl
             _forwardControl.VarType = 3;
             _curControl.VarType = 3;
             _backwardControl.VarType = 3;
+        }
+
+        [CategoryAttribute("数据")]
+        [DescriptionAttribute("趋势图中显示的变量")]
+        [EditorAttribute(typeof(SVCurveVarTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [TypeConverter(typeof(SVCurveVarConverter))]
+        [DisplayName("变量列表")]
+        public List<SVCurveProper> Variable
+        {
+            get { return _variable; }
+            set { _variable = value; }
         }
 
         [CategoryAttribute("数据")]
@@ -341,16 +317,6 @@ namespace SVControl
         }
 
         [CategoryAttribute("数据")]
-        [DescriptionAttribute("变量")]
-        [EditorAttribute(typeof(SVCurveVarTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        [DisplayName("变量列表")]
-        public String Var
-        {
-            get { return _var; }
-            set { _var = value; }
-        }
-
-        [CategoryAttribute("数据")]
         [DescriptionAttribute("起始纵坐标")]
         [DisplayName("起始纵坐标")]
         public Single Min
@@ -381,7 +347,6 @@ namespace SVControl
                 return _min;
             }
         }
-
 
         [CategoryAttribute("数据")]
         [DescriptionAttribute("结束纵坐标")]
@@ -495,27 +460,61 @@ namespace SVControl
             curveBin.keyOffset[1] = varInstance.strToAddress(CurControl.VarName, CurControl.VarType);
             curveBin.keyOffset[2] = varInstance.strToAddress(BackwardControl.VarName, BackwardControl.VarType);
 
-            //变量地址
-            for (int i = 0; i < _varArray.Length; i++)
+            ///编译变量、颜色及使能标志
+            Int32 nCount = _variable.Count;
+            for (Int32 i = 0; i < nCount; i++)
             {
-                String str =_varArray[i];
-                Byte type = _varArrayType[i];
+                String name = _variable[i].Var.VarName;
+                Byte type = _variable[i].Var.VarType;                
 
-                curveBin.addrOffset[i] = varInstance.strToAddress(str, type);
-                curveBin.varType[i] = (Byte)varInstance.strToType(str, type);
+                curveBin.addrOffset[i] = varInstance.strToAddress(name, type);
+                curveBin.varType[i] = (Byte)varInstance.strToType(name, type);
+                curveBin.lineClr[i] = (UInt32)_variable[i].Color.ToArgb();
+                curveBin.lineWidth[i] = _variable[i].Enabled ? (Byte)1 : (Byte)0;
             }
 
-            //线条颜色
-            for (int i = 0; i < _varArray.Length; i++)
-            {
-                UInt32 value = (UInt32)_varColorArray[i].ToArgb();
-                curveBin.lineClr[i] = value;
-            }
-
-            //线条使能
-            Array.Copy(_lineEnabled, curveBin.lineWidth, _varArray.Length);
-
+            ///"SHORT_INT", "SHORTINT_VAR", "INT", "INT_VAR", "REAL", "REAL_VAR" 
             pageArrayBin.pageArray[pageCount].m_trendChart[curveCount] = curveBin;
         }
+    }
+}
+
+
+public class SVCurveProper
+{
+    SVVarDefine _var = new SVVarDefine();
+    Color _color = Color.Black;
+    Boolean _enabled = false;
+
+    [CategoryAttribute("数据")]
+    [DisplayName("线条使能")]
+    [DescriptionAttribute("是否处于使能状态")]
+    public Boolean Enabled
+    {
+        get { return _enabled; }
+        set { _enabled = value; }
+    }
+
+    [CategoryAttribute("数据")]
+    [DescriptionAttribute("当前变量显示的线条颜色")]
+    [TypeConverter(typeof(SVColorConverter))]
+    [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    [DisplayName("线条颜色")]
+    public Color Color
+    {
+        get { return _color; }
+        set { _color = value; }
+    }
+
+    [Browsable(true)]
+    [CategoryAttribute("数据")]
+    [DisplayName("线条变量")]
+    [DescriptionAttribute("趋势图关联的变量.")]
+    [EditorAttribute(typeof(SVBtnEnabledVarUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    [TypeConverter(typeof(SVDefineVarConverter))]
+    public SVVarDefine Var
+    {
+        get { return _var; }
+        set { _var = value; }
     }
 }

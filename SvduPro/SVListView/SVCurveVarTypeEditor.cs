@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing.Design;
 using System.Windows.Forms.Design;
 
@@ -8,24 +9,18 @@ namespace SVControl
     {
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
-            return UITypeEditorEditStyle.DropDown;
+            return UITypeEditorEditStyle.Modal;
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {
-            SVCurve curve = context.Instance as SVCurve;
-            if (curve == null)
-                return String.Empty;
-
             IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
             if (edSvc != null)
             {
-                SVCurveVarWindow varWindow = new SVCurveVarWindow(curve);
-                edSvc.DropDownControl(varWindow);
-                curve.RedoUndo.operChanged();
-
-                return "变量列表";
+                SVWPFCurveVar window = new SVWPFCurveVar();
+                window.listView.ItemsSource = (List<SVCurveProper>)value;
+                window.ShowDialog();
             }
 
             return value;
