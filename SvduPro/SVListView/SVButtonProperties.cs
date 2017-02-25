@@ -41,9 +41,9 @@ namespace SVControl
         /// <summary>
         /// 设置属性的显示和隐藏属性
         /// </summary>
-        /// <param name="obj">当前属性对象</param>
-        /// <param name="propertyName">具体属性名称</param>
-        /// <param name="visible">true表示显示，false表示隐藏</param>
+        /// <param oldName="obj">当前属性对象</param>
+        /// <param oldName="propertyName">具体属性名称</param>
+        /// <param oldName="visible">true表示显示，false表示隐藏</param>
         void SetPropertyVisibility(object obj, string propertyName, bool visible)
         {
             Type type = typeof(BrowsableAttribute);

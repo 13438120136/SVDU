@@ -40,7 +40,7 @@
                 <ListView Name="listView" Grid.Row="1" Margin="0,5,0,0" SelectionChanged="listView_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="0,1,0,1">
                                 <Rectangle Width="20" Fill="{Binding Path=Color, Converter={StaticResource CurveVarColorConverter}}"></Rectangle>
                                 <TextBlock Text="{Binding Converter={StaticResource CurveVarConverter}}" Margin="5,0,0,0"></TextBlock>                                
                             </StackPanel>                            

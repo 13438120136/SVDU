@@ -44,17 +44,15 @@ namespace SVControl
             if (edSvc != null)
             {
                 SVWpfControl picDialog = new SVWpfControl();
-                picDialog.Width = 300;
-                picDialog.Height = 300;
+                picDialog.Width = 240;
+                picDialog.Height = 260;
 
                 SVWPfIconPic iconPicture = new SVWPfIconPic();
                 iconPicture.image.DataContext = bitmap.ShowName;
-                //iconPicture.DataContext = icon;
+
                 picDialog.addContent(iconPicture);
                 edSvc.DropDownControl(picDialog);
                 value = iconPicture.resultBitmap();
-                //icon.refreshPropertyToPanel();
-                //icon.RedoUndo.operChanged();
 
                 return value;
             }

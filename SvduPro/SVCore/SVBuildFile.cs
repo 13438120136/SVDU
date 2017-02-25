@@ -40,7 +40,7 @@ namespace SVCore
         /// <summary>
         /// 生成下装配置文件的构造函数
         /// </summary>
-        /// <param name="fileName">当前要生成的下装文件名</param>
+        /// <param oldName="fileName">当前要生成的下装文件名</param>
         public SVBuildFile(String fileName)
         {
             init();
@@ -50,7 +50,7 @@ namespace SVCore
         /// <summary>
         /// 设置下装文件路径
         /// </summary>
-        /// <param name="fileName">当前要生成的下装文件名</param>
+        /// <param oldName="fileName">当前要生成的下装文件名</param>
         public void setFileName(String fileName)
         {
             _fileName = fileName;
@@ -77,7 +77,7 @@ namespace SVCore
         /// <summary>
         /// 设置当前文件要保存的数据内容
         /// </summary>
-        /// <param name="data">实际数据内容</param>
+        /// <param oldName="data">实际数据内容</param>
         public void setDataByteArray(byte[] data)
         {
             _data = data;
@@ -103,7 +103,7 @@ namespace SVCore
         /// <summary>
         /// 添加下装协议头
         /// </summary>
-        /// <param name="tmpBuffer">实际的下装二进制数据</param>
+        /// <param oldName="tmpBuffer">实际的下装二进制数据</param>
         /// <returns>加了协议头的二进制数据</returns>
         public byte[] addProtocolHead(byte[] buffer)
         {
@@ -142,8 +142,8 @@ namespace SVCore
         /// <summary>
         /// 根据当前索引和地址，返回10字节的头部二进制
         /// </summary>
-        /// <param name="index">帧序号</param>
-        /// <param name="address">地址，从0开始，每次加1</param>
+        /// <param oldName="index">帧序号</param>
+        /// <param oldName="address">地址，从0开始，每次加1</param>
         /// <returns></returns>
         public byte[] byteHead(Byte index, Int32 address)
         {
@@ -285,8 +285,8 @@ namespace SVCore
         /// <summary>
         /// 设置当前图片数据的起始位置以及数据长度
         /// </summary>
-        /// <param name="pos">起始位置</param>
-        /// <param name="Length">图片长度</param>
+        /// <param oldName="pos">起始位置</param>
+        /// <param oldName="Length">图片长度</param>
         public void setImageOffsetAndLen(UInt32 pos, UInt32 Length)
         {
             ///偏移头部

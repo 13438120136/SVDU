@@ -33,8 +33,8 @@ namespace SvduPro
         /// <summary>
         /// 查找类型选择
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox.SelectedIndex == 0)
@@ -46,8 +46,8 @@ namespace SvduPro
         /// <summary>
         /// 确定事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void okBtn_Click(object sender, EventArgs e)
         {
             //通过ID号查找相关控件
@@ -75,8 +75,8 @@ namespace SvduPro
         /// <summary>
         /// 取消事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             DialogResult = System.Windows.Forms.DialogResult.No;
@@ -85,7 +85,7 @@ namespace SvduPro
         /// <summary>
         /// 通过变量名称来查找对应控件
         /// </summary>
-        /// <param name="findString">变量名称</param>
+        /// <param oldName="findString">变量名称</param>
         private void findStr(string findString)
         {
             if (String.IsNullOrWhiteSpace(findString))
@@ -165,8 +165,8 @@ namespace SvduPro
         /// <summary>
         /// 输出查找结果
         /// </summary>
-        /// <param name="panel">当前控件</param>
-        /// <param name="vStr">当前判断的字符串</param>
+        /// <param oldName="panel">当前控件</param>
+        /// <param oldName="vStr">当前判断的字符串</param>
         void outputFindResult(SVPanel panel, String vStr)
         {
             SVPageWidget widget = panel.Parent as SVPageWidget;
@@ -215,7 +215,7 @@ namespace SvduPro
         /// <summary>
         /// 通过控件ID号来查找对应的页面，并记录相关跳转信息
         /// </summary>
-        /// <param name="id">控件ID</param>
+        /// <param oldName="id">控件ID</param>
         private void findID(int id)
         {
             _findView.Clear();

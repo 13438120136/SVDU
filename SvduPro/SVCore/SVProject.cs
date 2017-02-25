@@ -207,7 +207,7 @@ namespace SVCore
         /// 
         /// 返回 相对路径, 后缀为.page
         /// </summary>
-        /// <param name="name">当前页面名称</param>
+        /// <param oldName="oldName">当前页面名称</param>
         /// <returns>页面相对路径</returns>
         public String name2Path(String name)
         {
@@ -230,7 +230,7 @@ namespace SVCore
         /// <summary>
         /// 移除分类页面
         /// </summary>
-        /// <param name="className">页面名称</param>
+        /// <param oldName="className">页面名称</param>
         public void removeClassName(String className)
         {
             if (_pageDic.ContainsKey(className))
@@ -241,11 +241,11 @@ namespace SVCore
         /// 添加页面节点
         /// 
         /// className - 页面分类
-        /// name-页面节点名称
+        /// oldName-页面节点名称
         /// 返回值: true - 添加页面节点成功, false - 失败，有重名页面名称
         /// </summary>
-        /// <param name="className">页面分类名称</param>
-        /// <param name="name">页面节点名称</param>
+        /// <param oldName="className">页面分类名称</param>
+        /// <param oldName="oldName">页面节点名称</param>
         /// <returns>true或者false</returns>
         public Boolean addPageNode(String className, String name)
         {
@@ -291,8 +291,8 @@ namespace SVCore
         /// <summary>
         /// 导入页面文件
         /// </summary>
-        /// <param name="className">页面分类</param>
-        /// <param name="File">页面文件</param>
+        /// <param oldName="className">页面分类</param>
+        /// <param oldName="File">页面文件</param>
         public void importPageNode(String className, String file)
         {
             file = GetRelativePaths(Application.StartupPath, file);
@@ -314,8 +314,8 @@ namespace SVCore
         /// <summary>
         /// 对页面分类进行重新命名
         /// </summary>
-        /// <param name="oldName">旧的分类名称</param>
-        /// <param name="newName">新的分类名称</param>
+        /// <param oldName="oldName">旧的分类名称</param>
+        /// <param oldName="newName">新的分类名称</param>
         public void renamePageClassName(String oldName, String newName)
         {
             ///如果名称没有发生改变
@@ -334,9 +334,9 @@ namespace SVCore
         /// <summary>
         /// 对页面进行重名名
         /// </summary>
-        /// <param name="className">分类名称</param>
-        /// <param name="oldName">页面旧名称</param>
-        /// <param name="newName">页面新名称</param>
+        /// <param oldName="className">分类名称</param>
+        /// <param oldName="oldName">页面旧名称</param>
+        /// <param oldName="newName">页面新名称</param>
         public void renamePageName(String className, String oldName, String newName)
         {
             ///如果名称没有发生改变
@@ -361,7 +361,7 @@ namespace SVCore
 
         /**
          * 移除页面节点
-         * name - 页面名称
+         * oldName - 页面名称
          **/
         public void removePageNode(String name)
         {

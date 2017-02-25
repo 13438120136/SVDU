@@ -15,7 +15,7 @@ namespace SVCore
         /// 初始化日志路径
         /// 如果为空，使用当前路径做为日志存放路径
         /// </summary>
-        /// <param name="path">日志路径</param>
+        /// <param oldName="path">日志路径</param>
         public SVTextTraceListenter(String path = null)
         {
             if ((path == null) || (path == String.Empty))
@@ -30,7 +30,7 @@ namespace SVCore
         /// 修改默认的日志头信息
         /// 在日志的开头部分加入时间，并将提示信息显示为中文输出
         /// </summary>
-        /// <param name="message">日志头信息</param>
+        /// <param oldName="message">日志头信息</param>
         public override void Write(string message)
         {
             if (_streamWriter == null)
@@ -50,7 +50,7 @@ namespace SVCore
         /// <summary>
         /// 输出日志内容
         /// </summary>
-        /// <param name="message">日志内容信息</param>
+        /// <param oldName="message">日志内容信息</param>
         public override void WriteLine(string message)
         {
             if (_streamWriter == null)
@@ -74,7 +74,7 @@ namespace SVCore
         /// 重载Dispose
         /// 关闭连接
         /// </summary>
-        /// <param name="disposing">没有用到</param>
+        /// <param oldName="disposing">没有用到</param>
         protected override void Dispose(bool disposing)
         {
             if (_streamWriter == null)
@@ -90,7 +90,7 @@ namespace SVCore
         /// <summary>
         /// 修改默认的日志头字符串信息，并返回
         /// </summary>
-        /// <param name="str">日志头信息字符串</param>
+        /// <param oldName="_iconList">日志头信息字符串</param>
         /// <returns>要输出的字符串</returns>
         String fromMessage(String str)
         {
@@ -131,7 +131,7 @@ namespace SVCore
         /// 根据输入字符串来确定日志的名称
         /// 初始化、打开日志文件句柄
         /// </summary>
-        /// <param name="str">日志文件名称</param>
+        /// <param oldName="_iconList">日志文件名称</param>
         void initFile(String str)
         {
             _dateString = str;

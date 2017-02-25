@@ -291,7 +291,7 @@ namespace SvduPro
         /// <summary>
         /// 如果程序出现崩溃现象，将保存工程并退出
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param oldName="ex"></param>
         public void captureExceptionAndSaveProject(Object ex)
         {
             Exception baseException = ex as Exception;

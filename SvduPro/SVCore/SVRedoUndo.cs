@@ -59,7 +59,7 @@ namespace SVCore
         /// 表明是否记录当前操作
         /// true表示记录 false表示不记录一下操作
         /// </summary>
-        /// <param name="en">设置记录使能</param>
+        /// <param oldName="en">设置记录使能</param>
         public void setEnabled(Boolean en)
         {
             isRecord = en;
@@ -68,7 +68,7 @@ namespace SVCore
         /// <summary>
         /// 记录当前操作
         /// </summary>
-        /// <param name="name">当前操作项</param>
+        /// <param oldName="oldName">当前操作项</param>
         public void recordOper(SVRedoUndoItem item)
         {
             if (!isRecord)

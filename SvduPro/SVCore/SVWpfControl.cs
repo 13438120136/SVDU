@@ -16,7 +16,7 @@ namespace SVCore
         /// <summary>
         /// 设置当前WPF对应的窗口到当前窗口中
         /// </summary>
-        /// <param name="control"></param>
+        /// <param oldName="control"></param>
         public void addContent(System.Windows.Controls.UserControl control)
         {
             this.elementHost1.Child = control;

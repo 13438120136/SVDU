@@ -10,8 +10,8 @@ namespace SVControl
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="sourceType"></param>
+        /// <param oldName="context"></param>
+        /// <param oldName="sourceType"></param>
         /// <returns></returns>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {

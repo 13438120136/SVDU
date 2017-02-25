@@ -12,7 +12,7 @@ namespace SVCore
         /// <summary>
         /// 将日志信息输出到TextBox
         /// </summary>
-        /// <param name="textBox">记录日志的TextBox控件窗口</param>
+        /// <param oldName="textBox">记录日志的TextBox控件窗口</param>
         public SVTextBoxTraceListenter(RichTextBox textBox)
         {
             _textBox = textBox;
@@ -22,7 +22,7 @@ namespace SVCore
         /// 修改默认的日志头信息
         /// 在日志的开头部分加入时间，并将提示信息显示为中文输出
         /// </summary>
-        /// <param name="message">日志头信息</param>
+        /// <param oldName="message">日志头信息</param>
         public override void Write(string message)
         {
             if (_textBox == null)
@@ -35,7 +35,7 @@ namespace SVCore
         /// <summary>
         /// 输出日志内容
         /// </summary>
-        /// <param name="message">日志内容信息</param>
+        /// <param oldName="message">日志内容信息</param>
         public override void WriteLine(string message)
         {
             if (_textBox == null)
@@ -56,7 +56,7 @@ namespace SVCore
         /// <summary>
         /// 修改默认的日志头字符串信息，并返回
         /// </summary>
-        /// <param name="str">日志头信息字符串</param>
+        /// <param oldName="_iconList">日志头信息字符串</param>
         /// <returns>要输出的字符串</returns>
         String fromMessage(String str)
         {

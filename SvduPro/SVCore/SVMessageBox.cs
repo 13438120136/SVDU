@@ -22,8 +22,8 @@ namespace SVCore
         /// <summary>
         /// 设置显示的标题以及内容
         /// </summary>
-        /// <param name="title">标题</param>
-        /// <param name="text">文本内容</param>
+        /// <param oldName="title">标题</param>
+        /// <param oldName="text">文本内容</param>
         public void content(String title, String text)
         {
             this.Text = title;
@@ -33,8 +33,8 @@ namespace SVCore
         /// <summary>
         /// 确定事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void yesBtn_Click(object sender, EventArgs e)
         {
             DialogResult = System.Windows.Forms.DialogResult.Yes;
@@ -44,8 +44,8 @@ namespace SVCore
         /// <summary>
         /// 取消事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void noBtn_Click(object sender, EventArgs e)
         {
             DialogResult = System.Windows.Forms.DialogResult.No;

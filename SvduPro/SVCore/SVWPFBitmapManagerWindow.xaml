@@ -30,21 +30,21 @@
         </Grid.ColumnDefinitions>
 
         <GroupBox Grid.Row="1" Grid.Column="0" Header="分类">
-            <ListView Margin="10" Name="classlistView" SelectedIndex="0" SelectionMode="Single" SelectionChanged="classlistView_SelectionChanged" Style="{StaticResource background}">
+            <ListView Margin="10" Name="classlistView" SelectedIndex="0" SelectionMode="Single" SelectionChanged="classlistView_SelectionChanged" Style="{StaticResource background}" ContextMenuOpening="classlistView_ContextMenuOpening">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/SVCore;component/Images/class.jpg" Width="20" Height="25"></Image>
-                            <TextBlock Margin="10, 5, 0, 5" Text="{Binding}"></TextBlock>
+                            <TextBlock Margin="10, 5, 0, 5" Text="{Binding Path=., Mode=OneWay}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 
                 <ListView.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="新建分类"></MenuItem>
-                        <MenuItem Header="重命名分类"></MenuItem>
-                        <MenuItem Header="删除分类"></MenuItem>
+                        <MenuItem Header="新建分类" Click="NewClassItem_Click"></MenuItem>
+                        <MenuItem Name="rename" Header="重命名分类" Click="renClassItem_Click"></MenuItem>
+                        <MenuItem Name="del" Header="删除分类" Click="delClass_Click"></MenuItem>
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>

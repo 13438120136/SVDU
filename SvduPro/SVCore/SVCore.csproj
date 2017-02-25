@@ -170,6 +170,9 @@
     <Compile Include="SVWpfControl.Designer.cs">
       <DependentUpon>SVWpfControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SVWPFRenameIconDialog.xaml.cs">
+      <DependentUpon>SVWPFRenameIconDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SVWPFLockDialog.xaml.cs">
       <DependentUpon>SVWPFLockDialog.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,9 @@
       <DependentUpon>SVWPFSettingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SVXml.cs" />
+    <Compile Include="WPFNewIconClassDialog.xaml.cs">
+      <DependentUpon>WPFNewIconClassDialog.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.en.resx" />
@@ -230,6 +236,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SVWPFRenameIconDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SVWPFLockDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +251,10 @@
     <Page Include="SVWPFSettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFNewIconClassDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

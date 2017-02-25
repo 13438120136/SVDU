@@ -55,8 +55,8 @@ namespace SVControl
         /// <summary>
         /// 选择图片为异常的情况
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void exPic_Click(object sender, EventArgs e)
         {
             //SVBitmapManagerWindow window = new SVBitmapManagerWindow();
@@ -72,8 +72,8 @@ namespace SVControl
         /// <summary>
         /// 选择图片为假
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void falsePic_Click(object sender, EventArgs e)
         {
             SVBitmapManagerWindow window = new SVBitmapManagerWindow();
@@ -89,8 +89,8 @@ namespace SVControl
         /// <summary>
         /// 选择为真时的图片
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void truePic_Click(object sender, EventArgs e)
         {
             SVBitmapManagerWindow window = new SVBitmapManagerWindow();
@@ -122,8 +122,8 @@ namespace SVControl
         /// <summary>
         /// 状态切换
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void picGroupBox_EnabledChanged(object sender, EventArgs e)
         {
             customGroupBox.setChecked(!picGroupBox.checkEnabled());
@@ -132,8 +132,8 @@ namespace SVControl
         /// <summary>
         /// 状态切换
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void customGroupBox_EnabledChanged(object sender, EventArgs e)
         {
             picGroupBox.setChecked(!customGroupBox.checkEnabled());

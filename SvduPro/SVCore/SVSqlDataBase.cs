@@ -14,11 +14,11 @@ namespace SVCore
         /// <summary>
         /// 连接mysql数据库
         /// </summary>
-        /// <param name="ip">数据库ip地址</param>
-        /// <param name="database">数据库中对应的表</param>
-        /// <param name="user">用户名</param>
-        /// <param name="passwd">密码</param>
-        /// <param name="charset">字符集，默认UTF-8</param>
+        /// <param oldName="ip">数据库ip地址</param>
+        /// <param oldName="database">数据库中对应的表</param>
+        /// <param oldName="user">用户名</param>
+        /// <param oldName="passwd">密码</param>
+        /// <param oldName="charset">字符集，默认UTF-8</param>
         /// <returns>true连接成功，false连接失败</returns>
         public Boolean connect(String ip, String database, String user, String passwd, String charset = "utf8")
         {
@@ -87,7 +87,7 @@ namespace SVCore
         /// <summary>
         /// 获取IO变量的接收地址列表
         /// </summary>
-        /// <param name="stationID">站ID号</param>
+        /// <param oldName="stationID">站ID号</param>
         /// <returns></returns>
         public DataTable getRecvAddressForIO(Int32 stationID)
         {
@@ -136,7 +136,7 @@ namespace SVCore
         /// <summary>
         /// 获取中间变量的接收地址列表
         /// </summary>
-        /// <param name="stationID">站ID号</param>
+        /// <param oldName="stationID">站ID号</param>
         /// <returns></returns>
         public DataTable getRecvAddressForNormal(Int32 stationID)
         {
@@ -183,7 +183,7 @@ namespace SVCore
         /// <summary>
         /// 获取IO变量的发送地址列表
         /// </summary>
-        /// <param name="stationID"></param>
+        /// <param oldName="stationID"></param>
         /// <returns></returns>
         public DataTable getSendAddressForIO(Int32 stationID)
         {
@@ -220,7 +220,7 @@ namespace SVCore
         /// <summary>
         /// 获取中间变量的发送地址列表
         /// </summary>
-        /// <param name="stationID">站ID号</param>
+        /// <param oldName="stationID">站ID号</param>
         /// <returns></returns>
         public DataTable getSendAddressForNormal(Int32 stationID)
         {
@@ -268,7 +268,7 @@ namespace SVCore
         /// <summary>
         /// 获取当前站点的变量名称及地址
         /// </summary>
-        /// <param name="stationID">站号</param>
+        /// <param oldName="stationID">站号</param>
         /// <returns>变量对应的内存表格</returns>
         public DataTable getVarDataList(Int32 stationID)
         {

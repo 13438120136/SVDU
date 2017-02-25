@@ -22,7 +22,7 @@ namespace SVCore
         /// <summary>
         /// 输出信息
         /// </summary>
-        /// <param name="message">日志信息</param>
+        /// <param oldName="message">日志信息</param>
         public void Info(String message)
         {
             _traceSource.TraceData(TraceEventType.Information, 0, message);
@@ -32,7 +32,7 @@ namespace SVCore
         /// <summary>
         /// 输出警告
         /// </summary>
-        /// <param name="message">日志信息</param>
+        /// <param oldName="message">日志信息</param>
         public void Warning(String message)
         {
             _traceSource.TraceData(TraceEventType.Warning, 0, message);
@@ -42,7 +42,7 @@ namespace SVCore
         /// <summary>
         /// 输出错误
         /// </summary>
-        /// <param name="message">日志信息</param>
+        /// <param oldName="message">日志信息</param>
         public void Error(String message)
         {
             _traceSource.TraceData(TraceEventType.Error, 0, message);
@@ -52,7 +52,7 @@ namespace SVCore
         /// <summary>
         /// 输出程序崩溃
         /// </summary>
-        /// <param name="message">日志信息</param>
+        /// <param oldName="message">日志信息</param>
         public void Critical(String message)
         {
             _traceSource.TraceData(TraceEventType.Critical, 0, message);
@@ -62,7 +62,7 @@ namespace SVCore
         /// <summary>
         /// 记录异常详细信息
         /// </summary>
-        /// <param name="ex">异常对象</param>
+        /// <param oldName="ex">异常对象</param>
         public void Exception(Exception ex)
         {
             String msg = String.Format("异常类型:{0} {1}\r\n\t{2}", ex.GetType().ToString(), ex.Message, ex.StackTrace);

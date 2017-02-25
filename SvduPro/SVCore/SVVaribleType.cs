@@ -48,8 +48,8 @@ namespace SVCore
         /// <summary>
         /// 根据变量名称来获取当前变量的地址
         /// </summary>
-        /// <param name="varName">变量名称</param>
-        /// <param name="type">表示变量类型</param>
+        /// <param oldName="varName">变量名称</param>
+        /// <param oldName="type">表示变量类型</param>
         /// <returns>返回变量地址</returns>
         public UInt32 strToAddress(String varName, Byte type)
         {
@@ -101,7 +101,7 @@ namespace SVCore
         /// <summary>
         /// 根据当前变量名称来获取变量类型
         /// </summary>
-        /// <param name="dataTable"></param>
+        /// <param oldName="dataTable"></param>
         public SByte strToType(String varName, Byte type)
         {
             DataTable dataTable = null;
@@ -152,7 +152,7 @@ namespace SVCore
         /// <summary>
         /// 设置变量表数据
         /// </summary>
-        /// <param name="dataTable"></param>
+        /// <param oldName="dataTable"></param>
         public void setData(DataTable dataTable)
         {
             _dataTable = dataTable;

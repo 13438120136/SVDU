@@ -22,7 +22,7 @@ namespace SVCore
         /// <summary>
         /// 设置当前的图片对象
         /// </summary>
-        /// <param name="image">图片对象</param>
+        /// <param oldName="image">图片对象</param>
         public SVBitmapHead(Image image)
         {
             //_palOffset = 24;
@@ -37,7 +37,7 @@ namespace SVCore
         /// <summary>
         /// 设置当前的图片对象
         /// </summary>
-        /// <param name="image"></param>
+        /// <param oldName="image"></param>
         public void setImageObj(Image image)
         {
             //_palCnt = (UInt32)image.Palette.Entries.Length;

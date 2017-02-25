@@ -85,8 +85,8 @@ namespace SVCore
         /// <summary>
         /// 双击图片项事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = listView.SelectedItems[0];
@@ -131,8 +131,8 @@ namespace SVCore
         /// <summary>
         /// 选中图片项事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             selectNodeShowInfo();
@@ -193,8 +193,8 @@ namespace SVCore
         /// <summary>
         /// 添加图元项,支持批量导入
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void newItem_Click(object sender, EventArgs e)
         {
             ///如果没有选中分类几点，不做任何操作
@@ -305,8 +305,8 @@ namespace SVCore
         /// <summary>
         /// 执行具体的移除分类操作
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void removeClassItem_Click(object sender, EventArgs e)
         {
             ///如果当前没有选中分类节点，不做任何操作
@@ -465,8 +465,8 @@ namespace SVCore
         /// <summary>
         /// 确定按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void okBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Yes;
@@ -475,8 +475,8 @@ namespace SVCore
         /// <summary>
         /// 取消按钮事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.No;

@@ -27,7 +27,7 @@ namespace SVCore
             if (!File.Exists(file))
                 return;
             _picManager.loadElementFromFile(file);
-            _iconData = _picManager.getData();
+            _iconData = _picManager.getData();            
 
             classlistView.ItemsSource = _iconData.Keys;
         }
@@ -35,9 +35,17 @@ namespace SVCore
         /// <summary>
         /// 分类节点进行选择的时候更新
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void classlistView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            iconRefresh();
+        }
+
+        /// <summary>
+        /// 刷新当前图元子控件内容
+        /// </summary>
+        private void iconRefresh()
         {
             ///分类名称
             String typeName = this.classlistView.SelectedValue as String;
@@ -48,7 +56,7 @@ namespace SVCore
                 this.piclistView.ItemsSource = null;
                 return;
             }
-            
+
             ///加载当前所有图片信息
             List<Node> nodeList = new List<Node>();
             foreach (var item in _iconData[typeName])
@@ -61,7 +69,7 @@ namespace SVCore
         /// <summary>
         /// 通过名称来创建一个显示节点
         /// </summary>
-        /// <param name="name"></param>
+        /// <param oldName="oldName"></param>
         /// <returns></returns>
         private Node createNodeFromName(String fileName)
         {
@@ -82,8 +90,8 @@ namespace SVCore
         /// <summary>
         /// 添加图元到当前窗口中
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void importIcon_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -127,8 +135,8 @@ namespace SVCore
         /// <summary>
         /// 删除当前图片
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         private void delIcon_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("是否删除选中图元?", "提示", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
@@ -179,12 +187,86 @@ namespace SVCore
         /// </summary>
         void saveIconInfo()
         {
-            this.piclistView.Items.Refresh();
             String file = Path.Combine(SVProData.IconPath, "icon.proj");
             _picManager.saveElementToFile(file);
+
+            this.classlistView.Items.Refresh();
+            this.piclistView.Items.Refresh();
+        }
+
+        /// <summary>
+        /// 新建图元分类
+        /// </summary>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
+        public void NewClassItem_Click(object sender, RoutedEventArgs e)
+        {
+            var data = _picManager.getData();
+            List<String> dataList = new List<String>();
+            foreach (var item in data)
+                dataList.Add(item.Key);
+
+            WPFNewIconClassDialog dialog = new WPFNewIconClassDialog();
+            dialog.setNameData(dataList);
+            if (dialog.ShowDialog() == true)
+            {
+                _picManager.insertClass(dialog.textBox.Text);
+                saveIconInfo();
+            }
+        }
+
+        private void renClassItem_Click(object sender, RoutedEventArgs e)
+        {
+            var data = _picManager.getData();
+            List<String> dataList = new List<String>();
+            foreach (var item in data)
+                dataList.Add(item.Key);
+
+            String oldName = classlistView.SelectedValue as String;
+
+            SVWPFRenameIconDialog dialog = new SVWPFRenameIconDialog();
+            dialog.setOldName(oldName);
+            dialog.setNameData(dataList);
+            if (dialog.ShowDialog() == true)
+            {
+                _picManager.renameClass(oldName, dialog.textBox.Text);
+                classlistView.SelectedValue = dialog.textBox.Text;
+                saveIconInfo();
+
+                iconRefresh();
+            }
+        }
+
+        private void classlistView_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (classlistView.SelectedItems.Count == 0)
+            {
+                this.rename.IsEnabled = false;
+                this.del.IsEnabled = false;
+            }
+            else
+            {
+                this.rename.IsEnabled = true;
+                this.del.IsEnabled = true;
+            }
+        }
+
+        private void delClass_Click(object sender, RoutedEventArgs e)
+        {
+            String name = classlistView.SelectedValue as String;
+            MessageBoxResult result = MessageBox.Show(String.Format("是否删除'{0}'分类", name), "提示", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                classlistView.SelectedIndex = 0;
+                _picManager.removeClass(name);
+                saveIconInfo();
+            }
         }
     }
 
+    /// <summary>
+    /// 便与显示
+    /// </summary>
     class Node
     {
         public String Name { get; set; }

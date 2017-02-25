@@ -194,7 +194,7 @@ namespace SVCore
         /// 设置当前选择节点显示类型
         /// 默认为全部显示
         /// </summary>
-        /// <param name="type"></param>
+        /// <param oldName="type"></param>
         public void setNodeType(SVNodesType type)
         {
             _nodeType = type;
@@ -257,8 +257,8 @@ namespace SVCore
         /// <summary>
         /// 当前控件鼠标弹起
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void SVBasePanel_MouseUp(object sender, MouseEventArgs e)
         {
             SizeChangedEvent();
@@ -268,8 +268,8 @@ namespace SVCore
         /// <summary>
         /// 背景控件鼠标弹起
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void _backControl_MouseUp(object sender, MouseEventArgs e)
         {
             SizeChangedEvent();
@@ -358,8 +358,8 @@ namespace SVCore
         /// 控件本身尺寸发生改变的事件
         /// 改变控件尺寸的控制点将跟着偏移
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void labelSizeChanged(object sender, EventArgs e)
         {
             _leftTop.Location = new Point(this.Location.X - 5, this.Location.Y - 5);
@@ -379,8 +379,8 @@ namespace SVCore
         /// <summary>
         /// 鼠标按下，控件拥有焦点
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void SVBasePanel_MouseDown(object sender, MouseEventArgs e)
         {
             ///如果选中多个控件或者按下Ctrl按键，就直接选中

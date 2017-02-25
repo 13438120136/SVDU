@@ -81,9 +81,9 @@ namespace SVControl
         /// <summary>
         /// 设置属性的显示和隐藏属性
         /// </summary>
-        /// <param name="obj">当前属性对象</param>
-        /// <param name="propertyName">具体属性名称</param>
-        /// <param name="visible">true表示显示，false表示隐藏</param>
+        /// <param oldName="obj">当前属性对象</param>
+        /// <param oldName="propertyName">具体属性名称</param>
+        /// <param oldName="visible">true表示显示，false表示隐藏</param>
         void SetPropertyVisibility(object obj, string propertyName, bool visible)
         {
             Type type = typeof(BrowsableAttribute);
@@ -630,8 +630,8 @@ namespace SVControl
         /// <summary>
         /// 执行拷贝字节数组中的字符串
         /// </summary>
-        /// <param name="src"></param>
-        /// <param name="dest"></param>
+        /// <param oldName="src"></param>
+        /// <param oldName="dest"></param>
         void copyDestByteArray(byte[] src, byte[] dest)
         {
             int minLen = src.Length > dest.Length ? dest.Length : src.Length;
@@ -641,8 +641,8 @@ namespace SVControl
         /// <summary>
         /// 生成下装文件
         /// </summary>
-        /// <param name="pageArrayBin">下装配置文件</param>
-        /// <param name="serialize">序列化对象</param>
+        /// <param oldName="pageArrayBin">下装配置文件</param>
+        /// <param oldName="serialize">序列化对象</param>
         public void make(ref PageArrayBin pageArrayBin, ref SVSerialize serialize)
         {
             UInt32 pageCount = pageArrayBin.pageCount;

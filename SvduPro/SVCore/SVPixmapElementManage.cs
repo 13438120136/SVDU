@@ -27,7 +27,7 @@ namespace SVCore
         /// 判断当前分类节点包含的列表是否为空,
         /// 为空返回True,否则返回False
         /// </summary>
-        /// <param name="name">当前分类名称</param>
+        /// <param oldName="oldName">当前分类名称</param>
         /// <returns></returns>
         public Boolean isEmptyClassfy(String name)
         {
@@ -52,7 +52,7 @@ namespace SVCore
         /// <summary>
         /// 通过显示名称来获取对应的文件名
         /// </summary>
-        /// <param name="name">显示名称字符串</param>
+        /// <param oldName="oldName">显示名称字符串</param>
         /// <returns>文件名路径字符串</returns>
         public String getFilePathFromName(String name)
         {
@@ -65,7 +65,7 @@ namespace SVCore
         /// <summary>
         /// 从指定文件中加载图元管理信息
         /// </summary>
-        /// <param name="File">图元管理文件</param>
+        /// <param oldName="File">图元管理文件</param>
         public void loadElementFromFile(String file)
         {
             _mapDict.Clear();
@@ -94,7 +94,7 @@ namespace SVCore
         /// <summary>
         /// 保存当前图元管理内存信息到文件中
         /// </summary>
-        /// <param name="File">要保存的文件名</param>
+        /// <param oldName="File">要保存的文件名</param>
         public void saveElementToFile(String file)
         {
             XElement rootElement = new XElement("Root");
@@ -138,7 +138,8 @@ namespace SVCore
             if (!_eleDict.ContainsKey(oldName))
                 return;
 
-            _eleDict.Add(newName, _eleDict[oldName]);
+            var value = _eleDict[oldName];
+            _eleDict.Add(newName, value);
             _eleDict.Remove(oldName);
         }
 

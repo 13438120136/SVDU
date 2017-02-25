@@ -44,8 +44,8 @@ namespace SVCore
         /// <summary>
         /// checkbox控件状态改变事件处理
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param oldName="sender"></param>
+        /// <param oldName="e"></param>
         void _checkBox_EnabledChanged(object sender, EventArgs e)
         {
             this.Enabled = _checkBox.Checked;
@@ -63,7 +63,7 @@ namespace SVCore
         /// <summary>
         /// 设置check控件的显示文本内容
         /// </summary>
-        /// <param name="text">显示的文本</param>
+        /// <param oldName="text">显示的文本</param>
         public void setEnabledText(String text)
         {
             _checkBox.Text = text;
@@ -76,7 +76,7 @@ namespace SVCore
         /// <summary>
         /// 设置当前的选中状态
         /// </summary>
-        /// <param name="enabled">true-为选中， false-不选中</param>
+        /// <param oldName="enabled">true-为选中， false-不选中</param>
         public void setChecked(Boolean enabled)
         {
             _checkBox.Checked = enabled;

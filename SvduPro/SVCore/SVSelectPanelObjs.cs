@@ -41,9 +41,9 @@ namespace SVCore
         /// <summary>
         /// 移动与当前控件都被选中的兄弟控件
         /// </summary>
-        /// <param name="control">当前选中控件</param>
-        /// <param name="x">在x方向上的偏离值</param>
-        /// <param name="y">在y方向上的偏离值</param>
+        /// <param oldName="control">当前选中控件</param>
+        /// <param oldName="x">在x方向上的偏离值</param>
+        /// <param oldName="y">在y方向上的偏离值</param>
         static public void moveSelectControls(Control control, int x, int y)
         {
             foreach (var item in set)
@@ -72,7 +72,7 @@ namespace SVCore
         /// <summary>
         /// 当控件被选中的时候执行添加操作，以便管理
         /// </summary>
-        /// <param name="control">被选中的控件</param>
+        /// <param oldName="control">被选中的控件</param>
         static public void addControlItem(Control control)
         {
             set.Add(control);
@@ -83,7 +83,7 @@ namespace SVCore
         /// <summary>
         /// 当控件被反选的时候从全局管理中移除
         /// </summary>
-        /// <param name="control">被反选的控件</param>
+        /// <param oldName="control">被反选的控件</param>
         static public void removeControlItem(Control control)
         {
             //如果不存在，不执行移除

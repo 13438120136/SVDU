@@ -10,7 +10,7 @@ namespace SVCore
         /// 
         /// 记录发生异常时刻，对页面及控件检查不通过的项
         /// </summary>
-        /// <param name="message">异常信息</param>
+        /// <param oldName="message">异常信息</param>
         public SVCheckValidException(string message)
             : base(message) 
         {

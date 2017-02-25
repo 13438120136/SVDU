@@ -30,7 +30,7 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param oldName="context"></param>
         /// <returns></returns>
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
@@ -40,7 +40,7 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param oldName="context"></param>
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -53,7 +53,7 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param oldName="context"></param>
         /// <returns></returns>
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -67,7 +67,7 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param oldName="context"></param>
         /// <returns></returns>
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -80,7 +80,7 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param oldName="context"></param>
         /// <returns></returns>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {

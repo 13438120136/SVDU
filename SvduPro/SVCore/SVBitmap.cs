@@ -76,8 +76,8 @@ namespace SVCore
         /// <summary>
         /// 获取24位BMP位图数据
         /// </summary>
-        /// <param name="width">图片的宽度</param>
-        /// <param name="height">图片的高度</param>
+        /// <param oldName="width">图片的宽度</param>
+        /// <param oldName="height">图片的高度</param>
         /// <returns>实际二进制数据</returns>
         public byte[] bitmap24Data(int width, int height)
         {
@@ -99,7 +99,7 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
+        /// <param oldName="context"></param>
         /// <returns></returns>
         //public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         //{
@@ -109,8 +109,8 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="sourceType"></param>
+        /// <param oldName="context"></param>
+        /// <param oldName="sourceType"></param>
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -123,8 +123,8 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="sourceType"></param>
+        /// <param oldName="context"></param>
+        /// <param oldName="sourceType"></param>
         /// <returns></returns>
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -139,8 +139,8 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="sourceType"></param>
+        /// <param oldName="context"></param>
+        /// <param oldName="sourceType"></param>
         /// <returns></returns>
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -153,8 +153,8 @@ namespace SVCore
         /// <summary>
         /// 重写父类，这里不需要关注
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="sourceType"></param>
+        /// <param oldName="context"></param>
+        /// <param oldName="sourceType"></param>
         /// <returns></returns>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
@@ -175,8 +175,8 @@ namespace SVCore
         /// <summary>
         /// 序列化需要的构造函数
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
+        /// <param oldName="info"></param>
+        /// <param oldName="context"></param>
         protected SVBitmap(SerializationInfo info, StreamingContext context)
         {
             ImageFileName = (String)info.GetValue("ImageFilePath", typeof(String));
@@ -186,8 +186,8 @@ namespace SVCore
         /// <summary>
         /// 这里执行序列化是为了，使其复制产生一个新的对象而不是引用
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
+        /// <param oldName="info"></param>
+        /// <param oldName="context"></param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("ImageFilePath", ImageFileName);

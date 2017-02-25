@@ -62,7 +62,7 @@ namespace SVCore
         /// <summary>
         /// 根据类型来初始化
         /// </summary>
-        /// <param name="type">节点类型</param>
+        /// <param oldName="type">节点类型</param>
         public SVPanelNode(NodeType type)
         {
             ///节点的颜色值
@@ -76,7 +76,7 @@ namespace SVCore
         /// <summary>
         /// 重写鼠标按下事件
         /// </summary>
-        /// <param name="e"></param>
+        /// <param oldName="e"></param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             showCursors();
@@ -90,7 +90,7 @@ namespace SVCore
         /// <summary>
         /// 重写鼠标移动事件
         /// </summary>
-        /// <param name="e"></param>
+        /// <param oldName="e"></param>
         protected override void OnMouseMove(MouseEventArgs e)
         {
             showCursors();            
@@ -108,8 +108,8 @@ namespace SVCore
         /// <summary>
         /// 根据类型来修改父控件的大小
         /// </summary>
-        /// <param name="disX">x方向的偏移</param>
-        /// <param name="disY">y方向的偏移</param>
+        /// <param oldName="disX">x方向的偏移</param>
+        /// <param oldName="disY">y方向的偏移</param>
         private void modifyParentSize(Int32 disX, Int32 disY)
         {
             if (MainControl == null)

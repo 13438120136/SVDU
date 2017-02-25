@@ -86,7 +86,7 @@ namespace SVCore
         /// <summary>
         /// 设置页面的撤销和恢复操作
         /// </summary>
-        /// <param name="value"></param>
+        /// <param oldName="value"></param>
         public void setRedoUndoObject(SVRedoUndo value)
         {
             RedoUndo = value;
@@ -96,7 +96,7 @@ namespace SVCore
         /// <summary>
         /// 设置父ID
         /// </summary>
-        /// <param name="value">父ID号</param>
+        /// <param oldName="value">父ID号</param>
         public void setParentID(UInt16 value)
         {
             _parentID = value;
@@ -105,8 +105,8 @@ namespace SVCore
         /// <summary>
         /// 设置控件最小尺寸范围
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param oldName="x"></param>
+        /// <param oldName="y"></param>
         public void setMinSize(int x, int y)
         {
             _minSize = new Point(x, y);
@@ -123,7 +123,7 @@ namespace SVCore
         /// <summary>
         /// 重写绘制事件
         /// </summary>
-        /// <param name="e"></param>
+        /// <param oldName="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             if (BTransparent)
@@ -147,7 +147,7 @@ namespace SVCore
         /// <summary>
         /// 用来扩展子类的绘制
         /// </summary>
-        /// <param name="e"></param>
+        /// <param oldName="e"></param>
         virtual protected void panelOnPaint(PaintEventArgs e)
         {
         }
@@ -155,7 +155,7 @@ namespace SVCore
         /// <summary>
         /// 绘制背景颜色
         /// </summary>
-        /// <param name="e"></param>
+        /// <param oldName="e"></param>
         void drawBackGroundColor(PaintEventArgs e)
         {
             if (this.BackgroundImage != null)
@@ -170,7 +170,7 @@ namespace SVCore
         /// <summary>
         /// 绘制文本
         /// </summary>
-        /// <param name="e"></param>
+        /// <param oldName="e"></param>
         void drawText(PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
@@ -219,7 +219,7 @@ namespace SVCore
         /// <summary>
         /// 绘制背景图片
         /// </summary>
-        /// <param name="e"></param>
+        /// <param oldName="e"></param>
         void drawBackGroundImage(PaintEventArgs e)
         {
             if (this.BackgroundImage == null)
@@ -298,8 +298,8 @@ namespace SVCore
         /// 自定义快捷键
         /// 添加针对单个控件的[Ctrl+C]组合键，执行控件的拷贝功能
         /// </summary>
-        /// <param name="msg"></param>
-        /// <param name="keyData"></param>
+        /// <param oldName="msg"></param>
+        /// <param oldName="keyData"></param>
         /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

@@ -20,8 +20,8 @@ namespace SVCore
                 //if (e.KeyChar == '\b')
                 //    return;
 
-                //String str = this.textBox.Text + e.KeyChar;
-                //if (!Regex.IsMatch(str, "^[_a-zA-Z][_a-zA-Z0-9]*$"))
+                //String _iconList = this.textBox.Text + e.KeyChar;
+                //if (!Regex.IsMatch(_iconList, "^[_a-zA-Z][_a-zA-Z0-9]*$"))
                 //    e.Handled = true;
                 //else
                 //    e.Handled = false;

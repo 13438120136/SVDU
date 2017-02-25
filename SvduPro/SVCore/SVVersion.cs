@@ -21,7 +21,7 @@ namespace SVCore
         /// <summary>
         /// 序列化当前版本数据
         /// </summary>
-        /// <param name="serialize">序列化对象</param>
+        /// <param oldName="serialize">序列化对象</param>
         public void pack(SVSerialize serialize)
         {
             serialize.pack(Year);
@@ -36,7 +36,7 @@ namespace SVCore
         /// <summary>
         /// 反序列化当前版本数据
         /// </summary>
-        /// <param name="serialize">序列化对象</param>
+        /// <param oldName="serialize">序列化对象</param>
         public void unpack(SVSerialize serialize)
         {
             serialize.unpack(ref Year);

@@ -63,9 +63,9 @@ namespace SVCore
         /// <summary>
         /// 返回图片指定图片对象
         /// </summary>
-        /// <param name="width">宽度</param>
-        /// <param name="height">高度</param>
-        /// <param name="mark">标志：8:返回8位图片，24返回24位图片</param>
+        /// <param oldName="width">宽度</param>
+        /// <param oldName="height">高度</param>
+        /// <param oldName="mark">标志：8:返回8位图片，24返回24位图片</param>
         /// <returns>具体的内存图片对象</returns>
         public Bitmap getBitmapObject(Int32 width, Int32 height, Int32 mark)
         {
@@ -168,8 +168,8 @@ namespace SVCore
         /// <summary>
         /// 从图片数据的指定位置读取一副图片并返回
         /// </summary>
-        /// <param name="tmpBuffer">图片数据</param>
-        /// <param name="offset">偏移位置</param>
+        /// <param oldName="tmpBuffer">图片数据</param>
+        /// <param oldName="offset">偏移位置</param>
         /// <returns>图片对象</returns>
         public Bitmap getFromFile(byte[] buffer, UInt32 offset)
         {
