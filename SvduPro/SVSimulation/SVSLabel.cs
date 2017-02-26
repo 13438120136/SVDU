@@ -63,9 +63,9 @@ namespace SVSimulation
             ///设置字体
             Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>()
             {
-                {8, new Font("Courier New", 8)},
-                {12, new Font("Courier New", 12)},
-                {16, new Font("Courier New", 16)}
+                {8, new Font("华文细黑", 8)},
+                {12, new Font("华文细黑", 12)},
+                {16, new Font("华文细黑", 16)}
             };
             this.Font = FontConfig[bin.font];
         }

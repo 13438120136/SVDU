@@ -53,6 +53,9 @@ namespace SVCore
         /// <returns>返回变量地址</returns>
         public UInt32 strToAddress(String varName, Byte type)
         {
+            if (String.IsNullOrWhiteSpace(varName))
+                return 0;
+
             DataTable dataTable = null;
 
             switch (type)
@@ -104,6 +107,9 @@ namespace SVCore
         /// <param oldName="dataTable"></param>
         public SByte strToType(String varName, Byte type)
         {
+            if (String.IsNullOrWhiteSpace(varName))
+                return 0;
+
             DataTable dataTable = null;
 
             switch (type)

@@ -29,9 +29,9 @@ namespace SVSimulation
             Attrib.Max = bin.yMax;
 
             Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>();
-            FontConfig.Add(8, new Font("Courier New", 8));
-            FontConfig.Add(12, new Font("Courier New", 12));
-            FontConfig.Add(16, new Font("Courier New", 16));
+            FontConfig.Add(8, new Font("华文细黑", 8));
+            FontConfig.Add(12, new Font("华文细黑", 12));
+            FontConfig.Add(16, new Font("华文细黑", 16));
             Attrib.Font = FontConfig[bin.font];
         }
     }

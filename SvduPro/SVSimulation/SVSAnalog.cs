@@ -106,10 +106,11 @@ namespace SVSimulation
             }
 
             Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>();
-            FontConfig.Add(8, new Font("Courier New", 8));
-            FontConfig.Add(12, new Font("Courier New", 12));
-            FontConfig.Add(16, new Font("Courier New", 16));
-            this.Font = FontConfig[bin.font];
+            FontConfig.Add(8, new Font("华文细黑", 8));
+            FontConfig.Add(12, new Font("华文细黑", 12));
+            FontConfig.Add(16, new Font("华文细黑", 16));
+            if (FontConfig.ContainsKey(bin.font))
+                this.Font = FontConfig[bin.font];
         }
 
         /// <summary>
