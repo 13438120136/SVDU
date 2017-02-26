@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.ComponentModel;
 
 namespace SVCore
 {
@@ -9,7 +10,7 @@ namespace SVCore
     /// </summary>
     public partial class SVWPFRenameIconDialog : Window
     {
-        private List<String> _nameClassList = new List<String>();
+        private BindingList<String> _nameClassList = new BindingList<String>();
 
         public SVWPFRenameIconDialog()
         {
@@ -19,7 +20,7 @@ namespace SVCore
         /// <summary>
         /// 设置当前所有的分类名称
         /// </summary>
-        public void setNameData(List<String> value)
+        public void setNameData(BindingList<String> value)
         {
             _nameClassList = value;
         }
@@ -33,7 +34,7 @@ namespace SVCore
         {
             if (String.IsNullOrWhiteSpace(textBox.Text))
             {
-                MessageBox.Show("不能为空!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("名称不能为空!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

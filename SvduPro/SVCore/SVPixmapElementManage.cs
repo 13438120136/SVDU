@@ -126,7 +126,13 @@ namespace SVCore
         public void removeClass(String classfy)
         {
             if (_eleDict.ContainsKey(classfy))
+            {
+                var listName = _eleDict[classfy];
+                foreach (var item in listName)
+                    _mapDict.Remove(item);
+
                 _eleDict.Remove(classfy);
+            }
         }
 
         //重新命名分类名称

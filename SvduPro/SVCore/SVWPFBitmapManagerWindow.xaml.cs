@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using Microsoft.Win32;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace SVCore
 {
@@ -24,12 +26,16 @@ namespace SVCore
             InitializeComponent();
 
             String file = System.IO.Path.Combine(SVProData.IconPath, "icon.proj");
-            if (!File.Exists(file))
-                return;
-            _picManager.loadElementFromFile(file);
-            _iconData = _picManager.getData();            
+            if (File.Exists(file))
+                _picManager.loadElementFromFile(file);            
 
-            classlistView.ItemsSource = _iconData.Keys;
+            _iconData = _picManager.getData();
+
+            BindingList<String> obj = new BindingList<String>();
+            foreach (var item in _iconData)
+                obj.Add(item.Key);
+
+            classlistView.ItemsSource = obj;
         }
 
         /// <summary>
@@ -48,7 +54,12 @@ namespace SVCore
         private void iconRefresh()
         {
             ///分类名称
-            String typeName = this.classlistView.SelectedValue as String;
+            String typeName = this.classlistView.SelectedItem as String;
+            if (typeName == null)
+            {
+                this.piclistView.ItemsSource = null;
+                return;
+            }
 
             ///名称不存在，则不显示图片
             if (!_iconData.ContainsKey(typeName))
@@ -58,7 +69,7 @@ namespace SVCore
             }
 
             ///加载当前所有图片信息
-            List<Node> nodeList = new List<Node>();
+            BindingList<Node> nodeList = new BindingList<Node>();
             foreach (var item in _iconData[typeName])
                 nodeList.Add(createNodeFromName(item));
 
@@ -100,7 +111,7 @@ namespace SVCore
 
             String nowTimeString = DateTime.Now.ToFileTime().ToString();
 
-            List<Node> nodeList = this.piclistView.ItemsSource as List<Node>;
+            BindingList<Node> nodeList = this.piclistView.ItemsSource as BindingList<Node>;
 
             ///弹出图片选择窗口
             if (openFileDialog.ShowDialog() == true)
@@ -142,9 +153,13 @@ namespace SVCore
             if (MessageBox.Show("是否删除选中图元?", "提示", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
                 return;
 
-            List<Node> nodeList = this.piclistView.ItemsSource as List<Node>;
+            BindingList<Node> nodeList = this.piclistView.ItemsSource as BindingList<Node>;
 
+            List<Node> tmp = new List<Node>();
             foreach (Node item in this.piclistView.SelectedItems)
+                tmp.Add(item);
+
+            foreach (Node item in tmp)
             {
                 ///删除对应的文件
                 String timeFile = _picManager.getFilePathFromName(item.Name);
@@ -189,9 +204,6 @@ namespace SVCore
         {
             String file = Path.Combine(SVProData.IconPath, "icon.proj");
             _picManager.saveElementToFile(file);
-
-            this.classlistView.Items.Refresh();
-            this.piclistView.Items.Refresh();
         }
 
         /// <summary>
@@ -201,38 +213,36 @@ namespace SVCore
         /// <param oldName="e"></param>
         public void NewClassItem_Click(object sender, RoutedEventArgs e)
         {
-            var data = _picManager.getData();
-            List<String> dataList = new List<String>();
-            foreach (var item in data)
-                dataList.Add(item.Key);
+            BindingList<String> list = this.classlistView.ItemsSource as BindingList<String>;
 
             WPFNewIconClassDialog dialog = new WPFNewIconClassDialog();
-            dialog.setNameData(dataList);
+            dialog.setNameData(list);
             if (dialog.ShowDialog() == true)
             {
-                _picManager.insertClass(dialog.textBox.Text);
+                String name = dialog.textBox.Text;
+                _picManager.insertClass(name);
+                list.Add(name);
                 saveIconInfo();
             }
         }
 
         private void renClassItem_Click(object sender, RoutedEventArgs e)
         {
-            var data = _picManager.getData();
-            List<String> dataList = new List<String>();
-            foreach (var item in data)
-                dataList.Add(item.Key);
+            BindingList<String> list = this.classlistView.ItemsSource as BindingList<String>;
 
-            String oldName = classlistView.SelectedValue as String;
+            int index = classlistView.SelectedIndex;
+            String oldName = list[index];
 
             SVWPFRenameIconDialog dialog = new SVWPFRenameIconDialog();
             dialog.setOldName(oldName);
-            dialog.setNameData(dataList);
+            dialog.setNameData(list);
             if (dialog.ShowDialog() == true)
             {
-                _picManager.renameClass(oldName, dialog.textBox.Text);
-                classlistView.SelectedValue = dialog.textBox.Text;
-                saveIconInfo();
+                String newName = dialog.textBox.Text;
+                _picManager.renameClass(oldName, newName);
+                list[index] = newName;
 
+                saveIconInfo();
                 iconRefresh();
             }
         }
@@ -253,13 +263,41 @@ namespace SVCore
 
         private void delClass_Click(object sender, RoutedEventArgs e)
         {
+            BindingList<String> list = this.classlistView.ItemsSource as BindingList<String>;
+
             String name = classlistView.SelectedValue as String;
             MessageBoxResult result = MessageBox.Show(String.Format("是否删除'{0}'分类", name), "提示", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
-                classlistView.SelectedIndex = 0;
+                ///循环删除当前图元文件
+                foreach (String varName in _iconData[name])
+                {
+                    ///删除对应的文件
+                    String timeFile = _picManager.getFilePathFromName(varName);
+                    String file = Path.Combine(SVProData.IconPath, timeFile);
+                    File.Delete(file);
+                }
+
                 _picManager.removeClass(name);
+                list.Remove(name);
+
+                ///保存文件数据 
                 saveIconInfo();
+                iconRefresh();
+            }
+        }
+
+        private void piclistView_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (classlistView.SelectedItems.Count == 0)
+            {
+                this.importIcon.IsEnabled = false;
+                this.delIcon.IsEnabled = false;
+            }
+            else
+            {
+                this.importIcon.IsEnabled = true;
+                this.delIcon.IsEnabled = true;
             }
         }
     }

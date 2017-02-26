@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SVCore
 {
@@ -19,7 +9,7 @@ namespace SVCore
     /// </summary>
     public partial class WPFNewIconClassDialog : Window
     {
-        private List<String> _nameClassList = new List<String>();
+        private BindingList<String> _nameClassList = new BindingList<String>();
 
         public WPFNewIconClassDialog()
         {
@@ -29,7 +19,7 @@ namespace SVCore
         /// <summary>
         /// 设置当前所有的分类名称
         /// </summary>
-        public void setNameData(List<String> value)
+        public void setNameData(BindingList<String> value)
         {
             _nameClassList = value;
         }
@@ -38,7 +28,7 @@ namespace SVCore
         {
             if (String.IsNullOrWhiteSpace(textBox.Text))
             {
-                MessageBox.Show("不能为空!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("名称不能为空!", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

@@ -35,7 +35,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/SVCore;component/Images/class.jpg" Width="20" Height="25"></Image>
-                            <TextBlock Margin="10, 5, 0, 5" Text="{Binding Path=., Mode=OneWay}"></TextBlock>
+                            <TextBlock Margin="10, 5, 0, 5" Text="{Binding}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -51,7 +51,7 @@
         </GroupBox>
 
         <GroupBox Grid.Row="1" Grid.Column="1" Header="视图">
-            <ListBox Margin="10" Name="piclistView" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource background}">
+            <ListBox Margin="10" Name="piclistView" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource background}" ContextMenuOpening="piclistView_ContextMenuOpening">
 
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
