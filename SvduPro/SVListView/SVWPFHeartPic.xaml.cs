@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using SVCore;
-using System.Windows;
-using System.ComponentModel;
 
 namespace SVControl
 {
@@ -20,7 +20,10 @@ namespace SVControl
         {
             InitializeComponent();
 
-            String file = System.IO.Path.Combine(SVProData.IconPath, "icon.proj");            
+            String file = System.IO.Path.Combine(SVProData.IconPath, "icon.proj");
+            if (!File.Exists(file))
+                return;
+
             _picManager.loadElementFromFile(file);
             _iconData = _picManager.getData();
 

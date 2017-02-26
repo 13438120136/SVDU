@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using SVCore;
+using System.IO;
 
 namespace SVControl
 {
@@ -22,6 +23,9 @@ namespace SVControl
             InitializeComponent();
 
             String file = System.IO.Path.Combine(SVProData.IconPath, "icon.proj");
+            if (!File.Exists(file))
+                return;
+
             _picManager.loadElementFromFile(file);
             _iconData = _picManager.getData();
 
