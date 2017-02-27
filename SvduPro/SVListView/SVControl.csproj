@@ -126,6 +126,7 @@
     <Compile Include="SVCurveProperties.cs" />
     <Compile Include="SVCurveVarConverter.cs" />
     <Compile Include="SVCurveVarTypeEditor.cs" />
+    <Compile Include="SVCurveVarUIEditor.cs" />
     <Compile Include="SVDefineVarConverter.cs" />
     <Compile Include="SVFontTypeEditor.cs" />
     <Compile Include="SVGif.cs">

@@ -94,6 +94,9 @@ namespace SVCore
             ///从字符串转换为数字
             UInt32 iAddress = UInt32.Parse(address);
 
+            ///减去180的十六进制
+            iAddress -= 384;
+
             byte[] buffer = BitConverter.GetBytes(iAddress);
             buffer[3] = type;
             UInt32 result = BitConverter.ToUInt32(buffer, 0);

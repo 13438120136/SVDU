@@ -510,7 +510,7 @@ public class SVCurveProper
     [CategoryAttribute("数据")]
     [DisplayName("线条变量")]
     [DescriptionAttribute("趋势图关联的变量.")]
-    [EditorAttribute(typeof(SVBtnEnabledVarUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    [EditorAttribute(typeof(SVCurveVarUIEditor), typeof(System.Drawing.Design.UITypeEditor))]
     [TypeConverter(typeof(SVDefineVarConverter))]
     public SVVarDefine Var
     {
