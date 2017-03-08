@@ -7,6 +7,8 @@ namespace SVControl
 {
     public class SVCurveVarTypeEditor : UITypeEditor
     {
+        public override bool IsDropDownResizable { get { return true; } }
+
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
             return UITypeEditorEditStyle.Modal;

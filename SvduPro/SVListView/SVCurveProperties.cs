@@ -27,6 +27,14 @@ namespace SVControl
         SVVarDefine _curControl;         //当前关联变量
         SVVarDefine _backwardControl;    //后退关联变量
         List<SVCurveProper> _variable = new List<SVCurveProper>();   //关联的变量
+        static Int32 _indexControl = 0;
+
+        public static String getIndexNumber()
+        {
+            Int32 result = _indexControl;
+            _indexControl += 8;
+            return result.ToString();
+        }
 
         [Browsable(false)]
         public SVVarDefine ForwardControl
@@ -56,7 +64,7 @@ namespace SVControl
         public SVCurveProperties()
         {
             _font = new Font("华文细黑", 12);
-            _rect = new Rectangle(0, 0, 150, 150);
+            _rect = new Rectangle(0, 0, 270, 260);
             _bgcolor = Color.DimGray;
             _fgcolor = Color.White;
             _min = 0;
@@ -70,9 +78,10 @@ namespace SVControl
             _curControl = new SVVarDefine();
             _backwardControl = new SVVarDefine();
 
-            _forwardControl.VarName = "0";
-            _curControl.VarName = "8";
-            _backwardControl.VarName = "16";
+            ///设置跳转变量
+            _forwardControl.VarName = SVCurveProperties.getIndexNumber();
+            _curControl.VarName = SVCurveProperties.getIndexNumber();
+            _backwardControl.VarName = SVCurveProperties.getIndexNumber();
             _forwardControl.VarType = 3;
             _curControl.VarType = 3;
             _backwardControl.VarType = 3;
@@ -194,7 +203,9 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                UpdateControl(undoItem);
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
                 Color before = _bgcolor;
                 undoItem.ReDo = () =>
                 {
@@ -263,7 +274,9 @@ namespace SVControl
                     return;
 
                 SVRedoUndoItem undoItem = new SVRedoUndoItem();
-                UpdateControl(undoItem);
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
                 Color before = _fgcolor;
                 undoItem.ReDo = () =>
                 {

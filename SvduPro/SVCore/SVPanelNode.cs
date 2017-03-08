@@ -100,8 +100,8 @@ namespace SVCore
 
             Int32 disX = e.X - _startPos.X;
             Int32 disY = e.Y - _startPos.Y;
+
             this.Location = new Point(disX + this.Location.X, disY + this.Location.Y);
-            
             modifyParentSize(disX, disY);
         }
 

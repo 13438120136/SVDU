@@ -15,6 +15,8 @@ namespace SVControl
             return true;
         }
 
+        public override bool IsDropDownResizable { get { return true; } }
+
         public override void PaintValue(PaintValueEventArgs e)
         {
             SVVarDefine var = e.Value as SVVarDefine;

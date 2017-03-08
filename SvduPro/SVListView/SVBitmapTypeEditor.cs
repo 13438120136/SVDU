@@ -29,8 +29,15 @@ namespace SVControl
             if (bitmap == null)
                 return ;
 
+            if (bitmap.ImageFileName == null || bitmap.ShowName == null)
+                return;
+
             Rectangle rect = new Rectangle(1, 1, 19, 17);
-            e.Graphics.DrawImage(bitmap.bitmap(), rect);
+            var bitMap = bitmap.bitmap();
+            if (bitMap == null)
+                return;
+
+            e.Graphics.DrawImage(bitMap, rect);
         }
 
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,

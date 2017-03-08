@@ -17,6 +17,8 @@ namespace SVControl
             return UITypeEditorEditStyle.DropDown;
         }
 
+        public override bool IsDropDownResizable { get { return true; } }
+
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context,
             System.IServiceProvider provider, object value)
         {

@@ -10,6 +10,8 @@ namespace SVControl
 {
     public class SVAnalogVarTypeEditor : UITypeEditor
     {
+        public override bool IsDropDownResizable { get { return true; } }
+
         public override bool GetPaintValueSupported(ITypeDescriptorContext context)
         {
             return true;

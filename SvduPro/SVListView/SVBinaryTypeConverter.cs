@@ -8,10 +8,10 @@ namespace SVControl
     [Serializable]
     public class SVBinaryTypeConverter : StringConverter
     {
-        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
-        {
-            return true;
-        }
+        //public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        //{
+        //    return true;
+        //}
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -56,6 +56,7 @@ namespace SVControl
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
+            Console.WriteLine(value.ToString());
             Byte bValue = (Byte)value;
             switch (bValue)
             {

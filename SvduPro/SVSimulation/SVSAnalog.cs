@@ -13,6 +13,7 @@ namespace SVSimulation
         Int32 _nDecimalNum;
         Int32 _min;
         Int32 _max;
+        Byte _enExploer;
         static Random random = new Random();
 
         /// <summary>
@@ -84,6 +85,7 @@ namespace SVSimulation
             this.Location = new Point(bin.rect.sX, bin.rect.sY);
             this.Width = bin.rect.eX - bin.rect.sX;
             this.Height = bin.rect.eY - bin.rect.sY;
+            this._enExploer = bin.enExponent;
 
 
             _nDecimalNum = bin.nDecimalNum;
@@ -134,7 +136,11 @@ namespace SVSimulation
                 this.ForeColor = overMaxClr;
             }
 
-            this.Text = value.ToString(String.Format("f{0}", _nDecimalNum));
+
+            if (this._enExploer == 1)
+                this.Text = value.ToString(String.Format("E{0}", _nDecimalNum));
+            else
+                this.Text = value.ToString(String.Format("f{0}", _nDecimalNum));
         }
     }
 }

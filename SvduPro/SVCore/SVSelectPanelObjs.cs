@@ -39,24 +39,72 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 控件在移动过程中进行释放,将释放过程执行保存
+        /// </summary>
+        static public void moveSelectMouseUp()
+        {
+            foreach (var item in set)
+            {
+                SVPanel panel = item as SVPanel;
+                if (panel == null)
+                    continue;
+
+                panel.SizeChangedEvent();
+            }
+        }
+
+        /// <summary>
         /// 移动与当前控件都被选中的兄弟控件
         /// </summary>
         /// <param oldName="control">当前选中控件</param>
         /// <param oldName="x">在x方向上的偏离值</param>
         /// <param oldName="y">在y方向上的偏离值</param>
-        static public void moveSelectControls(Control control, int x, int y)
+        static public void moveSelectControls(Control control, int cX, int cY)
         {
+            var Parent = control.Parent;
+
             foreach (var item in set)
             {
-                if (control.Equals(item))
-                    continue;
-
                 SVPanel panel = item as SVPanel;
                 if (panel == null)
                     continue;
 
-                item.Location = new Point(item.Location.X + x, item.Location.Y + y);
-                panel.setStartPos(item.Location);
+                Int32 disX = cX + panel.Location.X;
+                Int32 disY = cY + panel.Location.Y;
+
+                if (disX < 0)
+                {
+                    disX = 0;
+                    cX = -panel.Location.X;
+                }
+
+                if (disY < 0)
+                {
+                    disY = 0;
+                    cY = -panel.Location.Y;
+                }
+
+                if (disX + panel.Width > Parent.Width)
+                {
+                    disX = Parent.Width - panel.Width;
+                    cX = disX - panel.Location.X;
+                }
+
+                if (disY + panel.Height > Parent.Height)
+                {
+                    disY = Parent.Height - panel.Height;
+                    cY = disY - panel.Location.Y;
+                }
+            }
+
+            foreach (var item in set)
+            {
+                SVPanel panel = item as SVPanel;
+                if (panel == null)
+                    continue;
+
+                panel.Location = new Point(panel.Location.X + cX, panel.Location.Y + cY);
+                //panel.clearFocus();
             }
         }
 
@@ -91,6 +139,9 @@ namespace SVCore
                 return;
 
             set.Remove(control);
+
+            List<Control> ctls = new List<Control>(set);
+            SelectEvents(ctls);
         }
 
         /// <summary>

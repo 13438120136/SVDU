@@ -180,7 +180,8 @@ namespace SVCore
         void convertBitmap(String fileName, String outFile)
         {
             Bitmap bitmap = new Bitmap(fileName);
-            Bitmap bitmapResult = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), PixelFormat.Format8bppIndexed);
+            Bitmap bitmapResult = bitmap;
+            //Bitmap bitmapResult = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), PixelFormat.Format8bppIndexed);
 
             String outName = Path.GetFileNameWithoutExtension(fileName);            
             String outFileName = Path.Combine(SVProData.IconPath, outFile);

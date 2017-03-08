@@ -92,6 +92,10 @@ namespace SVControl
         /// <param Name="context"></param>
         protected SVLine(SerializationInfo info, StreamingContext context)
         {
+            ///透明
+            this.BTransparent = true;
+            ///用户改变后刷新界面
+            this.SizeChangedEvent = new Action(changeEvent);
             _attrib = (SVLineProperties)info.GetValue("stream", typeof(SVLineProperties));
         }
 

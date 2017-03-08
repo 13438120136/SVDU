@@ -311,27 +311,10 @@ namespace SVCore
                 double disIValue = Math.Sqrt(cX * cX + cY * cY);
                 if (!_isMouseDown)
                 {
-                    if (disIValue > 18)
+                    if (disIValue > 10)
                         _isMouseDown = true;
                     return;
                 }
-
-                Int32 disX = cX + this.Location.X;
-                Int32 disY = cY + this.Location.Y;
-
-                if (disX < 0)
-                    disX = 0;
-
-                if (disY < 0)
-                    disY = 0;
-
-                if (disX + this.Width > Parent.Width)
-                    disX = Parent.Width - this.Width;
-
-                if (disY + this.Height > Parent.Height)
-                    disY = Parent.Height - this.Height;
-
-                this.Location = new Point(disX, disY);
 
                 ///移动选中的所有控件
                 SVSelectPanelObjs.moveSelectControls(this, cX, cY);
@@ -350,7 +333,8 @@ namespace SVCore
                     return;
 
                 this.Selected = true;
-                _isMouseDown = false;
+                SVSelectPanelObjs.moveSelectMouseUp();
+                _isMouseDown = false;                
             });
         }
 

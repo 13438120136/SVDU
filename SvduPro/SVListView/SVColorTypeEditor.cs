@@ -20,9 +20,11 @@ namespace SVControl
 
         public override void PaintValue(PaintValueEventArgs e)
         {
+            if (e.Value == null)
+                return;
+
             SolidBrush brush = new SolidBrush((Color)e.Value);
             Rectangle rect = new Rectangle(1, 1, 19, 17);
-
             e.Graphics.FillRectangle(brush, rect);
         }
 

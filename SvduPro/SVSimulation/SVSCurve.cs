@@ -27,6 +27,8 @@ namespace SVSimulation
             Attrib.Interval = bin.maxTime;
             Attrib.Min = bin.yMin;
             Attrib.Max = bin.yMax;
+            Attrib.BackgdColor = this.BackColor;
+            Attrib.FrontColor = this.ForeColor;
 
             Dictionary<Byte, Font> FontConfig = new Dictionary<Byte, Font>();
             FontConfig.Add(8, new Font("华文细黑", 8));

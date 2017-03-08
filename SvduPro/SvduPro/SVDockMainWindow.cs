@@ -575,8 +575,118 @@ namespace SvduPro
         /// <param Name="e"></param>
         void _stationTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (_stationTreeView.SelectedNode == null)
-                return;
+            TreeNode currNode = _stationTreeView.SelectedNode;
+            if (currNode.Level == 0)
+            {
+                toolStripButton4.Enabled = false;
+                toolStripSeparator11.Enabled = false;
+                toolStripButton7.Enabled = false;
+                toolStripButton8.Enabled = false;
+                toolStripButton19.Enabled = false;
+                toolStripButton20.Enabled = false;
+                toolStripButton21.Enabled = false;
+                toolStripButton22.Enabled = false;
+                toolStripButton23.Enabled = false;
+                toolStripButton12.Enabled = false;
+                toolStripSeparator12.Enabled = false;
+                toolStripButton13.Enabled = false;
+                toolStripButton14.Enabled = false;
+                toolStripButton15.Enabled = false;
+                toolStripButton16.Enabled = false;
+                toolStripButton17.Enabled = false;
+                toolStripButton18.Enabled = false;
+
+                newPageMenuItem.Enabled = false;
+                importMenuItem.Enabled = false;
+                removeMenuItem.Enabled = false;
+                delMenuItem.Enabled = false;
+                closeMenuItem.Enabled = false;
+
+                copyMenuItem.Enabled = false;
+                cutMenuItem.Enabled = false;
+                leftAlignMenuItem.Enabled = false;
+                rightAlignMenuItem.Enabled = false;
+                topAlignMenuItem.Enabled = false;
+                bottomAlignMenuItem.Enabled = false;
+                vCenterMenuItem.Enabled = false;
+                hCenterMenuItem.Enabled = false;
+                vEqualMenuItem.Enabled = false;
+                hEqualMenuItem.Enabled = false;
+            }
+            if (currNode.Level == 1)
+            {
+                toolStripButton4.Enabled = true;
+                toolStripSeparator11.Enabled = true;
+                toolStripButton7.Enabled = false;
+                toolStripButton8.Enabled = false;
+                toolStripButton19.Enabled = false;
+                toolStripButton20.Enabled = false;
+                toolStripButton21.Enabled = false;
+                toolStripButton22.Enabled = false;
+                toolStripButton23.Enabled = false;
+                toolStripButton12.Enabled = false;
+                toolStripSeparator12.Enabled = false;
+                toolStripButton13.Enabled = false;
+                toolStripButton14.Enabled = false;
+                toolStripButton15.Enabled = false;
+                toolStripButton16.Enabled = false;
+                toolStripButton17.Enabled = false;
+                toolStripButton18.Enabled = false;
+
+                newPageMenuItem.Enabled = true;
+                importMenuItem.Enabled = true;
+                removeMenuItem.Enabled = false;
+                delMenuItem.Enabled = false;
+                closeMenuItem.Enabled = false;
+
+                copyMenuItem.Enabled = false;
+                cutMenuItem.Enabled = false;
+                leftAlignMenuItem.Enabled = false;
+                rightAlignMenuItem.Enabled = false;
+                topAlignMenuItem.Enabled = false;
+                bottomAlignMenuItem.Enabled = false;
+                vCenterMenuItem.Enabled = false;
+                hCenterMenuItem.Enabled = false;
+                vEqualMenuItem.Enabled = false;
+                hEqualMenuItem.Enabled = false;
+            }
+            if (currNode.Level == 2)
+            {
+                toolStripButton4.Enabled = false;
+                toolStripSeparator11.Enabled = false;
+                toolStripButton7.Enabled = true;
+                toolStripButton8.Enabled = true;
+                toolStripButton19.Enabled = false;
+                toolStripButton20.Enabled = false;
+                toolStripButton21.Enabled = false;
+                toolStripButton22.Enabled = false;
+                toolStripButton23.Enabled = false;
+                toolStripButton12.Enabled = false;
+                toolStripSeparator12.Enabled = false;
+                toolStripButton13.Enabled = false;
+                toolStripButton14.Enabled = false;
+                toolStripButton15.Enabled = false;
+                toolStripButton16.Enabled = false;
+                toolStripButton17.Enabled = false;
+                toolStripButton18.Enabled = false;
+
+                newPageMenuItem.Enabled = false;
+                importMenuItem.Enabled = false;
+                removeMenuItem.Enabled = true;
+                delMenuItem.Enabled = true;
+                closeMenuItem.Enabled = true;
+
+                copyMenuItem.Enabled = false;
+                cutMenuItem.Enabled = false;
+                leftAlignMenuItem.Enabled = false;
+                rightAlignMenuItem.Enabled = false;
+                topAlignMenuItem.Enabled = false;
+                bottomAlignMenuItem.Enabled = false;
+                vCenterMenuItem.Enabled = false;
+                hCenterMenuItem.Enabled = false;
+                vEqualMenuItem.Enabled = false;
+                hEqualMenuItem.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -610,6 +720,101 @@ namespace SvduPro
                 this._propertyGrid.SelectedObjects = v.ToArray();                
                 String text = String.Format("已选中{0}个对象.", v.Count);
                 this.undoStatusLabel.Text = text;
+
+                if (v.Count == 0)
+                {
+                    toolStripButton4.Enabled = false;
+                    toolStripSeparator11.Enabled = false;
+                    toolStripButton7.Enabled = false;
+                    toolStripButton8.Enabled = false;
+                    toolStripButton19.Enabled = false;
+                    toolStripButton20.Enabled = false;
+                    toolStripButton21.Enabled = false;
+                    toolStripButton22.Enabled = true;
+                    toolStripButton23.Enabled = true;
+                    toolStripButton12.Enabled = false;
+                    toolStripSeparator12.Enabled = false;
+                    toolStripButton13.Enabled = false;
+                    toolStripButton14.Enabled = false;
+                    toolStripButton15.Enabled = false;
+                    toolStripButton16.Enabled = false;
+                    toolStripButton17.Enabled = false;
+                    toolStripButton18.Enabled = false;
+
+                    copyMenuItem.Enabled = false;
+                    cutMenuItem.Enabled = false;
+                    leftAlignMenuItem.Enabled = false;
+                    rightAlignMenuItem.Enabled = false;
+                    topAlignMenuItem.Enabled = false;
+                    bottomAlignMenuItem.Enabled = false;
+                    vCenterMenuItem.Enabled = false;
+                    hCenterMenuItem.Enabled = false;
+                    vEqualMenuItem.Enabled = false;
+                    hEqualMenuItem.Enabled = false;
+                }
+
+                if (v.Count > 0)
+                {
+                    toolStripButton4.Enabled = false;
+                    toolStripSeparator11.Enabled = false;
+                    toolStripButton7.Enabled = false;
+                    toolStripButton8.Enabled = false;
+                    toolStripButton19.Enabled = true;
+                    toolStripButton20.Enabled = true;
+                    toolStripButton21.Enabled = false;
+                    toolStripButton22.Enabled = true;
+                    toolStripButton23.Enabled = true;
+                    toolStripButton12.Enabled = false;
+                    toolStripSeparator12.Enabled = false;
+                    toolStripButton13.Enabled = false;
+                    toolStripButton14.Enabled = false;
+                    toolStripButton15.Enabled = false;
+                    toolStripButton16.Enabled = false;
+                    toolStripButton17.Enabled = false;
+                    toolStripButton18.Enabled = false;
+
+                    copyMenuItem.Enabled = true;
+                    cutMenuItem.Enabled = true;
+                    leftAlignMenuItem.Enabled = false;
+                    rightAlignMenuItem.Enabled = false;
+                    topAlignMenuItem.Enabled = false;
+                    bottomAlignMenuItem.Enabled = false;
+                    vCenterMenuItem.Enabled = false;
+                    hCenterMenuItem.Enabled = false;
+                    vEqualMenuItem.Enabled = false;
+                    hEqualMenuItem.Enabled = false;
+                }
+                if (v.Count > 1)
+                {
+                    toolStripButton4.Enabled = false;
+                    toolStripSeparator11.Enabled = false;
+                    toolStripButton7.Enabled = false;
+                    toolStripButton8.Enabled = false;
+                    toolStripButton19.Enabled = true;
+                    toolStripButton20.Enabled = true;
+                    toolStripButton21.Enabled = false;
+                    toolStripButton22.Enabled = true;
+                    toolStripButton23.Enabled = true;
+                    toolStripButton12.Enabled = true;
+                    toolStripSeparator12.Enabled = true;
+                    toolStripButton13.Enabled = true;
+                    toolStripButton14.Enabled = true;
+                    toolStripButton15.Enabled = true;
+                    toolStripButton16.Enabled = true;
+                    toolStripButton17.Enabled = true;
+                    toolStripButton18.Enabled = true;
+
+                    copyMenuItem.Enabled = true;
+                    cutMenuItem.Enabled = true;
+                    leftAlignMenuItem.Enabled = true;
+                    rightAlignMenuItem.Enabled = true;
+                    topAlignMenuItem.Enabled = true;
+                    bottomAlignMenuItem.Enabled = true;
+                    vCenterMenuItem.Enabled = true;
+                    hCenterMenuItem.Enabled = true;
+                    vEqualMenuItem.Enabled = true;
+                    hEqualMenuItem.Enabled = true;
+                }
             });
 
             //执行粘贴操作
@@ -1259,6 +1464,8 @@ namespace SvduPro
             SVConfig.instance().saveConfig();
             _stationTreeView.saveAllPageData();
             _svProject.saveProject();
+
+            SVLog.WinLog.Info("当前工程数据保存成功！");
         }
 
         /// <summary>

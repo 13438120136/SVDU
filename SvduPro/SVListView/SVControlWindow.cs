@@ -286,7 +286,9 @@ namespace SVControl
         /// <param Name="e"></param>
         protected override void OnClosing(CancelEventArgs e)
         {
-            HideEventer(this, e);
+            if(HideEventer != null)
+                HideEventer(this, e);
+
             e.Cancel = true;
             Hide();
         }
