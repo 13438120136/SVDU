@@ -138,6 +138,13 @@ namespace SvduPro
         /// <param Name="e"></param>
         void delItem_Click(object sender, EventArgs e)
         {
+            ListViewItem item = listView.SelectedItems[0];
+
+            SVMessageBox msg = new SVMessageBox();
+            msg.content("提示", String.Format("是否删除模板 {0}?", item.Text));
+            if (msg.ShowDialog() == System.Windows.Forms.DialogResult.No)
+                return;
+
             ///将文件句柄释放，不然会被占用。无法删除文件。
             if (this.pictureBox.Image != null)
             {
@@ -146,8 +153,7 @@ namespace SvduPro
                 GC.Collect();
             }
 
-            ///获取文件路径
-            ListViewItem item = listView.SelectedItems[0];
+            ///获取文件路径            
             String picFile = Path.Combine(SVProData.TemplatePath, item.Text + ".jpg");
             String file = Path.Combine(SVProData.TemplatePath, item.Text);
 
