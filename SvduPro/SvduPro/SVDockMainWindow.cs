@@ -556,6 +556,17 @@ namespace SvduPro
         {
             initStationMenu();
 
+            this._stationTreeView.NodeMouseClick += new TreeNodeMouseClickEventHandler((sender, e) => 
+            {
+                SVProjectProperty tmpProperty = new SVProjectProperty();
+                tmpProperty.StationID = SVProData.stationID.ToString();
+                tmpProperty.StationName = SVProData.ProName;
+                tmpProperty.DataBaseIP = SVProData.dbIp;
+                tmpProperty.DataBaseName = SVProData.user;
+                tmpProperty.StationPath = SVProData.ProPath;
+
+                this._propertyGrid.SelectedObject = tmpProperty;
+            });
             //鼠标单击事件后操作
             this._stationTreeView.AfterSelect += new TreeViewEventHandler(_stationTreeView_AfterSelect);
             //双击节点
@@ -1035,6 +1046,7 @@ namespace SvduPro
             widget.ChildRemoveEvent += refreshObjWindow;
             widget.MouseDown += new MouseEventHandler((sender, e) =>
             {
+                this._propertyGrid.SelectedObject = widget;
                 if (widget == sender)
                     return;
                 refreshObjWindow(sender, e);

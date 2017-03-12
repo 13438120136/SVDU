@@ -112,6 +112,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SVPicConverter.cs" />
+    <Compile Include="SVProjectProperty.cs" />
     <Compile Include="SVSqlDataBase.cs" />
     <Compile Include="SVExportTemplateForm.cs">
       <SubType>Form</SubType>
