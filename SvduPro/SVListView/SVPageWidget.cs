@@ -16,6 +16,8 @@ namespace SVControl
         private static SVPageWidget _mainPageWidget;
         ///保存当前页面的背景图片数据
         private static Dictionary<String, UInt32> _backGroundPicData = new Dictionary<String, UInt32>();
+        public EventHandler ChildAddEvent;
+        public EventHandler ChildRemoveEvent;
 
         /// <summary>
         /// 设置或者获取当前起始页面对象
@@ -84,7 +86,7 @@ namespace SVControl
                     RedoUndo.setEnabled(false);
                     panel.Selected = false;
                     base.Remove(value);
-                    RedoUndo.setEnabled(true);
+                    RedoUndo.setEnabled(true);                    
                 };
                 recordItem.UnDo = () => 
                 {
@@ -334,6 +336,7 @@ namespace SVControl
 
             this.Controls.Add(btn);
             btn.newID();
+            ChildAddEvent(btn, null);            
 
             btn.MouseDown += new MouseEventHandler((sder, ev) =>
             {

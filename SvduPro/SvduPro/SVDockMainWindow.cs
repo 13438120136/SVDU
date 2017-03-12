@@ -530,11 +530,11 @@ namespace SvduPro
         /// <param Name="e"></param>
         void _dockPanel_ActiveDocumentChanged(object sender, EventArgs e)
         {
+            SVSelectPanelObjs.clearSelectControls();
+
             SVControlWindow win = currentControlWindow();
             if (win == null)
                 return;
-
-            SVSelectPanelObjs.clearSelectControls();
 
             ///如果是页面窗口
             var pageWidget = win.CoreControl as SVPageWidget;
@@ -1020,6 +1020,27 @@ namespace SvduPro
 
             SVGlobalData.addPage(widget.PageName, widget);
 
+            ///定义一个刷新对象窗口的临时函数
+            EventHandler refreshObjWindow = (sender, e) => 
+            {
+                this.undoStatusLabel.Text = "";
+                this._propertyGrid.SelectedObject = widget;
+                this._propertyGrid.Refresh();
+                this._objTreeView.setPageWidget(widget);
+            };
+
+            ///添加控件修改对象窗口
+            widget.ChildAddEvent += refreshObjWindow;
+            ///删除控件修改对象窗口
+            widget.ChildRemoveEvent += refreshObjWindow;
+            widget.MouseDown += new MouseEventHandler((sender, e) =>
+            {
+                if (widget == sender)
+                    return;
+                refreshObjWindow(sender, e);
+            });
+            
+
             widget.MouseMove += new MouseEventHandler((sender, e)=>
             {
                 String text = String.Format("X:{0}, Y:{1} ", e.X, e.Y);
@@ -1033,14 +1054,6 @@ namespace SvduPro
 
                 //this._propertyGrid.SelectedObject = sder;
                 //this._objTreeView.setPageWidget(panel);
-            });
-
-            widget.MouseDown += new MouseEventHandler((sender, e) =>
-            {
-                this.undoStatusLabel.Text = "";
-                this._propertyGrid.SelectedObject = widget;
-                this._propertyGrid.Refresh();
-                this._objTreeView.setPageWidget(widget);
             });
 
             ContextMenuStrip menu = new ContextMenuStrip();

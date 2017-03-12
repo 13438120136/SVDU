@@ -248,8 +248,8 @@ namespace SvduPro
         public void setPageWidget(SVPageWidget pageWidget)
         {
             //如果没有发生变化，就直接返回
-            if (getCurrentNode() == pageWidget)
-                return;
+            //if (getCurrentNode() == pageWidget)
+            //    return;
 
             clearAllNodes();
             String text = String.Format("页面名称:{0}, (ID：{1})", pageWidget.PageName, pageWidget.Attrib.id);

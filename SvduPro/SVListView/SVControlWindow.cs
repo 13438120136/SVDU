@@ -241,8 +241,10 @@ namespace SVControl
         /// <param Name="e"></param>
         void delItem_Click(object sender, System.EventArgs e)
         {
-            if (_control is SVPageWidget)
+            SVPageWidget widget = _control as SVPageWidget;
+            if (widget != null)
                 SVSelectPanelObjs.removeOperator();
+            widget.ChildRemoveEvent(null, null);
         }
 
         /// <summary>
