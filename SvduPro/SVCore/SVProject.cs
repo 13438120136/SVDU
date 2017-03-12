@@ -170,7 +170,7 @@ namespace SVCore
             SVLog.WinLog.Listeners().Add(textListener);
 
             //_sqlDataBase.connect(SVProData.dbIp, SVProData.ProName, SVProData.user, SVProData.passwd);
-            _sqlDataBase.connect(SVProData.dbIp, "sv", SVProData.user, SVProData.passwd);
+            _sqlDataBase.connect(SVProData.dbIp, "safeware", SVProData.user, SVProData.passwd);
             //SVProData.DownLoadFile = _sqlDataBase.getProPath();
             ///先不从数据库中获取下装文件生成的路径
             SVProData.DownLoadFile = Path.Combine(SVProData.ProPath, "Download");
