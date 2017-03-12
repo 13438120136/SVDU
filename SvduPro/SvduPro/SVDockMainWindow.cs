@@ -499,6 +499,20 @@ namespace SvduPro
             _dockPanel.Parent = this;
 
             _dockPanel.ActiveDocumentChanged += new EventHandler(_dockPanel_ActiveDocumentChanged);
+            _dockPanel.ActivePaneChanged += new EventHandler((sender, e)=>
+            {
+                SVControlWindow win = _dockPanel.ActiveContent as SVControlWindow;
+                if ((_projectWindow == win)
+                    || (win == _ctlListViewWindow)
+                    || (win == _propertyWindow)
+                    || (win == _ctlListViewWindow)
+                    || (win == _outPutWindow)
+                    || (win == _findWindow)
+                    || (win == _objectWindow))
+                    return;
+                
+                SVSelectPanelObjs.clearSelectControls();
+            });
 
             //_dockPanel.DockAreas = (DockAreas.Document | DockAreas.Float | DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom);
             //this._dockPanel.Location = new Point(0, 49);
