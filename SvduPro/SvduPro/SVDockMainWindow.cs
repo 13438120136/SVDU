@@ -1713,7 +1713,10 @@ namespace SvduPro
 
             SVPageWidget pageWidget = window.CoreControl as SVPageWidget;
             if (pageWidget == null)
+            {
+                SVLog.WinLog.Warning("焦点不在页面窗口中!");
                 return;
+            }
 
             window.undoMethod();
             int nCount = pageWidget.RedoUndo.getUndoCount();
@@ -1729,7 +1732,10 @@ namespace SvduPro
 
             SVPageWidget pageWidget = window.CoreControl as SVPageWidget;
             if (pageWidget == null)
+            {
+                SVLog.WinLog.Warning("焦点不在页面窗口中!");
                 return;
+            }
 
             window.redoMethod();
             int nCount = pageWidget.RedoUndo.getRedoCount();
