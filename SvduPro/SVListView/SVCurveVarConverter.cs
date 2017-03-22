@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
 using System.Globalization;
 
@@ -16,6 +14,11 @@ namespace SVControl
                 return base.ConvertTo(context, culture, value, destinationType);
 
             return proper.Count.ToString();
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            return base.ConvertFrom(context, culture, value);
         }
     }
 }

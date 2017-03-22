@@ -81,6 +81,8 @@ namespace SVControl
 
                 variable.VarName = (String)dialog.name.DataContext;
                 variable.VarType = Convert.ToByte(dialog.type.DataContext);
+
+
             }
 
             return value;

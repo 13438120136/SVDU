@@ -511,7 +511,7 @@ namespace SvduPro
                     || (win == _objectWindow))
                     return;
                 
-                SVSelectPanelObjs.clearSelectControls();
+                //SVSelectPanelObjs.clearSelectControls();
             });
 
             //_dockPanel.DockAreas = (DockAreas.Document | DockAreas.Float | DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom);

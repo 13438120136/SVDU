@@ -493,7 +493,7 @@ namespace SVControl
 }
 
 
-public class SVCurveProper
+public class SVCurveProper　
 {
     SVVarDefine _var = new SVVarDefine();
     Color _color = Color.Black;

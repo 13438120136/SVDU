@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace SVControl
@@ -25,6 +24,11 @@ namespace SVControl
             _propertyGrid.Size = new System.Drawing.Size(180, 180);
 
             this.winFormHost.Child = _propertyGrid;
+
+            _propertyGrid.PropertyValueChanged += new PropertyValueChangedEventHandler((sender, e) =>
+            {
+                this.listView.Items.Refresh();
+            });
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -34,7 +38,7 @@ namespace SVControl
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            List<SVCurveProper> valueList =  this.listView.ItemsSource as List<SVCurveProper>;
+            List<SVCurveProper> valueList = this.listView.ItemsSource as List<SVCurveProper>;
             if (valueList.Count >= 4)
                 return;
 

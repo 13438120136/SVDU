@@ -42,7 +42,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="0,1,0,1">
                                 <Rectangle Width="20" Fill="{Binding Path=Color, Converter={StaticResource CurveVarColorConverter}}"></Rectangle>
-                                <TextBlock Text="{Binding Converter={StaticResource CurveVarConverter}}" Margin="5,0,0,0"></TextBlock>                                
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource CurveVarConverter}, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock>                                
                             </StackPanel>                            
                         </DataTemplate>
                     </ListView.ItemTemplate>
