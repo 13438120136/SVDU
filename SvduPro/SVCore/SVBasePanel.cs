@@ -311,7 +311,7 @@ namespace SVCore
                 double disIValue = Math.Sqrt(cX * cX + cY * cY);
                 if (!_isMouseDown)
                 {
-                    if (disIValue > 10)
+                    if (disIValue > 5)
                         _isMouseDown = true;
                     return;
                 }

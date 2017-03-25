@@ -18,7 +18,7 @@ namespace SVControl {
     // 此类是由 StronglyTypedResourceBuilder
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
-    // (以 /fileShowName 作为命令选项)，或重新生成 VS 项目。
+    // (以 /str 作为命令选项)，或重新生成 VS 项目。
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -61,7 +61,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap analog {
             get {
@@ -71,7 +71,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap binary {
             get {
@@ -81,7 +81,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap button {
             get {
@@ -91,7 +91,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap gif {
             get {
@@ -101,7 +101,17 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gifDefaultBack {
+            get {
+                object obj = ResourceManager.GetObject("gifDefaultBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap hline {
             get {
@@ -111,7 +121,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ico {
             get {
@@ -121,7 +131,17 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconDefaultBack {
+            get {
+                object obj = ResourceManager.GetObject("iconDefaultBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap line {
             get {
@@ -131,7 +151,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap page {
             get {
@@ -141,7 +161,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon project {
             get {
@@ -151,7 +171,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Text {
             get {
@@ -161,7 +181,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap tick {
             get {
@@ -171,7 +191,7 @@ namespace SVControl {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of Type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Trendchart {
             get {

@@ -14,6 +14,10 @@ namespace SVControl
     public class SVGif : SVPanel, SVInterfacePanel, ISerializable, SVInterfaceBuild
     {
         SVGifProperties _attrib = new SVGifProperties();
+        /// <summary>
+        /// 默认背景图片
+        /// </summary>
+        Bitmap _defaultBackGround = new Bitmap(Resource.gifDefaultBack);
 
         public SVGifProperties Attrib
         {
@@ -28,6 +32,7 @@ namespace SVControl
             base()
         {
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            BTransparent = false;
         }
 
         override public void initalizeRedoUndo()
@@ -101,6 +106,8 @@ namespace SVControl
                 SVBitmap svbitMap = _attrib.Pic.BitmapArray[0];
                 this.BackgroundImage = svbitMap.bitmap();
             }
+            else
+                this.BackgroundImage = _defaultBackGround;
         }
 
         override public void loadXML(SVXml xml, Boolean isCreate = false)

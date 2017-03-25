@@ -13,6 +13,7 @@ namespace SVControl
     public class SVIcon : SVPanel, SVInterfacePanel, ISerializable, SVInterfaceBuild
     {
         SVIconProperties _attrib = new SVIconProperties();
+        Bitmap _defaultBackGround = new Bitmap(Resource.iconDefaultBack); ///默认背景图片
 
         public SVIconProperties Attrib
         {
@@ -90,7 +91,11 @@ namespace SVControl
             this.IsMoved = !_attrib.Lock;
 
             ///根据静态图是否设置了图片来决定外观显示
-            this.BackgroundImage = Attrib.PicIconData.bitmap();
+            var backImage = Attrib.PicIconData.bitmap();
+            if (backImage == null)
+                this.BackgroundImage = _defaultBackGround;
+            else
+                this.BackgroundImage = Attrib.PicIconData.bitmap();
         }
 
         override public void loadXML(SVXml xml, Boolean isCreate = false)
