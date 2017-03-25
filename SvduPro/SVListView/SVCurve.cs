@@ -182,6 +182,9 @@ namespace SVControl
             ///绘制颜色
             SolidBrush fontBrush = new SolidBrush(Attrib.FrontColor);
 
+            if (rect.Width < 10)
+                rect.Width = 10;
+
             scaleStepX = rect.Width / 10;
             for (int i = 0; i <= rect.Width; i += scaleStepX)
             {
