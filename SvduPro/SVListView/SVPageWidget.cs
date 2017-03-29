@@ -256,13 +256,6 @@ namespace SVControl
 
                 e.Effect = DragDropEffects.Copy | DragDropEffects.Move;
             });
-
-            ///页面失去焦点
-            ///页面中的所有控件将不再被选中
-            //this.LostFocus += new EventHandler((sender, e)=>
-            //{
-            //    selectAll(false);
-            //});
         }
 
         /// <summary>

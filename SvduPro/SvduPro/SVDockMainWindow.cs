@@ -1051,7 +1051,11 @@ namespace SvduPro
                     return;
                 refreshObjWindow(sender, e);
             });
-            
+            ///刷新属性窗口
+            widget.RedoUndo.UpdateOperator += new DoFunction(() =>
+            {
+                this._propertyGrid.Refresh();
+            });
 
             widget.MouseMove += new MouseEventHandler((sender, e)=>
             {

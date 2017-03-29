@@ -75,7 +75,24 @@ namespace SVControl
         public SVVarDefine Variable
         {
             get { return _var; }
-            set { _var = value; }
+            set 
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                SVVarDefine before = _var;
+                undoItem.ReDo = () =>
+                {
+                    _var = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _var = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _var = value;
+            }
         }
 
         /// <summary>
@@ -103,7 +120,24 @@ namespace SVControl
         public SVBitmap TruePicture
         {
             get { return _truePicture; }
-            set { _truePicture = value; }
+            set 
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                SVBitmap before = _truePicture;
+                undoItem.ReDo = () =>
+                {
+                    _truePicture = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _truePicture = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _truePicture = value; 
+            }
         }
 
         [Browsable(true)]
@@ -115,7 +149,24 @@ namespace SVControl
         public SVBitmap FlasePicture
         {
             get { return _flasePicture; }
-            set { _flasePicture = value; }
+            set 
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                SVBitmap before = _flasePicture;
+                undoItem.ReDo = () =>
+                {
+                    _flasePicture = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _flasePicture = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _flasePicture = value; 
+            }
         }
 
         [Browsable(true)]
@@ -127,7 +178,24 @@ namespace SVControl
         public SVBitmap ExPicture
         {
             get { return _exPicture; }
-            set { _exPicture = value; }
+            set
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                SVBitmap before = _exPicture;
+                undoItem.ReDo = () =>
+                {
+                    _exPicture = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _exPicture = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _exPicture = value; 
+            }
         }
 
         //[Browsable(false)]
@@ -144,7 +212,24 @@ namespace SVControl
         public String CustomTrueText
         {
             get { return _customTrueText; }
-            set { _customTrueText = value; }
+            set 
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                String before = _customTrueText;
+                undoItem.ReDo = () =>
+                {
+                    _customTrueText = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _customTrueText = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _customTrueText = value; 
+            }
         }
 
         [Browsable(true)]
@@ -154,7 +239,24 @@ namespace SVControl
         public String CustomFlaseText
         {
             get { return _customFlaseText; }
-            set { _customFlaseText = value; }
+            set 
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                String before = _customFlaseText;
+                undoItem.ReDo = () =>
+                {
+                    _customFlaseText = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _customFlaseText = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _customFlaseText = value; 
+            }
         }
 
         //[Browsable(false)]

@@ -95,7 +95,23 @@ namespace SVControl
         {
             get { return _btnEnable; }
             set 
-            {                
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                Boolean before = _btnEnable;
+                undoItem.ReDo = () =>
+                {
+                    _btnEnable = value;
+                    SetPropertyVisibility(this, "EnVarText", _btnEnable);
+                };
+                undoItem.UnDo = () =>
+                {
+                    _btnEnable = before;
+                    SetPropertyVisibility(this, "EnVarText", _btnEnable);
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
                 _btnEnable = value;
                 SetPropertyVisibility(this, "EnVarText", _btnEnable);
             }
@@ -110,7 +126,24 @@ namespace SVControl
         public SVVarDefine EnVarText
         {
             get { return _enVarText; }
-            set { _enVarText = value; }
+            set 
+            {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                SVVarDefine before = _enVarText;
+                undoItem.ReDo = () =>
+                {
+                    _enVarText = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _enVarText = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _enVarText = value;
+            }
         }
 
         [CategoryAttribute("类型")]
@@ -123,6 +156,22 @@ namespace SVControl
             get { return _buttonType; }
             set 
             {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                Byte before = _buttonType;
+                undoItem.ReDo = () =>
+                {
+                    _buttonType = value;
+                    setBtnTypeShow(_buttonType);
+                };
+                undoItem.UnDo = () =>
+                {
+                    _buttonType = before;
+                    setBtnTypeShow(_buttonType);
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
                 _buttonType = value;
                 setBtnTypeShow(_buttonType);
             }
@@ -170,7 +219,24 @@ namespace SVControl
         public String FMemo
         {
             get { return _fMemo; }
-            set { _fMemo = value; }
+            set 
+            { 
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                String before = _fMemo;
+                undoItem.ReDo = () =>
+                {
+                    _fMemo = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _fMemo = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
+                _fMemo = value;
+            }
         }
 
         /// <summary>

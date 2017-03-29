@@ -81,6 +81,20 @@ namespace SVControl
             get { return _bitMapArray; }
             set 
             {
+                SVRedoUndoItem undoItem = new SVRedoUndoItem();
+                SVBitmapArray before = _bitMapArray;
+                undoItem.ReDo = () =>
+                {
+                    _bitMapArray = value;
+                };
+                undoItem.UnDo = () =>
+                {
+                    _bitMapArray = before;
+                };
+
+                if (UpdateControl != null)
+                    UpdateControl(undoItem);
+
                 _bitMapArray = value;
             }
         }
