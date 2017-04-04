@@ -406,10 +406,20 @@ namespace SvduPro
             workWindow.HideEventer += new EventHandler((sender, e) =>
             {
                 var pageWidget = workWindow.CoreControl as SVPageWidget;
+
                 if (pageWidget != null)
                 {
+                    if (pageWidget.IsModify)
+                    {
+                        SVMessageBox msgBox = new SVMessageBox();
+                        msgBox.content("提示", String.Format("当前页面未保存"));
+                        msgBox.ShowDialog();
+                        return;
+                    }
+
                     _propertyGrid.SelectedObject = null;
                     this._objTreeView.clearAllNodes();
+                    workWindow.Hide();
                 }
             });
         }
@@ -513,7 +523,7 @@ namespace SvduPro
                 
                 //SVSelectPanelObjs.clearSelectControls();
             });
-
+            
             //_dockPanel.DockAreas = (DockAreas.Document | DockAreas.Float | DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom);
             //this._dockPanel.Location = new Point(0, 49);
             //this._dockPanel.Name = "dockPanel";
@@ -1352,6 +1362,14 @@ namespace SvduPro
         /// <param Name="backPageWidget">页面节点</param>
         void closePage(SVPageWidget widget)
         {
+            if (widget.IsModify)
+            {
+                SVMessageBox msgBox = new SVMessageBox();
+                msgBox.content("提示", String.Format("当前页面未保存"));
+                msgBox.ShowDialog();
+                return;
+            }
+
             //添加属性
             this._propertyGrid.SelectedObject = null;
             //清除对象窗口
@@ -1389,6 +1407,14 @@ namespace SvduPro
             SVPageWidget widget = node.Addtionobj as SVPageWidget;
             if (widget != null)
             {
+                if (widget.IsModify)
+                {
+                    SVMessageBox msgBox = new SVMessageBox();
+                    msgBox.content("提示", String.Format("当前页面未保存"));
+                    msgBox.ShowDialog();
+                    return;
+                }
+
                 SVControlWindow win = widget.Parent as SVControlWindow;
                 if (win != null)
                     win.Close();

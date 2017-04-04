@@ -35,8 +35,6 @@ namespace SVControl
             }
         }
 
-        Boolean _isMainPage = false;
-
         /// <summary>
         /// 设置或获取当前页面是否为启动页面
         /// 
@@ -45,14 +43,16 @@ namespace SVControl
         /// </summary>
         public Boolean IsMainPage
         {
-            get { return _isMainPage; }
+            get { return Attrib.IsMainPage; }
             set 
             {
                 if (value == true)
                     MainPageWidget = this;
 
-                _isMainPage = value;
-                IsModify = true;
+                if (Attrib.IsMainPage != value)
+                    IsModify = true;
+
+                Attrib.IsMainPage = value;                
             }
         }
 
@@ -213,7 +213,7 @@ namespace SVControl
         /// </summary>
         void initalize()
         {
-            this._isModify = true;
+            this._isModify = false;
             ///允许接收拖拽
             this.AllowDrop = true;
             ///初始化框选功能
@@ -595,7 +595,9 @@ namespace SVControl
             _attrib.BackColor = Color.FromArgb(int.Parse(back.InnerText));
 
             XmlElement mainPage = xml.select("MainPage");
-            IsMainPage = Boolean.Parse(mainPage.InnerText);
+            _attrib.IsMainPage = Boolean.Parse(mainPage.InnerText);
+            if (_attrib.IsMainPage)
+                setToMainPageWidget();
 
             XmlElement backGroundType = xml.select("BackGroundType");
             _attrib.BackGroundType = Byte.Parse(backGroundType.InnerText);
@@ -653,7 +655,7 @@ namespace SVControl
             back.InnerText = _attrib.BackColor.ToArgb().ToString();
 
             XmlElement mainPage = xml.createNode("MainPage");
-            mainPage.InnerText = IsMainPage.ToString();
+            mainPage.InnerText = _attrib.IsMainPage.ToString();
 
             XmlElement backGroundType = xml.createNode("BackGroundType");
             backGroundType.InnerText = _attrib.BackGroundType.ToString();

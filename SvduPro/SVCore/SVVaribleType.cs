@@ -95,7 +95,8 @@ namespace SVCore
             UInt32 iAddress = UInt32.Parse(address);
 
             ///减去180的十六进制
-            iAddress -= 384;
+            if (type == 0 || type == 1)
+                iAddress -= 384;
 
             byte[] buffer = BitConverter.GetBytes(iAddress);
             buffer[3] = type;
@@ -179,44 +180,40 @@ namespace SVCore
             ///表格中的内容
             List<SVVarNode> vList = new List<SVVarNode>() 
             {
-                new SVVarNode("当前运行版本0", 0, "INT"),
-                new SVVarNode("当前运行软件1", 1, "INT"),
-                new SVVarNode("配置文件版本0", 2, "INT"),
-                new SVVarNode("配置文件版本1", 3, "INT"),
-                new SVVarNode("接收任务时间", 4, "INT"),
-                new SVVarNode("接收任务最大时间", 5, "INT"),
-                new SVVarNode("显示任务时间", 6, "INT"),
-                new SVVarNode("显示任务最大时间", 7, "INT"),
-                new SVVarNode("发送任务时间", 8, "INT"),
-                new SVVarNode("发送任务最大时间", 9, "INT"),
-                new SVVarNode("杂项任务时间", 10, "INT"),
-                new SVVarNode("杂项任务最大时间", 11, "INT"),
+                new SVVarNode("接收任务时间",         0, "INT"),
+                new SVVarNode("接收任务最大时间",     1, "INT"),
+                new SVVarNode("显示任务时间",         2, "INT"),
+                new SVVarNode("显示任务最大时间", 3, "INT"),
+                new SVVarNode("发送任务时间", 4, "INT"),
+                new SVVarNode("发送任务最大时间", 5, "INT"),
+                new SVVarNode("杂项任务时间", 6, "INT"),
+                new SVVarNode("杂项任务最大时间", 7, "INT"),
 
-                new SVVarNode("当前空闲时间", 12, "INT"),
-                new SVVarNode("当前周期时间", 13, "INT"),
-                new SVVarNode("周期最大设置时间", 14, "INT"),
+                new SVVarNode("当前空闲时间", 8, "INT"),
+                new SVVarNode("当前周期时间", 9, "INT"),
+                new SVVarNode("周期最大设置时间", 10, "INT"),
 
-                new SVVarNode("当前周期个数", 15, "INT"),
+                new SVVarNode("当前周期个数", 11, "INT"),
 
-                new SVVarNode("平台ROM状态", 16, "INT"),
-                new SVVarNode("平台RAM状态", 17, "INT"),
-                new SVVarNode("cpu诊断状态", 18, "INT"),
-                new SVVarNode("时钟诊断状态", 19, "INT"),
+                new SVVarNode("平台ROM状态", 12, "INT"),
+                new SVVarNode("平台RAM状态", 13, "INT"),
+                new SVVarNode("cpu诊断状态", 14, "INT"),
+                new SVVarNode("时钟诊断状态", 15, "INT"),
 
-                new SVVarNode("内存使用率", 20, "INT"),
-                new SVVarNode("cpu使用率", 21, "INT"),
+                new SVVarNode("内存使用率", 16, "INT"),
+                new SVVarNode("cpu使用率", 17, "INT"),
 
-                new SVVarNode("数据接收状态", 22, "INT"),
-                new SVVarNode("数据发送状态", 23, "INT"),
-                new SVVarNode("人机交互状态", 24, "INT"),
+                new SVVarNode("数据接收状态", 18, "INT"),
+                new SVVarNode("数据发送状态", 19, "INT"),
+                new SVVarNode("人机交互状态", 20, "INT"),
 
-                new SVVarNode("当前运行模式", 25, "INT"),
+                new SVVarNode("当前运行模式", 21, "INT"),
 
-                new SVVarNode("接收任务超时", 26, "INT"),
-                new SVVarNode("显示任务超时", 27, "INT"),
-                new SVVarNode("发送任务超时", 28, "INT"),
-                new SVVarNode("杂项任务超时", 29, "INT"),
-                new SVVarNode("周期超时", 30, "INT")
+                new SVVarNode("接收任务超时", 22, "INT"),
+                new SVVarNode("显示任务超时", 23, "INT"),
+                new SVVarNode("发送任务超时", 24, "INT"),
+                new SVVarNode("杂项任务超时", 25, "INT"),
+                new SVVarNode("周期超时", 26, "INT")
             };
 
             foreach (var item in vList)

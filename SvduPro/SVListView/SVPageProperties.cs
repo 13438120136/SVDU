@@ -22,6 +22,17 @@ namespace SVControl
         UInt16 _id;
         SVBitmap _bitMap;
         Byte _backGroundType = 0;  //为0的时候表示颜色背景，1的时候表示图片背景
+        Boolean _isMainPage = false;
+
+        [CategoryAttribute("属性")]
+        [DescriptionAttribute("当前页面是否为启动页面，如果是启动页面-True,否则-False")]
+        [DisplayName("启动页面")]
+        [ReadOnlyAttribute(true)] 
+        public Boolean IsMainPage
+        {
+            get { return _isMainPage; }
+            set { _isMainPage = value; }
+        }
 
         public UpdateControl UpdateControl;
         #endregion
