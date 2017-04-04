@@ -54,7 +54,7 @@ namespace SVCore
         public UInt32 strToAddress(String varName, Byte type)
         {
             if (String.IsNullOrWhiteSpace(varName))
-                return 0;
+                return UInt32.MaxValue;
 
             DataTable dataTable = null;
 

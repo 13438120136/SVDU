@@ -321,7 +321,7 @@ namespace SVControl
         [CategoryAttribute("外观"), DescriptionAttribute("文本大于最大值,设置显示颜色")]
         [TypeConverter(typeof(SVColorConverter))]
         [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        [DisplayName("小于颜色")]
+        [DisplayName("大于颜色")]
         public Color OverMaxColor
         {
             set
@@ -353,7 +353,7 @@ namespace SVControl
         [CategoryAttribute("外观"), DescriptionAttribute("文本小于最小值, 设置显示颜色")]
         [TypeConverter(typeof(SVColorConverter))]
         [EditorAttribute(typeof(SVColorTypeEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        [DisplayName("大于颜色")]
+        [DisplayName("小于颜色")]
         public Color OverMinColor
         {
             set

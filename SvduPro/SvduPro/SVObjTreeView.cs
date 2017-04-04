@@ -59,6 +59,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _btnNode.Nodes.Add(node);
+                _btnNode.Text = String.Format("按钮(计数:{0})", _btnNode.Nodes.Count);
             });
 
             _nameDict.Add("SVLabel", (cc, c) =>
@@ -74,6 +75,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _textNode.Nodes.Add(node);
+                _textNode.Text = String.Format("文本(计数:{0})", _textNode.Nodes.Count);
             });
 
             _nameDict.Add("SVAnalog", (cc, c) =>
@@ -89,6 +91,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _analogNode.Nodes.Add(node);
+                _analogNode.Text = String.Format("模拟量(计数:{0})", _analogNode.Nodes.Count);
             });
 
             _nameDict.Add("SVBinary", (cc, c) =>
@@ -104,6 +107,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _binaryNode.Nodes.Add(node);
+                _binaryNode.Text = String.Format("开关量(计数:{0})", _binaryNode.Nodes.Count);
             });
 
             _nameDict.Add("SVCurve", (cc, c) =>
@@ -119,6 +123,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _curveNode.Nodes.Add(node);
+                _curveNode.Text = String.Format("趋势图(计数:{0})", _curveNode.Nodes.Count);
             });
 
             _nameDict.Add("SVIcon", (cc, c) =>
@@ -134,6 +139,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _iconNode.Nodes.Add(node);
+                _iconNode.Text = String.Format("静态图(计数:{0})", _iconNode.Nodes.Count);
             });
 
             _nameDict.Add("SVLine", (cc, c) =>
@@ -149,6 +155,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _lineNode.Nodes.Add(node);
+                _lineNode.Text = String.Format("直线(计数:{0})", _lineNode.Nodes.Count);
             });
 
             _nameDict.Add("SVGif", (cc, c) =>
@@ -164,6 +171,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _gifNode.Nodes.Add(node);
+                _gifNode.Text = String.Format("动态图(计数:{0})", _gifNode.Nodes.Count);
             });
 
             _nameDict.Add("SVHeartbeat", (cc, c) =>
@@ -179,6 +187,7 @@ namespace SvduPro
                 node.Text = text;
                 node.objControl = c;
                 _heartNode.Nodes.Add(node);
+                _heartNode.Text = String.Format("心跳控件(计数:{0})", _heartNode.Nodes.Count);
             });
 
             this.AfterSelect += new TreeViewEventHandler(SVObjTreeView_AfterSelect);

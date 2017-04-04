@@ -197,24 +197,17 @@ namespace SVControl
                 throw new SVCheckValidException(msg);
             }
 
-            //var varInstance = SVVaribleType.instance();
-            //varInstance.loadVariableData();
-            //varInstance.setDataType(Attrib.VarType);
-            //if (!varInstance.isOpen())
-            //{
-            //    String msg = String.Format("数据库打开失败，请检查！");
-            //    throw new SVCheckValidException(msg);
-            //}
+            var varInstance = SVVaribleType.instance();
 
-            //var address = varInstance.strToAddress(Attrib.Var, Attrib.VarType);
-            //if ((address & 0x00ffffff) > 48 * 1024)
-            //{
-            //    String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
-            //    throw new SVCheckValidException(msg);
-            //}
+            var address = varInstance.strToAddress(Attrib.Variable.VarName, Attrib.Variable.VarType);
+            if ((address & 0x00ffffff) > 48 * 1024)
+            {
+                String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
 
-            //var type = varInstance.strToType(Attrib.Var);
-            //if (type == -1)
+            //var type = (Byte)varInstance.strToType(Attrib.Variable.VarName, Attrib.Variable.VarType);
+            //if (type == 0)
             //{
             //    String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 变量类型不满足条件", pageName, Attrib.ID);
             //    throw new SVCheckValidException(msg);
