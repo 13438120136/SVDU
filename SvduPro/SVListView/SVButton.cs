@@ -222,10 +222,10 @@ namespace SVControl
             _attrib.ButtonPage.PageText = button.GetAttribute("ButtonTypeText");
 
             _attrib.BtnVarText.VarName = button.GetAttribute("ButtonTypeVar");
-            _attrib.BtnVarText.VarType = Byte.Parse(button.GetAttribute("ButtonTypeVarType"));
+            _attrib.BtnVarText.VarBlockType = Byte.Parse(button.GetAttribute("ButtonTypeVarType"));
 
             _attrib.EnVarText.VarName = button.GetAttribute("EnabledVar");
-            _attrib.EnVarText.VarType = Byte.Parse(button.GetAttribute("EnabledVarType"));
+            _attrib.EnVarText.VarBlockType = Byte.Parse(button.GetAttribute("EnabledVarType"));
             _attrib.BtnEnable = Boolean.Parse(button.GetAttribute("Enabled"));
 
             //按钮图片数据
@@ -263,11 +263,11 @@ namespace SVControl
             button.SetAttribute("ButtonTypeID", _attrib.ButtonPage.PageID.ToString());
             button.SetAttribute("ButtonTypeText", _attrib.ButtonPage.PageText);
             button.SetAttribute("ButtonTypeVar", _attrib.BtnVarText.VarName);
-            button.SetAttribute("ButtonTypeVarType", _attrib.BtnVarText.VarType.ToString());
+            button.SetAttribute("ButtonTypeVarType", _attrib.BtnVarText.VarBlockType.ToString());
             //按钮使能
             button.SetAttribute("Enabled", _attrib.BtnEnable.ToString());
             button.SetAttribute("EnabledVar", _attrib.EnVarText.VarName);
-            button.SetAttribute("EnabledVarType", _attrib.EnVarText.VarType.ToString());
+            button.SetAttribute("EnabledVarType", _attrib.EnVarText.VarBlockType.ToString());
             //按钮图片数据
             button.SetAttribute("IsShowPicture", _attrib.IsShowPic.ToString());
             button.SetAttribute("BtnDownPicFile", _attrib.BtnDownPic.ImageFileName);

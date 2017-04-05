@@ -117,7 +117,7 @@ namespace SVControl
             int width = int.Parse(analog.GetAttribute("Width"));
             int height = int.Parse(analog.GetAttribute("Height"));
             _attrib.Variable.VarName = analog.GetAttribute("Variable");
-            _attrib.Variable.VarType = Byte.Parse(analog.GetAttribute("VariableType"));
+            _attrib.Variable.VarBlockType = Byte.Parse(analog.GetAttribute("VariableType"));
 
             _attrib.Rect = new Rectangle(x, y, width, height);
             _attrib.NormalColor = Color.FromArgb(int.Parse(analog.GetAttribute("NormalColor")));
@@ -149,7 +149,7 @@ namespace SVControl
             analog.SetAttribute("Height", _attrib.Rect.Height.ToString());
 
             analog.SetAttribute("Variable", _attrib.Variable.VarName);
-            analog.SetAttribute("VariableType", _attrib.Variable.VarType.ToString());
+            analog.SetAttribute("VariableType", _attrib.Variable.VarBlockType.ToString());
 
             analog.SetAttribute("NormalColor", _attrib.NormalColor.ToArgb().ToString());
             analog.SetAttribute("OverMaxColor", _attrib.OverMaxColor.ToArgb().ToString());
@@ -199,14 +199,14 @@ namespace SVControl
 
             var varInstance = SVVaribleType.instance();
 
-            var address = varInstance.strToAddress(Attrib.Variable.VarName, Attrib.Variable.VarType);
+            var address = varInstance.strToAddress(Attrib.Variable.VarName, Attrib.Variable.VarBlockType);
             if ((address & 0x00ffffff) > 48 * 1024)
             {
                 String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
             }
 
-            //var type = (Byte)varInstance.strToType(Attrib.Variable.VarName, Attrib.Variable.VarType);
+            //var type = (Byte)varInstance.strToType(Attrib.Variable.VarName, Attrib.Variable.VarBlockType);
             //if (type == 0)
             //{
             //    String msg = String.Format("页面 {0} 中, 模拟量ID为:{1}, 变量类型不满足条件", pageName, Attrib.ID);

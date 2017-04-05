@@ -35,7 +35,7 @@ namespace SVControl
                 return;
             }
 
-            switch (var.VarType)
+            switch (var.VarBlockType)
             {
                 case 0:
                     e.Graphics.DrawString("I", new Font("宋体", 12, FontStyle.Bold), new SolidBrush(Color.Black), rect, strFormat);
@@ -76,13 +76,13 @@ namespace SVControl
                 SVWPFVariableDialog dialog = new SVWPFVariableDialog();
                 dialog.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
                 dialog.name.DataContext = variable.VarName;
-                dialog.type.DataContext = variable.VarType;
+                dialog.type.DataContext = variable.VarBlockType;
                 variableDialog.addContent(dialog);
 
                 edSvc.DropDownControl(variableDialog);
 
                 variable.VarName = (String)dialog.name.DataContext;
-                variable.VarType = Convert.ToByte(dialog.type.DataContext);
+                variable.VarBlockType = Convert.ToByte(dialog.type.DataContext);
             }
 
             return value;

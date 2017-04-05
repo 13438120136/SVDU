@@ -769,12 +769,12 @@ namespace SVControl
             {
                 var varInstance = SVVaribleType.instance();
 
-                btnBin.param.addrOffset = varInstance.strToAddress(_btnVarText.VarName, _btnVarText.VarType);
-                btnBin.varTypeBtn = (Byte)varInstance.strToType(_btnVarText.VarName, _btnVarText.VarType);
+                btnBin.param.addrOffset = varInstance.strToAddress(_btnVarText.VarName, _btnVarText.VarBlockType);
+                btnBin.varTypeBtn = (Byte)varInstance.strToType(_btnVarText.VarName, _btnVarText.VarBlockType);
                 btnBin.type = _buttonType;
                 btnBin.enable = Convert.ToByte(_btnEnable);
-                btnBin.enableAddrOffset = varInstance.strToAddress(_enVarText.VarName, _enVarText.VarType);
-                btnBin.varTypeEn = (Byte)varInstance.strToType(_enVarText.VarName, _enVarText.VarType);
+                btnBin.enableAddrOffset = varInstance.strToAddress(_enVarText.VarName, _enVarText.VarBlockType);
+                btnBin.varTypeEn = (Byte)varInstance.strToType(_enVarText.VarName, _enVarText.VarBlockType);
             }
 
             ///显示背景图片或者显示背景颜色

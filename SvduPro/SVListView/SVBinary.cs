@@ -126,7 +126,7 @@ namespace SVControl
 
             ///读取变量
             _attrib.Variable.VarName = binary.GetAttribute("Variable");
-            _attrib.Variable.VarType = Byte.Parse(binary.GetAttribute("VarialeType"));
+            _attrib.Variable.VarBlockType = Byte.Parse(binary.GetAttribute("VarialeType"));
 
             ///读取自定义名称
             _attrib.CustomTrueText = binary.GetAttribute("CustomTrueText");
@@ -166,7 +166,7 @@ namespace SVControl
 
             ///写入变量
             binary.SetAttribute("Variable", _attrib.Variable.VarName);
-            binary.SetAttribute("VarialeType", _attrib.Variable.VarType.ToString());
+            binary.SetAttribute("VarialeType", _attrib.Variable.VarBlockType.ToString());
 
             ///写入自定义名称
             binary.SetAttribute("CustomTrueText", _attrib.CustomTrueText);
@@ -239,7 +239,7 @@ namespace SVControl
 
             //var varInstance = SVVaribleType.instance();
             //varInstance.loadVariableData();
-            //varInstance.setDataType(Attrib.VarType);
+            //varInstance.setDataType(Attrib.VarBlockType);
             //if (!varInstance.isOpen())
             //{
             //    String msg = String.Format("数据库打开失败，请检查！");
@@ -252,7 +252,7 @@ namespace SVControl
             //    throw new SVCheckValidException(msg);
             //}
 
-            //var address = varInstance.strToAddress(Attrib.Var, Attrib.VarType);
+            //var address = varInstance.strToAddress(Attrib.Var, Attrib.VarBlockType);
             //if (address == 0)
             //{
             //    String msg = String.Format("页面 {0} 中, 开关量ID为:{1}, 未正确设置变量", pageName, Attrib.ID);

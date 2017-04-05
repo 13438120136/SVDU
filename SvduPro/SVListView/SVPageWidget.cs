@@ -562,6 +562,80 @@ namespace SVControl
                 this.BackgroundImage = Attrib.PicIconData.bitmap();
             }
         }
+
+        /// <summary>
+        /// 获取当前页面中的所有变量
+        /// </summary>
+        /// <returns></returns>
+        public List<SVVarDefine> getCurrPageAllVar()
+        {
+            List<SVVarDefine> result = new List<SVVarDefine>();
+
+            foreach (var item in this.Controls)
+            {
+                if (item is SVBinary)
+                {
+                    var varItem = ((SVBinary)item).Attrib.Variable;
+                    if (!result.Contains(varItem) && varItem.isValid())
+                        result.Add(varItem);
+                }
+
+                if (item is SVAnalog)
+                {
+                    var varItem = ((SVAnalog)item).Attrib.Variable;
+                    if (!result.Contains(varItem) && varItem.isValid())
+                        result.Add(varItem);
+                }
+
+                if (item is SVCurve)
+                {
+                    foreach (var child in ((SVCurve)item).Attrib.Variable)
+                    {
+                        if (!result.Contains(child.Var) && child.Var.isValid())
+                            result.Add(child.Var);
+                    }
+                }
+
+                if (item is SVButton)
+                {
+                    var varDefine = ((SVButton)item).Attrib.BtnVarText;
+                    if (!result.Contains(varDefine) && varDefine.isValid())
+                        result.Add(varDefine);
+                }
+
+                if (item is SVGif)
+                {
+                    var varNameList = ((SVGif)item).Attrib.VarName;
+                    var varTypeList = ((SVGif)item).Attrib.VarType;
+                    int nCount = varNameList.Count;
+                    for (int i = 0; i < nCount; i++)
+                    {
+                        SVVarDefine varDefine = new SVVarDefine();
+                        varDefine.VarName = varNameList[i];
+                        varDefine.VarBlockType = varTypeList[i];
+                        if (!result.Contains(varDefine) && varDefine.isValid())
+                            result.Add(varDefine);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 在当前页面中执行变量替换功能
+        /// </summary>
+        /// <param name="oldName">页面中变量原先名称</param>
+        /// <param name="newName">页面中页面当前名称</param>
+        public void replaceVarInCurrPage(String oldName, String newName)
+        {
+            List<SVVarDefine> varDefineList = getCurrPageAllVar();
+            foreach (var item in varDefineList)
+            {
+                if (item.VarName == oldName)
+                    item.VarName = newName;
+            }
+        }
         
         /*
          * 通过XML文件来加载页面控件对象

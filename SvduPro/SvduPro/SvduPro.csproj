@@ -91,6 +91,12 @@
     <Compile Include="SVObjTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SVReplaceVarWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVReplaceVarWindow.Designer.cs">
+      <DependentUpon>SVReplaceVarWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="SVTemplateWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SVFindWindow.resx">
       <DependentUpon>SVFindWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVReplaceVarWindow.resx">
+      <DependentUpon>SVReplaceVarWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SVTemplateWindow.en.resx">
       <DependentUpon>SVTemplateWindow.cs</DependentUpon>

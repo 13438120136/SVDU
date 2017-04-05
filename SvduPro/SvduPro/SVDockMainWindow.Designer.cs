@@ -119,6 +119,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.undoStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.替换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -139,7 +140,6 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip3);
             // 
@@ -492,6 +492,7 @@
             this.hEqualMenuItem,
             this.toolStripSeparator3,
             this.findMenuItem,
+            this.替换ToolStripMenuItem,
             this.toolStripSeparator8,
             this.copyMenuItem,
             this.cutMenuItem,
@@ -812,10 +813,17 @@
             this.undoStatusLabel.Name = "undoStatusLabel";
             resources.ApplyResources(this.undoStatusLabel, "undoStatusLabel");
             // 
+            // 替换ToolStripMenuItem
+            // 
+            this.替换ToolStripMenuItem.Name = "替换ToolStripMenuItem";
+            resources.ApplyResources(this.替换ToolStripMenuItem, "替换ToolStripMenuItem");
+            this.替换ToolStripMenuItem.Click += new System.EventHandler(this.替换ToolStripMenuItem_Click);
+            // 
             // SVDockMainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip2);
@@ -932,6 +940,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem 中文ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 英文ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 替换ToolStripMenuItem;
 
     }
 }

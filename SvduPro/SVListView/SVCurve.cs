@@ -278,7 +278,7 @@ namespace SVControl
 
                 XmlNodeList varType = curve.GetElementsByTagName("VarType");
                 XmlElement tElement = (XmlElement)varType[i];
-                proper.Var.VarType = Byte.Parse(tElement.GetAttribute("Value"));
+                proper.Var.VarBlockType = Byte.Parse(tElement.GetAttribute("Value"));
 
                 XmlNodeList colorList = curve.GetElementsByTagName("VarColor");
                 XmlElement cElement = (XmlElement)colorList[i];
@@ -325,7 +325,7 @@ namespace SVControl
 
                 XmlElement typeList = xml.crateChildNode("VarType");
                 curve.AppendChild(typeList);
-                typeList.SetAttribute("Value", varTmp.Var.VarType.ToString());
+                typeList.SetAttribute("Value", varTmp.Var.VarBlockType.ToString());
 
                 XmlElement colorList = xml.crateChildNode("VarColor");
                 curve.AppendChild(colorList);

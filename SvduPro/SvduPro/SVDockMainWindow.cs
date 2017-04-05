@@ -2206,8 +2206,6 @@ namespace SvduPro
         {
             SVWPFAboutWindow win = new SVWPFAboutWindow();            
             win.ShowDialog();
-            //SVAboutWindow win = new SVAboutWindow();
-            //win.ShowDialog();
         }
 
         /// <summary>
@@ -2227,6 +2225,28 @@ namespace SvduPro
             }
 
             Help.ShowHelp(this, helpFile);
+        }
+
+        private void 替换ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SVControlWindow ctlWindow = _dockPanel.ActiveDocument as SVControlWindow;
+            if (ctlWindow == null)
+                return;
+
+            SVPageWidget svPageWidget = ctlWindow.CoreControl as SVPageWidget;
+            if (svPageWidget == null)
+                return;
+
+
+            var varList = svPageWidget.getCurrPageAllVar();
+
+            SVReplaceVarWindow window = new SVReplaceVarWindow();
+            window.CompeleteEventHandler = ((oldName, newName) => 
+            {
+                svPageWidget.replaceVarInCurrPage(oldName, newName);
+            });
+            window.setVarList(varList);
+            window.ShowDialog();
         }
     }
 }

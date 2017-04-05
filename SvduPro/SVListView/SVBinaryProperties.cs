@@ -260,7 +260,7 @@ namespace SVControl
         }
 
         //[Browsable(false)]
-        //public Byte VarType
+        //public Byte VarBlockType
         //{
         //    get { return _varType; }
         //    set { _varType = value; }
@@ -811,8 +811,8 @@ namespace SVControl
 
             ///根据名称来获取地址
             var varInstance = SVVaribleType.instance();
-            binaryBin.addrOffset = varInstance.strToAddress(_var.VarName, _var.VarType);
-            binaryBin.varType = (Byte)varInstance.strToType(_var.VarName, _var.VarType);
+            binaryBin.addrOffset = varInstance.strToAddress(_var.VarName, _var.VarBlockType);
+            binaryBin.varType = (Byte)varInstance.strToType(_var.VarName, _var.VarBlockType);
 
             pageArrayBin.pageArray[pageCount].m_binary[binaryCount] = binaryBin;
         }

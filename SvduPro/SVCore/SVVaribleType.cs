@@ -111,8 +111,26 @@ namespace SVCore
         /// <param oldName="dataTable"></param>
         public SByte strToType(String varName, Byte type)
         {
-            if (String.IsNullOrWhiteSpace(varName))
+            String strType = strToTypeString(varName, type);
+            if (String.IsNullOrWhiteSpace(strType))
                 return 0;
+
+            if (_dict.ContainsKey(strType))
+                return (SByte)_dict[strType];
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 根据变量名称来获取对应的字符串表示的变量类型
+        /// </summary>
+        /// <param name="varName"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public String strToTypeString(String varName, Byte type)
+        {
+            if (String.IsNullOrWhiteSpace(varName))
+                return null;
 
             DataTable dataTable = null;
 
@@ -134,19 +152,51 @@ namespace SVCore
                         break;
                     }
                 case 3:
-                    return 0;
+                    return null;
             }
 
             String selectStr = string.Format("ioblockname='{0}'", varName);
             DataRow[] dr = dataTable.Select(selectStr);
             if (dr.Length == 0)
-                return 0;
+                return null;
 
             String name = dr[0]["valueType"].ToString();
-            if (_dict.ContainsKey(name))
-                return (SByte)_dict[name];
+            return name;
+        }
 
-            return 0;
+        /// <summary>
+        /// 根据字符串类型来获取所有相关变量名称
+        /// </summary>
+        /// <param name="strType"></param>
+        public List<String> varFromStringType(String strType)
+        {
+            if (String.IsNullOrWhiteSpace(strType))
+                return null;
+
+            DataTable recvTable = loadRecvDataTable();
+            DataTable sendTable = loadSendDataTable();
+            DataTable sysTable = loadSystemDataTable();
+
+            DataTable result = new DataTable();
+            if (recvTable != null)
+                result.Merge(recvTable);
+
+            if (sendTable != null)
+                result.Merge(sendTable);
+
+            if (sysTable != null)
+                result.Merge(sysTable);
+
+            String selectStr = string.Format("valueType='{0}'", strType);
+            DataRow[] dr = result.Select(selectStr);
+            if (dr.Length == 0)
+                return null;
+
+            List<String> varReulstList = new List<String>();
+            for (int i = 0; i < dr.Length; i++)
+                varReulstList.Add(dr[i][0].ToString());
+
+            return varReulstList;
         }
 
         /// <summary>
@@ -324,9 +374,39 @@ namespace SVCore
         public String VarName { get; set; }
 
         /// <summary>
-        /// 变量类型,表示接收区、发送区、系统区类型、中间变量
+        /// 变量种类类型,表示接收区、发送区、系统区类型、中间变量
         /// 值分别为0,1,2,3
         /// </summary>
-        public Byte VarType { get; set; }
+        public Byte VarBlockType { get; set; }
+
+        /// <summary>
+        /// 判断当前变量在替换功能中是否合法
+        /// </summary>
+        /// <returns></returns>
+        public Boolean isValid()
+        {
+            if (String.IsNullOrWhiteSpace(VarName) || VarBlockType == 3)
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// 用来在结构中能够使用Contains函数来判断重复性
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>true-表示已经存在，false-表示不存在</returns>
+        public override bool Equals(object other)
+        {
+            SVVarDefine otherVar = other as SVVarDefine;
+            if (otherVar == null)
+                return true;
+
+            if (this.VarName == otherVar.VarName 
+                && this.VarBlockType == otherVar.VarBlockType)
+                return true;
+
+            return false;
+        }
     }
 }

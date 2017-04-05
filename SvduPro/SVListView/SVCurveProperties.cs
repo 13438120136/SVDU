@@ -82,9 +82,9 @@ namespace SVControl
             _forwardControl.VarName = SVCurveProperties.getIndexNumber();
             _curControl.VarName = SVCurveProperties.getIndexNumber();
             _backwardControl.VarName = SVCurveProperties.getIndexNumber();
-            _forwardControl.VarType = 3;
-            _curControl.VarType = 3;
-            _backwardControl.VarType = 3;
+            _forwardControl.VarBlockType = 3;
+            _curControl.VarBlockType = 3;
+            _backwardControl.VarBlockType = 3;
         }
 
         [CategoryAttribute("数据")]
@@ -469,16 +469,16 @@ namespace SVControl
             curveBin.stepTime = Step;
 
             var varInstance = SVVaribleType.instance();
-            curveBin.keyOffset[0] = varInstance.strToAddress(ForwardControl.VarName, ForwardControl.VarType);
-            curveBin.keyOffset[1] = varInstance.strToAddress(CurControl.VarName, CurControl.VarType);
-            curveBin.keyOffset[2] = varInstance.strToAddress(BackwardControl.VarName, BackwardControl.VarType);
+            curveBin.keyOffset[0] = varInstance.strToAddress(ForwardControl.VarName, ForwardControl.VarBlockType);
+            curveBin.keyOffset[1] = varInstance.strToAddress(CurControl.VarName, CurControl.VarBlockType);
+            curveBin.keyOffset[2] = varInstance.strToAddress(BackwardControl.VarName, BackwardControl.VarBlockType);
 
             ///编译变量、颜色及使能标志
             Int32 nCount = _variable.Count;
             for (Int32 i = 0; i < nCount; i++)
             {
                 String name = _variable[i].Var.VarName;
-                Byte type = _variable[i].Var.VarType;                
+                Byte type = _variable[i].Var.VarBlockType;                
 
                 curveBin.addrOffset[i] = varInstance.strToAddress(name, type);
                 curveBin.varType[i] = (Byte)varInstance.strToType(name, type);
