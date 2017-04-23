@@ -2215,7 +2215,7 @@ namespace SvduPro
         /// <param Name="e"></param>
         private void 主题帮助ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String helpFile = @"Help.chm";
+            String helpFile = @"Help.pdf";
             if (!File.Exists(helpFile))
             {
                 SVMessageBox messageBox = new SVMessageBox();
@@ -2224,7 +2224,8 @@ namespace SvduPro
                 return ;
             }
 
-            Help.ShowHelp(this, helpFile);
+            System.Diagnostics.Process.Start(helpFile);  ///打开pdf文件
+            ///Help.ShowHelp(this, helpFile);  ///打开chm
         }
 
         private void 替换ToolStripMenuItem_Click(object sender, EventArgs e)
