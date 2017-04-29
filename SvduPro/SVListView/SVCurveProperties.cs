@@ -492,7 +492,7 @@ namespace SVControl
     }
 }
 
-
+[Serializable]
 public class SVCurveProper　
 {
     SVVarDefine _var = new SVVarDefine();
