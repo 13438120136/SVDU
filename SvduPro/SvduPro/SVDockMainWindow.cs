@@ -2039,6 +2039,13 @@ namespace SvduPro
         /// </summary>
         private void buildDownLoadFiles(SVWPFProgressBar bar)
         {
+            ///必须保证数据库连接正确
+            if (!DataBase.isConnect())
+            {
+                SVLog.WinLog.Warning("数据库未连接，停止编译！");
+                return;
+            }
+
             ///这里是固定下装文件的名称
             String downLoadName = @"svducfg.bin";
             ///这里加了协议头的文件

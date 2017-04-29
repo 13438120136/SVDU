@@ -237,6 +237,11 @@ namespace SVControl
                 }
             }
 
+            if (String.IsNullOrWhiteSpace(Attrib.Variable.VarName))
+            {
+                String msg = String.Format("页面 {0} 中,开关量ID为:{1}, 变量未设置！", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
             //var varInstance = SVVaribleType.instance();
             //varInstance.loadVariableData();
             //varInstance.setDataType(Attrib.VarBlockType);

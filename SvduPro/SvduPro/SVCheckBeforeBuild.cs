@@ -240,7 +240,7 @@ namespace SvduPro
 
                     if (!(right1 < left2 || left1 > right2 || bottom1 < top2 || top1 > bottom2))
                     {
-                        String msg = String.Format("{0}页面中的,控件{0} 和 控件{1} 产生重叠", widget.PageName, svCtrl.Id, svChild.Id);
+                        String msg = String.Format("{0}页面中的,控件{1} 和 控件{2} 产生重叠", widget.PageName, svCtrl.Id, svChild.Id);
                         throw new SVCheckValidException(msg);
                     }
                 }

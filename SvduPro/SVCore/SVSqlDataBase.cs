@@ -12,6 +12,15 @@ namespace SVCore
         MySqlConnection _mysqlConnect = new MySqlConnection();
 
         /// <summary>
+        /// 判断当前数据库是否已经成功连接
+        /// </summary>
+        /// <returns>true表示已经连接，false表示未连接</returns>
+        public Boolean isConnect()
+        {
+            return (_mysqlConnect.State == ConnectionState.Open);
+        }
+
+        /// <summary>
         /// 连接mysql数据库
         /// </summary>
         /// <param oldName="ip">数据库ip地址</param>
