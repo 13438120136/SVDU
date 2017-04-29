@@ -2039,10 +2039,11 @@ namespace SvduPro
         /// </summary>
         private void buildDownLoadFiles(SVWPFProgressBar bar)
         {
+            Action log = () => { SVLog.WinLog.Warning("数据库未连接，停止编译！"); bar.Close(); };
             ///必须保证数据库连接正确
             if (!DataBase.isConnect())
             {
-                SVLog.WinLog.Warning("数据库未连接，停止编译！");
+                this.Invoke(log);                
                 return;
             }
 
@@ -2064,7 +2065,7 @@ namespace SvduPro
             PageArrayBin pageArrayBin = new PageArrayBin();
 
             //启动项
-            Action log = () => { SVLog.WinLog.Info(String.Format("编译启动页面{0}成功", fristWidget.PageName)); };
+            log = () => { SVLog.WinLog.Info(String.Format("编译启动页面{0}成功", fristWidget.PageName)); };
             this.Invoke(log);
 
             Action barAc = () => { bar.setMaxBarValue(SVGlobalData.PageContainer.Count); };
