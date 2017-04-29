@@ -374,6 +374,12 @@ namespace SVControl
                 String msg = String.Format("页面 {0} 中,趋势图ID为:{1}, 已经超出页面显示范围", pageName, Attrib.ID);
                 throw new SVCheckValidException(msg);
             }
+
+            if (this._attrib.Variable.Count == 0)
+            {
+                String msg = String.Format("页面 {0} 中,趋势图ID为:{1}, 未关联变量", pageName, Attrib.ID);
+                throw new SVCheckValidException(msg);
+            }
         }
     }
 }

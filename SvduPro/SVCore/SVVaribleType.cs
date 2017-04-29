@@ -95,8 +95,8 @@ namespace SVCore
             UInt32 iAddress = UInt32.Parse(address);
 
             ///减去180的十六进制
-            if (type == 0 || type == 1)
-                iAddress -= 384;
+            //if (type == 0 || type == 1)
+            //    iAddress -= 384;
 
             byte[] buffer = BitConverter.GetBytes(iAddress);
             buffer[3] = type;
