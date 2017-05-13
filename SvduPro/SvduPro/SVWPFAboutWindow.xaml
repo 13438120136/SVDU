@@ -20,7 +20,7 @@
             <RowDefinition Height="120"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1" LineHeight="35" TextAlignment="Center" Text="中核控制系统工程有限公司图形组态软件&#13;版本:V1.1.2" FontSize="16" FontFamily="Courier New" MouseDown="TextBlock_MouseDown"></TextBlock> 
+        <TextBlock Grid.Row="1" LineHeight="35" TextAlignment="Center" Text="中核控制系统工程有限公司图形组态软件&#13;版本:V1.1.6" FontSize="16" FontFamily="Courier New" MouseDown="TextBlock_MouseDown"></TextBlock> 
         <Button Grid.Row="2" Content="确定" Width="100" Height="30" Click="Button_Click"></Button>
     </Grid>
 </Window>
