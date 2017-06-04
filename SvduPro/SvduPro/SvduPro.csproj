@@ -113,6 +113,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="SVVersionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVVersionWindow.Designer.cs">
+      <DependentUpon>SVVersionWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="SVWPFAboutWindow.xaml.cs">
       <DependentUpon>SVWPFAboutWindow.xaml</DependentUpon>
     </Compile>
@@ -164,6 +170,9 @@
     <EmbeddedResource Include="Resource.zh.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.zh.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SVVersionWindow.resx">
+      <DependentUpon>SVVersionWindow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -30,12 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVDockMainWindow));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton19 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton20 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton21 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton22 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripButton();
@@ -45,14 +47,12 @@
             this.toolStripButton16 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton19 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton20 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton21 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton22 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.最近打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,11 +120,12 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.undoStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.版本toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -140,60 +141,78 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip3);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
-            // toolStrip1
+            // toolStrip2
             // 
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton19,
-            this.toolStripButton20,
-            this.toolStripButton21,
-            this.toolStripButton22,
-            this.toolStripButton23});
-            this.toolStrip1.Name = "toolStrip1";
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton4,
+            this.toolStripButton5,
+            this.toolStripButton6,
+            this.toolStripSeparator11,
+            this.toolStripButton7,
+            this.toolStripButton8,
+            this.toolStripButton10});
+            this.toolStrip2.Name = "toolStrip2";
             // 
-            // toolStripButton19
+            // toolStripButton4
             // 
-            this.toolStripButton19.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton19.Image = global::SvduPro.Resource.copy;
-            resources.ApplyResources(this.toolStripButton19, "toolStripButton19");
-            this.toolStripButton19.Name = "toolStripButton19";
-            this.toolStripButton19.Click += new System.EventHandler(this.copyMenuItem_Click);
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::SvduPro.Resource._new;
+            resources.ApplyResources(this.toolStripButton4, "toolStripButton4");
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Click += new System.EventHandler(this.newPageMenuItem_Click);
             // 
-            // toolStripButton20
+            // toolStripButton5
             // 
-            this.toolStripButton20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton20.Image = global::SvduPro.Resource.cut;
-            resources.ApplyResources(this.toolStripButton20, "toolStripButton20");
-            this.toolStripButton20.Name = "toolStripButton20";
-            this.toolStripButton20.Click += new System.EventHandler(this.cutMenuItem_Click);
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = global::SvduPro.Resource.save;
+            resources.ApplyResources(this.toolStripButton5, "toolStripButton5");
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Click += new System.EventHandler(this.saveMenuItem_Click);
             // 
-            // toolStripButton21
+            // toolStripButton6
             // 
-            this.toolStripButton21.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton21.Image = global::SvduPro.Resource.paste;
-            resources.ApplyResources(this.toolStripButton21, "toolStripButton21");
-            this.toolStripButton21.Name = "toolStripButton21";
-            this.toolStripButton21.Click += new System.EventHandler(this.pasteMenuItem_Click);
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = global::SvduPro.Resource.save_all;
+            resources.ApplyResources(this.toolStripButton6, "toolStripButton6");
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Click += new System.EventHandler(this.saveAllMenuItem_Click);
             // 
-            // toolStripButton22
+            // toolStripSeparator11
             // 
-            this.toolStripButton22.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton22.Image = global::SvduPro.Resource.undo;
-            resources.ApplyResources(this.toolStripButton22, "toolStripButton22");
-            this.toolStripButton22.Name = "toolStripButton22";
-            this.toolStripButton22.Click += new System.EventHandler(this.撤销ToolStripMenuItem_Click);
+            this.toolStripSeparator11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSeparator11.Image = global::SvduPro.Resource.importPage;
+            resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Click += new System.EventHandler(this.importMenuItem_Click);
             // 
-            // toolStripButton23
+            // toolStripButton7
             // 
-            this.toolStripButton23.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton23.Image = global::SvduPro.Resource.redo;
-            resources.ApplyResources(this.toolStripButton23, "toolStripButton23");
-            this.toolStripButton23.Name = "toolStripButton23";
-            this.toolStripButton23.Click += new System.EventHandler(this.恢复ToolStripMenuItem_Click);
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = global::SvduPro.Resource.remove;
+            resources.ApplyResources(this.toolStripButton7, "toolStripButton7");
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Click += new System.EventHandler(this.removeMenuItem_Click);
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = global::SvduPro.Resource.delete;
+            resources.ApplyResources(this.toolStripButton8, "toolStripButton8");
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Click += new System.EventHandler(this.delMenuItem_Click);
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton10.Image = global::SvduPro.Resource.check;
+            resources.ApplyResources(this.toolStripButton10, "toolStripButton10");
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Click += new System.EventHandler(this.页面检查ToolStripMenuItem_Click);
             // 
             // toolStrip3
             // 
@@ -273,74 +292,56 @@
             this.toolStripButton18.Name = "toolStripButton18";
             this.toolStripButton18.Click += new System.EventHandler(this.hEqualMenuItem_Click);
             // 
-            // toolStrip2
+            // toolStrip1
             // 
-            resources.ApplyResources(this.toolStrip2, "toolStrip2");
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton4,
-            this.toolStripButton5,
-            this.toolStripButton6,
-            this.toolStripSeparator11,
-            this.toolStripButton7,
-            this.toolStripButton8,
-            this.toolStripButton10});
-            this.toolStrip2.Name = "toolStrip2";
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton19,
+            this.toolStripButton20,
+            this.toolStripButton21,
+            this.toolStripButton22,
+            this.toolStripButton23});
+            this.toolStrip1.Name = "toolStrip1";
             // 
-            // toolStripButton4
+            // toolStripButton19
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::SvduPro.Resource._new;
-            resources.ApplyResources(this.toolStripButton4, "toolStripButton4");
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Click += new System.EventHandler(this.newPageMenuItem_Click);
+            this.toolStripButton19.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton19.Image = global::SvduPro.Resource.copy;
+            resources.ApplyResources(this.toolStripButton19, "toolStripButton19");
+            this.toolStripButton19.Name = "toolStripButton19";
+            this.toolStripButton19.Click += new System.EventHandler(this.copyMenuItem_Click);
             // 
-            // toolStripButton5
+            // toolStripButton20
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::SvduPro.Resource.save;
-            resources.ApplyResources(this.toolStripButton5, "toolStripButton5");
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Click += new System.EventHandler(this.saveMenuItem_Click);
+            this.toolStripButton20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton20.Image = global::SvduPro.Resource.cut;
+            resources.ApplyResources(this.toolStripButton20, "toolStripButton20");
+            this.toolStripButton20.Name = "toolStripButton20";
+            this.toolStripButton20.Click += new System.EventHandler(this.cutMenuItem_Click);
             // 
-            // toolStripButton6
+            // toolStripButton21
             // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = global::SvduPro.Resource.save_all;
-            resources.ApplyResources(this.toolStripButton6, "toolStripButton6");
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Click += new System.EventHandler(this.saveAllMenuItem_Click);
+            this.toolStripButton21.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton21.Image = global::SvduPro.Resource.paste;
+            resources.ApplyResources(this.toolStripButton21, "toolStripButton21");
+            this.toolStripButton21.Name = "toolStripButton21";
+            this.toolStripButton21.Click += new System.EventHandler(this.pasteMenuItem_Click);
             // 
-            // toolStripSeparator11
+            // toolStripButton22
             // 
-            this.toolStripSeparator11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSeparator11.Image = global::SvduPro.Resource.importPage;
-            resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Click += new System.EventHandler(this.importMenuItem_Click);
+            this.toolStripButton22.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton22.Image = global::SvduPro.Resource.undo;
+            resources.ApplyResources(this.toolStripButton22, "toolStripButton22");
+            this.toolStripButton22.Name = "toolStripButton22";
+            this.toolStripButton22.Click += new System.EventHandler(this.撤销ToolStripMenuItem_Click);
             // 
-            // toolStripButton7
+            // toolStripButton23
             // 
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Image = global::SvduPro.Resource.remove;
-            resources.ApplyResources(this.toolStripButton7, "toolStripButton7");
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Click += new System.EventHandler(this.removeMenuItem_Click);
-            // 
-            // toolStripButton8
-            // 
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = global::SvduPro.Resource.delete;
-            resources.ApplyResources(this.toolStripButton8, "toolStripButton8");
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Click += new System.EventHandler(this.delMenuItem_Click);
-            // 
-            // toolStripButton10
-            // 
-            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton10.Image = global::SvduPro.Resource.check;
-            resources.ApplyResources(this.toolStripButton10, "toolStripButton10");
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Click += new System.EventHandler(this.页面检查ToolStripMenuItem_Click);
+            this.toolStripButton23.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton23.Image = global::SvduPro.Resource.redo;
+            resources.ApplyResources(this.toolStripButton23, "toolStripButton23");
+            this.toolStripButton23.Name = "toolStripButton23";
+            this.toolStripButton23.Click += new System.EventHandler(this.恢复ToolStripMenuItem_Click);
             // 
             // menuStrip2
             // 
@@ -361,6 +362,7 @@
             this.openProMenuItem,
             this.toolStripSeparator10,
             this.设置ToolStripMenuItem,
+            this.版本toolStripMenuItem,
             this.toolStripMenuItem2,
             this.exitMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -820,6 +822,12 @@
             this.undoStatusLabel.Name = "undoStatusLabel";
             resources.ApplyResources(this.undoStatusLabel, "undoStatusLabel");
             // 
+            // 版本toolStripMenuItem
+            // 
+            this.版本toolStripMenuItem.Name = "版本toolStripMenuItem";
+            resources.ApplyResources(this.版本toolStripMenuItem, "版本toolStripMenuItem");
+            this.版本toolStripMenuItem.Click += new System.EventHandler(this.版本toolStripMenuItem_Click);
+            // 
             // SVDockMainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -833,12 +841,12 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.toolStrip3.ResumeLayout(false);
-            this.toolStrip3.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -941,6 +949,7 @@
         private System.Windows.Forms.ToolStripMenuItem 中文ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 英文ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 替换ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 版本toolStripMenuItem;
 
     }
 }

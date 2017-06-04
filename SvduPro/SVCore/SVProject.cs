@@ -159,6 +159,7 @@ namespace SVCore
             SVProData.TemplatePath = Path.Combine(vPath, "Template");
             SVProData.IconPath = Path.Combine(vPath, "Icon");
             SVProData.LogPath = Path.Combine(vPath, "Log");
+            SVProData.version = "1.1.6";
 
             SVUniqueID idObj = SVUniqueID.instance();
             idObj.UniqueFile = Path.Combine(SVProData.ProPath, "config");

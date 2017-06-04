@@ -186,6 +186,9 @@ namespace SVControl
                 rect.Width = 10;
 
             scaleStepX = rect.Width / 10;
+            if (scaleStepX == 0)
+                return;
+
             for (int i = 0; i <= rect.Width; i += scaleStepX)
             {
                 ///横轴刻度
@@ -204,6 +207,8 @@ namespace SVControl
 
             ///纵轴刻度
             scaleStepY = rect.Height / 10;
+            if (scaleStepY == 0)
+                return;
             for (int i = 0; i <= rect.Height; i += scaleStepY)
             {
                 int xPos = rect.X;

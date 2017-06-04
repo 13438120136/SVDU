@@ -28,5 +28,7 @@ namespace SVCore
         static public String passwd { get; set; }
         ///连接的数据库名称
         static public String dbIp { get; set; }
+        ///当前软件版本
+        static public String version { get; set; }
     }
 }
