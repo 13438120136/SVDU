@@ -2041,11 +2041,11 @@ namespace SvduPro
         {
             Action log = () => { SVLog.WinLog.Warning("数据库未连接，停止编译！"); bar.Close(); };
             ///必须保证数据库连接正确
-            //if (!DataBase.isConnect())
-            //{
-            //    this.Invoke(log);                
-            //    return;
-            //}
+            if (!DataBase.isConnect())
+            {
+                this.Invoke(log);
+                return;
+            }
 
             ///这里是固定下装文件的名称
             String downLoadName = @"svducfg.bin";
