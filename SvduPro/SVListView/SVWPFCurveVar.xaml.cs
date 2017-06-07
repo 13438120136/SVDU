@@ -24,7 +24,6 @@ namespace SVControl
             _propertyGrid.Size = new System.Drawing.Size(180, 180);
 
             this.winFormHost.Child = _propertyGrid;
-
             _propertyGrid.PropertyValueChanged += new PropertyValueChangedEventHandler((sender, e) =>
             {
                 this.listView.Items.Refresh();

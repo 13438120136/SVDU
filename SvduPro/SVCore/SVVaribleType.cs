@@ -366,7 +366,7 @@ namespace SVCore
     /// 一个变量的定义类
     /// </summary>
     [Serializable]
-    public class SVVarDefine
+    public class SVVarDefine : ICloneable
     {
         /// <summary>
         /// 变量名称
@@ -407,6 +407,14 @@ namespace SVCore
                 return true;
 
             return false;
+        }
+
+        public object Clone()
+        {
+            SVVarDefine r = new SVVarDefine();
+            r.VarName = this.VarName;
+            r.VarBlockType = this.VarBlockType;
+            return r;
         }
     }
 }

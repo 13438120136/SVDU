@@ -66,7 +66,7 @@ namespace SVControl
                 SVVarDefine variable = value as SVVarDefine;
                 if (variable == null)
                     return value;
-
+                               
                 SVWpfControl variableDialog = new SVWpfControl();
                 variableDialog.Width = 280;
                 variableDialog.Height = 400;
@@ -79,10 +79,10 @@ namespace SVControl
 
                 edSvc.DropDownControl(variableDialog);
 
-                variable.VarName = (String)dialog.name.DataContext;
-                variable.VarBlockType = Convert.ToByte(dialog.type.DataContext);
-
-
+                SVVarDefine tmp = new SVVarDefine();
+                tmp.VarName = (String)dialog.name.DataContext;
+                tmp.VarBlockType = Convert.ToByte(dialog.type.DataContext);
+                value = (SVVarDefine)tmp.Clone();
             }
 
             return value;
