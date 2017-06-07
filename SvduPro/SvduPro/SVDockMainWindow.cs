@@ -1956,7 +1956,9 @@ namespace SvduPro
                 {
                     //String File = openFileDialog.FileName;
 
-                    _svProject.importPageNode(node.Text, file);
+                    if (!_svProject.importPageNode(node.Text, file))
+                        return ;
+
                     String pageName = Path.GetFileNameWithoutExtension(file);
 
                     SVPageWidget widget = new SVPageWidget(pageName, file);
