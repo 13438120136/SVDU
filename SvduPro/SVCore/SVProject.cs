@@ -294,7 +294,7 @@ namespace SVCore
         /// </summary>
         /// <param oldName="className">页面分类</param>
         /// <param oldName="File">页面文件</param>
-        public void importPageNode(String className, String file)
+        public Boolean importPageNode(String className, String file)
         {
             file = GetRelativePaths(Application.StartupPath, file);
 
@@ -303,13 +303,15 @@ namespace SVCore
             //判断该页面名称是否存在
             foreach (var parent in _pageDic)
                 if (parent.Value.ContainsKey(pageName))
-                    return ;
+                    return false;
 
             //执行保存
             if (_pageDic.ContainsKey(className))
                 _pageDic[className].Add(pageName, file);
             else
                 _pageDic.Add(className, new Dictionary<String, String> { { pageName, file } });
+
+            return true;
         }
 
         /// <summary>
