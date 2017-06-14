@@ -148,7 +148,7 @@ namespace SVCore
         /// <returns></returns>
         public byte[] byteHead(Byte index, Int32 address)
         {
-            byte[] initByte = new byte[] { 0x00, 0xFE, 0x60, 0x02, 0x07, 0x00, 0x00, 0x00, 0x00, 0x80 };
+            byte[] initByte = new byte[] { 0x00, 0xFE, 0x60, 0x02, 0x07, 0x00, 0x00, 0x00, 0x00, 0x90 };
             initByte[5] = index;
             byte[] tmp = BitConverter.GetBytes(address);
             initByte[6] = tmp[0];
