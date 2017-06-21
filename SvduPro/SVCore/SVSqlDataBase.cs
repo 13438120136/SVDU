@@ -108,7 +108,7 @@ namespace SVCore
                 and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
                 and table_varinfo.typeid = 6 
                 and table_varinfo.ioblockid = table_channelinfo.uid
-                and table_varinfo.is_net = 1
+                and (table_varinfo.is_net = 1 or table_varinfo.is_net = 2)
                 and table_varinfo.uid = table_netinfo.NetVarID
                 and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
 
@@ -156,7 +156,7 @@ namespace SVCore
                 where table_netinfo.stationid = {0}                 
                 and table_varinfo.typeid = 5 
                 and table_varinfo.ioblockid = 0
-                and table_varinfo.is_net = 1
+                and (table_varinfo.is_net = 1 or table_varinfo.is_net = 2)
                 and table_varinfo.uid = table_netinfo.NetVarID
                 and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
 
@@ -204,7 +204,7 @@ namespace SVCore
                 and (table_varinfo.varname = 'IN' or table_varinfo.varname = 'Y') 
                 and table_varinfo.typeid = 6 
                 and table_varinfo.ioblockid = table_channelinfo.uid
-                and table_varinfo.is_net = 1
+                and (table_varinfo.is_net = 1 or table_varinfo.is_net = 2)
                 and table_varinfo.uid = table_netinfo.NetVarID
                 and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
 
@@ -240,7 +240,7 @@ namespace SVCore
                 where table_varinfo.stationid = {0}                 
                 and table_varinfo.typeid = 5 
                 and table_varinfo.ioblockid = 0
-                and table_varinfo.is_net = 1
+                and (table_varinfo.is_net = 1 or table_varinfo.is_net = 2)
                 and table_varinfo.uid = table_netinfo.NetVarID
                 and table_varinfo.valuetypeid = table_valuetype.uid", SVProData.stationID);
 
