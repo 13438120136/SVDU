@@ -72,7 +72,7 @@ namespace SVControl
                 variableDialog.Height = 400;
 
                 SVWPFVariableDialog dialog = new SVWPFVariableDialog();
-                dialog.setFilter(new List<String> { "SHORT_INT", "SHORTINT_VAR", "INT", "INT_VAR", "REAL", "REAL_VAR" });
+                dialog.setFilter(new List<String> { "SHORT_INT", "SHORTINT_S", "INT", "INT_S", "REAL", "REAL_S" });
                 dialog.name.DataContext = variable.VarName;
                 dialog.type.DataContext = variable.VarBlockType;
                 variableDialog.addContent(dialog);

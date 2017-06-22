@@ -74,7 +74,7 @@ namespace SVControl
                 variableDialog.Height = 400;
 
                 SVWPFVariableDialog dialog = new SVWPFVariableDialog();
-                dialog.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
+                dialog.setFilter(new List<String> { "BOOL", "BOOL_S" });
                 dialog.name.DataContext = variable.VarName;
                 dialog.type.DataContext = variable.VarBlockType;
                 variableDialog.addContent(dialog);

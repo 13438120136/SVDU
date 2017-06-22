@@ -179,7 +179,7 @@ namespace SVControl
             }
 
             SVVarWindow varWindow = new SVVarWindow();
-            varWindow.setFilter(new List<String> { "BOOL", "BOOL_VAR" });
+            varWindow.setFilter(new List<String> { "BOOL", "BOOL_S" });
             if (varWindow.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
             {
                 _gif.Attrib.VarType.Add(varWindow.getVarType());
