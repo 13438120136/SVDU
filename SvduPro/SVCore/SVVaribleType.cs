@@ -279,6 +279,21 @@ namespace SVCore
         }
 
         /// <summary>
+        /// 将当前表格中地址偏移到24K之后
+        /// </summary>
+        /// <param name="src"></param>
+        /// <returns></returns>
+        private void dealDataTableAddress(DataTable src)
+        {
+            int offset = 24 * 1024;
+
+            for (int i = 0; i < src.Rows.Count; i++)
+            {
+                src.Rows[i][1] = (int)(src.Rows[i][1]) + offset;
+            }
+        }
+
+        /// <summary>
         /// 加载接收表格地址
         /// </summary>
         /// <returns></returns>
@@ -287,17 +302,32 @@ namespace SVCore
             SVInterfaceApplication app = SVApplication.Instance;
             SVSqlDataBase sqlDataBase = app.DataBase;
             DataTable recvIO = sqlDataBase.getRecvAddressForIO(SVProData.stationID);
+            DataTable recvIO2 = sqlDataBase.getRecvAddressForIO2(SVProData.stationID);
             DataTable recvNormal = sqlDataBase.getRecvAddressForNormal(SVProData.stationID);
+            DataTable recvNormal2 = sqlDataBase.getRecvAddressForNormal2(SVProData.stationID);
 
             DataTable result = new DataTable();
             ///合并表格
             if (recvIO != null)
                 result.Merge(recvIO);
 
+            if (recvIO2 != null)
+            {
+                dealDataTableAddress(recvIO2);
+                result.Merge(recvIO2);
+            }
+
             if (recvNormal != null)
             {
                 recvNormal.Columns[0].ColumnName = "ioblockname";
                 result.Merge(recvNormal);
+            }
+
+            if (recvNormal2 != null)
+            {
+                recvNormal2.Columns[0].ColumnName = "ioblockname";
+                dealDataTableAddress(recvNormal2);
+                result.Merge(recvNormal2);
             }
 
             return result;
@@ -313,7 +343,9 @@ namespace SVCore
             SVSqlDataBase sqlDataBase = app.DataBase;
 
             DataTable sendIO = sqlDataBase.getSendAddressForIO(SVProData.stationID);
+            DataTable sendIO2 = sqlDataBase.getSendAddressForIO(SVProData.stationID);
             DataTable sendNormal = sqlDataBase.getSendAddressForNormal(SVProData.stationID);
+            DataTable sendNormal2 = sqlDataBase.getSendAddressForNormal(SVProData.stationID);
 
             ///合并表格            
             DataTable result = new DataTable();
@@ -321,10 +353,23 @@ namespace SVCore
             if (sendIO != null)
                 result.Merge(sendIO);
 
+            if (sendIO2 != null)
+            {
+                dealDataTableAddress(sendIO2);
+                result.Merge(sendIO2);
+            }
+
             if (sendNormal != null)
             {
                 sendNormal.Columns[0].ColumnName = "ioblockname";
                 result.Merge(sendNormal);
+            }
+
+            if (sendNormal2 != null)
+            {
+                sendNormal2.Columns[0].ColumnName = "ioblockname";
+                dealDataTableAddress(sendNormal2);
+                result.Merge(sendNormal2);
             }
 
             return result;
@@ -338,13 +383,13 @@ namespace SVCore
             _dict = new Dictionary<string, VarType>() 
             {
             { "BOOL", VarType.VARTYPE_CHAR }, 
-            { "BOOL_VAR", VarType.VARTYPE_CHARQ }, 
+            { "BOOL_S", VarType.VARTYPE_CHARQ }, 
             { "SHORT_INT", VarType.VARTYPE_INT16 }, 
-            { "SHORTINT_VAR", VarType.VARTYPE_INT16Q }, 
+            { "SHORTINT_S", VarType.VARTYPE_INT16Q }, 
             { "INT", VarType.VARTYPE_INT32 }, 
-            { "INT_VAR", VarType.VARTYPE_INT32Q }, 
+            { "INT_S", VarType.VARTYPE_INT32Q }, 
             { "REAL", VarType.VARTYPE_FLOAT }, 
-            { "REAL_VAR", VarType.VARTYPE_FLOATQ }};
+            { "REAL_S", VarType.VARTYPE_FLOATQ }};
         }
     }
 
