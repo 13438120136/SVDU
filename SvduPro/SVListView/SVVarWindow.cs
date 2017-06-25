@@ -20,12 +20,11 @@ namespace SVControl
         {
             InitializeComponent();
 
-            //loadDataFromDB(0);
-            this.varTypeCombox.SelectedIndex = 0;
-
             this.textBox.TextChanged += new EventHandler(textBox_TextChanged);
             this.dataGridView.CellClick += new DataGridViewCellEventHandler(dataGridView_CellClick);
             this.varTypeCombox.SelectedIndexChanged += new EventHandler(varTypeCombox_SelectedIndexChanged);
+
+            this.varTypeCombox.SelectedIndex = 0;
         }
 
         /// <summary>
