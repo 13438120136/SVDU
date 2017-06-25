@@ -343,9 +343,9 @@ namespace SVCore
             SVSqlDataBase sqlDataBase = app.DataBase;
 
             DataTable sendIO = sqlDataBase.getSendAddressForIO(SVProData.stationID);
-            DataTable sendIO2 = sqlDataBase.getSendAddressForIO(SVProData.stationID);
+            DataTable sendIO2 = sqlDataBase.getSendAddressForIO2(SVProData.stationID);
             DataTable sendNormal = sqlDataBase.getSendAddressForNormal(SVProData.stationID);
-            DataTable sendNormal2 = sqlDataBase.getSendAddressForNormal(SVProData.stationID);
+            DataTable sendNormal2 = sqlDataBase.getSendAddressForNormal2(SVProData.stationID);
 
             ///合并表格            
             DataTable result = new DataTable();
