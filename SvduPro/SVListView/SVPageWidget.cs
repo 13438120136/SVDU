@@ -659,28 +659,38 @@ namespace SVControl
             else
                 _attrib.id = UInt16.Parse(page.GetAttribute("ID"));
 
-            XmlElement width = xml.select("Width");
-            _attrib.Width = int.Parse(width.InnerText);
+            try
+            {
+                XmlElement width = xml.select("Width");
+                _attrib.Width = int.Parse(width.InnerText);
 
-            XmlElement height = xml.select("Height");
-            _attrib.Height = int.Parse(height.InnerText);
+                XmlElement height = xml.select("Height");
+                _attrib.Height = int.Parse(height.InnerText);
 
-            XmlElement back = xml.select("Backcolor");
-            _attrib.BackColor = Color.FromArgb(int.Parse(back.InnerText));
+                XmlElement back = xml.select("Backcolor");
+                _attrib.BackColor = Color.FromArgb(int.Parse(back.InnerText));
 
-            XmlElement mainPage = xml.select("MainPage");
-            _attrib.IsMainPage = Boolean.Parse(mainPage.InnerText);
-            if (_attrib.IsMainPage)
-                setToMainPageWidget();
+                XmlElement mainPage = xml.select("MainPage");
+                _attrib.IsMainPage = Boolean.Parse(mainPage.InnerText);
+                if (_attrib.IsMainPage)
+                    setToMainPageWidget();
 
-            XmlElement backGroundType = xml.select("BackGroundType");
-            _attrib.BackGroundType = Byte.Parse(backGroundType.InnerText);
+                XmlElement backGroundType = xml.select("BackGroundType");
+                _attrib.BackGroundType = Byte.Parse(backGroundType.InnerText);
 
-            XmlElement picShowName = xml.select("PicShowName");
-            _attrib.PicIconData.ShowName = picShowName.InnerText;
+                XmlElement picShowName = xml.select("PicShowName");
+                _attrib.PicIconData.ShowName = picShowName.InnerText;
 
-            XmlElement picFile = xml.select("PicFile");
-            _attrib.PicIconData.ImageFileName = picFile.InnerText;
+                XmlElement picFile = xml.select("PicFile");
+                _attrib.PicIconData.ImageFileName = picFile.InnerText;
+
+
+                XmlElement alignMent = xml.select("alignment");
+                _attrib.IsAlignment = Byte.Parse(alignMent.InnerText);
+            }
+            catch (Exception)
+            {
+            }
 
             //读取当前页面的所有子控件
             List<XmlElement> listNodes = xml.selectChilds();
@@ -739,6 +749,9 @@ namespace SVControl
 
             XmlElement picFile = xml.createNode("PicFile");
             picFile.InnerText = _attrib.PicIconData.ImageFileName;
+
+            XmlElement alignMent = xml.createNode("alignment");
+            alignMent.InnerText = _attrib.IsAlignment.ToString();
 
             //保存当前页面的所有子控件
             foreach (Control ctrl in this.Controls)

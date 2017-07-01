@@ -1934,6 +1934,8 @@ namespace SvduPro
                 node.Nodes.Add(pageNode);
                 _stationTreeView.ExpandAll();
 
+                openPage(widget);
+
                 ///记录日志
                 msg = String.Format("页[{0}] 创建成功!", form.PageName);
                 SVLog.WinLog.Info(msg);
